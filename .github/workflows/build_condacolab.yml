@@ -22,8 +22,7 @@ jobs:
             condacolab
       - name: Build
         run: |
-        cd condacolab-constructor
-        constructor --platform linux-64 ./condacolab-constructor/
+          constructor --platform linux-64 ./condacolab-constructor/
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
