@@ -1,0 +1,30 @@
+name: Main
+
+on: push
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Install Conda environment with Micromamba
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          extra-specs: |
+            python=3.7
+            condacolab
+      - name: Build
+        run: |
+        cd condacolab-constructor
+        constructor --platform linux-64 ./condacolab-constructor/
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: 06325-condacolab-0.1-Linux-x86_64.sh
