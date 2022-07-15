@@ -17,7 +17,7 @@ jobs:
         run: conda install -c conda-forge constructor
       - name: Build
         run: |
-          constructor --platform linux-64 ./condacolab-constructor/
+          $CONDA/bin/constructor --platform linux-64 ./condacolab-constructor/
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
