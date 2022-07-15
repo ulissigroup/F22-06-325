@@ -1,6 +1,5 @@
 name: Main
 
-on: push
 on:
   push:
     tags:
@@ -19,7 +18,7 @@ jobs:
         with:
           extra-specs: |
             python=3.7
-            condacolab
+            constructor
       - name: Build
         run: |
           constructor --platform linux-64 ./condacolab-constructor/
