@@ -25,4 +25,4 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: 06325-condacolab-0.1-Linux-x86_64.sh
+          files: 06325-condacolab-0.0.1-Linux-x86_64.sh

@@ -1,6 +1,6 @@
 
 name: 06325-condacolab  # you can edit this if you want
-version: 0.1      # increment if you change the specs, for reproducibility!
+version: 0.0.1      # increment if you change the specs, for reproducibility!
 
 channels:
   - conda-forge
