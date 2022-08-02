@@ -9,3 +9,5 @@ RUN mamba install --quiet --yes \
 RUN pip install --quiet --no-cache-dir jupyterlab && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+RUN jupyter labextension install @tabnine/jupyterlab @ryantam626/jupyterlab_code_formatter
