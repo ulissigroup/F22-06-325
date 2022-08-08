@@ -1,16 +1,7 @@
-# Welcome to your Jupyter Book
+# Welcome to F22-06-325
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This jupyter book will provide all of the content for the course. It will also contain references and links to 
 
-:::{note}
-Here is a note!
-:::
+We will do some things a bit differently from 06-262, so please take a few moments to check out the (syllabus)[syllabus.html] and the (software environment)[software.html] sections. 
 
-And here is a code block:
-
-```
-e = mc^2
-```
-
-Check out the content pages bundled with this sample book to see more.
+Check out the content pages on the left hand side!
