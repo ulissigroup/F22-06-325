@@ -1,4 +1,4 @@
-# Syllabus for 06-325 (6 units), Fall Mini 1 2022
+# Syllabus
 
 ## Personnel
 
