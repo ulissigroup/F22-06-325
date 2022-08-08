@@ -31,6 +31,7 @@ repository:
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 launch_buttons:
+  notebook_interface: jupyterlab
   jupyterhub_url: "https://laikapack-head.cheme.cmu.edu/hub"
   colab_url: "https://colab.research.google.com"
   
