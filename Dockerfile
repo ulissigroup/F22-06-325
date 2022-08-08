@@ -11,5 +11,3 @@ RUN pip install --quiet --no-cache-dir jupyterlab_tabnine && \
     fix-permissions "/home/${NB_USER}"
 
 RUN jupyter labextension install jupyterlab-jupytext
-
-#RUN jupyter labextension install @tabnine/jupyterlab @ryantam626/jupyterlab_code_formatter
