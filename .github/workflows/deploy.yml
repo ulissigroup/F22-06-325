@@ -5,11 +5,6 @@ on:
   push:
     branches:
       - main
-defaults:
-  run:
-    shell: bash
-    working-directory: /home/jovyan/
-
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
@@ -23,13 +18,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        path: /home/jovyan/F22-06-325
 
     # Build the book
     - name: Build the book
       run: |
-        cd F22-06-325 && jupyter-book build f22-06-325
+        jupyter-book build f22-06-325
 
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
