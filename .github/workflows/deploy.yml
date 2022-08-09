@@ -5,6 +5,11 @@ on:
   push:
     branches:
       - main
+defaults:
+  run:
+    shell: bash
+    working-directory: /home/jovyan/
+
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
@@ -16,14 +21,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-
     steps:
-    # Build the book
-    - name: Set permissions on temp directory
-      run: |
-        sudo mkdir /_w
-        sudo chmod a+w /_w
-        
     - uses: actions/checkout@v2
 
     # Build the book
