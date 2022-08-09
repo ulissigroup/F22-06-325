@@ -453,18 +453,6 @@ Ideally, we would have a function that takes one argument, &mu;, and returns the
 
 ```{code-cell} ipython3
 
----
-executionInfo:
-  elapsed: 118
-  status: ok
-  timestamp: 1631797272235
-  user:
-    displayName: John Kitchin
-    photoUrl: https://lh3.googleusercontent.com/a/default-user=s64
-    userId: '14782011281593705406'
-  user_tz: 240
-id: UjpIg5k1I5Vh
----
 # We do not have to define this here, I just repeat it so you can see it again.
 def max_x_event(t, X):
     x, v = X
