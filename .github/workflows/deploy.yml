@@ -9,7 +9,7 @@ on:
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-and-deploy-book:
-    runs-on: [ubuntu-latest]
+    runs-on: [self-hosted, linux]
     container:
       image: docker://ulissigroup/f22-06325
       credentials:
