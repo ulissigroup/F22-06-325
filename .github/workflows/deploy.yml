@@ -13,8 +13,9 @@ jobs:
     container:
       image: docker://ulissigroup/f22-06325
       credentials:
-       username: ${{ github.actor }}
-       password: ${{ secrets.github_token }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
     steps:
     - uses: actions/checkout@v2
 
