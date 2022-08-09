@@ -452,6 +452,7 @@ How can we check the periods are constant? One way is to see if the first and la
 Ideally, we would have a function that takes one argument, &mu;, and returns the steady state oscillatory solution.
 
 ```{code-cell} ipython3
+
 ---
 executionInfo:
   elapsed: 118
