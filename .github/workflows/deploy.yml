@@ -23,15 +23,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: F22-06-325
 
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build f22-06-325
+        cd F22-06-325 && jupyter-book build f22-06-325
 
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: f22-06-325/_build/html
+        publish_dir: /home/jovyan/F22-06-325/f22-06-325/_build/html
