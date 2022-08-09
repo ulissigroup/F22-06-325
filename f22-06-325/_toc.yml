@@ -3,9 +3,13 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: syllabus
-- file: software
-- file: markdown
-- file: markdown-notebook
-- file: notebooks
+parts:
+- caption: Course Info
+  chapters:
+  - file: syllabus
+  - file: software
+- caption: Example chapters
+  chapters:
+  - file: markdown
+  - file: markdown-notebook
+  - file: notebooks
