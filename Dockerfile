@@ -13,6 +13,6 @@ RUN pip install --quiet --no-cache-dir jupyterlab_tabnine && \
 RUN jupyter labextension install jupyterlab-jupytext
 
 USER root
-RUN mkdir /_w/ && fix-permissions "/_w/"
+RUN mkdir /__w/ && fix-permissions "/__w/"
 USER $NB_UID
 
