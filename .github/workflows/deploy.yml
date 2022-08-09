@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        path: F22-06-325
+        path: /home/jovyan/F22-06-325
 
     # Build the book
     - name: Build the book
