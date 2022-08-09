@@ -8,6 +8,13 @@ parts:
   chapters:
   - file: syllabus
   - file: software
+- caption: Numerical Methods Recap
+  chapters:
+  - file: review_odes
+  - file: review_optimization
+- caption: Machine Learning Basics
+  chapters:
+  - file: extrapolation
 - caption: Example chapters
   chapters:
   - file: markdown
