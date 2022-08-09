@@ -452,7 +452,21 @@ How can we check the periods are constant? One way is to see if the first and la
 Ideally, we would have a function that takes one argument, &mu;, and returns the steady state oscillatory solution.
 
 ```{code-cell} ipython3
-
+---
+colab:
+  base_uri: https://localhost:8080/
+executionInfo:
+  elapsed: 140
+  status: ok
+  timestamp: 1631795784541
+  user:
+    displayName: John Kitchin
+    photoUrl: https://lh3.googleusercontent.com/a/default-user=s64
+    userId: '14782011281593705406'
+  user_tz: 240
+id: zR0IFJnlI5Ui
+outputId: bc4f88b0-3980-49b7-f2a9-0024643e2747
+---
 # We do not have to define this here, I just repeat it so you can see it again.
 def max_x_event(t, X):
     x, v = X
