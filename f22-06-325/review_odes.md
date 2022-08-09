@@ -12,15 +12,12 @@ kernelspec:
 ---
 
 ```{sidebar} Adaptation!
-This work was adapted from John Kitchin's 06-623 course!
+This work was copied from John Kitchin's 06-623 course! It is used as a test case.
 ```
 
 +++ {"id": "mJnRxC7iI5UF"}
 
-Higher order differential equations
-===================================
-
-- KEYWORDS: solve_ivp
+# Higher order differential equations
 
 +++ {"id": "9qgQVg-OI5UH"}
 
