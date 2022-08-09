@@ -16,6 +16,9 @@ parts:
 - caption: Machine Learning Basics
   chapters:
   - file: extrapolation
+- caption: Lab Office Hour Resources
+  chapters:
+  - file: python_debugging
 - caption: Example chapters
   chapters:
   - file: markdown
