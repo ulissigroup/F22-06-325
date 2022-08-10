@@ -10,6 +10,8 @@ on:
 jobs:
   build-and-deploy-book:
     runs-on: [self-hosted, linux]
+    
+    # Use a custom dockerfile for build
     container:
       image: docker://ulissigroup/f22-06325
       credentials:
@@ -17,7 +19,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3 
 
     # Build the book
     - name: Build the book
