@@ -585,3 +585,7 @@ Today we covered the conversion of an n<sup>th</sup> order differential equation
 We examined the use of the optional argument max\_step to fine tune the solution points returned by the solver.
 
 This concludes our first section on ordinary differential equations.
+
+```{code-cell} ipython3
+print('second test!')
+```
