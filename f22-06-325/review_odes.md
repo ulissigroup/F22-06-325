@@ -1,5 +1,6 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
@@ -12,7 +13,7 @@ kernelspec:
 ---
 
 ```{sidebar} Adaptation!
-This work was copied from John Kitchin's 06-623 course! It is used as a test case.
+This work was copied from John Kitchin's 06-623 course! It is used as a test case here.
 ```
 
 +++ {"id": "mJnRxC7iI5UF"}
@@ -103,7 +104,6 @@ sol.message, sol.success, sol.y.T.shape
 +++ {"id": "oR6BcTJ8I5US"}
 
 Now, we can plot the solutions.
-
 
 ```{code-cell} ipython3
 ---
@@ -253,7 +253,6 @@ plt.legend(["x", "v"]);
 
 That looks good, the red dots appear at the maxima, and they are periodic, so now we can see how x<sub>max</sub> varies with time.
 
-
 ```{code-cell} ipython3
 ---
 colab:
@@ -279,7 +278,6 @@ plt.ylabel("$x_{max}$");
 +++ {"id": "AbjhK69cI5U8"}
 
 You can see that after about 5 cycles, xmax is practically constant. We can also see that the period (the time between maxima) is converging to a constant. We cannot say much about what happens at longer times. You could integrate longer if it is important to know that. This is a limitation of numerical methods though. To *prove* that it will be constant, you need to do some analytical math that would show the period and x<sub>max</sub> go to a constant.
-
 
 ```{code-cell} ipython3
 ---
@@ -307,7 +305,6 @@ plt.ylabel("period");
 
 If we seek the steady state, oscillatory behavior of this system, we should discard the solutions in at least the first 4 cycles, since the maxima and periods are still changing.
 
-
 ```{code-cell} ipython3
 ---
 colab:
@@ -330,7 +327,6 @@ te[-1], sol.y_events[0][-1]
 +++ {"id": "5DRqVFEAI5VJ"}
 
 Alternatively, we can use the last point as an initial value for a new integration that should be close to steady state oscillations.
-
 
 ```{code-cell} ipython3
 ---
@@ -362,7 +358,6 @@ plt.ylabel("x,v");
 
 Here you see about 6 more cycles. The period of these events is practically constant.
 
-
 ```{code-cell} ipython3
 ---
 colab:
@@ -385,7 +380,6 @@ sol2.t_events, np.diff(sol2.t_events[0])
 +++ {"id": "OWLApvT8I5VX"}
 
 And the limit cycle shows practically a single curve.
-
 
 ```{code-cell} ipython3
 ---
@@ -417,7 +411,6 @@ This limit cycle shows the oscillatory behavior. You can see here that each cycl
 
 **Review** We have been working on finding a steady state oscillatory solution to $\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0$, which describes an oscillating system. We examined some ways to tell if a system is oscillating, and to estimate the period of the oscillation.
 
-
 ```{code-cell} ipython3
 ---
 executionInfo:
@@ -437,7 +430,6 @@ id: Z3vm_Tx1F3OZ
 +++ {"id": "51_iHp7bI5Ve"}
 
 ### Solving a parameterized ODE many times
-
 
 +++ {"id": "2Q3xwyW6I5Vf"}
 
@@ -544,7 +536,6 @@ plt.axis("equal");
 
 Note: This takes about a second per iteration to run.
 
-
 ```{code-cell} ipython3
 ---
 colab:
@@ -586,7 +577,6 @@ plt.axis("equal");
 +++ {"id": "-nYCrqJzI5Vs"}
 
 ## Summary
-
 
 +++ {"id": "8iGh-rFQI5Vu"}
 
