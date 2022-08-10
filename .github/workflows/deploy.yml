@@ -9,7 +9,7 @@ on:
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-and-deploy-book:
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     
     # Use a custom dockerfile for build
     container:
