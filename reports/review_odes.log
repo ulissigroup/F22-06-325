@@ -17,16 +17,23 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-y0 = np.array([y0]) # It is a good idea to make y0 an array. It will be important later.
-sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0)
+def event1(x, y):
+    return y[0] - 4
+
+event1.terminal = True
+
+sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0, events=event1)
+sol
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Input [0;32mIn [2][0m, in [0;36m<cell line: 1>[0;34m()[0m
-[0;32m----> 1[0m y0 [38;5;241m=[39m [43mnp[49m[38;5;241m.[39marray([y0]) [38;5;66;03m# It is a good idea to make y0 an array. It will be important later.[39;00m
-[1;32m      2[0m sol [38;5;241m=[39m solve_ivp(fun[38;5;241m=[39mf, t_span[38;5;241m=[39m(x0, [38;5;241m1.5[39m), y0[38;5;241m=[39my0)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 6>[0;34m()[0m
+[1;32m      2[0m     [38;5;28;01mreturn[39;00m y[[38;5;241m0[39m] [38;5;241m-[39m [38;5;241m4[39m
+[1;32m      4[0m event1[38;5;241m.[39mterminal [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[0;32m----> 6[0m sol [38;5;241m=[39m [43msolve_ivp[49m(fun[38;5;241m=[39mf, t_span[38;5;241m=[39m(x0, [38;5;241m1.5[39m), y0[38;5;241m=[39my0, events[38;5;241m=[39mevent1)
+[1;32m      7[0m sol
 
-[0;31mNameError[0m: name 'np' is not defined
-NameError: name 'np' is not defined
+[0;31mNameError[0m: name 'solve_ivp' is not defined
+NameError: name 'solve_ivp' is not defined
 

@@ -459,11 +459,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#review-of-scipy-integrate-solve-ivp">
-   Review of scipy.integrate.solve_ivp
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy">
    Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!
   </a>
@@ -510,11 +505,6 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#review-of-scipy-integrate-solve-ivp">
-   Review of scipy.integrate.solve_ivp
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy">
    Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!
   </a>
@@ -553,110 +543,158 @@ title="Print to PDF"
                 
   <aside class="sidebar">
 <p class="sidebar-title">Adaptation!</p>
-<p>This work was copied from John Kitchin’s 06-623 course! It is used as a test case here.</p>
+<p>This work was adapted from lecture notes in John Kitchin’s excellent 06-623 course! His lecture notes are included in the helpful resources link if you want to know more details about how numericals work.</p>
 </aside>
 <section class="tex2jax_ignore mathjax_ignore" id="numerical-ode-integration-with-events">
 <h1>Numerical ODE Integration (with Events!)<a class="headerlink" href="#numerical-ode-integration-with-events" title="Permalink to this headline">#</a></h1>
-<p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lottka Volterra (rabbit/wolf) example.</p>
-<section id="review-of-scipy-integrate-solve-ivp">
-<h2>Review of scipy.integrate.solve_ivp<a class="headerlink" href="#review-of-scipy-integrate-solve-ivp" title="Permalink to this headline">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code> library provides <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> to solve first order differential equations. It is not the only one available, but this function is recommended. You import the function like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here is a minimal use of the function, with keyword arguments.</p>
-<p><code class="docutils literal notranslate"><span class="pre">y0</span></code> is an array containing the initial values.  <code class="docutils literal notranslate"><span class="pre">fun</span></code> is a function with a signature of f(t, y). Here, <span class="math notranslate nohighlight">\(t\)</span> is considered the independent variable. You can call it whatever you want, so f(x, y) is also fine. Since <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> had <span class="math notranslate nohighlight">\(t\)</span> in mind, the second argument is the <code class="docutils literal notranslate"><span class="pre">t_span</span></code>, which is a tuple of two numbers for where the integration starts (t0, or x0) and where it ends.  <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> returns an object.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y0</span><span class="p">])</span> <span class="c1"># It is a good idea to make y0 an array. It will be important later.</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y0</span><span class="p">])</span> <span class="c1"># It is a good idea to make y0 an array. It will be important later.</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<p>The output of <code class="docutils literal notranslate"><span class="pre">solve_ip</span></code> is an object containing results in attributes on the object.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>You should look for a few things here. One is that the message indicates success. Second, we access the solution using dot notation. Here are the independent variable values the solution was evaluated at.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">t</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Third, the solution is in a 2D array. We only have one equation here, so we use indexing to get the first row as an array.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now, we can plot the solution.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;solve_ivp&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Analytical&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>That doesn’t looks so great since there are only four data points. By default, the algorithm only uses as many points as it needs to achieve a specified tolerance. We can specify that we want the solution evaluated at other points using the optional <code class="docutils literal notranslate"><span class="pre">t_eval</span></code> keyword arg.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
-<span class="n">sol</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;solve_ivp&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Analytical&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">This admonition was styled…</p>
-<p>Ask yourself these questions when solving ODE’s:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lecture is going to:</p>
 <ul class="simple">
-<li><p>Is my problem coupled or not? Higher order or not?</p></li>
-<li><p>Is my problem stiff?</p></li>
-<li><p>Is there anything I can infer about the solution from the differential euqations?</p></li>
-<li><p>How many steady states do I expect?</p></li>
+<li><p>Quickly review how scipy.integrate.solve_ivp works</p></li>
+<li><p>Practice coding up a system of differential equations we covered extensively in 06-262</p></li>
+<li><p>Introduce how events works during ODE integrations (useful for future courses!)</p></li>
+<li><p>Demonstrate events for a more complicated non-linear higher order differential equation</p></li>
 </ul>
+<p>Along the way, we will:</p>
+<ul class="simple">
+<li><p>Get used to the JupyterLab environment and the structure of the course notes</p></li>
+<li><p>Practice plotting in matplotlib</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
++++ {&quot;id&quot;: &quot;sYhjkqf6WKfe&quot;, &quot;tags&quot;: []}
+
+## Review of scipy.integrate.solve_ivp
+
+
++++
+
+For concreteness, consider:
+
+$y&#39; = y + 2x - x^2; y(0) = 1$.
+
+This ODE has a known analytical solution: $y(x) = x^2 + e^x$. We will use this for comparison.
+
++++ {&quot;id&quot;: &quot;2kQMFOMGWKfe&quot;}
+
+The `scipy.integrate` library provides `solve_ivp` to solve first order differential equations. It is not the only one available, but this function is recommended. You import the function like this:
+
+
+```{code-cell} ipython3
+:id: Xz9BVvtwWKfe
+:outputId: 520d4171-f524-402b-e09e-1e3d9d67cff2
+
+from scipy.integrate import solve_ivp
+import numpy as np
+```
+
++++ {&quot;id&quot;: &quot;nx24SM4zWKfe&quot;}
+
+Here is a minimal use of the function, with keyword arguments.
+
+`y0` is an array containing the initial values.  `fun` is a function with a signature of f(t, y). Here, $t$ is considered the independent variable. You can call it whatever you want, so f(x, y) is also fine. Since `solve_ivp` had $t$ in mind, the second argument is the `t_span`, which is a tuple of two numbers for where the integration starts (t0, or x0) and where it ends.  `solve_ivp` returns an object.
+
+```{code-cell} ipython3
+:id: XaEuU1aKWKfe
+:outputId: a4213a09-30c6-4de3-a694-1c5c2b0d7541
+
+def f(x, y):
+    return y + 2 * x - x**2
+
+x0 = 0
+y0 = np.array([1]) # It is a good idea to make y0 an array. It will be important later.
+
+sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0)
+```
+
++++ {&quot;id&quot;: &quot;QctFd6OnWKfe&quot;}
+
+The output of `solve_ip` is an object containing results in attributes on the object.
+
+
+```{code-cell} ipython3
+:id: _OTEtvMPWKfe
+:outputId: c4843f44-dac4-4f8a-813d-ee14a7511bec
+
+sol
+```
+
++++ {&quot;id&quot;: &quot;KvCfBovWWKfe&quot;}
+
+You should look for a few things here. One is that the message indicates success. Second, we access the solution using dot notation. Here are the independent variable values the solution was evaluated at.
+
+
+```{code-cell} ipython3
+:id: T1_CmSeDWKfe
+:outputId: 59707552-1299-44d4-ec0e-e62498357449
+
+sol.t
+```
+
++++ {&quot;id&quot;: &quot;OEHyy77MWKff&quot;}
+
+Third, the solution is in a 2D array. We only have one equation here, so we use indexing to get the first row as an array.
+
+
+```{code-cell} ipython3
+:id: e3h4ETeYWKff
+:outputId: 3f8f4c57-6fd9-4f03-af0a-b249e8c0423c
+
+sol.y[0]
+```
+
++++ {&quot;id&quot;: &quot;3_yOmHaCWKff&quot;}
+
+Now, we can plot the solution.
+
+
+```{code-cell} ipython3
+:id: eyYJt5_3WKff
+:outputId: 366b0dad-8ac6-4da2-bfb5-0d2b5760cee1
+
+import matplotlib.pyplot as plt
+
+plt.plot(sol.t, sol.y[0], label=&#39;solve_ivp&#39;)
+plt.plot(sol.t, sol.t**2 + np.exp(sol.t), &#39;r--&#39;, label=&#39;Analytical&#39;)
+plt.xlabel(&#39;x&#39;)
+plt.ylabel(&#39;y&#39;)
+plt.legend()
+```
+
++++ {&quot;id&quot;: &quot;ITfM0WarWKff&quot;}
+
+That doesn&#39;t looks so great since there are only four data points. By default, the algorithm only uses as many points as it needs to achieve a specified tolerance. We can specify that we want the solution evaluated at other points using the optional `t_eval` keyword arg.
+
+
+```{code-cell} ipython3
+:id: 2gwGvLyZWKff
+:outputId: 15c72153-762f-4480-cb58-ceae772c22e3
+
+X = np.linspace(x0, 1.5)
+sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0, t_eval=X)
+sol
+```
+
+```{code-cell} ipython3
+:id: yLoasFoAWKff
+:outputId: 38201a92-33e4-4dff-e57b-f9f929bf0c64
+
+plt.plot(sol.t, sol.y[0], label=&#39;solve_ivp&#39;)
+plt.plot(X, X**2 + np.exp(X), &#39;r--&#39;, label=&#39;Analytical&#39;)
+plt.xlabel(&#39;x&#39;)
+plt.ylabel(&#39;y&#39;)
+plt.legend()
+```
+
+`````{tip} Ask yourself these questions when solving ODE&#39;s
+* Is my problem coupled or not? Higher order or not?
+* Is my problem stiff? Should I use a special solver?
+* Is there anything I can infer about the solution from the differential euqations?
+* How many steady states do I expect? 
+* How would I know if I made a mistake?
+</pre></div>
 </div>
-</section>
+</div>
 <section id="practice-lottka-coltera-review-of-solving-odes-with-scipy">
 <h2>Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!<a class="headerlink" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy" title="Permalink to this headline">#</a></h2>
 <p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lottka Volterra (rabbit/wolf) example.</p>
@@ -692,6 +730,19 @@ title="Print to PDF"
 
 <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">event1</span><span class="p">)</span>
 <span class="n">sol</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">event1</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">event1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">sol</span>
+
+<span class="ne">NameError</span>: name &#39;solve_ivp&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1027,13 +1078,6 @@ title="Print to PDF"
 <p>Today we covered the conversion of an n<sup>th</sup> order differential equation into a system of first order differential equations.</p>
 <p>We examined the use of the optional argument max_step to fine tune the solution points returned by the solver.</p>
 <p>This concludes our first section on ordinary differential equations.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second test!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 
