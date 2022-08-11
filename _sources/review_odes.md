@@ -31,12 +31,11 @@ This lecture is going to:
 Along the way, we will:
 * Get used to the JupyterLab environment and the structure of the course notes
 * Practice plotting in matplotlib
-````
+`````
 
 +++ {"id": "sYhjkqf6WKfe", "tags": []}
 
 ## Review of scipy.integrate.solve_ivp
-
 
 +++
 
@@ -49,7 +48,6 @@ This ODE has a known analytical solution: $y(x) = x^2 + e^x$. We will use this f
 +++ {"id": "2kQMFOMGWKfe"}
 
 The `scipy.integrate` library provides `solve_ivp` to solve first order differential equations. It is not the only one available, but this function is recommended. You import the function like this:
-
 
 ```{code-cell} ipython3
 :id: Xz9BVvtwWKfe
@@ -82,7 +80,6 @@ sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0)
 
 The output of `solve_ip` is an object containing results in attributes on the object.
 
-
 ```{code-cell} ipython3
 :id: _OTEtvMPWKfe
 :outputId: c4843f44-dac4-4f8a-813d-ee14a7511bec
@@ -93,7 +90,6 @@ sol
 +++ {"id": "KvCfBovWWKfe"}
 
 You should look for a few things here. One is that the message indicates success. Second, we access the solution using dot notation. Here are the independent variable values the solution was evaluated at.
-
 
 ```{code-cell} ipython3
 :id: T1_CmSeDWKfe
@@ -106,7 +102,6 @@ sol.t
 
 Third, the solution is in a 2D array. We only have one equation here, so we use indexing to get the first row as an array.
 
-
 ```{code-cell} ipython3
 :id: e3h4ETeYWKff
 :outputId: 3f8f4c57-6fd9-4f03-af0a-b249e8c0423c
@@ -117,7 +112,6 @@ sol.y[0]
 +++ {"id": "3_yOmHaCWKff"}
 
 Now, we can plot the solution.
-
 
 ```{code-cell} ipython3
 :id: eyYJt5_3WKff
@@ -135,7 +129,6 @@ plt.legend()
 +++ {"id": "ITfM0WarWKff"}
 
 That doesn't looks so great since there are only four data points. By default, the algorithm only uses as many points as it needs to achieve a specified tolerance. We can specify that we want the solution evaluated at other points using the optional `t_eval` keyword arg.
-
 
 ```{code-cell} ipython3
 :id: 2gwGvLyZWKff
