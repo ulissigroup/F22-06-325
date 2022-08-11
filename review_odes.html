@@ -575,8 +575,11 @@ title="Print to PDF"
 <section id="review-of-scipy-integrate-solve-ivp">
 <h2>Review of scipy.integrate.solve_ivp<a class="headerlink" href="#review-of-scipy-integrate-solve-ivp" title="Permalink to this headline">#</a></h2>
 <p>For concreteness, consider:</p>
-<p>$y’ = y + 2x - x^2; y(0) = 1$.</p>
-<p>This ODE has a known analytical solution: $y(x) = x^2 + e^x$. We will use this for comparison.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+y' = y + 2x - x^2; y(0) = 1
+\end{align*}\]</div>
+<p>This ODE has a known analytical solution: <span class="math notranslate nohighlight">\(y(x) = x^2 + e^x\)</span>. We will use this for comparison.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code> library provides <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> to solve first order differential equations. It is not the only one available, but this function is recommended. You import the function like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -587,7 +590,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>Here is a minimal use of the function, with keyword arguments.</p>
-<p><code class="docutils literal notranslate"><span class="pre">y0</span></code> is an array containing the initial values.  <code class="docutils literal notranslate"><span class="pre">fun</span></code> is a function with a signature of f(t, y). Here, $t$ is considered the independent variable. You can call it whatever you want, so f(x, y) is also fine. Since <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> had $t$ in mind, the second argument is the <code class="docutils literal notranslate"><span class="pre">t_span</span></code>, which is a tuple of two numbers for where the integration starts (t0, or x0) and where it ends.  <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> returns an object.</p>
+<p><code class="docutils literal notranslate"><span class="pre">y0</span></code> is an array containing the initial values.  <code class="docutils literal notranslate"><span class="pre">fun</span></code> is a function with a signature of f(t, y). Here, <span class="math notranslate nohighlight">\(t\)</span> is considered the independent variable. You can call it whatever you want, so f(x, y) is also fine. Since <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> had <span class="math notranslate nohighlight">\(t\)</span> in mind, the second argument is the <code class="docutils literal notranslate"><span class="pre">t_span</span></code>, which is a tuple of two numbers for where the integration starts (t0, or x0) and where it ends.  <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> returns an object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -664,7 +667,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fce80e9b730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa79ba2f730&gt;
 </pre></div>
 </div>
 <img alt="_images/review_odes_15_1.png" src="_images/review_odes_15_1.png" />
@@ -724,7 +727,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fce80b8e560&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa79371e530&gt;
 </pre></div>
 </div>
 <img alt="_images/review_odes_18_1.png" src="_images/review_odes_18_1.png" />
@@ -747,15 +750,15 @@ title="Print to PDF"
 <p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lottka Volterra (rabbit/wolf) example.</p>
 <p>We are interested in how the two populations of species (Rabbits and wolves) might change over time.</p>
 <ul class="simple">
-<li><p>Rabbits are $x(t)$, wolves are $y(t)$</p></li>
-<li><p>The rate of rabbits being eaten by wolves is proportional to both ($\beta xy$)</p></li>
+<li><p>Rabbits are <span class="math notranslate nohighlight">\(x(t)\)</span>, wolves are <span class="math notranslate nohighlight">\(y(t)\)</span></p></li>
+<li><p>The rate of rabbits being eaten by wolves is proportional to both (<span class="math notranslate nohighlight">\(\beta xy\)</span>)</p></li>
 <li><p>Rabbits reproduce on their own at a rate proportional to the number of rabbits, and rabbits are eaten by wolves at a rate proportional to the number of rabbits and wolves</p></li>
 </ul>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \frac{dx}{dt}=\alpha x-\beta xy
 \end{align*}\]</div>
-<p>where $\alpha$ and $\beta$ are constants.</p>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are constants.</p>
 <ul class="simple">
 <li><p>Wolves are able to reproduce at a rate proportional to the number of wolves and rabbits (how quickly rabbits are being eaten) and die at a rate proportional to the number of wolves (sickness/injury/etc)</p></li>
 </ul>
@@ -765,20 +768,20 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>Let’s say we start with 1 rabbit and 5 wolves, and the constants are</p>
 <ul class="simple">
-<li><p>$\alpha=1 $[1/day]</p></li>
-<li><p>$\beta=0.2$ [1/wolves/day]</p></li>
-<li><p>$\delta=0.5$ [1/rabbits/day]</p></li>
-<li><p>$\gamma=0.2$ [1/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha=1 \)</span>[1/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta=0.2\)</span> [1/wolves/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta=0.5\)</span> [1/rabbits/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma=0.2\)</span> [1/day]</p></li>
 </ul>
 <p>Solve for and plot the population of rabbits and wolves over the first 20 days.</p>
 <p>Let’s take 10 minutes to warm up and try coding this up in python using (scipy)</p>
 </section>
 <section id="using-events-during-ode-integration">
 <h2>Using events during ODE integration<a class="headerlink" href="#using-events-during-ode-integration" title="Permalink to this headline">#</a></h2>
-<p>So far, <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> solves the issues with item 1 (we did not have to code the algorithm), and items 2 and 3 (it uses an adaptive step and converges to a tolerance for us). It will also help us solve for the inverse problem, i.e. for what value of $x$ is $y=4$?</p>
+<p>So far, <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> solves the issues with item 1 (we did not have to code the algorithm), and items 2 and 3 (it uses an adaptive step and converges to a tolerance for us). It will also help us solve for the inverse problem, i.e. for what value of <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(y=4\)</span>?</p>
 <p>To do this, we need a new concept of an “event function”. During each step of the integration, you can run a function that can detect an “event”. When an event is detected, the location of the event is stored, and if desired integration can be terminated. <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> can take a list of event functions. We consider only one for now.</p>
-<p>An event occurs when an event function is equal to zero. During integration, if the event function changes sign, then it is clear an event has occurred, and the algorithm determines where it occurred. Since we want to know when $y=4$, we will define a function that returns $y - 4$, because that will equal zero at that condition. We want the integration to terminate when that happens, so we set the “terminal” attribute on our function to True.</p>
-<p>An event function has a signature of f(x, y). Remember that $y$ is going to be an array,</p>
+<p>An event occurs when an event function is equal to zero. During integration, if the event function changes sign, then it is clear an event has occurred, and the algorithm determines where it occurred. Since we want to know when <span class="math notranslate nohighlight">\(y=4\)</span>, we will define a function that returns <span class="math notranslate nohighlight">\(y - 4\)</span>, because that will equal zero at that condition. We want the integration to terminate when that happens, so we set the “terminal” attribute on our function to True.</p>
+<p>An event function has a signature of f(x, y). Remember that <span class="math notranslate nohighlight">\(y\)</span> is going to be an array,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">event1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -807,7 +810,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Now, there are a couple of new things to note. First, we got a message that a termination event occurred. Second, the sol.y array ends at 4.0, because we made the event function <em>terminal</em>. Next, sol.t_events is not empty, because an event occurred. It now contains the value where the event occurred, which is where $y=4$!</p>
+<p>Now, there are a couple of new things to note. First, we got a message that a termination event occurred. Second, the sol.y array ends at 4.0, because we made the event function <em>terminal</em>. Next, sol.t_events is not empty, because an event occurred. It now contains the value where the event occurred, which is where <span class="math notranslate nohighlight">\(y=4\)</span>!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -870,12 +873,12 @@ title="Print to PDF"
 <p>So far we have focused on computational solutions to first order differential equations, including systems of first order differential equations. The reason for that is simply that all numerical integration strategies only work with the first derivative.</p>
 <p>Many differential equations involve higher order derivatives though. We can solve these by converting them to systems of first-order differential equations through a series of variable changes.</p>
 <p>Let’s consider the <a class="reference external" href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator">Van der Pol oscillator</a>.</p>
-<p>$\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0$</p>
-<p>We define a new variable: $v = x’$, and then have $v’ = x’’$.</p>
+<p><span class="math notranslate nohighlight">\(\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0\)</span></p>
+<p>We define a new variable: <span class="math notranslate nohighlight">\(v = x'\)</span>, and then have <span class="math notranslate nohighlight">\(v' = x''\)</span>.</p>
 <p>That leads to a set of equivalent first-order differential equations:</p>
-<p>$x’ = v$</p>
-<p>$v’ - \mu (1-x^2)v + x = 0$</p>
-<p>You can still think of $x$ as the position of the oscillator, and $y$ as the velocity of the oscillator. Now, we can integrate these equations from some initial condition.</p>
+<p><span class="math notranslate nohighlight">\(x' = v\)</span></p>
+<p><span class="math notranslate nohighlight">\(v' - \mu (1-x^2)v + x = 0\)</span></p>
+<p>You can still think of <span class="math notranslate nohighlight">\(x\)</span> as the position of the oscillator, and <span class="math notranslate nohighlight">\(y\)</span> as the velocity of the oscillator. Now, we can integrate these equations from some initial condition.</p>
 <p>Let’s do this and plot the position and velocity of the oscillator. Rather than use <code class="docutils literal notranslate"><span class="pre">t_eval</span></code>, we will instead set the optional argument <code class="docutils literal notranslate"><span class="pre">max_step</span></code> to tell the solver how often it should make a step.</p>
 <p>This is different than using <code class="docutils literal notranslate"><span class="pre">t_eval</span></code>, which uses interpolation <em>after</em> the solution has been found to evaluate the solution. This will become important later when we use events, which are only evaluated at the <em>solver</em> points.</p>
 <div class="cell docutils container">
@@ -955,7 +958,7 @@ title="Print to PDF"
 <img alt="_images/review_odes_39_0.png" src="_images/review_odes_39_0.png" />
 </div>
 </div>
-<p>So, evidently it is not exactly periodic in the beginning, but seems to take some time to settle down into a periodic rhythm. That seems to be the case, because if it didn’t we would expect to see a continued spiral in or out of this limit cycle. Another way we can assess this quantitatively is to look at the peak positions in our solution. We return to an event type of solution. We seek an event where the derivative $dx/dt=0$, and it is a maximum, which means $x’$ starts positive, becomes zero, and then is negative. Note this is appropriate for this problem, where there is only one, periodic maximum. For other problems, you might need a different approach.</p>
+<p>So, evidently it is not exactly periodic in the beginning, but seems to take some time to settle down into a periodic rhythm. That seems to be the case, because if it didn’t we would expect to see a continued spiral in or out of this limit cycle. Another way we can assess this quantitatively is to look at the peak positions in our solution. We return to an event type of solution. We seek an event where the derivative <span class="math notranslate nohighlight">\(dx/dt=0\)</span>, and it is a maximum, which means <span class="math notranslate nohighlight">\(x'\)</span> starts positive, becomes zero, and then is negative. Note this is appropriate for this problem, where there is only one, periodic maximum. For other problems, you might need a different approach.</p>
 <p>Now, it is important to remember that the event function is only evaluated after a solver point, so we need to make sure the solver points bracket where events occur. This is accomplished by making sure that when we graph the solution from the solver (not from t_eval), that we can visually see where the events will occur.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1118,7 +1121,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>This limit cycle shows the oscillatory behavior. You can see here that each cycle repeats on top of itself.</p>
-<p><strong>Review</strong> We have been working on finding a steady state oscillatory solution to $\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0$, which describes an oscillating system. We examined some ways to tell if a system is oscillating, and to estimate the period of the oscillation.</p>
+<p><strong>Review</strong> We have been working on finding a steady state oscillatory solution to <span class="math notranslate nohighlight">\(\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0\)</span>, which describes an oscillating system. We examined some ways to tell if a system is oscillating, and to estimate the period of the oscillation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>solve_ivp
@@ -1128,7 +1131,7 @@ title="Print to PDF"
 </div>
 <section id="solving-a-parameterized-ode-many-times">
 <h3>Solving a parameterized ODE many times<a class="headerlink" href="#solving-a-parameterized-ode-many-times" title="Permalink to this headline">#</a></h3>
-<p>$\mu$ in the Van der Pol system is called a parameter. It is common to study the solution of this system as a function of μ. For <a class="reference external" href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator#/media/File:VanderPol-lc.svg">example</a>, the oscillatory behavior changes a lot as μ changes. Our aim here is to recreate the figure in that example, showing the steady state limit cycles as a function of μ.</p>
+<p><span class="math notranslate nohighlight">\(\mu\)</span> in the Van der Pol system is called a parameter. It is common to study the solution of this system as a function of μ. For <a class="reference external" href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator#/media/File:VanderPol-lc.svg">example</a>, the oscillatory behavior changes a lot as μ changes. Our aim here is to recreate the figure in that example, showing the steady state limit cycles as a function of μ.</p>
 <p>The example we want to create has limit cycles for 10 different values of μ. <em>We do not want to copy and paste code 10 times</em>. Instead, we should have some code we can <em>reuse 10 times</em>.</p>
 <p>Let’s break this task down. For a given μ, we should find a solution to the ODEs that shows constant periods. That means we should integrate over a time span, check the periods, and if they are not constant, integrate from the last point over the time span again. If they are consistent, then we can just plot the solution.</p>
 <p>How can we check the periods are constant? One way is to see if the first and last are the same within some tolerance, say 1e-3.</p>
