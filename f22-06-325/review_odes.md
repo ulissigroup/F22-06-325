@@ -13,28 +13,50 @@ kernelspec:
 ---
 
 ```{sidebar} Adaptation!
-This work was copied from John Kitchin's 06-623 course! It is used as a test case here.
+This work was adapted from lecture notes in John Kitchin's excellent 06-623 course! His lecture notes are included in the helpful resources link if you want to know more details about how numericals work.
 ```
 
 +++
 
 # Numerical ODE Integration (with Events!)
 
-As a quick recap of where we left off in 06-262, let's start with an example we spent a lot of time covering, Lottka Volterra (rabbit/wolf) example.
+
+`````{note}
+This lecture is going to:
+* Quickly review how scipy.integrate.solve_ivp works
+* Practice coding up a system of differential equations we covered extensively in 06-262
+* Introduce how events works during ODE integrations (useful for future courses!)
+* Demonstrate events for a more complicated non-linear higher order differential equation
+
+Along the way, we will:
+* Get used to the JupyterLab environment and the structure of the course notes
+* Practice plotting in matplotlib
+````
 
 +++ {"id": "sYhjkqf6WKfe", "tags": []}
 
 ## Review of scipy.integrate.solve_ivp
 
+
++++
+
+For concreteness, consider:
+
+$y' = y + 2x - x^2; y(0) = 1$.
+
+This ODE has a known analytical solution: $y(x) = x^2 + e^x$. We will use this for comparison.
+
 +++ {"id": "2kQMFOMGWKfe"}
 
 The `scipy.integrate` library provides `solve_ivp` to solve first order differential equations. It is not the only one available, but this function is recommended. You import the function like this:
+
 
 ```{code-cell} ipython3
 :id: Xz9BVvtwWKfe
 :outputId: 520d4171-f524-402b-e09e-1e3d9d67cff2
 
 from scipy.integrate import solve_ivp
+import numpy as np
 ```
 
 +++ {"id": "nx24SM4zWKfe"}
@@ -47,13 +69,19 @@ Here is a minimal use of the function, with keyword arguments.
 :id: XaEuU1aKWKfe
 :outputId: a4213a09-30c6-4de3-a694-1c5c2b0d7541
 
-y0 = np.array([y0]) # It is a good idea to make y0 an array. It will be important later.
+def f(x, y):
+    return y + 2 * x - x**2
+
+x0 = 0
+y0 = np.array([1]) # It is a good idea to make y0 an array. It will be important later.
+
 sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0)
 ```
 
 +++ {"id": "QctFd6OnWKfe"}
 
 The output of `solve_ip` is an object containing results in attributes on the object.
+
 
 ```{code-cell} ipython3
 :id: _OTEtvMPWKfe
@@ -66,6 +94,7 @@ sol
 
 You should look for a few things here. One is that the message indicates success. Second, we access the solution using dot notation. Here are the independent variable values the solution was evaluated at.
 
+
 ```{code-cell} ipython3
 :id: T1_CmSeDWKfe
 :outputId: 59707552-1299-44d4-ec0e-e62498357449
@@ -76,6 +105,7 @@ sol.t
 +++ {"id": "OEHyy77MWKff"}
 
 Third, the solution is in a 2D array. We only have one equation here, so we use indexing to get the first row as an array.
+
 
 ```{code-cell} ipython3
 :id: e3h4ETeYWKff
@@ -88,9 +118,12 @@ sol.y[0]
 
 Now, we can plot the solution.
 
+
 ```{code-cell} ipython3
 :id: eyYJt5_3WKff
 :outputId: 366b0dad-8ac6-4da2-bfb5-0d2b5760cee1
+
+import matplotlib.pyplot as plt
 
 plt.plot(sol.t, sol.y[0], label='solve_ivp')
 plt.plot(sol.t, sol.t**2 + np.exp(sol.t), 'r--', label='Analytical')
@@ -102,6 +135,7 @@ plt.legend()
 +++ {"id": "ITfM0WarWKff"}
 
 That doesn't looks so great since there are only four data points. By default, the algorithm only uses as many points as it needs to achieve a specified tolerance. We can specify that we want the solution evaluated at other points using the optional `t_eval` keyword arg.
+
 
 ```{code-cell} ipython3
 :id: 2gwGvLyZWKff
@@ -123,14 +157,12 @@ plt.ylabel('y')
 plt.legend()
 ```
 
-`````{admonition} This admonition was styled...
-:class: tip
-
-Ask yourself these questions when solving ODE's:
+`````{tip} Ask yourself these questions when solving ODE's
 * Is my problem coupled or not? Higher order or not?
-* Is my problem stiff?
+* Is my problem stiff? Should I use a special solver?
 * Is there anything I can infer about the solution from the differential euqations?
 * How many steady states do I expect? 
+* How would I know if I made a mistake?
 `````
 
 +++ {"jp-MarkdownHeadingCollapsed": true, "tags": []}
@@ -233,7 +265,7 @@ sol
 sol.t[-1]**2 + np.exp(sol.t[-1])
 ```
 
-+++ {"id": "mJnRxC7iI5UF"}
++++ {"id": "mJnRxC7iI5UF", "jp-MarkdownHeadingCollapsed": true, "tags": []}
 
 ## More complicated example: Van der Pol oscillator
 
@@ -802,7 +834,3 @@ Today we covered the conversion of an n<sup>th</sup> order differential equation
 We examined the use of the optional argument max\_step to fine tune the solution points returned by the solver.
 
 This concludes our first section on ordinary differential equations.
-
-```{code-cell} ipython3
-print('second test!')
-```
