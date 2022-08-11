@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-```{sidebar} Adaptation!
+```{margin} Adaptation!
 This work was adapted from lecture notes in John Kitchin's excellent 06-623 course! His lecture notes are included in the helpful resources link if you want to know more details about how numericals work.
 ```
 
