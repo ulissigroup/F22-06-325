@@ -158,7 +158,7 @@ plt.legend()
 * How would I know if I made a mistake?
 `````
 
-+++ {"jp-MarkdownHeadingCollapsed": true, "tags": []}
++++ {"tags": []}
 
 ## Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!
 
@@ -170,8 +170,15 @@ We are interested in how the two populations of species (Rabbits and wolves) mig
 
 * Rabbits are $x(t)$, wolves are $y(t)$
 * The rate of rabbits being eaten by wolves is proportional to both ($\beta xy$)
-* Rabbits reproduce on their own at a rate proportional to the number of rabbits, and rabbits are eaten by wolves at a rate proportional to the number of rabbits and wolves $$\frac{dx}{dt}=\alpha x-\beta xy$$ where $\alpha$ and $\beta$ are constants.
-* Wolves are able to reproduce at a rate proportional to the number of wolves and rabbits (how quickly rabbits are being eaten) and die at a rate proportional to the number of wolves (sickness/injury/etc) $$\frac{dy}{dt}=\delta xy-\gamma y$$
+* Rabbits reproduce on their own at a rate proportional to the number of rabbits, and rabbits are eaten by wolves at a rate proportional to the number of rabbits and wolves 
+$$
+\frac{dx}{dt}=\alpha x-\beta xy
+$$
+where $\alpha$ and $\beta$ are constants.
+* Wolves are able to reproduce at a rate proportional to the number of wolves and rabbits (how quickly rabbits are being eaten) and die at a rate proportional to the number of wolves (sickness/injury/etc) 
+$$
+\frac{dy}{dt}=\delta xy-\gamma y
+$$
 
 Let's say we start with 1 rabbit and 5 wolves, and the constants are 
 * $\alpha=1 $[1/day]
