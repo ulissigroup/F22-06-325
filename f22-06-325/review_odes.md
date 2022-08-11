@@ -40,8 +40,9 @@ Along the way, we will:
 +++
 
 For concreteness, consider:
-
-$y' = y + 2x - x^2; y(0) = 1$.
+\begin{align*}
+y' = y + 2x - x^2; y(0) = 1
+\end{align*}
 
 This ODE has a known analytical solution: $y(x) = x^2 + e^x$. We will use this for comparison.
 
