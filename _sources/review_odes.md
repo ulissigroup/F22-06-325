@@ -195,7 +195,7 @@ Let's take 10 minutes to warm up and try coding this up in python using (scipy)
 
 ```
 
-+++ {"jp-MarkdownHeadingCollapsed": true, "tags": []}
++++ {"tags": []}
 
 ## Using events during ODE integration
 
@@ -265,7 +265,7 @@ sol
 sol.t[-1]**2 + np.exp(sol.t[-1])
 ```
 
-+++ {"id": "mJnRxC7iI5UF", "jp-MarkdownHeadingCollapsed": true, "tags": []}
++++ {"id": "mJnRxC7iI5UF", "tags": []}
 
 ## More complicated example: Van der Pol oscillator
 
