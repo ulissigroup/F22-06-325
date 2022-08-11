@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Higher order differential equations &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
+    <title>Numerical ODE Integration (with Events!) &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -145,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Higher order differential equations
+   Numerical ODE Integration (with Events!)
   </a>
  </li>
  <li class="toctree-l1">
@@ -459,9 +459,31 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solving-a-parameterized-ode-many-times">
-   Solving a parameterized ODE many times
+  <a class="reference internal nav-link" href="#review-of-scipy-integrate-solve-ivp">
+   Review of scipy.integrate.solve_ivp
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy">
+   Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-events-during-ode-integration">
+   Using events during ODE integration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-complicated-example-van-der-pol-oscillator">
+   More complicated example: Van der Pol oscillator
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-a-parameterized-ode-many-times">
+     Solving a parameterized ODE many times
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -477,7 +499,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Higher order differential equations</h1>
+                <h1>Numerical ODE Integration (with Events!)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -488,9 +510,31 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solving-a-parameterized-ode-many-times">
-   Solving a parameterized ODE many times
+  <a class="reference internal nav-link" href="#review-of-scipy-integrate-solve-ivp">
+   Review of scipy.integrate.solve_ivp
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy">
+   Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-events-during-ode-integration">
+   Using events during ODE integration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-complicated-example-van-der-pol-oscillator">
+   More complicated example: Van der Pol oscillator
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-a-parameterized-ode-many-times">
+     Solving a parameterized ODE many times
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -511,8 +555,187 @@ title="Print to PDF"
 <p class="sidebar-title">Adaptation!</p>
 <p>This work was copied from John Kitchin’s 06-623 course! It is used as a test case here.</p>
 </aside>
-<section class="tex2jax_ignore mathjax_ignore" id="higher-order-differential-equations">
-<h1>Higher order differential equations<a class="headerlink" href="#higher-order-differential-equations" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="numerical-ode-integration-with-events">
+<h1>Numerical ODE Integration (with Events!)<a class="headerlink" href="#numerical-ode-integration-with-events" title="Permalink to this headline">#</a></h1>
+<p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lottka Volterra (rabbit/wolf) example.</p>
+<section id="review-of-scipy-integrate-solve-ivp">
+<h2>Review of scipy.integrate.solve_ivp<a class="headerlink" href="#review-of-scipy-integrate-solve-ivp" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code> library provides <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> to solve first order differential equations. It is not the only one available, but this function is recommended. You import the function like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is a minimal use of the function, with keyword arguments.</p>
+<p><code class="docutils literal notranslate"><span class="pre">y0</span></code> is an array containing the initial values.  <code class="docutils literal notranslate"><span class="pre">fun</span></code> is a function with a signature of f(t, y). Here, <span class="math notranslate nohighlight">\(t\)</span> is considered the independent variable. You can call it whatever you want, so f(x, y) is also fine. Since <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> had <span class="math notranslate nohighlight">\(t\)</span> in mind, the second argument is the <code class="docutils literal notranslate"><span class="pre">t_span</span></code>, which is a tuple of two numbers for where the integration starts (t0, or x0) and where it ends.  <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> returns an object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y0</span><span class="p">])</span> <span class="c1"># It is a good idea to make y0 an array. It will be important later.</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y0</span><span class="p">])</span> <span class="c1"># It is a good idea to make y0 an array. It will be important later.</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output of <code class="docutils literal notranslate"><span class="pre">solve_ip</span></code> is an object containing results in attributes on the object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should look for a few things here. One is that the message indicates success. Second, we access the solution using dot notation. Here are the independent variable values the solution was evaluated at.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">t</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Third, the solution is in a 2D array. We only have one equation here, so we use indexing to get the first row as an array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can plot the solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;solve_ivp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Analytical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That doesn’t looks so great since there are only four data points. By default, the algorithm only uses as many points as it needs to achieve a specified tolerance. We can specify that we want the solution evaluated at other points using the optional <code class="docutils literal notranslate"><span class="pre">t_eval</span></code> keyword arg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
+<span class="n">sol</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;solve_ivp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Analytical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">This admonition was styled…</p>
+<p>Ask yourself these questions when solving ODE’s:</p>
+<ul class="simple">
+<li><p>Is my problem coupled or not? Higher order or not?</p></li>
+<li><p>Is my problem stiff?</p></li>
+<li><p>Is there anything I can infer about the solution from the differential euqations?</p></li>
+<li><p>How many steady states do I expect?</p></li>
+</ul>
+</div>
+</section>
+<section id="practice-lottka-coltera-review-of-solving-odes-with-scipy">
+<h2>Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!<a class="headerlink" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy" title="Permalink to this headline">#</a></h2>
+<p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lottka Volterra (rabbit/wolf) example.</p>
+<p>We are interested in how the two populations of species (Rabbits and wolves) might change over time.</p>
+<ul class="simple">
+<li><p>Rabbits are <span class="math notranslate nohighlight">\(x(t)\)</span>, wolves are <span class="math notranslate nohighlight">\(y(t)\)</span></p></li>
+<li><p>The rate of rabbits being eaten by wolves is proportional to both (<span class="math notranslate nohighlight">\(\beta xy\)</span>)</p></li>
+<li><p>Rabbits reproduce on their own at a rate proportional to the number of rabbits, and rabbits are eaten by wolves at a rate proportional to the number of rabbits and wolves $<span class="math notranslate nohighlight">\(\frac{dx}{dt}=\alpha x-\beta xy\)</span><span class="math notranslate nohighlight">\( where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>\beta$ are constants.</p></li>
+<li><p>Wolves are able to reproduce at a rate proportional to the number of wolves and rabbits (how quickly rabbits are being eaten) and die at a rate proportional to the number of wolves (sickness/injury/etc) $<span class="math notranslate nohighlight">\(\frac{dy}{dt}=\delta xy-\gamma y\)</span>$</p></li>
+</ul>
+<p>Let’s say we start with 1 rabbit and 5 wolves, and the constants are</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha=1 \)</span>[1/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta=0.2\)</span> [1/wolves/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta=0.5\)</span> [1/rabbits/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma=0.2\)</span> [1/day]</p></li>
+</ul>
+<p>Solve for and plot the population of rabbits and wolves over the first 20 days.</p>
+<p>Let’s take 10 minutes to warm up and try coding this up in python using (scipy)</p>
+</section>
+<section id="using-events-during-ode-integration">
+<h2>Using events during ODE integration<a class="headerlink" href="#using-events-during-ode-integration" title="Permalink to this headline">#</a></h2>
+<p>So far, <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> solves the issues with item 1 (we did not have to code the algorithm), and items 2 and 3 (it uses an adaptive step and converges to a tolerance for us). It will also help us solve for the inverse problem, i.e. for what value of <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(y=4\)</span>?</p>
+<p>To do this, we need a new concept of an “event function”. During each step of the integration, you can run a function that can detect an “event”. When an event is detected, the location of the event is stored, and if desired integration can be terminated. <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> can take a list of event functions. We consider only one for now.</p>
+<p>An event occurs when an event function is equal to zero. During integration, if the event function changes sign, then it is clear an event has occurred, and the algorithm determines where it occurred. Since we want to know when <span class="math notranslate nohighlight">\(y=4\)</span>, we will define a function that returns <span class="math notranslate nohighlight">\(y - 4\)</span>, because that will equal zero at that condition. We want the integration to terminate when that happens, so we set the “terminal” attribute on our function to True.</p>
+<p>An event function has a signature of f(x, y). Remember that <span class="math notranslate nohighlight">\(y\)</span> is going to be an array,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">event1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span>
+
+<span class="n">event1</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">event1</span><span class="p">)</span>
+<span class="n">sol</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, there are a couple of new things to note. First, we got a message that a termination event occurred. Second, the sol.y array ends at 4.0, because we made the event function <em>terminal</em>. Next, sol.t_events is not empty, because an event occurred. It now contains the value where the event occurred, which is where <span class="math notranslate nohighlight">\(y=4\)</span>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">t</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y=4 at x=</span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">. Confirming: y = </span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That is pretty close. You have to decide if it is close enough for the purpose you want. You can control the tolerance with optional <code class="docutils literal notranslate"><span class="pre">atol</span></code> and <code class="docutils literal notranslate"><span class="pre">rtol</span></code> keywords. You should read the documentation before changing this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">event1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span>
+
+<span class="n">event1</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">event1</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="n">sol</span>
+<span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-complicated-example-van-der-pol-oscillator">
+<h2>More complicated example: Van der Pol oscillator<a class="headerlink" href="#more-complicated-example-van-der-pol-oscillator" title="Permalink to this headline">#</a></h2>
 <p>So far we have focused on computational solutions to first order differential equations, including systems of first order differential equations. The reason for that is simply that all numerical integration strategies only work with the first derivative.</p>
 <p>Many differential equations involve higher order derivatives though. We can solve these by converting them to systems of first-order differential equations through a series of variable changes.</p>
 <p>Let’s consider the <a class="reference external" href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator">Van der Pol oscillator</a>.</p>
@@ -546,11 +769,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2., -1.])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,13 +776,6 @@ title="Print to PDF"
 
 <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">dXdt</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="n">h</span><span class="p">)</span>
 <span class="n">sol</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">success</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;The solver successfully reached the end of the integration interval.&#39;,
- True,
- (500, 2))
 </pre></div>
 </div>
 </div>
@@ -581,9 +792,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/review_odes_6_0.png" src="_images/review_odes_6_0.png" />
-</div>
 </div>
 <p>You can see that the solution appears oscillatory. Let’s be more quantitative than what it <em>looks</em> like. An alternative way to visualize this solution is called the phase portrait where we plot the two state variables (x, v) against each other. We include the starting point for visualization.</p>
 <div class="cell docutils container">
@@ -596,9 +804,6 @@ title="Print to PDF"
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/review_odes_8_0.png" src="_images/review_odes_8_0.png" />
 </div>
 </div>
 <p>So, evidently it is not exactly periodic in the beginning, but seems to take some time to settle down into a periodic rhythm. That seems to be the case, because if it didn’t we would expect to see a continued spiral in or out of this limit cycle. Another way we can assess this quantitatively is to look at the peak positions in our solution. We return to an event type of solution. We seek an event where the derivative <span class="math notranslate nohighlight">\(dx/dt=0\)</span>, and it is a maximum, which means <span class="math notranslate nohighlight">\(x'\)</span> starts positive, becomes zero, and then is negative. Note this is appropriate for this problem, where there is only one, periodic maximum. For other problems, you might need a different approach.</p>
@@ -618,30 +823,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solver successfully reached the end of the integration interval.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.98712369,  7.29961546, 13.60207133, 19.90194032, 26.2010961 ,
-       32.50005162, 38.79895061])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y_events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2.07283325e+00 -6.93889390e-17]
- [ 2.02004874e+00  8.56953397e-16]
- [ 2.00590349e+00  6.93889390e-16]
- [ 2.00196134e+00 -2.96290770e-15]
- [ 2.00085100e+00  2.27595720e-15]
- [ 2.00053732e+00 -5.34294831e-15]
- [ 2.00044864e+00  5.73933262e-15]]
 </pre></div>
 </div>
 </div>
@@ -666,9 +851,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/review_odes_13_0.png" src="_images/review_odes_13_0.png" />
-</div>
 </div>
 <p>That looks good, the red dots appear at the maxima, and they are periodic, so now we can see how x<sub>max</sub> varies with time.</p>
 <div class="cell docutils container">
@@ -678,9 +860,6 @@ title="Print to PDF"
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$x_</span><span class="si">{max}</span><span class="s2">$&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/review_odes_15_0.png" src="_images/review_odes_15_0.png" />
 </div>
 </div>
 <p>You can see that after about 5 cycles, xmax is practically constant. We can also see that the period (the time between maxima) is converging to a constant. We cannot say much about what happens at longer times. You could integrate longer if it is important to know that. This is a limitation of numerical methods though. To <em>prove</em> that it will be constant, you need to do some analytical math that would show the period and x<sub>max</sub> go to a constant.</p>
@@ -692,19 +871,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/review_odes_17_0.png" src="_images/review_odes_17_0.png" />
-</div>
 </div>
 <p>If we seek the steady state, oscillatory behavior of this system, we should discard the solutions in at least the first 4 cycles, since the maxima and periods are still changing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">te</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y_events</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(38.798950606192165, array([2.00044864e+00, 5.73933262e-15]))
 </pre></div>
 </div>
 </div>
@@ -722,22 +893,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/review_odes_21_0.png" src="_images/review_odes_21_0.png" />
-</div>
 </div>
 <p>Here you see about 6 more cycles. The period of these events is practically constant.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol2</span><span class="o">.</span><span class="n">t_events</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sol2</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([array([2.86945317e-15, 6.29888301e+00, 1.25977615e+01, 1.88966387e+01,
-         2.51955156e+01, 3.14943923e+01, 3.77932690e+01])],
- array([6.29888301, 6.2988785 , 6.29887721, 6.29887685, 6.29887676,
-        6.29887672]))
 </pre></div>
 </div>
 </div>
@@ -753,15 +913,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-2.2004040548071035,
- 2.200489241939398,
- -2.248591036725654,
- 2.2485910192056826)
-</pre></div>
-</div>
-<img alt="_images/review_odes_25_1.png" src="_images/review_odes_25_1.png" />
-</div>
 </div>
 <p>This limit cycle shows the oscillatory behavior. You can see here that each cycle repeats on top of itself.</p>
 <p><strong>Review</strong> We have been working on finding a steady state oscillatory solution to <span class="math notranslate nohighlight">\(\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0\)</span>, which describes an oscillating system. We examined some ways to tell if a system is oscillating, and to estimate the period of the oscillation.</p>
@@ -773,7 +924,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="solving-a-parameterized-ode-many-times">
-<h2>Solving a parameterized ODE many times<a class="headerlink" href="#solving-a-parameterized-ode-many-times" title="Permalink to this headline">#</a></h2>
+<h3>Solving a parameterized ODE many times<a class="headerlink" href="#solving-a-parameterized-ode-many-times" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(\mu\)</span> in the Van der Pol system is called a parameter. It is common to study the solution of this system as a function of μ. For <a class="reference external" href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator#/media/File:VanderPol-lc.svg">example</a>, the oscillatory behavior changes a lot as μ changes. Our aim here is to recreate the figure in that example, showing the steady state limit cycles as a function of μ.</p>
 <p>The example we want to create has limit cycles for 10 different values of μ. <em>We do not want to copy and paste code 10 times</em>. Instead, we should have some code we can <em>reuse 10 times</em>.</p>
 <p>Let’s break this task down. For a given μ, we should find a solution to the ODEs that shows constant periods. That means we should integrate over a time span, check the periods, and if they are not constant, integrate from the last point over the time span again. If they are consistent, then we can just plot the solution.</p>
@@ -842,12 +993,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=0.2, steady period after 0 iterations
-</pre></div>
-</div>
-<img alt="_images/review_odes_31_1.png" src="_images/review_odes_31_1.png" />
-</div>
 </div>
 <p>Note: This takes about a second per iteration to run.</p>
 <div class="cell docutils container">
@@ -874,38 +1019,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=4.0, steady period after 1 iterations
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=3.5, steady period after 1 iterations
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=3.0, steady period after 1 iterations
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=2.5, steady period after 1 iterations
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=2.0, steady period after 1 iterations
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=1.5, steady period after 1 iterations
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=1, steady period after 1 iterations
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=0.5, steady period after 1 iterations
-For mu=0.1, steady period after 0 iterations
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mu=0.01, steady period after 0 iterations
-</pre></div>
-</div>
-<img alt="_images/review_odes_33_9.png" src="_images/review_odes_33_9.png" />
-</div>
-</div>
+</section>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
@@ -915,11 +1030,6 @@ For mu=0.1, steady period after 0 iterations
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second test!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>second test!
 </pre></div>
 </div>
 </div>
