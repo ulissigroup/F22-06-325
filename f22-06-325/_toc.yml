@@ -20,6 +20,9 @@ parts:
 - caption: Lab Office Hour Resources
   chapters:
   - file: python_debugging
+- caption: Projects
+  chapters:
+  - file: projects/wildfires/wildfire_dataset
 - caption: Example chapters
   chapters:
   - file: markdown
