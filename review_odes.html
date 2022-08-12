@@ -667,7 +667,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f90610cb850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbcd6fcb850&gt;
 </pre></div>
 </div>
 <img alt="_images/review_odes_15_1.png" src="_images/review_odes_15_1.png" />
@@ -720,13 +720,15 @@ y' = y + 2x - x^2; y(0) = 1
  y_events: None
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9060dc2dd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbcd6ef2a40&gt;
 </pre></div>
 </div>
 <img alt="_images/review_odes_17_2.png" src="_images/review_odes_17_2.png" />
 </div>
 </div>
-<p>:::{note} <strong>Tolerances:</strong>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Tolerances:</strong>
 solve_ivp is trying to estimate and control the error for you! rtol is the relative tolerance in the function (eg % error in the numbers coming out).</p>
 <ul class="simple">
 <li><p>atol is the absolute tolerance (I want the concentration +/- 0.00001).</p></li>
@@ -737,15 +739,17 @@ solve_ivp is trying to estimate and control the error for you! rtol is the relat
 <li><p>Possible solution - make you atol really small and hope it solves things</p></li>
 </ul>
 </li>
-<li><p>If decreasing rtol/atol changes your solution, they’re not set tightly enough or you have other problems!
-:::</p></li>
+<li><p>If decreasing rtol/atol changes your solution, they’re not set tightly enough or you have other problems!</p></li>
 </ul>
-<p>:::{note} <strong>Integration failures:</strong>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Integration failures:</strong>
 The solve_ivp documentation has some nice comments for what to do it things go wrong with the default RK45 algorithm:</p>
 <blockquote>
-<div><p>If not sure, first try to run ‘RK45’. If it makes unusually many iterations, diverges, or fails, your problem is likely to be stiff and you should use ‘Radau’ or ‘BDF’. ‘LSODA’ can also be a good universal choice, but it might be somewhat less convenient to work with as it wraps old Fortran code
-:::</p>
+<div><p>If not sure, first try to run ‘RK45’. If it makes unusually many iterations, diverges, or fails, your problem is likely to be stiff and you should use ‘Radau’ or ‘BDF’. ‘LSODA’ can also be a good universal choice, but it might be somewhat less convenient to work with as it wraps old Fortran code</p>
 </div></blockquote>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><strong>Ask yourself these questions when solving ODE’s:</strong></p>

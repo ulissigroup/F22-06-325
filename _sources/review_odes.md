@@ -146,7 +146,8 @@ plt.ylabel('y')
 plt.legend()
 ```
 
-:::{note} **Tolerances:** 
+`````{note} 
+**Tolerances:** 
 solve_ivp is trying to estimate and control the error for you! rtol is the relative tolerance in the function (eg % error in the numbers coming out). 
 * atol is the absolute tolerance (I want the concentration +/- 0.00001). 
 * rtol is $10^{-3}$ and atols is $10^{-6}$. 
@@ -154,17 +155,19 @@ solve_ivp is trying to estimate and control the error for you! rtol is the relat
   * Best solution - change units or rescale your problem so your variables are close to 1
   * Possible solution - make you atol really small and hope it solves things
 * If decreasing rtol/atol changes your solution, they're not set tightly enough or you have other problems! 
-:::
+`````
 
-:::{note} **Integration failures:** 
+`````{note} 
+**Integration failures:** 
 The solve_ivp documentation has some nice comments for what to do it things go wrong with the default RK45 algorithm:
 
 > If not sure, first try to run ‘RK45’. If it makes unusually many iterations, diverges, or fails, your problem is likely to be stiff and you should use ‘Radau’ or ‘BDF’. ‘LSODA’ can also be a good universal choice, but it might be somewhat less convenient to work with as it wraps old Fortran code
-:::
+`````
 
 +++
 
-`````{tip} **Ask yourself these questions when solving ODE's:**
+`````{tip} 
+**Ask yourself these questions when solving ODE's:**
 * Is my problem coupled or not? Higher order or not?
 * Is my problem stiff? Should I use a special solver?
 * Is there anything I can infer about the solution from the differential euqations?
