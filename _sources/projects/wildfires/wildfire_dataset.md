@@ -1,3 +1,4 @@
+
 ![wildfire](prescribed_burn_public_domain.jpg)
 
 # Wildfire Smoke Compositions!
@@ -6,7 +7,7 @@ Prof. Jen is a world-expert at understanding the composition and wildfire smokes
 
 Prof. Jen and her collaborators exposed filters to the burns at either ground level or at elevation using remote-controlled drones (each drone had three filters). They then took those filters and used a special analytic technique (GC/MS, which you probably learned about in analytical chem) to identify unique spectral signatures of compounds present in the filters. In a few cases they know the compounds that generate specific signatures, but in many cases it's unclear exactly which compound led to a specific GCMS signature. 
 
-'''{note}
+`````{note}
 **Wildfire dataset summary:**
 * 3 different plots of land (with labels 60, 340, 400) were burned. One unburned plot was also included as a control (0).
 * Each plot was sampled multiple times at varying times. 
@@ -14,11 +15,11 @@ Prof. Jen and her collaborators exposed filters to the burns at either ground le
     * Plots were sampled with drones at elevation in triplicate (3 filters)
 * All filters were collected and analyzed with GC/MS. The unique ID of blobs present and the associated concentration on the filter were recorded. 
 * The prevalent plants and foliage present in each plot is also known based on a previous survey of the regions. 
-'''
+`````
 
-'''{seealso}
+`````{seealso}
 You can read more about how one of Prof. Jen's collaborators analyzed this data [here](https://www.climatechange.ai/papers/neurips2020/82). That same site includes both a paper and a short video by a collaborator on the specific analysis tried.
-'''
+`````
 
 ## Suggested challenges
 
@@ -58,4 +59,3 @@ In each case, you should think critically about how you want to set up your trai
 ## Hints and possible approaches
 
 ## More details
-
