@@ -369,12 +369,51 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suggested-challenges">
+   Suggested challenges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataset-file-format-details">
+   Dataset/file format details
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hints-and-possible-approaches">
+   Hints and possible approaches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-details">
+   More details
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -386,6 +425,34 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suggested-challenges">
+   Suggested challenges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataset-file-format-details">
+   Dataset/file format details
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hints-and-possible-approaches">
+   Hints and possible approaches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-details">
+   More details
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -395,7 +462,78 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="wildfire-smoke-compositions">
 <h1>Wildfire Smoke Compositions!<a class="headerlink" href="#wildfire-smoke-compositions" title="Permalink to this headline">#</a></h1>
-<p>Prof. Jen is a world-expert at understanding the composition and wildfire smokes.</p>
+<p>Prof. Jen is a world-expert at understanding the composition and wildfire smokes. In 2017, she was part of an experimental campaign to map the composition of smokes for controlled wildfire burns for several specific plots of forest at the Blodgett Forest Research Station in Georgetown, CA.</p>
+<p>Prof. Jen and her collaborators exposed filters to the burns at either ground level or at elevation using remote-controlled drones (each drone had three filters). They then took those filters and used a special analytic technique (GC/MS, which you probably learned about in analytical chem) to identify unique spectral signatures of compounds present in the filters. In a few cases they know the compounds that generate specific signatures, but in many cases it’s unclear exactly which compound led to a specific GCMS signature.</p>
+<p>‘’’{note}
+<strong>Wildfire dataset summary:</strong></p>
+<ul class="simple">
+<li><p>3 different plots of land (with labels 60, 340, 400) were burned. One unburned plot was also included as a control (0).</p></li>
+<li><p>Each plot was sampled multiple times at varying times.</p>
+<ul>
+<li><p>Plots were sampled at the ground level in triplicate (3 filters)</p></li>
+<li><p>Plots were sampled with drones at elevation in triplicate (3 filters)</p></li>
+</ul>
+</li>
+<li><p>All filters were collected and analyzed with GC/MS. The unique ID of blobs present and the associated concentration on the filter were recorded.</p></li>
+<li><p>The prevalent plants and foliage present in each plot is also known based on a previous survey of the regions.
+‘’’</p></li>
+</ul>
+<p>‘’’{seealso}
+You can read more about how one of Prof. Jen’s collaborators analyzed this data <a class="reference external" href="https://www.climatechange.ai/papers/neurips2020/82">here</a>. That same site includes both a paper and a short video by a collaborator on the specific analysis tried.
+‘’’</p>
+<section id="suggested-challenges">
+<h2>Suggested challenges<a class="headerlink" href="#suggested-challenges" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Given the a filter and a set of observed blobs, predict whether that filter was exposed at ground level or at elevation (with a drone)</p></li>
+<li><p>[much harder] Given the filter and a set of observed blobs, predict the types of plants present in the plot of land</p></li>
+</ul>
+<p>In each case, you should think critically about how you want to set up your train/validation/test splits to simulate the challenge.</p>
+</section>
+<section id="dataset-file-format-details">
+<h2>Dataset/file format details<a class="headerlink" href="#dataset-file-format-details" title="Permalink to this headline">#</a></h2>
+<ol>
+<li><p>BlodgettCombinedBlobMass.csv is a spreadsheet that gives the electron ionization mass spectrum for each compound detected during the Blodgett field campaign.</p>
+<ul class="simple">
+<li><p>The mass spectrum (each element) is written as mass, signal; mass, signal; etc.</p></li>
+<li><p>The row number corresponds to the compound of the same row number found in BlodgettCombinedBlobTable.csv</p></li>
+</ul>
+</li>
+<li><p>BlodgettCombinedBlobTable.cvs contains all compound 2 dimension gas chromatography data from all samples collected from Blodgett 2017. The column headings are:</p>
+<ol class="simple">
+<li><p>Unused tag</p></li>
+<li><p>BlobID_1</p></li>
+<li><p>Unused Tag</p></li>
+<li><p>1D retention time (min)</p></li>
+<li><p>2D retention time (sec)</p></li>
+<li><p>Peak height</p></li>
+<li><p>Peak volume</p></li>
+<li><p>Peak volume divided by nearest internal standard peak volume</p></li>
+<li><p>Calculated d-alkane retention index</p></li>
+<li><p>matched retention index (this number should be super close to the retention index in column 9)</p></li>
+<li><p>Unused tag</p></li>
+<li><p>Unused tag</p></li>
+<li><p>Unused tag</p></li>
+<li><p>BlobID_2</p></li>
+<li><p>Filter number. This is the filter number that can be linked to where and when the sample was collected</p></li>
+<li><p>Unused tag</p></li>
+<li><p>Mass concentration of this compound (ng/m3)</p></li>
+</ol>
+<ul class="simple">
+<li><p>BlobID_1 and BlobID_2 (column 2 and 14) define the unique ID of a blob that can be tracked across the different burns. In other words, a compound (blob) with an ID of 1,176 is the same compound in filter 201 and filter 202.</p></li>
+<li><p>The d-alkane retention index (column 10) and 2nd dimension retention time (column 5) define the unique x,y position the compound sits in the chromatogram. No two compounds will have the same x,y coordinate.</p></li>
+<li><p>Mass concentration defines the amount of compound that exists in the smoke.</p></li>
+</ul>
+</li>
+<li><p>Run Log.xlsx details where each filter was collected in Blodgett by GPS location and forest plot that burned. Tab “Flight Log” provides the details of filters collected from the drone. Tab “ground Station” provides details of filters collected at ground level.</p></li>
+<li><p>All_Shrubcovony_01_16.xlsx displays the types of shrubs that grew at Blodgett. The sheet of interest is “16” which stands for 2016 when they conducted a plant inventory. Focus on Unit (1st column) 60, 340, and 400 which stand for the plots that we burned at Blodgett. Species column lists the shorthand for the shrub/grass that they observed growing in the plot. BFRSPlantCodes.xlsx translate the shorthand plant code to a real plant.</p></li>
+</ol>
+</section>
+<section id="hints-and-possible-approaches">
+<h2>Hints and possible approaches<a class="headerlink" href="#hints-and-possible-approaches" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="more-details">
+<h2>More details<a class="headerlink" href="#more-details" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
