@@ -1,7 +1,7 @@
 
 ![wildfire](./prescribed_burn_public_domain.jpg)
 
-# Wildfire Smoke Compositions!
+# Predicting Wildfire Smoke Composition
 
 Prof. Jen is a world-expert at understanding the composition and wildfire smokes. In 2017, she was part of an experimental campaign to map the composition of smokes for controlled wildfire burns for several specific plots of forest at the Blodgett Forest Research Station in Georgetown, CA. 
 
@@ -23,10 +23,18 @@ You can read more about how one of Prof. Jen's collaborators analyzed this data 
 
 ## Suggested challenges
 
-* Given the a filter and a set of observed blobs, predict whether that filter was exposed at ground level or at elevation (with a drone)
+* Given a filter and a set of observed blobs, predict whether that filter was exposed at ground level or at elevation (with a drone)
+* Given the filter of a filter at elevation (drone), predict the blobs and their concentrations 
 * [much harder] Given the filter and a set of observed blobs, predict the types of plants present in the plot of land
 
-In each case, you should think critically about how you want to set up your train/validation/test splits to simulate the challenge. 
+````{note}
+In each case, you should think critically about the question how you want to set up your train/validation/test splits to simulate the challenge. 
+* What do you expect to be correlated?
+* How would you know if your model is helpful?
+* Is there any way to cheat at the task? 
+````
+
+## Dataset download/availability instructions
 
 ## Dataset/file format details
 1. BlodgettCombinedBlobMass.csv is a spreadsheet that gives the electron ionization mass spectrum for each compound detected during the Blodgett field campaign. 
@@ -58,4 +66,3 @@ In each case, you should think critically about how you want to set up your trai
 
 ## Hints and possible approaches
 
-## More details
