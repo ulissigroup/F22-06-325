@@ -5,7 +5,7 @@
 
 Prof. Jen is a world-expert at understanding the composition and wildfire smokes. In 2017, she was part of an experimental campaign to map the composition of smokes for controlled wildfire burns for several specific plots of forest at the Blodgett Forest Research Station in Georgetown, CA. 
 
-Prof. Jen and her collaborators exposed filters to the burns at either ground level or at elevation using remote-controlled drones (each drone had three filters). They then took those filters and used a special analytic technique (GC/MS, which you probably learned about in analytical chem) to identify unique spectral signatures of compounds present in the filters. In a few cases they know the compounds that generate specific signatures, but in many cases it's unclear exactly which compound led to a specific GCMS signature. 
+Prof. Jen and her collaborators exposed filters to the burns at either ground level or at elevation using remote-controlled drones (each drone had three filters). They then took those filters and used a special analytic technique (GCxGC/MS, which you probably learned about in analytical chem) to identify unique spectral signatures of compounds present in the filters. In a few cases they know the compounds that generate specific signatures, but in many cases it's unclear exactly which compound led to a specific GCxGC/MS signature. 
 
 `````{note}
 **Wildfire dataset summary:**
@@ -13,7 +13,7 @@ Prof. Jen and her collaborators exposed filters to the burns at either ground le
 * Each plot was sampled multiple times at varying times. 
     * Plots were sampled at the ground level in triplicate (3 filters)
     * Plots were sampled with drones at elevation in triplicate (3 filters)
-* All filters were collected and analyzed with GC/MS. The unique ID of blobs present and the associated concentration on the filter were recorded. 
+* All filters were collected and analyzed with GCxGC/MS. The unique ID of blobs present and the associated concentration on the filter were recorded. 
 * The prevalent plants and foliage present in each plot is also known based on a previous survey of the regions. 
 `````
 
