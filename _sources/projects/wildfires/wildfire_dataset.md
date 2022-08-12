@@ -1,3 +1,5 @@
+![wildfire](prescribed_burn_public_domain.jpg)
+
 # Wildfire Smoke Compositions!
 
 Prof. Jen is a world-expert at understanding the composition and wildfire smokes. In 2017, she was part of an experimental campaign to map the composition of smokes for controlled wildfire burns for several specific plots of forest at the Blodgett Forest Research Station in Georgetown, CA. 
