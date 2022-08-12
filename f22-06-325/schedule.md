@@ -3,7 +3,7 @@
 
 | **Day**      | **Date** | **Lecture**                                                                                              |**Notes Link**  |
 |--------------|----------|----------------------------------------------------------------------------------------------------------|---|
-| Monday       | 08/29/22 | Recap/review of linear algebra and ODEs                                                                  |   |
+| Monday       | 08/29/22 | Recap/review of linear algebra and ODEs                                                                  |  {doc}`review_odes` |
 | Wednesday    | 08/31/22 | Recap/review of black-box optimization with fsolve with/without gradients                                |   |
 | Optional lab |          | Python functions, error handling, exceptions, debugging                                                  |   |
 | Monday       | 09/05/22 | Labor day no class                                                                                       |   |
