@@ -1,5 +1,5 @@
 
-![wildfire](prescribed_burn_public_domain.jpg)
+![wildfire](./prescribed_burn_public_domain.jpg)
 
 # Wildfire Smoke Compositions!
 
