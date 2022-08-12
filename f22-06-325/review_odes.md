@@ -696,161 +696,16 @@ id: Z3vm_Tx1F3OZ
 ?solve_ivp
 ```
 
-+++ {"id": "51_iHp7bI5Ve"}
-
-### Solving a parameterized ODE many times
-
-+++ {"id": "2Q3xwyW6I5Vf"}
-
-$\mu$ in the Van der Pol system is called a parameter. It is common to study the solution of this system as a function of &mu;. For [example](https://en.wikipedia.org/wiki/Van_der_Pol_oscillator#/media/File:VanderPol-lc.svg), the oscillatory behavior changes a lot as &mu; changes. Our aim here is to recreate the figure in that example, showing the steady state limit cycles as a function of &mu;.
-
-The example we want to create has limit cycles for 10 different values of &mu;. *We do not want to copy and paste code 10 times*. Instead, we should have some code we can *reuse 10 times*.
-
-Let's break this task down. For a given &mu;, we should find a solution to the ODEs that shows constant periods. That means we should integrate over a time span, check the periods, and if they are not constant, integrate from the last point over the time span again. If they are consistent, then we can just plot the solution.
-
-How can we check the periods are constant? One way is to see if the first and last are the same within some tolerance, say 1e-3.
-
-Ideally, we would have a function that takes one argument, &mu;, and returns the steady state oscillatory solution.
-
-```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-executionInfo:
-  elapsed: 140
-  status: ok
-  timestamp: 1631795784541
-  user:
-    displayName: John Kitchin
-    photoUrl: https://lh3.googleusercontent.com/a/default-user=s64
-    userId: '14782011281593705406'
-  user_tz: 240
-id: zR0IFJnlI5Ui
-outputId: bc4f88b0-3980-49b7-f2a9-0024643e2747
----
-# We do not have to define this here, I just repeat it so you can see it again.
-def max_x_event(t, X):
-    x, v = X
-    Xprime = dXdt(t, X)
-    return Xprime[0]  # first derivative = 0
-
-
-max_x_event.direction = -1  # event must go from positive to negative, i.e. a max
-
-
-def get_steady_state(mu):
-    # define the sys odes for this mu. We define it inside the function so it
-    # uses the mu passed in to get_steady_state.
-    def dXdt(t, X):
-        x, v = X
-        dxdt = v
-        dvdt = mu * (1 - x**2) * v - x
-        return np.array([dxdt, dvdt])
-
-    X0 = np.array([2, 0])  # start at x_max, velocity=0
-
-    tspan = np.array([0, 40])  # we assume we will get 4-6 periods this way
-    teval, h = np.linspace(*tspan, 1500, retstep=True)
-
-    # initial solution
-    sol = solve_ivp(dXdt, tspan, X0, max_step=h, events=max_x_event)
-    periods = np.diff(sol.t_events[0])
-
-    # Now iterate as long as the first and last periods differ by more than the
-    # tolerance. It is usually a good idea to provide a way to break out in case
-    # it never ends. Here we use a max iteration count.
-    i = 0
-
-    # This assumes there are at least 2 periods in the tspan.
-    while np.abs(periods[0] - periods[-1]) > 1e-3:
-        last_step = sol.y[:, -1]  # this is the new initial condition to continue from.
-        sol = solve_ivp(dXdt, tspan, last_step, max_step=h, events=max_x_event)
-        # now get new periods.
-        periods = np.diff(sol.t_events[0])
-        i += 1  # increase the counter
-        if i > 5:  # if we exceed 5 iterations, something is probably wrong, so stop.
-            dp = np.abs(periods[0] - periods[-1])
-            print(dp, periods)
-            print(f"Max iterations exceeded and no stability for mu={mu}")
-            break
-    print(f"For mu={mu}, steady period after {i} iterations")
-
-    # Finally, return the last solution
-    return sol
-```
-
-```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-  height: 282
-executionInfo:
-  elapsed: 642
-  status: ok
-  timestamp: 1631797392787
-  user:
-    displayName: John Kitchin
-    photoUrl: https://lh3.googleusercontent.com/a/default-user=s64
-    userId: '14782011281593705406'
-  user_tz: 240
-id: Lc04jFwHIl0y
-outputId: 12092c98-097f-4eee-8739-c466ed16612e
----
-sol = get_steady_state(0.2)
-plt.plot(*sol.y)
-plt.axis("equal");
-```
-
-+++ {"id": "_L-4MzquI5Vm"}
-
-Note: This takes about a second per iteration to run.
-
-```{code-cell} ipython3
----
-colab:
-  base_uri: https://localhost:8080/
-  height: 544
-executionInfo:
-  elapsed: 4964
-  status: ok
-  timestamp: 1631797623885
-  user:
-    displayName: John Kitchin
-    photoUrl: https://lh3.googleusercontent.com/a/default-user=s64
-    userId: '14782011281593705406'
-  user_tz: 240
-id: mCoqfCFFI5Vn
-outputId: ba8135c3-6813-4c74-daf6-2b0c35af0787
----
-MU = [0.01, 0.1, 0.5, 1, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]
-MU.reverse()  # in place reversal
-
-plt.figure(figsize=(3, 6))  # makes a figure that is ~3 inches wide and 6 inches high
-for mu in MU:
-    sol = get_steady_state(mu)
-    plt.plot(
-        *sol.y, lw=0.1, label=f"{mu:1.2f}"  # Use thinner linewidth, default=1
-    )  # defines a label for the legend
-
-plt.legend(
-    title="$\mu$",
-    loc="upper center",
-    # this line says put the legend outside the box.
-    # (0, 0) is the lower left, (1, 1) is the upper right
-    bbox_to_anchor=(1.2, 1),
-)
-
-plt.axis("equal");
-```
-
 +++ {"id": "-nYCrqJzI5Vs"}
 
 ## Summary
 
 +++ {"id": "8iGh-rFQI5Vu"}
 
-Today we covered the conversion of an n<sup>th</sup> order differential equation into a system of first order differential equations.
+We reviewed how to use solve_ivp and common tips/tricks. This includes plotting the results using matplotlib.
 
-We examined the use of the optional argument max\_step to fine tune the solution points returned by the solver.
+In addition to reviewing what we knew from 06-262 on `solve_ivp`, we also talked about how to use **integration events**. These allow us to stop integration at special points. It is very helpful for engineering/design problems.
 
-This concludes our first section on ordinary differential equations.
+```{code-cell} ipython3
+
+```
