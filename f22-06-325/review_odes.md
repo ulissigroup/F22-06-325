@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 ```{margin} Adaptation!
-This work was adapted from lecture notes in John Kitchin's excellent 06-623 course! His lecture notes are included in the helpful resources link if you want to know more details about how numericals work.
+This work was adapted from lecture notes in John Kitchin's excellent 06-623 course! His lecture notes are included in the helpful resources link if you want to know more details about how numerical methods work.
 ```
 
 +++
@@ -39,7 +39,7 @@ Along the way, we will:
 
 +++
 
-For concreteness, consider:
+As an example, consider the first order ODE:
 \begin{align*}
 y' = y + 2x - x^2; y(0) = 1
 \end{align*}
@@ -137,12 +137,7 @@ That doesn't looks so great since there are only four data points. By default, t
 
 X = np.linspace(x0, 1.5)
 sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0, t_eval=X)
-sol
-```
-
-```{code-cell} ipython3
-:id: yLoasFoAWKff
-:outputId: 38201a92-33e4-4dff-e57b-f9f929bf0c64
+print(sol)
 
 plt.plot(sol.t, sol.y[0], label='solve_ivp')
 plt.plot(X, X**2 + np.exp(X), 'r--', label='Analytical')
@@ -151,12 +146,33 @@ plt.ylabel('y')
 plt.legend()
 ```
 
-`````{tip} Ask yourself these questions when solving ODE's
+:::{note} **Tolerances:** 
+solve_ivp is trying to estimate and control the error for you! rtol is the relative tolerance in the function (eg % error in the numbers coming out). 
+* atol is the absolute tolerance (I want the concentration +/- 0.00001). 
+* rtol is $10^{-3}$ and atols is $10^{-6}$. 
+* If your concentration is on the scale of 0.000000001 M, you will have a problem! 
+  * Best solution - change units or rescale your problem so your variables are close to 1
+  * Possible solution - make you atol really small and hope it solves things
+* If decreasing rtol/atol changes your solution, they're not set tightly enough or you have other problems! 
+:::
+
+:::{note} **Integration failures:** 
+The solve_ivp documentation has some nice comments for what to do it things go wrong with the default RK45 algorithm:
+
+> If not sure, first try to run ‘RK45’. If it makes unusually many iterations, diverges, or fails, your problem is likely to be stiff and you should use ‘Radau’ or ‘BDF’. ‘LSODA’ can also be a good universal choice, but it might be somewhat less convenient to work with as it wraps old Fortran code
+:::
+
++++
+
+`````{tip} **Ask yourself these questions when solving ODE's:**
 * Is my problem coupled or not? Higher order or not?
 * Is my problem stiff? Should I use a special solver?
 * Is there anything I can infer about the solution from the differential euqations?
 * How many steady states do I expect? 
 * How would I know if I made a mistake?
+* Very important to check whether the answer is reasonable
+* If you solve a problem with $\Delta t = 0.1$ (or some other number like atol), always check that your answer does not change with $\Delta t = \frac{0.1}{2}$
+* Before solving a problem with numerical methods, make sure you can correctly code the RHS of the equation.
 `````
 
 +++ {"tags": []}
@@ -193,7 +209,7 @@ Solve for and plot the population of rabbits and wolves over the first 20 days.
 Let's take 10 minutes to warm up and try coding this up in python using (scipy)
 
 ```{code-cell} ipython3
-
+# Solve the rabbit/wolf example for the given parameters and boundary conditions!
 ```
 
 +++ {"tags": []}
