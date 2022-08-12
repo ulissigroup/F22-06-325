@@ -6,6 +6,7 @@ root: intro
 parts:
 - caption: Course Info
   chapters:
+  - file: schedule
   - file: syllabus
   - file: software
   - file: helpful_resources
