@@ -13,6 +13,7 @@ RUN mamba install --quiet --yes \
     jupyterlab-lsp \
     jupyterlab-myst \
     git-lfs \
+    lmfit \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
