@@ -21,3 +21,38 @@ RUN mamba install --quiet --yes \
 RUN jupyter labextension install jupyterlab-jupytext
 
 
+# OCP repo requirements
+RUN echo '' > /opt/conda/conda-meta/pinned
+RUN mamba uninstall nomkl --quiet --yes
+RUN mamba install --quiet --yes \
+    -c pyg -c pytorch -c conda-forge -c nvidia \
+    numba \
+    lmdb \
+    ase \
+    pip \
+    pyyaml \
+    tqdm \
+    tensorboard \
+    pandoc \
+    nbsphinx \
+    sphinx \
+    black \
+    wandb \
+    lmdb \
+    submitit \
+    pytest \
+    python-lmdb \
+    pyg \
+    'pytorch=1.11' \
+    torchvision \
+    torchaudio \
+    'python=3.9'
+    pre-commit && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+RUN pip install --no-deps git+https://github.com/Open-Catalyst-Project/ocp
+
+
+
