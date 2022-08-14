@@ -46,8 +46,7 @@ RUN mamba install --quiet --yes \
     'pytorch=1.11' \
     torchvision \
     torchaudio \
-    'python=3.9'
-    pre-commit && \
+    'python=3.9' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
