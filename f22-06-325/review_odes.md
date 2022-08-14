@@ -54,8 +54,8 @@ The `scipy.integrate` library provides `solve_ivp` to solve first order differen
 :id: Xz9BVvtwWKfe
 :outputId: 520d4171-f524-402b-e09e-1e3d9d67cff2
 
-from scipy.integrate import solve_ivp
 import numpy as np
+from scipy.integrate import solve_ivp
 ```
 
 +++ {"id": "nx24SM4zWKfe"}
@@ -71,8 +71,9 @@ Here is a minimal use of the function, with keyword arguments.
 def f(x, y):
     return y + 2 * x - x**2
 
+
 x0 = 0
-y0 = np.array([1]) # It is a good idea to make y0 an array. It will be important later.
+y0 = np.array([1])  # It is a good idea to make y0 an array. It will be important later.
 
 sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0)
 ```
@@ -120,10 +121,10 @@ Now, we can plot the solution.
 
 import matplotlib.pyplot as plt
 
-plt.plot(sol.t, sol.y[0], label='solve_ivp')
-plt.plot(sol.t, sol.t**2 + np.exp(sol.t), 'r--', label='Analytical')
-plt.xlabel('x')
-plt.ylabel('y')
+plt.plot(sol.t, sol.y[0], label="solve_ivp")
+plt.plot(sol.t, sol.t**2 + np.exp(sol.t), "r--", label="Analytical")
+plt.xlabel("x")
+plt.ylabel("y")
 plt.legend()
 ```
 
@@ -139,10 +140,10 @@ X = np.linspace(x0, 1.5)
 sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0, t_eval=X)
 print(sol)
 
-plt.plot(sol.t, sol.y[0], label='solve_ivp')
-plt.plot(X, X**2 + np.exp(X), 'r--', label='Analytical')
-plt.xlabel('x')
-plt.ylabel('y')
+plt.plot(sol.t, sol.y[0], label="solve_ivp")
+plt.plot(X, X**2 + np.exp(X), "r--", label="Analytical")
+plt.xlabel("x")
+plt.ylabel("y")
 plt.legend()
 ```
 
@@ -236,6 +237,7 @@ An event function has a signature of f(x, y). Remember that $y$ is going to be a
 def event1(x, y):
     return y[0] - 4
 
+
 event1.terminal = True
 
 sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0, events=event1)
@@ -264,7 +266,7 @@ sol.t
 :id: 86jVTFLhWKfg
 :outputId: 73f7e7d5-a93e-4ac7-bee8-b7ccc07f733b
 
-print(f'y=4 at x={sol.t[-1]}. Confirming: y = {sol.t[-1]**2 + np.exp(sol.t[-1])}')
+print(f"y=4 at x={sol.t[-1]}. Confirming: y = {sol.t[-1]**2 + np.exp(sol.t[-1])}")
 ```
 
 +++ {"id": "kr30mSOyWKfg"}
@@ -278,11 +280,12 @@ That is pretty close. You have to decide if it is close enough for the purpose y
 def event1(x, y):
     return y[0] - 4
 
+
 event1.terminal = True
 
 sol = solve_ivp(fun=f, t_span=(x0, 1.5), y0=y0, events=event1, rtol=1e-9)
 sol
-sol.t[-1]**2 + np.exp(sol.t[-1])
+sol.t[-1] ** 2 + np.exp(sol.t[-1])
 ```
 
 +++ {"id": "mJnRxC7iI5UF", "tags": []}
