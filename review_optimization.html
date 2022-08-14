@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="What Does it Mean to Build Data-Driven Models?" href="extrapolation.html" />
@@ -270,6 +272,71 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ulissigroup/F22-06-325/main?urlpath=lab/tree/f22-06-325/review_optimization.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://laikapack-head.cheme.cmu.edu/hub/hub/user-redirect/git-pull?repo=https%3A//github.com/ulissigroup/F22-06-325&urlpath=lab/tree/F22-06-325/f22-06-325/review_optimization.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/ulissigroup/F22-06-325/blob/main/f22-06-325/review_optimization.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -337,6 +404,23 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
+        <a href="_sources/review_optimization.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
         <a href="_sources/review_optimization.md"
    class="headerbtn"
    data-toggle="tooltip"
@@ -374,12 +458,75 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#function-extrema">
+   Function extrema
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-the-derivative-and-solve-for-where-it-is-zero">
+     Find the derivative, and solve for where it is zero
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-raphson-method-of-minima-finding">
+     Newton-Raphson method of minima finding
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scipy-optimize-minimize">
+   scipy.optimize.minimize
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-minima">
+     Multiple minima
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-maxima">
+     Finding maxima
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-to-maximizing-profit-in-a-pfr">
+     Application to maximizing profit in a PFR
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -391,6 +538,58 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#function-extrema">
+   Function extrema
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-the-derivative-and-solve-for-where-it-is-zero">
+     Find the derivative, and solve for where it is zero
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-raphson-method-of-minima-finding">
+     Newton-Raphson method of minima finding
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scipy-optimize-minimize">
+   scipy.optimize.minimize
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-minima">
+     Multiple minima
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-maxima">
+     Finding maxima
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-to-maximizing-profit-in-a-pfr">
+     Application to maximizing profit in a PFR
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -398,8 +597,438 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="review-of-numerical-methods-for-local-optimization">
+  <aside class="margin sidebar">
+<p class="sidebar-title">Adaptation!</p>
+<p>This lecture was also adapted from lecture notes in John Kitchin’s excellent 06-623 course! His lecture notes are included in the helpful resources link if you want to know more details about how numerical methods work.</p>
+</aside>
+<section class="tex2jax_ignore mathjax_ignore" id="review-of-numerical-methods-for-local-optimization">
 <h1>Review of Numerical Methods for Local Optimization<a class="headerlink" href="#review-of-numerical-methods-for-local-optimization" title="Permalink to this headline">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lecture is going to:</p>
+<ul class="simple">
+<li><p>Quickly review why we care about finding minima and maxima of functions</p></li>
+<li><p>Demonstrate two methods for finding minima/maxima:</p>
+<ul>
+<li><p>Using a non-linear solver to find where the gradient is zero</p></li>
+<li><p>Using a local optimizer from scipy</p></li>
+</ul>
+</li>
+<li><p>Show that finding minima and maxima are the same problem</p></li>
+</ul>
+<p>After covering these ideas, we will practice on a problem that we can also solve with ODE events!</p>
+</div>
+<section id="function-extrema">
+<h2>Function extrema<a class="headerlink" href="#function-extrema" title="Permalink to this headline">#</a></h2>
+<p>It is pretty common to need to find extreme values of a function in engineering analysis. An extreme value is often a maximum or minimum in a function, and we seek them when we want to maximize a profit function, or minimize a cost function, identify a maximum safe operating condition, etc.</p>
+<p>Let’s consider an example function with a graphical solution approach. We want a quantitative estimate of the minimum in this function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f648cc23d90&gt;]
+</pre></div>
+</div>
+<img alt="_images/review_optimization_4_1.png" src="_images/review_optimization_4_1.png" />
+</div>
+</div>
+<p>You can see there is a minimum near 0.6. We can find the minimum in a crude kind of way by finding the index of the minimum value in the y-array, and then getting the corresponding value of the x-array. You control the accuracy of this answer by the number of points you discretize the function over.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5714285714285714
+</pre></div>
+</div>
+</div>
+</div>
+<p>What are the pros and cons of this method:</p>
+<p>Pros:</p>
+<ol class="simple">
+<li><p>It is <em>easy</em>.</p></li>
+<li><p>You <em>see</em> the whole domain you are looking at, and it is easy to see how many extrema their are</p></li>
+</ol>
+<p>Cons:</p>
+<ol class="simple">
+<li><p><em>Lot’s</em> of function evaluations. Imagine if it took a long time to compute each value.</p></li>
+<li><p>Somewhat tedious.</p></li>
+<li><p>Not so easy to reproduce</p></li>
+<li><p>Not scalable to large problems, your time to do this becomes a limiting factor.</p></li>
+</ol>
+<section id="find-the-derivative-and-solve-for-where-it-is-zero">
+<h3>Find the derivative, and solve for where it is zero<a class="headerlink" href="#find-the-derivative-and-solve-for-where-it-is-zero" title="Permalink to this headline">#</a></h3>
+<p>We can also derive the first derivative:</p>
+<p><span class="math notranslate nohighlight">\(y' = 2 * x + e^{-5 x^2} (-10 * x)\)</span></p>
+<p>and solve it for zero using fsolve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="n">fsolve</span><span class="p">(</span><span class="n">yp</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.56735137])
+</pre></div>
+</div>
+</div>
+</div>
+<p>These two answer agree to 5 decimal places.</p>
+<p>This depends on your ability to correctly derive and implement the derivative. It is good to know you can solve this problem by more than one method. Here, we use a numerical derivative in the function instead to check our derivative. You can check the convergence of the derivative by varying the dx.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
+
+<span class="k">def</span> <span class="nf">ypd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+
+<span class="n">fsolve</span><span class="p">(</span><span class="n">ypd</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.56735137])
+</pre></div>
+</div>
+</div>
+</div>
+<p>These look the same within tolerance. This is not a beautiful solution, but it is hard to argue with success here!</p>
+</section>
+<section id="newton-raphson-method-of-minima-finding">
+<h3>Newton-Raphson method of minima finding<a class="headerlink" href="#newton-raphson-method-of-minima-finding" title="Permalink to this headline">#</a></h3>
+<p>To use the Newton-Raphson method to get the minimum, we use an iterative approach with:</p>
+<p><span class="math notranslate nohighlight">\(x_{n+1} = x_n - \frac{y'(x_n)}{y''(x_n)}\)</span>.</p>
+<p>We have to derive these formulas if you want to use analytical derivatives:</p>
+<p><span class="math notranslate nohighlight">\(y' = 2 * x + e^{-5 x^2} (-10 * x)\)</span></p>
+<p><span class="math notranslate nohighlight">\(y'' = 2 + e^{-5 x^2} (-10 * x)^2 - 10 e^{-5 x^2}\)</span></p>
+<p>Alternatively, we can estimate the derivatives numerically using <code class="docutils literal notranslate"><span class="pre">scipy.misc.derivative</span></code>. This has the downside of numerical instability for dx that is too small, or low accuracy if it is too large, and the need to check if you made a good choice for it. On the plus side, it avoids making mistakes in the derivative derivation and implementation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">f0</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ypp</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">xnew</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">yp</span> <span class="o">/</span> <span class="n">ypp</span>
+    <span class="n">fnew</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xnew</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yp</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1e-6</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">xnew</span>
+    <span class="n">f0</span> <span class="o">=</span> <span class="n">fnew</span>
+
+<span class="n">xnew</span><span class="p">,</span> <span class="n">fnew</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">i</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5673513747965597, 0.5218875824868201, 3.3306690738754696e-10, 5)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This answer also agrees to at least 5 decimal places. This is the gist of what happens in fsolve.</p>
+<p>As we have seen many times, finding minima is such a common task that there are dedicated functions available for doing it. One of the is <code class="docutils literal notranslate"><span class="pre">scipy.optimize.fmin</span></code>. This has a similar signature as <code class="docutils literal notranslate"><span class="pre">scipy.optimize.fsolve</span></code>, you give it a function and an initial guess, and it iteratively searches for a minimum.</p>
+</section>
+</section>
+<section id="scipy-optimize-minimize">
+<h2>scipy.optimize.minimize<a class="headerlink" href="#scipy-optimize-minimize" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+minimize<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is the basic use of fmin. As always, we should plot the answer where feasible to make sure it is the minimum we wanted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">guess</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">guess</span><span class="p">)</span>
+<span class="n">sol</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 0.5218875824868201
+ hess_inv: array([[0.15524504]])
+      jac: array([4.47034836e-08])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 10
+      nit: 3
+     njev: 5
+   status: 0
+  success: True
+        x: array([0.56735137])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;f(x)&#39;</span><span class="p">,</span> <span class="s1">&#39;fmin&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f648ac46a90&gt;
+</pre></div>
+</div>
+<img alt="_images/review_optimization_22_1.png" src="_images/review_optimization_22_1.png" />
+</div>
+</div>
+<p>Note this answer is only the same in the first 4 decimal places. Remember that these iterative approaches stop when a tolerance is met. Check the defaults on fmin!</p>
+<section id="multiple-minima">
+<h3>Multiple minima<a class="headerlink" href="#multiple-minima" title="Permalink to this headline">#</a></h3>
+<p>It is possible for functions to have more than one minimum. In this case, your guess will determine which minimum is found. Here is an example where there is a minimum near 2.2, and one near 4.5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;h(x)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;h(x)&#39;)
+</pre></div>
+</div>
+<img alt="_images/review_optimization_26_1.png" src="_images/review_optimization_26_1.png" />
+</div>
+</div>
+<p>This guess finds the one near 2.2:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 1.0448871783746692
+ hess_inv: array([[0.52336562]])
+      jac: array([-1.49011612e-08])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 10
+      nit: 3
+     njev: 5
+   status: 0
+  success: True
+        x: array([2.26106175])
+</pre></div>
+</div>
+</div>
+</div>
+<p>and this guess finds the one near 4.5</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 1.4758979742813436
+ hess_inv: array([[0.94727357]])
+      jac: array([-9.08970833e-07])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 14
+      nit: 5
+     njev: 7
+   status: 0
+  success: True
+        x: array([4.355456])
+</pre></div>
+</div>
+</div>
+</div>
+<p>You have to decide which one is better for the problem at hand. If this were a cost function, the one at the lower cost is probably better! Note that all we can say here is which one is lower in the interval we are looking at. By inspection of the function, you can see it will be periodic, so there will be many other minima that also exist.</p>
+</section>
+<section id="finding-maxima">
+<h3>Finding maxima<a class="headerlink" href="#finding-maxima" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fmin</span></code> is for finding <em>minima</em>. We can use it to find maxima though, but finding the <em>minima</em> of <span class="math notranslate nohighlight">\(-f(x)\)</span>. You can see here that when we plot <span class="math notranslate nohighlight">\(-h(x)\)</span> the minima become maxima, and vice-versa. Now you can see there are two definite minima, one near zero, and one near 3.5, which correspond to the maxima of <span class="math notranslate nohighlight">\(h(x)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;-h(x)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;-h(x)&#39;)
+</pre></div>
+</div>
+<img alt="_images/review_optimization_34_1.png" src="_images/review_optimization_34_1.png" />
+</div>
+</div>
+<p>The standard way to use fmin is to define an optional argument for the sign that defaults to one. Then, when we call fmin, we will pass -1 as the sign to the function, so we find the minimum of -h(x). Then, we evaluate h(x) at that x-value to get the actual value of the maximum. It is not necessary do this, you can also manually pass around the sign and try to keep it straight.</p>
+<p>Here is an example to find the maximum near 3.5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>  <span class="c1"># set sign=-1 here to minimize -h(x)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># sign defaults to 1 here, so we get the maximum value</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;h(x)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.56120872]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;h(x)&#39;)
+</pre></div>
+</div>
+<img alt="_images/review_optimization_36_2.png" src="_images/review_optimization_36_2.png" />
+</div>
+</div>
+<p>Once again, here you have to decide which maximum is relevant</p>
+</section>
+<section id="application-to-maximizing-profit-in-a-pfr">
+<h3>Application to maximizing profit in a PFR<a class="headerlink" href="#application-to-maximizing-profit-in-a-pfr" title="Permalink to this headline">#</a></h3>
+<p>Compound X with concentration of <span class="math notranslate nohighlight">\(C_{X0} = 2.5\)</span> kmol / m<sup>3</sup> at a flow rate of 12 m<sup>3</sup>/min is converted to Y in a first order reaction with a rate constant of 30 1/min in a tubular reactor. The value of Y is <span class="math notranslate nohighlight">\(1.5/kmol. The cost of operation is \)</span>2.50 per minute per m<sup>3</sup>. Find the reactor length that maximizes the profit (profit is value of products minus operating costs).</p>
+<p>First, consider why there is a maximum. At low volumes the operating cost is low, and the production of Y is low. At high volumes, you maximize production of Y, so you have the most value, but the operating costs go up (to infinity for complete conversion!). Somewhere in the middle is where a maximum is.</p>
+<p>Here are some relevant constants.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cost</span> <span class="o">=</span> <span class="mf">2.5</span>  <span class="c1"># dollar/min/m**3</span>
+<span class="n">y_value</span>  <span class="o">=</span> <span class="mf">1.5</span> <span class="c1"># dollar / mol</span>
+
+<span class="n">Cx0</span> <span class="o">=</span> <span class="mf">2.5</span> <span class="c1"># kmol / m**3</span>
+<span class="n">v0</span> <span class="o">=</span> <span class="mf">12.0</span> <span class="c1"># m**3 / min</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mf">30.0</span> <span class="c1"># 1/min</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To compute the profit as a function of reactor volume, we need to compute how much Y is produced, then multiply that by the value of Y and subtract the operating cost. To compute how much Y is produced, we use a mole balance on X and Y, and integrate it to the volume to get the molar flows of X and Y. I like to write mole balances like this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dFdV</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">F</span><span class="p">):</span>
+    <span class="s1">&#39;PFR mole balances on X and Y.&#39;</span>
+    <span class="n">Fx</span><span class="p">,</span> <span class="n">Fy</span> <span class="o">=</span> <span class="n">F</span>
+    <span class="n">Cx</span> <span class="o">=</span> <span class="n">Fx</span> <span class="o">/</span> <span class="n">v0</span>
+    <span class="n">rx</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">Cx</span>
+    <span class="n">ry</span> <span class="o">=</span> <span class="o">-</span><span class="n">rx</span>
+
+    <span class="n">dFdX</span> <span class="o">=</span> <span class="n">rx</span>
+    <span class="n">dFdY</span> <span class="o">=</span> <span class="n">ry</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dFdX</span><span class="p">,</span> <span class="n">dFdY</span><span class="p">]</span>
+
+<span class="n">F0</span> <span class="o">=</span> <span class="p">[</span><span class="n">Cx0</span> <span class="o">*</span> <span class="n">v0</span><span class="p">,</span>  <span class="c1"># Fx0</span>
+      <span class="mf">0.0</span><span class="p">]</span>       <span class="c1"># Fy0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can write a profit function. It will take a V as the argument, integrate the PFR to that volume to find the molar exit flow rates, and then compute the profit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">Vspan</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">dFdV</span><span class="p">,</span> <span class="n">Vspan</span><span class="p">,</span> <span class="n">F0</span><span class="p">)</span>
+    <span class="n">Fx</span><span class="p">,</span> <span class="n">Fy</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+    <span class="n">Fy_exit</span> <span class="o">=</span> <span class="n">Fy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="p">(</span><span class="n">Fy_exit</span> <span class="o">*</span> <span class="n">y_value</span> <span class="o">-</span> <span class="n">cost</span> <span class="o">*</span> <span class="n">V</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is always a good idea to plot the profit function. We use a list comprehension here because the profit function is not <em>vectorized</em>, which means we cannot pass an array of volumes in and get an array of profits out.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vspan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">profit_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">profit</span><span class="p">(</span><span class="n">V</span><span class="p">)</span> <span class="k">for</span> <span class="n">V</span> <span class="ow">in</span> <span class="n">Vspan</span><span class="p">]</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vspan</span><span class="p">,</span> <span class="n">profit_array</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;profit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;profit&#39;)
+</pre></div>
+</div>
+<img alt="_images/review_optimization_46_1.png" src="_images/review_optimization_46_1.png" />
+</div>
+</div>
+<p>You can see from this plot there is a maximum near V=1.5. We can use that as a guess for fmin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">profit</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The optimal volume is </span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1"> m^3 with a profit of $</span><span class="si">{</span><span class="n">profit</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The optimal volume is 1.52 m^3 with a profit of $40.19.
+</pre></div>
+</div>
+</div>
+</div>
+<p>This problem highlights the opportunities we have to integrate many ideas together to solve complex problems. We have integration of an ODE, nonlinear algebra/minimization, with graphical estimates of the solution.</p>
+<p><strong>Practice</strong> Can you solve this with an event and solve_ivp?</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>Today we introduced the concept of finding minima/maxima in functions. This is an iterative process, much like finding the roots of a nonlinear function. You can think of it as finding the zeros of the derivative of a nonlinear function! This method is the root of many important optimization problems including regression.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code> is the preferred function for doing minimization. There are other more specific ones described at <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html">https://docs.scipy.org/doc/scipy/reference/optimize.html</a>, but <code class="docutils literal notranslate"><span class="pre">minimize</span></code> has a more consistent interface and provides almost all the functionality of those other methods.</p>
+<p>Next time, we will look at how to apply minimization to regression problems.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
