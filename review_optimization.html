@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Review of Numerical Methods for Local Optimization &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
+    <title>Review of Numerical Methods for Local Optimization and Curve Fitting &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -155,7 +155,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Review of Numerical Methods for Local Optimization
+   Review of Numerical Methods for Local Optimization and Curve Fitting
   </a>
  </li>
 </ul>
@@ -490,16 +490,11 @@ title="Print to PDF"
      Find the derivative, and solve for where it is zero
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-raphson-method-of-minima-finding">
-     Newton-Raphson method of minima finding
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scipy-optimize-minimize">
-   scipy.optimize.minimize
+  <a class="reference internal nav-link" href="#standard-python-approach-scipy-optimize-minimize">
+   Standard python approach: scipy.optimize.minimize
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -520,6 +515,24 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-can-you-solve-this-with-an-event-and-solve-ivp">
+   <strong>
+    Practice:
+   </strong>
+   Can you solve this with an event and solve_ivp?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-of-data-is-a-form-of-function-minimization">
+   Regression of data is a form of function minimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameter-confidence-intervals">
+   Parameter confidence intervals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -533,7 +546,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Review of Numerical Methods for Local Optimization</h1>
+                <h1>Review of Numerical Methods for Local Optimization and Curve Fitting</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -553,16 +566,11 @@ title="Print to PDF"
      Find the derivative, and solve for where it is zero
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-raphson-method-of-minima-finding">
-     Newton-Raphson method of minima finding
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scipy-optimize-minimize">
-   scipy.optimize.minimize
+  <a class="reference internal nav-link" href="#standard-python-approach-scipy-optimize-minimize">
+   Standard python approach: scipy.optimize.minimize
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -583,6 +591,24 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-can-you-solve-this-with-an-event-and-solve-ivp">
+   <strong>
+    Practice:
+   </strong>
+   Can you solve this with an event and solve_ivp?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-of-data-is-a-form-of-function-minimization">
+   Regression of data is a form of function minimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameter-confidence-intervals">
+   Parameter confidence intervals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -599,10 +625,10 @@ title="Print to PDF"
                 
   <aside class="margin sidebar">
 <p class="sidebar-title">Adaptation!</p>
-<p>This lecture was also adapted from lecture notes in John Kitchin’s excellent 06-623 course! His lecture notes are included in the helpful resources link if you want to know more details about how numerical methods work.</p>
+<p>This lecture was also adapted from lecture notes in John Kitchin’s excellent 06-623 course. His lecture notes are included in the helpful resources link if you want to know more details about how numerical methods work. These notes also contain content from Prof. Ulissi’s 06-262 course.</p>
 </aside>
-<section class="tex2jax_ignore mathjax_ignore" id="review-of-numerical-methods-for-local-optimization">
-<h1>Review of Numerical Methods for Local Optimization<a class="headerlink" href="#review-of-numerical-methods-for-local-optimization" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="review-of-numerical-methods-for-local-optimization-and-curve-fitting">
+<h1>Review of Numerical Methods for Local Optimization and Curve Fitting<a class="headerlink" href="#review-of-numerical-methods-for-local-optimization-and-curve-fitting" title="Permalink to this headline">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This lecture is going to:</p>
@@ -624,12 +650,13 @@ title="Print to PDF"
 <p>Let’s consider an example function with a graphical solution approach. We want a quantitative estimate of the minimum in this function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -638,7 +665,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0f269cad90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc65a6c2a90&gt;]
 </pre></div>
 </div>
 <img alt="_images/review_optimization_4_1.png" src="_images/review_optimization_4_1.png" />
@@ -683,7 +710,9 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
 
+
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
 <span class="n">fsolve</span><span class="p">(</span><span class="n">yp</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -700,8 +729,10 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
 
+
 <span class="k">def</span> <span class="nf">ypd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+
 
 <span class="n">fsolve</span><span class="p">(</span><span class="n">ypd</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
@@ -715,51 +746,13 @@ title="Print to PDF"
 </div>
 <p>These look the same within tolerance. This is not a beautiful solution, but it is hard to argue with success here!</p>
 </section>
-<section id="newton-raphson-method-of-minima-finding">
-<h3>Newton-Raphson method of minima finding<a class="headerlink" href="#newton-raphson-method-of-minima-finding" title="Permalink to this headline">#</a></h3>
-<p>To use the Newton-Raphson method to get the minimum, we use an iterative approach with:</p>
-<p><span class="math notranslate nohighlight">\(x_{n+1} = x_n - \frac{y'(x_n)}{y''(x_n)}\)</span>.</p>
-<p>We have to derive these formulas if you want to use analytical derivatives:</p>
-<p><span class="math notranslate nohighlight">\(y' = 2 * x + e^{-5 x^2} (-10 * x)\)</span></p>
-<p><span class="math notranslate nohighlight">\(y'' = 2 + e^{-5 x^2} (-10 * x)^2 - 10 e^{-5 x^2}\)</span></p>
-<p>Alternatively, we can estimate the derivatives numerically using <code class="docutils literal notranslate"><span class="pre">scipy.misc.derivative</span></code>. This has the downside of numerical instability for dx that is too small, or low accuracy if it is too large, and the need to check if you made a good choice for it. On the plus side, it avoids making mistakes in the derivative derivation and implementation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
-
-<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">f0</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
-    <span class="n">yp</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">ypp</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">xnew</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">yp</span> <span class="o">/</span> <span class="n">ypp</span>
-    <span class="n">fnew</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xnew</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yp</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1e-6</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">x0</span> <span class="o">=</span> <span class="n">xnew</span>
-    <span class="n">f0</span> <span class="o">=</span> <span class="n">fnew</span>
-
-<span class="n">xnew</span><span class="p">,</span> <span class="n">fnew</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">i</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5673513747965597, 0.5218875824868201, 3.3306690738754696e-10, 5)
-</pre></div>
-</div>
-</div>
-</div>
-<p>This answer also agrees to at least 5 decimal places. This is the gist of what happens in fsolve.</p>
-<p>As we have seen many times, finding minima is such a common task that there are dedicated functions available for doing it. One of the is <code class="docutils literal notranslate"><span class="pre">scipy.optimize.fmin</span></code>. This has a similar signature as <code class="docutils literal notranslate"><span class="pre">scipy.optimize.fsolve</span></code>, you give it a function and an initial guess, and it iteratively searches for a minimum.</p>
 </section>
-</section>
-<section id="scipy-optimize-minimize">
-<h2>scipy.optimize.minimize<a class="headerlink" href="#scipy-optimize-minimize" title="Permalink to this headline">#</a></h2>
+<section id="standard-python-approach-scipy-optimize-minimize">
+<h2>Standard python approach: scipy.optimize.minimize<a class="headerlink" href="#standard-python-approach-scipy-optimize-minimize" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+
 minimize<span class="o">?</span>
 </pre></div>
 </div>
@@ -770,6 +763,7 @@ minimize<span class="o">?</span>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
 
 <span class="n">guess</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">guess</span><span class="p">)</span>
@@ -797,19 +791,19 @@ minimize<span class="o">?</span>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;f(x)&#39;</span><span class="p">,</span> <span class="s1">&#39;fmin&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="s2">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;f(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;fmin&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0f249b79a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc658716cd0&gt;
 </pre></div>
 </div>
-<img alt="_images/review_optimization_22_1.png" src="_images/review_optimization_22_1.png" />
+<img alt="_images/review_optimization_18_1.png" src="_images/review_optimization_18_1.png" />
 </div>
 </div>
 <p>Note this answer is only the same in the first 4 decimal places. Remember that these iterative approaches stop when a tolerance is met. Check the defaults on fmin!</p>
@@ -819,13 +813,14 @@ minimize<span class="o">?</span>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;h(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;h(x)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -833,7 +828,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;h(x)&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_26_1.png" src="_images/review_optimization_26_1.png" />
+<img alt="_images/review_optimization_22_1.png" src="_images/review_optimization_22_1.png" />
 </div>
 </div>
 <p>This guess finds the one near 2.2:</p>
@@ -881,6 +876,10 @@ minimize<span class="o">?</span>
 </div>
 </div>
 <p>You have to decide which one is better for the problem at hand. If this were a cost function, the one at the lower cost is probably better! Note that all we can say here is which one is lower in the interval we are looking at. By inspection of the function, you can see it will be periodic, so there will be many other minima that also exist.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Questions about local vs global minima and their use in decision making for engineering can be very interesting. You will discuss this in much more detail in your second mini (optimization) this semester!</p>
+</div>
 </section>
 <section id="finding-maxima">
 <h3>Finding maxima<a class="headerlink" href="#finding-maxima" title="Permalink to this headline">#</a></h3>
@@ -888,8 +887,8 @@ minimize<span class="o">?</span>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;-h(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;-h(x)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -897,7 +896,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;-h(x)&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_34_1.png" src="_images/review_optimization_34_1.png" />
+<img alt="_images/review_optimization_30_1.png" src="_images/review_optimization_30_1.png" />
 </div>
 </div>
 <p>The standard way to use fmin is to define an optional argument for the sign that defaults to one. Then, when we call fmin, we will pass -1 as the sign to the function, so we find the minimum of -h(x). Then, we evaluate h(x) at that x-value to get the actual value of the maximum. It is not necessary do this, you can also manually pass around the sign and try to keep it straight.</p>
@@ -905,15 +904,16 @@ minimize<span class="o">?</span>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
 
 <span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>  <span class="c1"># set sign=-1 here to minimize -h(x)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># sign defaults to 1 here, so we get the maximum value</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;h(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="s2">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;h(x)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -924,7 +924,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;h(x)&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_36_2.png" src="_images/review_optimization_36_2.png" />
+<img alt="_images/review_optimization_32_2.png" src="_images/review_optimization_32_2.png" />
 </div>
 </div>
 <p>Once again, here you have to decide which maximum is relevant</p>
@@ -937,12 +937,12 @@ minimize<span class="o">?</span>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cost</span> <span class="o">=</span> <span class="mf">2.5</span>  <span class="c1"># dollar/min/m**3</span>
-<span class="n">y_value</span>  <span class="o">=</span> <span class="mf">1.5</span> <span class="c1"># dollar / mol</span>
+<span class="n">y_value</span> <span class="o">=</span> <span class="mf">1.5</span>  <span class="c1"># dollar / mol</span>
 
-<span class="n">Cx0</span> <span class="o">=</span> <span class="mf">2.5</span> <span class="c1"># kmol / m**3</span>
-<span class="n">v0</span> <span class="o">=</span> <span class="mf">12.0</span> <span class="c1"># m**3 / min</span>
+<span class="n">Cx0</span> <span class="o">=</span> <span class="mf">2.5</span>  <span class="c1"># kmol / m**3</span>
+<span class="n">v0</span> <span class="o">=</span> <span class="mf">12.0</span>  <span class="c1"># m**3 / min</span>
 
-<span class="n">k</span> <span class="o">=</span> <span class="mf">30.0</span> <span class="c1"># 1/min</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">30.0</span>  <span class="c1"># 1/min</span>
 </pre></div>
 </div>
 </div>
@@ -951,7 +951,7 @@ minimize<span class="o">?</span>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dFdV</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">F</span><span class="p">):</span>
-    <span class="s1">&#39;PFR mole balances on X and Y.&#39;</span>
+    <span class="s2">&quot;PFR mole balances on X and Y.&quot;</span>
     <span class="n">Fx</span><span class="p">,</span> <span class="n">Fy</span> <span class="o">=</span> <span class="n">F</span>
     <span class="n">Cx</span> <span class="o">=</span> <span class="n">Fx</span> <span class="o">/</span> <span class="n">v0</span>
     <span class="n">rx</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">Cx</span>
@@ -961,8 +961,8 @@ minimize<span class="o">?</span>
     <span class="n">dFdY</span> <span class="o">=</span> <span class="n">ry</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">dFdX</span><span class="p">,</span> <span class="n">dFdY</span><span class="p">]</span>
 
-<span class="n">F0</span> <span class="o">=</span> <span class="p">[</span><span class="n">Cx0</span> <span class="o">*</span> <span class="n">v0</span><span class="p">,</span>  <span class="c1"># Fx0</span>
-      <span class="mf">0.0</span><span class="p">]</span>       <span class="c1"># Fy0</span>
+
+<span class="n">F0</span> <span class="o">=</span> <span class="p">[</span><span class="n">Cx0</span> <span class="o">*</span> <span class="n">v0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>  <span class="c1"># Fx0  # Fy0</span>
 </pre></div>
 </div>
 </div>
@@ -972,6 +972,7 @@ minimize<span class="o">?</span>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
 
 <span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">Vspan</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
@@ -990,9 +991,10 @@ minimize<span class="o">?</span>
 <span class="n">profit_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">profit</span><span class="p">(</span><span class="n">V</span><span class="p">)</span> <span class="k">for</span> <span class="n">V</span> <span class="ow">in</span> <span class="n">Vspan</span><span class="p">]</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vspan</span><span class="p">,</span> <span class="n">profit_array</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;profit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;profit&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1000,16 +1002,19 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;profit&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_46_1.png" src="_images/review_optimization_46_1.png" />
+<img alt="_images/review_optimization_42_1.png" src="_images/review_optimization_42_1.png" />
 </div>
 </div>
 <p>You can see from this plot there is a maximum near V=1.5. We can use that as a guess for fmin.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
+
 <span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">profit</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The optimal volume is </span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1"> m^3 with a profit of $</span><span class="si">{</span><span class="n">profit</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;The optimal volume is </span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2"> m^3 with a profit of $</span><span class="si">{</span><span class="n">profit</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">.&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1020,14 +1025,304 @@ minimize<span class="o">?</span>
 </div>
 </div>
 <p>This problem highlights the opportunities we have to integrate many ideas together to solve complex problems. We have integration of an ODE, nonlinear algebra/minimization, with graphical estimates of the solution.</p>
-<p><strong>Practice</strong> Can you solve this with an event and solve_ivp?</p>
 </section>
+</section>
+<section id="practice-can-you-solve-this-with-an-event-and-solve-ivp">
+<h2><strong>Practice:</strong> Can you solve this with an event and solve_ivp?<a class="headerlink" href="#practice-can-you-solve-this-with-an-event-and-solve-ivp" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="regression-of-data-is-a-form-of-function-minimization">
+<h2>Regression of data is a form of function minimization<a class="headerlink" href="#regression-of-data-is-a-form-of-function-minimization" title="Permalink to this headline">#</a></h2>
+<p>When we say regression, we really mean find some parameters of a model that best reproduces some known data. By “best reproduces” we mean the sum of all the errors between the values predicted by the model, and the real data is minimized.</p>
+<p>Suppose we have the following data that shows how the energy of a material depends on the volume of the material.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">volumes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">13.71</span><span class="p">,</span> <span class="mf">14.82</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">17.23</span><span class="p">,</span> <span class="mf">18.52</span><span class="p">])</span>
+<span class="n">energies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">56.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.463</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.41</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volumes</span><span class="p">,</span> <span class="n">energies</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;E&#39;)
+</pre></div>
+</div>
+<img alt="_images/review_optimization_49_1.png" src="_images/review_optimization_49_1.png" />
+</div>
+</div>
+<p>In Materials Science we often want to fit an equation of state to this data. We will use this equation:</p>
+<p><span class="math notranslate nohighlight">\(E = E_0 + \frac{B_0 V}{B_0'}\left(\frac{(V_0 / V)^{B_0'}}{B_0' - 1} + 1 \right) - \frac{V_0 B_0}{B_0' - 1}\)</span></p>
+<p>from <a class="reference external" href="https://journals.aps.org/prb/pdf/10.1103/PhysRevB.28.5480">https://journals.aps.org/prb/pdf/10.1103/PhysRevB.28.5480</a>. In this model there are four parameters:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>desc</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>E_0</p></td>
+<td><p>energy at the minimim</p></td>
+</tr>
+<tr class="row-odd"><td><p>B_0</p></td>
+<td><p>bulk modulus</p></td>
+</tr>
+<tr class="row-even"><td><p>B_0’</p></td>
+<td><p>first derivative of the bulk modulus</p></td>
+</tr>
+<tr class="row-odd"><td><p>V_0</p></td>
+<td><p>volume at the energy minimum</p></td>
+</tr>
+</tbody>
+</table>
+<p>We would like to find the value of these parameters that best fits the data above. That means, find the set of parameters that minimize the sum of the squared errors between the model and data.</p>
+<p>First we need a function that will use the parameters and return the energy for a given volume.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Murnaghan</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">vol</span><span class="p">):</span>
+    <span class="s2">&quot;From PRB 28,5480 (1983)&quot;</span>
+    <span class="n">E0</span><span class="p">,</span> <span class="n">B0</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="n">V0</span> <span class="o">=</span> <span class="n">parameters</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">E0</span> <span class="o">+</span> <span class="n">B0</span> <span class="o">*</span> <span class="n">vol</span> <span class="o">/</span> <span class="n">BP</span> <span class="o">*</span> <span class="p">(((</span><span class="n">V0</span> <span class="o">/</span> <span class="n">vol</span><span class="p">)</span> <span class="o">**</span> <span class="n">BP</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">BP</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">B0</span> <span class="o">/</span> <span class="p">(</span><span class="n">BP</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">E</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we need a function that computes the summed squared errors for a set of parameters. The use of squared errors is preferable in many cases to the absolute values because it has a continuous derivative. We will learn more about this later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">pars</span><span class="p">):</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">energies</span> <span class="o">-</span> <span class="n">Murnaghan</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">volumes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">err</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># we return the summed squared error directly</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally,  we need an initial guess to start the minimization. As with all minimization problems, this can be the most difficult step. It is always a good idea to use properties of the model and data where possible to make these guesses. We have no way to plot anything in four dimensions, so we use analysis instead.</p>
+<p>We can derive some of these from the data we have. First, we can get the minimum in energy and the corresponding volume that we know from the data. These are not the final answer, but they are a good guess for it.</p>
+<p>The B<sub>0</sub> parameter is related to the curvature at the minimum, which is the second derivative. We get that from repeated calls to <code class="docutils literal notranslate"><span class="pre">numpy.gradient</span></code>. Finally, <span class="math notranslate nohighlight">\(B_0'\)</span> is related to the derivative of <span class="math notranslate nohighlight">\(B\)</span> at the minimum, so we estimate that too.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">energies</span><span class="p">)</span>
+<span class="n">dedv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">energies</span><span class="p">,</span> <span class="n">volumes</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">dedv</span><span class="p">,</span> <span class="n">volumes</span><span class="p">)</span>
+<span class="n">Bp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">volumes</span><span class="p">)</span>
+
+
+<span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="n">energies</span><span class="p">[</span><span class="n">imin</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="n">imin</span><span class="p">],</span> <span class="n">Bp</span><span class="p">[</span><span class="n">imin</span><span class="p">],</span> <span class="n">volumes</span><span class="p">[</span><span class="n">imin</span><span class="p">]]</span>
+
+<span class="n">x0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-56.463, 0.02575384116153356, -0.00900405886406903, 17.23]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we are ready to fit our function. As usual, we also plot the data and the fit for visual inspection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volumes</span><span class="p">,</span> <span class="n">energies</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+<span class="n">vfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">volumes</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">volumes</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vfit</span><span class="p">,</span> <span class="n">Murnaghan</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">vfit</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fit&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 1.491342970068105e-05
+ hess_inv: array([[ 3.15514620e-01, -3.20155406e+00,  7.74103643e+01,
+        -1.97336028e+00],
+       [-3.20155406e+00,  5.58406362e+01, -1.58550458e+03,
+         3.96238529e+01],
+       [ 7.74103643e+01, -1.58550458e+03,  6.54517772e+04,
+        -2.47812337e+03],
+       [-1.97336028e+00,  3.96238529e+01, -2.47812337e+03,
+         1.39823769e+02]])
+      jac: array([ 6.38314248e-06,  1.34489937e-07, -4.90979346e-08, -3.19168475e-06])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 180
+      nit: 31
+     njev: 36
+   status: 0
+  success: True
+        x: array([-56.46839132,   0.57225664,   2.74673677,  16.55866445])
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;E&#39;)
+</pre></div>
+</div>
+<img alt="_images/review_optimization_57_2.png" src="_images/review_optimization_57_2.png" />
+</div>
+</div>
+<p>That looks pretty good. We should ask ourselves, how do we know we got a minimum? We should see that the objective function is really at a minimum <em>for each of the parameters</em>. Here, we show that it is a minimum for the first parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E0_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.9</span> <span class="o">*</span> <span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.1</span> <span class="o">*</span> <span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">errs</span> <span class="o">=</span> <span class="p">[</span><span class="n">objective</span><span class="p">([</span><span class="n">e0</span><span class="p">,</span> <span class="o">*</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span> <span class="k">for</span> <span class="n">e0</span> <span class="ow">in</span> <span class="n">E0_range</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">E0_range</span><span class="p">,</span> <span class="n">errs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;E0&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;summed squared error&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;summed squared error&#39;)
+</pre></div>
+</div>
+<img alt="_images/review_optimization_59_1.png" src="_images/review_optimization_59_1.png" />
+</div>
+</div>
+<p>You can see visually that the error goes up on each side of the parameter estimate.</p>
+<p><strong>exercise</strong> Repeat this analysis for the other three parameters.</p>
+<p>Later when we learn about linear algebra, we will learn that if you can show the eigenvalues of the Hessian of the objective function is positive definite, that also means you are at a minimum. It means the error goes up in any direction away from the minimum.</p>
+<p>Usually we do some regression to find one of these:</p>
+<ol class="simple">
+<li><p>Parameters for the model - because the parameters mean something</p></li>
+<li><p>Properties of the model - because the properties mean something</p></li>
+</ol>
+<p>In this particular case, we can do both. Some of the parameters are directly meaningful, like the E0, and V0 are the energy at the minimum, and the corresponding volume. B0 is also meaningful, it is called the bulk modulus, and it is a material property.</p>
+<p>Now that we have a model though we can also define properties of it, e.g. <em>in this case</em> we have from thermodynamics that <span class="math notranslate nohighlight">\(P = -dE/dV\)</span>. We can use our model to define this derivative. I use <code class="docutils literal notranslate"><span class="pre">scipy.misc.derivative</span></code> for this for convenience. The only issue with it is the energy function has arguments that are not in the right order for the derivative, so I make a proxy function here that just reverses the order of the arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">x</span>
+
+
+<span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">proxy</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">pars</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Murnaghan</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
+
+    <span class="n">dEdV</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">proxy</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">pars</span><span class="p">,),</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">dEdV</span>
+
+
+<span class="c1"># Some examples</span>
+<span class="n">P</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">P</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">P</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.020595827265879052, -0.0, -0.04268259701234456)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result above shows that it takes positive pressure to compress the material, the pressure is zero at the minimum, and it takes negative pressure to cause it to expand.</p>
+<p>This example is just meant to illustrate what one can do with a model once you have it.</p>
+</section>
+<section id="parameter-confidence-intervals">
+<h2>Parameter confidence intervals<a class="headerlink" href="#parameter-confidence-intervals" title="Permalink to this headline">#</a></h2>
+<p>We have left out an important topic in the discussion above: How certain are we of the parameters we estimated? This is a complicated question that requires moderately sophisticated statistics to answer. We discussed how to do this at the end of 06-262, and we used a special python package <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> to do so!</p>
+<p><code class="docutils literal notranslate"><span class="pre">lmfit</span></code> has some nice properties:</p>
+<ul class="simple">
+<li><p>It’s easy to use</p></li>
+<li><p>It’s general for non-linear curve fitting problems</p></li>
+<li><p>It handled various loss functions</p></li>
+<li><p>It handles the basic statistics of linear uncertainty analysis for you</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>https://lmfit.github.io/lmfit-py/</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lmfit</span> <span class="kn">import</span> <span class="n">Model</span>
+
+
+<span class="k">def</span> <span class="nf">MurnaghanLmfit</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">E0</span><span class="p">,</span> <span class="n">B0</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="n">V0</span><span class="p">):</span>
+    <span class="s2">&quot;From PRB 28,5480 (1983)&quot;</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">E0</span> <span class="o">+</span> <span class="n">B0</span> <span class="o">*</span> <span class="n">vol</span> <span class="o">/</span> <span class="n">BP</span> <span class="o">*</span> <span class="p">(((</span><span class="n">V0</span> <span class="o">/</span> <span class="n">vol</span><span class="p">)</span> <span class="o">**</span> <span class="n">BP</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">BP</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">B0</span> <span class="o">/</span> <span class="p">(</span><span class="n">BP</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">E</span>
+
+
+<span class="n">gmodel</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
+    <span class="n">MurnaghanLmfit</span><span class="p">,</span> <span class="n">independent_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;vol&quot;</span><span class="p">],</span> <span class="n">param_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;E0&quot;</span><span class="p">,</span> <span class="s2">&quot;B0&quot;</span><span class="p">,</span> <span class="s2">&quot;BP&quot;</span><span class="p">,</span> <span class="s2">&quot;V0&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">gmodel</span><span class="o">.</span><span class="n">make_params</span><span class="p">(</span>
+    <span class="n">E0</span><span class="o">=</span><span class="n">energies</span><span class="p">[</span><span class="n">imin</span><span class="p">],</span> <span class="n">B0</span><span class="o">=</span><span class="n">B</span><span class="p">[</span><span class="n">imin</span><span class="p">],</span> <span class="n">BP</span><span class="o">=</span><span class="n">Bp</span><span class="p">[</span><span class="n">imin</span><span class="p">],</span> <span class="n">V0</span><span class="o">=</span><span class="n">volumes</span><span class="p">[</span><span class="n">imin</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">gmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">energies</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">vol</span><span class="o">=</span><span class="n">volumes</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
+<span class="n">vfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">volumes</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">volumes</span><span class="p">))</span>
+
+<span class="n">fitted_energies</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">vol</span><span class="o">=</span><span class="n">vfit</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volumes</span><span class="p">,</span> <span class="n">energies</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vfit</span><span class="p">,</span> <span class="n">fitted_energies</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[Model]]
+    Model(MurnaghanLmfit)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 73
+    # data points      = 5
+    # variables        = 4
+    chi-square         = 1.4913e-05
+    reduced chi-square = 1.4913e-05
+    Akaike info crit   = -55.6135982
+    Bayesian info crit = -57.1758466
+[[Variables]]
+    E0: -56.4683965 +/- 0.00303671 (0.01%) (init = -56.463)
+    B0:  0.57233308 +/- 0.04018672 (7.02%) (init = 0.02575384)
+    BP:  2.74075619 +/- 1.42020815 (51.82%) (init = -0.009004059)
+    V0:  16.5590580 +/- 0.06876072 (0.42%) (init = 17.23)
+[[Correlations]] (unreported correlations are &lt; 0.100)
+    C(BP, V0) = -0.832
+    C(B0, BP) = -0.820
+    C(E0, B0) = -0.773
+    C(E0, BP) = 0.548
+    C(B0, V0) = 0.451
+    C(E0, V0) = -0.319
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;E&#39;)
+</pre></div>
+</div>
+<img alt="_images/review_optimization_65_2.png" src="_images/review_optimization_65_2.png" />
+</div>
+</div>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>Today we introduced the concept of finding minima/maxima in functions. This is an iterative process, much like finding the roots of a nonlinear function. You can think of it as finding the zeros of the derivative of a nonlinear function! This method is the root of many important optimization problems including regression.</p>
 <p><code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code> is the preferred function for doing minimization. There are other more specific ones described at <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html">https://docs.scipy.org/doc/scipy/reference/optimize.html</a>, but <code class="docutils literal notranslate"><span class="pre">minimize</span></code> has a more consistent interface and provides almost all the functionality of those other methods.</p>
 <p>Next time, we will look at how to apply minimization to regression problems.</p>
+<p>We covered a lot of ground today. The key points are:</p>
+<ol class="simple">
+<li><p>Regression is a minimization of an accumulated error function.</p></li>
+<li><p>If you need uncertainty on the parameters from a regression, use <code class="docutils literal notranslate"><span class="pre">pycse.nlinfit</span></code>.</p></li>
+<li><p>If you need uncertainty on model predictions, you can either simulate it, or derive it. We will learn more about deriving it later.</p></li>
+</ol>
 </section>
 </section>
 
