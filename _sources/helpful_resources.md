@@ -2,6 +2,7 @@
 **Video resources:**
 * [John Kitchin's youtube channel](https://www.youtube.com/c/JohnKitchin/videos)
     * Very relevant, starts at the basics and works up. Accompanying PDF textbooks available too!
+    * Prof. Kitchin also self-publishes guides to many of these topics: https://pointbreezepubs.gumroad.com/
     
 **Relevant courses (including videos/slides/etc):**
 * [Stanford CS229 Lectures by Andrew Ng](https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU)
