@@ -24,8 +24,3 @@ parts:
   chapters:
   - file: projects/wildfires/wildfire_dataset
   - file: projects/catalysts/catalyst_simulation
-- caption: Example chapters
-  chapters:
-  - file: markdown
-  - file: markdown-notebook
-  - file: notebooks

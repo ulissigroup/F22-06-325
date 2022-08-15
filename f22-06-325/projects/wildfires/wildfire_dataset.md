@@ -24,7 +24,7 @@ You can read more about how one of Prof. Jen's collaborators analyzed this data 
 ## Suggested challenges
 
 * Given a filter and a set of observed blobs, predict whether that filter was exposed at ground level or at elevation (with a drone)
-* Given the filter of a filter at elevation (drone), predict the blobs and their concentrations 
+* Given the filter of a filter at elevation (drone, easy to collect data), predict the blobs and their concentrations for the ground level measurements (harder to collect data)
 * [much harder] Given the filter and a set of observed blobs, predict the types of plants present in the plot of land
 
 ````{note}
@@ -35,6 +35,7 @@ In each case, you should think critically about the question how you want to set
 ````
 
 ## Dataset download/availability instructions
+
 
 ## Dataset/file format details
 1. BlodgettCombinedBlobMass.csv is a spreadsheet that gives the electron ionization mass spectrum for each compound detected during the Blodgett field campaign. 
