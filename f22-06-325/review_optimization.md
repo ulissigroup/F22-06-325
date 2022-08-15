@@ -141,24 +141,21 @@ These look the same within tolerance. This is not a beautiful solution, but it i
 
 +++ {"id": "tM3Sub3Cdsgl"}
 
-## Standard python approach: scipy.optimize.minimize
-
-```{code-cell} ipython3
-:id: UYKDxB5Wdsgl
-:outputId: 0b1154d9-976e-493c-fe55-60644b006b2e
-
-from scipy.optimize import minimize
-
-minimize?
-```
+### Standard python approach: scipy.optimize.minimize
 
 +++ {"id": "gVbU1KXjdsgl"}
 
-Here is the basic use of fmin. As always, we should plot the answer where feasible to make sure it is the minimum we wanted.
+Here is the basic use of scipy.optimize.minimize. As always, we should plot the answer where feasible to make sure it is the minimum we wanted.
+
+`````{seealso}
+Full documentation and notes on types of algorithms: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html
+`````
 
 ```{code-cell} ipython3
 :id: mJDxo14Adsgm
 :outputId: a1121bee-cb03-41f3-e55c-dadb66c1549a
+
+from scipy.optimize import minimize
 
 def f(x):
     return x**2 + np.exp(-5 * x**2)
@@ -288,7 +285,7 @@ Once again, here you have to decide which maximum is relevant
 
 +++ {"id": "gXyE36TCdsgn"}
 
-### Application to maximizing profit in a PFR
+### Example: Application to maximizing profit in a PFR
 
 +++ {"id": "JAYePfYNdsgo"}
 
@@ -574,7 +571,7 @@ This example is just meant to illustrate what one can do with a model once you h
 
 +++ {"id": "v8e-_RPlgyuW"}
 
-## Parameter confidence intervals
+## Parameter confidence intervals and curve fitting with `lmfit`
 
 +++ {"id": "AJaB3pDIgyuW"}
 
@@ -641,7 +638,3 @@ We covered a lot of ground today. The key points are:
 1.  Regression is a minimization of an accumulated error function.
 2.  If you need uncertainty on the parameters from a regression, use `pycse.nlinfit`.
 3.  If you need uncertainty on model predictions, you can either simulate it, or derive it. We will learn more about deriving it later.
-
-```{code-cell} ipython3
-
-```

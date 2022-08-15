@@ -11,7 +11,7 @@ As a trial this semester, I am running a JupyterHub server for this course to pr
 * You have access to a bash terminal (helpful for learning unix/bash commands, moving files around, etc).
 * You can ask for my (or the TAs) help, and we can collaboratively edit and interact with your notebooks.
 
-## Access to server:
+## Access to server (https://laikapack-head.cheme.cmu.edu/hub):
 * You must be on CMU campus, or use the CMU VPN
 * You need to make a github account (github.com) and send Prof. Ulissi your githubid (e.g. Prof. Ulissi's github profile is at https://github.com/zulissi, so his username is `zulissi`). This is only used for authenatication/logging in to the server. 
 * Access your jupyterlab environment at https://laikapack-head.cheme.cmu.edu/hub
