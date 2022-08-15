@@ -76,19 +76,20 @@ x[i]
 
 +++ {"id": "ss9FIkxcdsgi"}
 
-What are the pros and cons of this method:
+`````{tip}
+
+**Pros/cons of finding minima/maxima by inspection!**
 
 Pros:
-
-1.  It is *easy*.
+1.  It is easy.
 2.  You *see* the whole domain you are looking at, and it is easy to see how many extrema their are
 
 Cons:
-
 1.  *Lot's* of function evaluations. Imagine if it took a long time to compute each value.
 2.  Somewhat tedious.
 3.  Not so easy to reproduce
 4.  Not scalable to large problems, your time to do this becomes a limiting factor.
+`````
 
 +++ {"id": "Y-WUmY0Odsgi"}
 
@@ -131,13 +132,24 @@ from scipy.misc import derivative
 def ypd(x):
     return derivative(f, x, dx=1e-6)
 
-
 fsolve(ypd, 0.5)
 ```
 
 +++ {"id": "ol6Iafxvdsgk"}
 
 These look the same within tolerance. This is not a beautiful solution, but it is hard to argue with success here!
+
+`````{tip}
+
+**Pros/cons of finding minima/maxima by root finding of the derivatives!**
+
+Pros:
+1.  We've turned a new problem into a problem we already know how to solve.
+
+Cons:
+1.  You have to do a derivative by hand or use a numerical estimate.
+2.  You get minima, maxima, and saddle points.
+`````
 
 +++ {"id": "tM3Sub3Cdsgl"}
 
@@ -245,7 +257,7 @@ Questions about local vs global minima and their use in decision making for engi
 
 +++ {"id": "fx2z_UFcdsgn"}
 
-`fmin` is for finding *minima*. We can use it to find maxima though, but finding the *minima* of $-f(x)$. You can see here that when we plot $-h(x)$ the minima become maxima, and vice-versa. Now you can see there are two definite minima, one near zero, and one near 3.5, which correspond to the maxima of $h(x)$.
+`minimize` is for finding *minima* (no surprise!). We can use it to find maxima though, by finding the *minima* of $-f(x)$. You can see here that when we plot $-h(x)$ the minima become maxima, and vice-versa. Now you can see there are two definite minima, one near zero, and one near 3.5, which correspond to the maxima of $h(x)$.
 
 ```{code-cell} ipython3
 :id: 8dZFxsEidsgn
@@ -258,7 +270,7 @@ plt.ylabel("-h(x)")
 
 +++ {"id": "1QXm-JUzdsgn"}
 
-The standard way to use fmin is to define an optional argument for the sign that defaults to one. Then, when we call fmin, we will pass -1 as the sign to the function, so we find the minimum of -h(x). Then, we evaluate h(x) at that x-value to get the actual value of the maximum. It is not necessary do this, you can also manually pass around the sign and try to keep it straight.
+The standard way to use minimize is to define an optional argument for the sign that defaults to one. Then, when we call fmin, we will pass -1 as the sign to the function, so we find the minimum of -h(x). Then, we evaluate h(x) at that x-value to get the actual value of the maximum. It is not necessary do this, you can also manually pass around the sign and try to keep it straight.
 
 Here is an example to find the maximum near 3.5.
 
@@ -289,7 +301,7 @@ Once again, here you have to decide which maximum is relevant
 
 +++ {"id": "JAYePfYNdsgo"}
 
-Compound X with concentration of $C_{X0} = 2.5$ kmol / m<sup>3</sup> at a flow rate of 12 m<sup>3</sup>/min is converted to Y in a first order reaction with a rate constant of 30 1/min in a tubular reactor. The value of Y is $1.5/kmol. The cost of operation is $2.50 per minute per m<sup>3</sup>. Find the reactor length that maximizes the profit (profit is value of products minus operating costs).
+Compound X with concentration of $C_{X0} = 2.5$ kmol / m$^3$ at a flow rate of 12 m$^3$/min is converted to Y in a first order reaction with a rate constant of 30 1/min in a tubular reactor. The value of Y is $\$$1.5/kmol. The cost of operation is $\$$2.50 per minute per m$^3$. Find the reactor length that maximizes the profit (profit is value of products minus operating costs).
 
 First, consider why there is a maximum. At low volumes the operating cost is low, and the production of Y is low. At high volumes, you maximize production of Y, so you have the most value, but the operating costs go up (to infinity for complete conversion!). Somewhere in the middle is where a maximum is.
 

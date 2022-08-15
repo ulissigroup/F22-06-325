@@ -649,7 +649,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f1bec19ca90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fcc236c9a90&gt;]
 </pre></div>
 </div>
 <img alt="_images/review_optimization_4_1.png" src="_images/review_optimization_4_1.png" />
@@ -671,10 +671,12 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>What are the pros and cons of this method:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Pros/cons of finding minima/maxima by inspection!</strong></p>
 <p>Pros:</p>
 <ol class="simple">
-<li><p>It is <em>easy</em>.</p></li>
+<li><p>It is easy.</p></li>
 <li><p>You <em>see</em> the whole domain you are looking at, and it is easy to see how many extrema their are</p></li>
 </ol>
 <p>Cons:</p>
@@ -684,6 +686,7 @@ title="Print to PDF"
 <li><p>Not so easy to reproduce</p></li>
 <li><p>Not scalable to large problems, your time to do this becomes a limiting factor.</p></li>
 </ol>
+</div>
 <section id="find-the-derivative-and-solve-for-where-it-is-zero">
 <h3>Find the derivative, and solve for where it is zero<a class="headerlink" href="#find-the-derivative-and-solve-for-where-it-is-zero" title="Permalink to this headline">#</a></h3>
 <p>We can also derive the first derivative:</p>
@@ -717,7 +720,6 @@ title="Print to PDF"
 <span class="k">def</span> <span class="nf">ypd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
 
-
 <span class="n">fsolve</span><span class="p">(</span><span class="n">ypd</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -729,6 +731,19 @@ title="Print to PDF"
 </div>
 </div>
 <p>These look the same within tolerance. This is not a beautiful solution, but it is hard to argue with success here!</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Pros/cons of finding minima/maxima by root finding of the derivatives!</strong></p>
+<p>Pros:</p>
+<ol class="simple">
+<li><p>We’ve turned a new problem into a problem we already know how to solve.</p></li>
+</ol>
+<p>Cons:</p>
+<ol class="simple">
+<li><p>You have to do a derivative by hand or use a numerical estimate.</p></li>
+<li><p>You get minima, maxima, and saddle points.</p></li>
+</ol>
+</div>
 </section>
 <section id="standard-python-approach-scipy-optimize-minimize">
 <h3>Standard python approach: scipy.optimize.minimize<a class="headerlink" href="#standard-python-approach-scipy-optimize-minimize" title="Permalink to this headline">#</a></h3>
@@ -780,7 +795,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1bddff0b80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcc21765c70&gt;
 </pre></div>
 </div>
 <img alt="_images/review_optimization_17_1.png" src="_images/review_optimization_17_1.png" />
@@ -864,7 +879,7 @@ title="Print to PDF"
 </section>
 <section id="finding-maxima">
 <h3>Finding maxima<a class="headerlink" href="#finding-maxima" title="Permalink to this headline">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">fmin</span></code> is for finding <em>minima</em>. We can use it to find maxima though, but finding the <em>minima</em> of <span class="math notranslate nohighlight">\(-f(x)\)</span>. You can see here that when we plot <span class="math notranslate nohighlight">\(-h(x)\)</span> the minima become maxima, and vice-versa. Now you can see there are two definite minima, one near zero, and one near 3.5, which correspond to the maxima of <span class="math notranslate nohighlight">\(h(x)\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">minimize</span></code> is for finding <em>minima</em> (no surprise!). We can use it to find maxima though, by finding the <em>minima</em> of <span class="math notranslate nohighlight">\(-f(x)\)</span>. You can see here that when we plot <span class="math notranslate nohighlight">\(-h(x)\)</span> the minima become maxima, and vice-versa. Now you can see there are two definite minima, one near zero, and one near 3.5, which correspond to the maxima of <span class="math notranslate nohighlight">\(h(x)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -880,7 +895,7 @@ title="Print to PDF"
 <img alt="_images/review_optimization_29_1.png" src="_images/review_optimization_29_1.png" />
 </div>
 </div>
-<p>The standard way to use fmin is to define an optional argument for the sign that defaults to one. Then, when we call fmin, we will pass -1 as the sign to the function, so we find the minimum of -h(x). Then, we evaluate h(x) at that x-value to get the actual value of the maximum. It is not necessary do this, you can also manually pass around the sign and try to keep it straight.</p>
+<p>The standard way to use minimize is to define an optional argument for the sign that defaults to one. Then, when we call fmin, we will pass -1 as the sign to the function, so we find the minimum of -h(x). Then, we evaluate h(x) at that x-value to get the actual value of the maximum. It is not necessary do this, you can also manually pass around the sign and try to keep it straight.</p>
 <p>Here is an example to find the maximum near 3.5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,7 +927,7 @@ title="Print to PDF"
 </section>
 <section id="example-application-to-maximizing-profit-in-a-pfr">
 <h3>Example: Application to maximizing profit in a PFR<a class="headerlink" href="#example-application-to-maximizing-profit-in-a-pfr" title="Permalink to this headline">#</a></h3>
-<p>Compound X with concentration of <span class="math notranslate nohighlight">\(C_{X0} = 2.5\)</span> kmol / m<sup>3</sup> at a flow rate of 12 m<sup>3</sup>/min is converted to Y in a first order reaction with a rate constant of 30 1/min in a tubular reactor. The value of Y is <span class="math notranslate nohighlight">\(1.5/kmol. The cost of operation is \)</span>2.50 per minute per m<sup>3</sup>. Find the reactor length that maximizes the profit (profit is value of products minus operating costs).</p>
+<p>Compound X with concentration of <span class="math notranslate nohighlight">\(C_{X0} = 2.5\)</span> kmol / m<span class="math notranslate nohighlight">\(^3\)</span> at a flow rate of 12 m<span class="math notranslate nohighlight">\(^3\)</span>/min is converted to Y in a first order reaction with a rate constant of 30 1/min in a tubular reactor. The value of Y is <span class="math notranslate nohighlight">\(\$\)</span>1.5/kmol. The cost of operation is <span class="math notranslate nohighlight">\(\$\)</span>2.50 per minute per m<span class="math notranslate nohighlight">\(^3\)</span>. Find the reactor length that maximizes the profit (profit is value of products minus operating costs).</p>
 <p>First, consider why there is a maximum. At low volumes the operating cost is low, and the production of Y is low. At high volumes, you maximize production of Y, so you have the most value, but the operating costs go up (to infinity for complete conversion!). Somewhere in the middle is where a maximum is.</p>
 <p>Here are some relevant constants.</p>
 <div class="cell docutils container">
