@@ -480,13 +480,11 @@ title="Print to PDF"
      Find the derivative, and solve for where it is zero
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-python-approach-scipy-optimize-minimize">
-   Standard python approach: scipy.optimize.minimize
-  </a>
-  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-python-approach-scipy-optimize-minimize">
+     Standard python approach: scipy.optimize.minimize
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiple-minima">
      Multiple minima
@@ -498,8 +496,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#application-to-maximizing-profit-in-a-pfr">
-     Application to maximizing profit in a PFR
+    <a class="reference internal nav-link" href="#example-application-to-maximizing-profit-in-a-pfr">
+     Example: Application to maximizing profit in a PFR
     </a>
    </li>
   </ul>
@@ -518,8 +516,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parameter-confidence-intervals">
-   Parameter confidence intervals
+  <a class="reference internal nav-link" href="#parameter-confidence-intervals-and-curve-fitting-with-lmfit">
+   Parameter confidence intervals and curve fitting with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lmfit
+    </span>
+   </code>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -556,13 +559,11 @@ title="Print to PDF"
      Find the derivative, and solve for where it is zero
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-python-approach-scipy-optimize-minimize">
-   Standard python approach: scipy.optimize.minimize
-  </a>
-  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-python-approach-scipy-optimize-minimize">
+     Standard python approach: scipy.optimize.minimize
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiple-minima">
      Multiple minima
@@ -574,8 +575,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#application-to-maximizing-profit-in-a-pfr">
-     Application to maximizing profit in a PFR
+    <a class="reference internal nav-link" href="#example-application-to-maximizing-profit-in-a-pfr">
+     Example: Application to maximizing profit in a PFR
     </a>
    </li>
   </ul>
@@ -594,8 +595,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parameter-confidence-intervals">
-   Parameter confidence intervals
+  <a class="reference internal nav-link" href="#parameter-confidence-intervals-and-curve-fitting-with-lmfit">
+   Parameter confidence intervals and curve fitting with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lmfit
+    </span>
+   </code>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -655,7 +661,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4e88075a60&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe1e019ca60&gt;]
 </pre></div>
 </div>
 <img alt="_images/review_optimization_4_1.png" src="_images/review_optimization_4_1.png" />
@@ -736,22 +742,18 @@ title="Print to PDF"
 </div>
 <p>These look the same within tolerance. This is not a beautiful solution, but it is hard to argue with success here!</p>
 </section>
-</section>
 <section id="standard-python-approach-scipy-optimize-minimize">
-<h2>Standard python approach: scipy.optimize.minimize<a class="headerlink" href="#standard-python-approach-scipy-optimize-minimize" title="Permalink to this headline">#</a></h2>
+<h3>Standard python approach: scipy.optimize.minimize<a class="headerlink" href="#standard-python-approach-scipy-optimize-minimize" title="Permalink to this headline">#</a></h3>
+<p>Here is the basic use of scipy.optimize.minimize. As always, we should plot the answer where feasible to make sure it is the minimum we wanted.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Full documentation and notes on types of algorithms: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
 
-minimize<span class="o">?</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here is the basic use of fmin. As always, we should plot the answer where feasible to make sure it is the minimum we wanted.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 
@@ -790,13 +792,14 @@ minimize<span class="o">?</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4e79123c40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe1d1276bb0&gt;
 </pre></div>
 </div>
-<img alt="_images/review_optimization_18_1.png" src="_images/review_optimization_18_1.png" />
+<img alt="_images/review_optimization_17_1.png" src="_images/review_optimization_17_1.png" />
 </div>
 </div>
 <p>Note this answer is only the same in the first 4 decimal places. Remember that these iterative approaches stop when a tolerance is met. Check the defaults on fmin!</p>
+</section>
 <section id="multiple-minima">
 <h3>Multiple minima<a class="headerlink" href="#multiple-minima" title="Permalink to this headline">#</a></h3>
 <p>It is possible for functions to have more than one minimum. In this case, your guess will determine which minimum is found. Here is an example where there is a minimum near 2.2, and one near 4.5.</p>
@@ -818,7 +821,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;h(x)&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_22_1.png" src="_images/review_optimization_22_1.png" />
+<img alt="_images/review_optimization_21_1.png" src="_images/review_optimization_21_1.png" />
 </div>
 </div>
 <p>This guess finds the one near 2.2:</p>
@@ -886,7 +889,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;-h(x)&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_30_1.png" src="_images/review_optimization_30_1.png" />
+<img alt="_images/review_optimization_29_1.png" src="_images/review_optimization_29_1.png" />
 </div>
 </div>
 <p>The standard way to use fmin is to define an optional argument for the sign that defaults to one. Then, when we call fmin, we will pass -1 as the sign to the function, so we find the minimum of -h(x). Then, we evaluate h(x) at that x-value to get the actual value of the maximum. It is not necessary do this, you can also manually pass around the sign and try to keep it straight.</p>
@@ -914,13 +917,13 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;h(x)&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_32_2.png" src="_images/review_optimization_32_2.png" />
+<img alt="_images/review_optimization_31_2.png" src="_images/review_optimization_31_2.png" />
 </div>
 </div>
 <p>Once again, here you have to decide which maximum is relevant</p>
 </section>
-<section id="application-to-maximizing-profit-in-a-pfr">
-<h3>Application to maximizing profit in a PFR<a class="headerlink" href="#application-to-maximizing-profit-in-a-pfr" title="Permalink to this headline">#</a></h3>
+<section id="example-application-to-maximizing-profit-in-a-pfr">
+<h3>Example: Application to maximizing profit in a PFR<a class="headerlink" href="#example-application-to-maximizing-profit-in-a-pfr" title="Permalink to this headline">#</a></h3>
 <p>Compound X with concentration of <span class="math notranslate nohighlight">\(C_{X0} = 2.5\)</span> kmol / m<sup>3</sup> at a flow rate of 12 m<sup>3</sup>/min is converted to Y in a first order reaction with a rate constant of 30 1/min in a tubular reactor. The value of Y is <span class="math notranslate nohighlight">\(1.5/kmol. The cost of operation is \)</span>2.50 per minute per m<sup>3</sup>. Find the reactor length that maximizes the profit (profit is value of products minus operating costs).</p>
 <p>First, consider why there is a maximum. At low volumes the operating cost is low, and the production of Y is low. At high volumes, you maximize production of Y, so you have the most value, but the operating costs go up (to infinity for complete conversion!). Somewhere in the middle is where a maximum is.</p>
 <p>Here are some relevant constants.</p>
@@ -992,7 +995,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;profit&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_42_1.png" src="_images/review_optimization_42_1.png" />
+<img alt="_images/review_optimization_41_1.png" src="_images/review_optimization_41_1.png" />
 </div>
 </div>
 <p>You can see from this plot there is a maximum near V=1.5. We can use that as a guess for fmin.</p>
@@ -1042,7 +1045,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;E&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_49_1.png" src="_images/review_optimization_49_1.png" />
+<img alt="_images/review_optimization_48_1.png" src="_images/review_optimization_48_1.png" />
 </div>
 </div>
 <p>In Materials Science we often want to fit an equation of state to this data. We will use this equation:</p>
@@ -1156,7 +1159,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;E&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_57_2.png" src="_images/review_optimization_57_2.png" />
+<img alt="_images/review_optimization_56_2.png" src="_images/review_optimization_56_2.png" />
 </div>
 </div>
 <p>That looks pretty good. We should ask ourselves, how do we know we got a minimum? We should see that the objective function is really at a minimum <em>for each of the parameters</em>. Here, we show that it is a minimum for the first parameter.</p>
@@ -1177,7 +1180,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;summed squared error&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_59_1.png" src="_images/review_optimization_59_1.png" />
+<img alt="_images/review_optimization_58_1.png" src="_images/review_optimization_58_1.png" />
 </div>
 </div>
 <p>You can see visually that the error goes up on each side of the parameter estimate.</p>
@@ -1219,8 +1222,8 @@ minimize<span class="o">?</span>
 <p>The result above shows that it takes positive pressure to compress the material, the pressure is zero at the minimum, and it takes negative pressure to cause it to expand.</p>
 <p>This example is just meant to illustrate what one can do with a model once you have it.</p>
 </section>
-<section id="parameter-confidence-intervals">
-<h2>Parameter confidence intervals<a class="headerlink" href="#parameter-confidence-intervals" title="Permalink to this headline">#</a></h2>
+<section id="parameter-confidence-intervals-and-curve-fitting-with-lmfit">
+<h2>Parameter confidence intervals and curve fitting with <code class="docutils literal notranslate"><span class="pre">lmfit</span></code><a class="headerlink" href="#parameter-confidence-intervals-and-curve-fitting-with-lmfit" title="Permalink to this headline">#</a></h2>
 <p>We have left out an important topic in the discussion above: How certain are we of the parameters we estimated? This is a complicated question that requires moderately sophisticated statistics to answer. We discussed how to do this at the end of 06-262, and we used a special python package <code class="docutils literal notranslate"><span class="pre">lmfit</span></code> to do so!</p>
 <p><code class="docutils literal notranslate"><span class="pre">lmfit</span></code> has some nice properties:</p>
 <ul class="simple">
@@ -1298,7 +1301,7 @@ minimize<span class="o">?</span>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;E&#39;)
 </pre></div>
 </div>
-<img alt="_images/review_optimization_65_2.png" src="_images/review_optimization_65_2.png" />
+<img alt="_images/review_optimization_64_2.png" src="_images/review_optimization_64_2.png" />
 </div>
 </div>
 </section>
