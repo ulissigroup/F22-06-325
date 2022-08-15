@@ -11,7 +11,7 @@ As a trial this semester, I am running a JupyterHub server for this course to pr
 * You have access to a bash terminal (helpful for learning unix/bash commands, moving files around, etc).
 * You can ask for my (or the TAs) help, and we can collaboratively edit and interact with your notebooks.
 
-## Access to server (https://laikapack-head.cheme.cmu.edu/hub):
+### Access to Jupyterhub server (https://laikapack-head.cheme.cmu.edu/hub):
 * You must be on CMU campus, or use the CMU VPN
 * You need to make a github account (github.com) and send Prof. Ulissi your githubid (e.g. Prof. Ulissi's github profile is at https://github.com/zulissi, so his username is `zulissi`). This is only used for authenatication/logging in to the server. 
 * Access your jupyterlab environment at https://laikapack-head.cheme.cmu.edu/hub
@@ -32,6 +32,6 @@ If you have strong feelings about the language you want to use, or using local v
 
 ** Windows:** I would suggest running python/etc in WSL (Windows Subsystem for Linux) and use mamba for package installation in python. If you want more details, ask and I will update this section.
 
-** Macs:** If you are use
+** Macs:** I don't have much experience with OSX, but it should be possible to install mamba and most python packages. 
 
-** Linux:** Install/use mamba for package installation
+** Linux:** I would suggest you install mamba and use that for python package installation. Check with the TAs or make a github issue and I can fill in details here if needed.
