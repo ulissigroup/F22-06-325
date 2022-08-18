@@ -191,7 +191,7 @@ X_train, X_val, y_train, y_val = train_test_split(
 )
 ```
 
-Finally, let's try a random forest model (one of many many possible models that we could try!). We'll fit it and plot the predicts for hte
+Finally, let's try a random forest model (one of many many possible models that we could try!). We'll fit it and plot the predictions for the validation data.
 
 ```{code-cell} ipython3
 :tags: []
@@ -221,6 +221,12 @@ plt.xlim([0,3])
 plt.ylim([0,3])
 plt.show()
 ```
+
+This model doesn't work very well for predicting the absolute values of the residuals. There are many things you could try:
+* Different models
+* Other ways of featurizing the data (especially the bulk compositions)
+* Building separate models for each adsorbate type
+* ...
 
 +++ {"id": "jXoiLncsU3pe", "jp-MarkdownHeadingCollapsed": true, "tags": []}
 
