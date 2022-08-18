@@ -1,0 +1,56 @@
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/conda/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import re
+
+
+def composition_to_elements(composition):
+    # Helper function to convert a composition like MnAu4 to a
+    # dictionary like {'Mn': 1, 'Au': 4}
+    elements = {}
+    for k, v in re.findall(r"([A-Z][a-z]*)(\d*)", composition):
+        if v == "":
+            v = 1
+        if k in elements:
+            elements[k] += int(v)
+        else:
+            elements[k] = int(v)
+    return elements
+
+
+bulk_element_counts = (
+    df["input_bulk_symbols"].apply(composition_to_elements).apply(pd.Series).fillna(0)
+)
+bulk_element_ratios = element_counts.div(element_counts.sum(axis=1), axis=0)
+bulk_element_ratios
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [2][0m, in [0;36m<cell line: 21>[0;34m()[0m
+[1;32m     15[0m     [38;5;28;01mreturn[39;00m elements
+[1;32m     18[0m bulk_element_counts [38;5;241m=[39m (
+[1;32m     19[0m     df[[38;5;124m"[39m[38;5;124minput_bulk_symbols[39m[38;5;124m"[39m][38;5;241m.[39mapply(composition_to_elements)[38;5;241m.[39mapply(pd[38;5;241m.[39mSeries)[38;5;241m.[39mfillna([38;5;241m0[39m)
+[1;32m     20[0m )
+[0;32m---> 21[0m bulk_element_ratios [38;5;241m=[39m [43melement_counts[49m[38;5;241m.[39mdiv(element_counts[38;5;241m.[39msum(axis[38;5;241m=[39m[38;5;241m1[39m), axis[38;5;241m=[39m[38;5;241m0[39m)
+[1;32m     22[0m bulk_element_ratios
+
+[0;31mNameError[0m: name 'element_counts' is not defined
+NameError: name 'element_counts' is not defined
+
