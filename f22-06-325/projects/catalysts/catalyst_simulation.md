@@ -88,6 +88,10 @@ Two csv files (`val_*.csv`) that together contain ~60,000 DFT energies and predi
     * 3 - surface reconstruction
     * 4 - incorrect CHCOH placement, appears to be CHCO with a lone, uninteracting, H far off in the unit cell
 
+## Data availability
+
+https://github.com/ulissigroup/F22-06-325/tree/main/f22-06-325/projects/catalysts/data
+
 +++ {"id": "13i7KQ9t-CV8"}
 
 ## Background:
