@@ -127,6 +127,101 @@ To gain an even better understanding of the Open Catalyst Project and the proble
 
 ## Hints and possible approaches
 
++++
+
+## Example Model
+
++++
+
+First, let's load the data using pandas and see what's in it!
+
+```{code-cell} ipython3
+import pandas as pd
+
+df = pd.read_csv("data/val_ID_compositions.csv").dropna()
+df
+```
+
+These formats are not very helpful. Let's try calculating the ratio of each element (one column for each unique element in the dataset)
+
+```{code-cell} ipython3
+import re
+
+
+def composition_to_elements(composition):
+    # Helper function to convert a composition like MnAu4 to a
+    # dictionary like {'Mn': 1, 'Au': 4}
+    elements = {}
+    for k, v in re.findall(r"([A-Z][a-z]*)(\d*)", composition):
+        if v == "":
+            v = 1
+        if k in elements:
+            elements[k] += int(v)
+        else:
+            elements[k] = int(v)
+    return elements
+
+
+bulk_element_counts = (
+    df["input_bulk_symbols"].apply(composition_to_elements).apply(pd.Series).fillna(0)
+)
+bulk_element_ratios = element_counts.div(element_counts.sum(axis=1), axis=0)
+bulk_element_ratios
+```
+
+Let's do the same thing for the elements in the adsorbate (the small molecule sitting on the surface
+
+```{code-cell} ipython3
+adsorbate_element_counts = (
+    df["input_ads_symbols"].apply(composition_to_elements).apply(pd.Series).fillna(0)
+)
+adsorbate_element_counts
+```
+
+As an example, let's construct a full feature matrix by stacking the bulk element ratios and the adsorbate elements counts into one big vector. For the regression target, we'll choose the absolute error between the relaxation machine learning model and the DFT energies. 
+
+Basically, we're trying to see if we can build a model that can predict when the complicated (gemnet) model will fail based on the composition of the adsorbate and the bulk material!
+
+```{code-cell} ipython3
+from sklearn.model_selection import train_test_split
+
+X_train, X_val, y_train, y_val = train_test_split(
+    np.hstack((bulk_element_ratios.values, adsorbate_element_counts.values)),
+    (df["output_gemnet_relaxation"] - df["DFT_energy"]).abs().values,
+)
+```
+
+Finally, let's try a random forest model (one of many many possible models that we could try!). We'll fit it and plot the predicts for hte
+
+```{code-cell} ipython3
+:tags: []
+
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+from sklearn.ensemble import RandomForestRegressor
+
+# Build a random forest regressor and fit it to the training data
+regr = RandomForestRegressor(max_depth=20, random_state=0)
+regr.fit(X_train, y_train)
+
+# Plot predictions for val as a kdeplot
+sns.kdeplot(
+    y_val,
+    regr.predict(X_val),
+    fill=True,
+)
+
+# Add a parity line and x/y axis labels
+plt.plot([np.min(y_val), np.max(y_val)], [np.min(y_val), np.max(y_val)], "k--")
+plt.axis("square")
+plt.xlabel("Actual abs(DFT_energy - output_gemnet_direct) [eV]")
+plt.ylabel("Predicted abs(DFT_energy - output_gemnet_direct) [eV]")
+plt.xlim([0,3])
+plt.ylim([0,3])
+plt.show()
+```
+
 +++ {"id": "jXoiLncsU3pe", "jp-MarkdownHeadingCollapsed": true, "tags": []}
 
 ````{note}
@@ -159,38 +254,40 @@ Val/Test
 :id: HodnfJpE8D0u
 
 import matplotlib
-matplotlib.use('Agg')
+
+matplotlib.use("Agg")
 
 import os
-import numpy as np
 
 import matplotlib.pyplot as plt
+import numpy as np
+
 %matplotlib inline
 
 params = {
-   'axes.labelsize': 14,
-   'font.size': 14,
-   'font.family': ' DejaVu Sans',
-   'legend.fontsize': 20,
-   'xtick.labelsize': 20,
-   'ytick.labelsize': 20,
-   'axes.labelsize': 25,
-   'axes.titlesize': 25,
-   'text.usetex': False,
-   'figure.figsize': [12, 12]
+    "axes.labelsize": 14,
+    "font.size": 14,
+    "font.family": " DejaVu Sans",
+    "legend.fontsize": 20,
+    "xtick.labelsize": 20,
+    "ytick.labelsize": 20,
+    "axes.labelsize": 25,
+    "axes.titlesize": 25,
+    "text.usetex": False,
+    "figure.figsize": [12, 12],
 }
 matplotlib.rcParams.update(params)
 
 
 import ase.io
-from ase.io.trajectory import Trajectory
-from ase.io import extxyz
+from ase import Atoms
+from ase.build import add_adsorbate, fcc100, molecule
 from ase.calculators.emt import EMT
-from ase.build import fcc100, add_adsorbate, molecule
 from ase.constraints import FixAtoms
+from ase.io import extxyz
+from ase.io.trajectory import Trajectory
 from ase.optimize import LBFGS
 from ase.visualize.plot import plot_atoms
-from ase import Atoms
 from IPython.display import Image
 ```
 
@@ -220,12 +317,12 @@ outputId: 96cd7bc8-2877-4b35-e133-80a10ad81b61
 ---
 ###DATA GENERATION - FEEL FREE TO SKIP###
 
-# This cell sets up and runs a structural relaxation 
+# This cell sets up and runs a structural relaxation
 # of a propane (C3H8) adsorbate on a copper (Cu) surface
 
 adslab = fcc100("Cu", size=(3, 3, 3))
 adsorbate = molecule("C3H8")
-add_adsorbate(adslab, adsorbate, 3, offset=(1, 1)) # adslab = adsorbate + slab
+add_adsorbate(adslab, adsorbate, 3, offset=(1, 1))  # adslab = adsorbate + slab
 
 # tag all slab atoms below surface as 0, surface as 1, adsorbate as 2
 tags = np.zeros(len(adslab))
@@ -234,19 +331,19 @@ tags[27:] = 2
 
 adslab.set_tags(tags)
 
-# Fixed atoms are prevented from moving during a structure relaxation. 
-# We fix all slab atoms beneath the surface. 
-cons= FixAtoms(indices=[atom.index for atom in adslab if (atom.tag == 0)])
+# Fixed atoms are prevented from moving during a structure relaxation.
+# We fix all slab atoms beneath the surface.
+cons = FixAtoms(indices=[atom.index for atom in adslab if (atom.tag == 0)])
 adslab.set_constraint(cons)
 adslab.center(vacuum=13.0, axis=2)
 adslab.set_pbc(True)
 adslab.set_calculator(EMT())
 
-os.makedirs('data', exist_ok=True)
+os.makedirs("data", exist_ok=True)
 
-# Define structure optimizer - LBFGS. Run for 100 steps, 
+# Define structure optimizer - LBFGS. Run for 100 steps,
 # or if the max force on all atoms (fmax) is below 0 ev/A.
-# fmax is typically set to 0.01-0.05 eV/A, 
+# fmax is typically set to 0.01-0.05 eV/A,
 # for this demo however we run for the full 100 steps.
 
 dyn = LBFGS(adslab, trajectory="data/toy_c3h8_relax.traj")
@@ -255,8 +352,8 @@ dyn.run(fmax=0, steps=100)
 traj = ase.io.read("data/toy_c3h8_relax.traj", ":")
 
 # convert traj format to extxyz format (used by OC20 dataset)
-columns = (['symbols','positions', 'move_mask', 'tags'])
-with open('data/toy_c3h8_relax.extxyz','w') as f:
+columns = ["symbols", "positions", "move_mask", "tags"]
+with open("data/toy_c3h8_relax.extxyz", "w") as f:
     extxyz.write_xyz(f, traj, columns=columns)
 ```
 
@@ -288,22 +385,13 @@ id: CV5qe6IP9vZg
 outputId: 256f97d6-daa7-40fa-ef50-7ba0ca005f9d
 ---
 fig, ax = plt.subplots(1, 3)
-labels = ['initial', 'middle', 'final']
+labels = ["initial", "middle", "final"]
 for i in range(3):
-    ax[i].axis('off')
+    ax[i].axis("off")
     ax[i].set_title(labels[i])
-ase.visualize.plot.plot_atoms(traj[0], 
-                              ax[0], 
-                              radii=0.8, 
-                              rotation=("-75x, 45y, 10z"))
-ase.visualize.plot.plot_atoms(traj[50], 
-                              ax[1], 
-                              radii=0.8, 
-                              rotation=("-75x, 45y, 10z"))
-ase.visualize.plot.plot_atoms(traj[-1], 
-                              ax[2], 
-                              radii=0.8, 
-                              rotation=("-75x, 45y, 10z"))
+ase.visualize.plot.plot_atoms(traj[0], ax[0], radii=0.8, rotation=("-75x, 45y, 10z"))
+ase.visualize.plot.plot_atoms(traj[50], ax[1], radii=0.8, rotation=("-75x, 45y, 10z"))
+ase.visualize.plot.plot_atoms(traj[-1], ax[2], radii=0.8, rotation=("-75x, 45y, 10z"))
 ```
 
 +++ {"id": "SSR1vQZ1_Ojq"}
@@ -396,23 +484,20 @@ id: Flzo7aO-RgyA
 outputId: 36835a5f-cc91-48d1-ee8b-8fc5112c0cb6
 ---
 fig, ax = plt.subplots(1, 3)
-labels = ['initial', 'middle', 'final']
+labels = ["initial", "middle", "final"]
 for i in range(3):
-    ax[i].axis('off')
+    ax[i].axis("off")
     ax[i].set_title(labels[i])
 
-ase.visualize.plot.plot_atoms(traj[0].repeat((2,2,1)), 
-                              ax[0], 
-                              radii=0.8, 
-                              rotation=("-75x, 45y, 10z"))
-ase.visualize.plot.plot_atoms(traj[50].repeat((2,2,1)), 
-                              ax[1], 
-                              radii=0.8, 
-                              rotation=("-75x, 45y, 10z"))
-ase.visualize.plot.plot_atoms(traj[-1].repeat((2,2,1)), 
-                              ax[2], 
-                              radii=0.8, 
-                              rotation=("-75x, 45y, 10z"))
+ase.visualize.plot.plot_atoms(
+    traj[0].repeat((2, 2, 1)), ax[0], radii=0.8, rotation=("-75x, 45y, 10z")
+)
+ase.visualize.plot.plot_atoms(
+    traj[50].repeat((2, 2, 1)), ax[1], radii=0.8, rotation=("-75x, 45y, 10z")
+)
+ase.visualize.plot.plot_atoms(
+    traj[-1].repeat((2, 2, 1)), ax[2], radii=0.8, rotation=("-75x, 45y, 10z")
+)
 ```
 
 +++ {"id": "TWGXcH7AARpy"}
@@ -457,11 +542,11 @@ id: FBMUmGrrCD_h
 outputId: 4d0aad44-f6bd-491b-d734-5edf5be04031
 ---
 cons = i_structure.constraints[0]
-print(cons, '\n')
+print(cons, "\n")
 
 # indices of fixed atoms
 indices = cons.index
-print(indices, '\n')
+print(indices, "\n")
 
 # fixed atoms correspond to tags = 0
 print(tags[indices])
@@ -482,28 +567,28 @@ outputId: c2f5ea9c-1614-42ef-fbc0-75fddd7c976f
 ---
 final_structure = traj[-1]
 relaxed_energy = final_structure.get_potential_energy()
-print(f'Relaxed absolute energy = {relaxed_energy} eV')
+print(f"Relaxed absolute energy = {relaxed_energy} eV")
 
-# Corresponding raw slab used in original adslab (adsorbate+slab) system. 
+# Corresponding raw slab used in original adslab (adsorbate+slab) system.
 raw_slab = fcc100("Cu", size=(3, 3, 3))
 raw_slab.set_calculator(EMT())
 raw_slab_energy = raw_slab.get_potential_energy()
-print(f'Raw slab energy = {raw_slab_energy} eV')
+print(f"Raw slab energy = {raw_slab_energy} eV")
 
 
 adsorbate = Atoms("C3H8").get_chemical_symbols()
 # For clarity, we define arbitrary gas reference energies here.
-# A more detailed discussion of these calculations can be found in the corresponding paper's SI. 
-gas_reference_energies = {'H': .3, 'O': .45, 'C': .35, 'N': .50}
+# A more detailed discussion of these calculations can be found in the corresponding paper's SI.
+gas_reference_energies = {"H": 0.3, "O": 0.45, "C": 0.35, "N": 0.50}
 
 adsorbate_reference_energy = 0
 for ads in adsorbate:
     adsorbate_reference_energy += gas_reference_energies[ads]
 
-print(f'Adsorbate reference energy = {adsorbate_reference_energy} eV\n')
+print(f"Adsorbate reference energy = {adsorbate_reference_energy} eV\n")
 
 adsorption_energy = relaxed_energy - raw_slab_energy - adsorbate_reference_energy
-print(f'Adsorption energy: {adsorption_energy} eV')
+print(f"Adsorption energy: {adsorption_energy} eV")
 ```
 
 +++ {"id": "EchgyYxXCUit"}
@@ -520,7 +605,10 @@ colab:
 id: WffoTL5pCSrg
 outputId: 86e7a0fb-7a34-42ee-db58-edd30323eb54
 ---
-energies = [image.get_potential_energy() - raw_slab_energy - adsorbate_reference_energy for image in traj]
+energies = [
+    image.get_potential_energy() - raw_slab_energy - adsorbate_reference_energy
+    for image in traj
+]
 
 plt.figure(figsize=(7, 7))
 plt.plot(range(len(energies)), energies, lw=3)
