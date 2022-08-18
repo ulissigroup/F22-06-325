@@ -1176,7 +1176,7 @@ https://colab.research.google.com/drive/1oGZcrakB4Pbj8Xq74lSvcRDUHw9L-Dh5?usp=sh
 </div>
 </div>
 </div>
-<p>Finally, let’s try a random forest model (one of many many possible models that we could try!). We’ll fit it and plot the predicts for hte</p>
+<p>Finally, let’s try a random forest model (one of many many possible models that we could try!). We’ll fit it and plot the predictions for the validation data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1207,6 +1207,13 @@ https://colab.research.google.com/drive/1oGZcrakB4Pbj8Xq74lSvcRDUHw9L-Dh5?usp=sh
 </div>
 </div>
 </div>
+<p>This model doesn’t work very well for predicting the absolute values of the residuals. There are many things you could try:</p>
+<ul class="simple">
+<li><p>Different models</p></li>
+<li><p>Other ways of featurizing the data (especially the bulk compositions)</p></li>
+<li><p>Building separate models for each adsorbate type</p></li>
+<li><p>…</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The below information is not necessary for the project, but helps to explain the original dataset and the type of simulations and energies that are being calculated</p>
