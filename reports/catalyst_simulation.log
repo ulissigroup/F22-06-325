@@ -27,7 +27,7 @@ print(dataset[0])
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mInvalidError[0m                              Traceback (most recent call last)
+[0;31mAssertionError[0m                            Traceback (most recent call last)
 Input [0;32mIn [19][0m, in [0;36m<cell line: 4>[0;34m()[0m
 [1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mocpmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdatasets[39;00m [38;5;28;01mimport[39;00m TrajectoryLmdbDataset, SinglePointLmdbDataset
 [1;32m      3[0m [38;5;66;03m# TrajectoryLmdbDataset is our custom Dataset method to read the lmdbs as Data objects. Note that we need to give the path to the folder containing lmdbs for S2EF[39;00m
@@ -44,28 +44,13 @@ File [0;32m/opt/ocp/ocpmodels/datasets/lmdb_dataset.py:138[0m, in [0;36mTraje
 [1;32m    142[0m         stacklevel[38;5;241m=[39m[38;5;241m3[39m,
 [1;32m    143[0m     )
 
-File [0;32m/opt/ocp/ocpmodels/datasets/lmdb_dataset.py:56[0m, in [0;36mLmdbDataset.__init__[0;34m(self, config, transform)[0m
-[1;32m     54[0m [38;5;28mself[39m[38;5;241m.[39m_keys, [38;5;28mself[39m[38;5;241m.[39menvs [38;5;241m=[39m [], []
-[1;32m     55[0m [38;5;28;01mfor[39;00m db_path [38;5;129;01min[39;00m db_paths:
-[0;32m---> 56[0m     [38;5;28mself[39m[38;5;241m.[39menvs[38;5;241m.[39mappend([38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mconnect_db[49m[43m([49m[43mdb_path[49m[43m)[49m)
-[1;32m     57[0m     length [38;5;241m=[39m pickle[38;5;241m.[39mloads(
-[1;32m     58[0m         [38;5;28mself[39m[38;5;241m.[39menvs[[38;5;241m-[39m[38;5;241m1[39m][38;5;241m.[39mbegin()[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mlength[39m[38;5;124m"[39m[38;5;241m.[39mencode([38;5;124m"[39m[38;5;124mascii[39m[38;5;124m"[39m))
-[1;32m     59[0m     )
-[1;32m     60[0m     [38;5;28mself[39m[38;5;241m.[39m_keys[38;5;241m.[39mappend([38;5;28mlist[39m([38;5;28mrange[39m(length)))
+File [0;32m/opt/ocp/ocpmodels/datasets/lmdb_dataset.py:50[0m, in [0;36mLmdbDataset.__init__[0;34m(self, config, transform)[0m
+[1;32m     48[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39mpath[38;5;241m.[39mis_file():
+[1;32m     49[0m     db_paths [38;5;241m=[39m [38;5;28msorted[39m([38;5;28mself[39m[38;5;241m.[39mpath[38;5;241m.[39mglob([38;5;124m"[39m[38;5;124m*.lmdb[39m[38;5;124m"[39m))
+[0;32m---> 50[0m     [38;5;28;01massert[39;00m [38;5;28mlen[39m(db_paths) [38;5;241m>[39m [38;5;241m0[39m, [38;5;124mf[39m[38;5;124m"[39m[38;5;124mNo LMDBs found in [39m[38;5;124m'[39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mpath[38;5;132;01m}[39;00m[38;5;124m'[39m[38;5;124m"[39m
+[1;32m     52[0m     [38;5;28mself[39m[38;5;241m.[39mmetadata_path [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mpath [38;5;241m/[39m [38;5;124m"[39m[38;5;124mmetadata.npz[39m[38;5;124m"[39m
+[1;32m     54[0m     [38;5;28mself[39m[38;5;241m.[39m_keys, [38;5;28mself[39m[38;5;241m.[39menvs [38;5;241m=[39m [], []
 
-File [0;32m/opt/ocp/ocpmodels/datasets/lmdb_dataset.py:107[0m, in [0;36mLmdbDataset.connect_db[0;34m(self, lmdb_path)[0m
-[1;32m    106[0m [38;5;28;01mdef[39;00m [38;5;21mconnect_db[39m([38;5;28mself[39m, lmdb_path[38;5;241m=[39m[38;5;28;01mNone[39;00m):
-[0;32m--> 107[0m     env [38;5;241m=[39m [43mlmdb[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m
-[1;32m    108[0m [43m        [49m[38;5;28;43mstr[39;49m[43m([49m[43mlmdb_path[49m[43m)[49m[43m,[49m
-[1;32m    109[0m [43m        [49m[43msubdir[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
-[1;32m    110[0m [43m        [49m[43mreadonly[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
-[1;32m    111[0m [43m        [49m[43mlock[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
-[1;32m    112[0m [43m        [49m[43mreadahead[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
-[1;32m    113[0m [43m        [49m[43mmeminit[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
-[1;32m    114[0m [43m        [49m[43mmax_readers[49m[38;5;241;43m=[39;49m[38;5;241;43m1[39;49m[43m,[49m
-[1;32m    115[0m [43m    [49m[43m)[49m
-[1;32m    116[0m     [38;5;28;01mreturn[39;00m env
-
-[0;31mInvalidError[0m: data/s2ef/train_100/data.lmdb: MDB_INVALID: File is not an LMDB file
-InvalidError: data/s2ef/train_100/data.lmdb: MDB_INVALID: File is not an LMDB file
+[0;31mAssertionError[0m: No LMDBs found in 'data/s2ef/train_100'
+AssertionError: No LMDBs found in 'data/s2ef/train_100'
 
