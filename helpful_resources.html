@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Numerical ODE Integration (with Events!)" href="review_odes.html" />
+    <link rel="next" title="Python functions, error handling, exceptions, debugging" href="python_debugging.html" />
     <link rel="prev" title="Software Environments" href="software.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -142,35 +142,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Numerical Methods Recap
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="review_odes.html">
-   Numerical ODE Integration (with Events!)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="review_optimization.html">
-   Review of Numerical Methods for Local Optimization and Curve Fitting
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Machine Learning Basics
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="extrapolation.html">
-   What Does it Mean to Build Data-Driven Models?
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Lab Office Hour Resources
  </span>
 </p>
@@ -183,31 +154,31 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Projects
+  Assignments
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/wildfires/wildfire_dataset.html">
-   Predicting Wildfire Smoke Composition
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="projects/overview.html">
+   Course Project
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/catalysts/catalyst_simulation.html">
-   Using ML to Predict Catalyst Properties
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Homeworks
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="homeworks/HW1.html">
-   HW1 (due 9/4)
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/wildfires/wildfire_dataset.html">
+     Predicting Wildfire Smoke Composition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/catalysts/catalyst_simulation.html">
+     Using ML to Predict Catalyst Properties
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -395,6 +366,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://www.youtube.com/c/JohnKitchin/videos">John Kitchin’s youtube channel</a></p>
 <ul>
 <li><p>Very relevant, starts at the basics and works up. Accompanying PDF textbooks available too!</p></li>
+<li><p>The notes for 06-623 are also very helpful. https://kitchingroup.cheme.cmu.edu/f19-06623/</p></li>
 <li><p><a class="reference external" href="https://pointbreezepubs.gumroad.com/">Prof. Kitchin also self-publishes guides to many of these topics</a>. Ask Prof. Ulissi for a discount code if you want to buy something!</p></li>
 </ul>
 </li>
@@ -474,10 +446,10 @@ title="Print to PDF"
             <p class="prev-next-title">Software Environments</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="review_odes.html" title="next page">
+    <a class='right-next' id="next-link" href="python_debugging.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Numerical ODE Integration (with Events!)</p>
+        <p class="prev-next-title">Python functions, error handling, exceptions, debugging</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
