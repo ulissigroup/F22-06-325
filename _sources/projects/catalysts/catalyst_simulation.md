@@ -219,9 +219,12 @@ plt.axis("square")
 plt.xlabel("Actual DFT Energy [eV]")
 plt.ylabel("Predicted DFT Energy [eV]")
 plt.show()
+
+from sklearn.metrics import mean_absolute_error
+print(f'The mean absolute error is {mean_absolute_error(y_val, regr.predict(X_val)):.2f} eV')
 ```
 
-This model doesn't work very well for predicting the absolute values of the residuals. There are many things you could try:
+This model works ok for predicting the DFT energies. There are many things you could try:
 * Different models
 * Predicting the difference between the expensive ML models and the DFT values (see challenges above)
 * Other ways of featurizing the data (especially the bulk compositions)
