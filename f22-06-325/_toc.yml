@@ -16,18 +16,18 @@ parts:
     sections:
     - file: notes/review_odes
     - file: notes/review_optimization
-  - file: ml_basics
+  - file: notes/ml_basics
     sections:
     - file: notes/extrapolation
-- caption: Lab Office Hour Resources
-  chapters:
-  - file: python_debugging
+  - file: labs/overview
+    sections:
+    - file: labs/python_debugging
 - caption: Assignments
   chapters:
   - file: projects/overview
     sections:
     - file: projects/wildfires/wildfire_dataset
     - file: projects/catalysts/catalyst_simulation
-  - file: projects/homework
+  - file: homeworks/homework
     sections:
     - file: homeworks/HW1
