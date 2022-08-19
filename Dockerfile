@@ -52,9 +52,12 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+ENV OMP_NUM_THREADS=1 
+
 USER root
 RUN git clone https://github.com/Open-Catalyst-Project/ocp /opt/ocp && fix-permissions /opt/ocp
 USER $NB_UID
+
 RUN cd /opt/ocp && python setup.py develop
 
 
