@@ -165,7 +165,7 @@ def composition_to_elements(composition):
 bulk_element_counts = (
     df["input_bulk_symbols"].apply(composition_to_elements).apply(pd.Series).fillna(0)
 )
-bulk_element_ratios = element_counts.div(element_counts.sum(axis=1), axis=0)
+bulk_element_ratios = bulk_element_counts.div(bulk_element_counts.sum(axis=1), axis=0)
 bulk_element_ratios
 ```
 
@@ -184,10 +184,11 @@ Basically, we're trying to see if we can build a model that can predict when the
 
 ```{code-cell} ipython3
 from sklearn.model_selection import train_test_split
+import numpy as np
 
 X_train, X_val, y_train, y_val = train_test_split(
     np.hstack((bulk_element_ratios.values, adsorbate_element_counts.values)),
-    (df["output_gemnet_relaxation"] - df["DFT_energy"]).abs().values,
+    df["DFT_energy"].values,
 )
 ```
 
@@ -215,15 +216,14 @@ sns.kdeplot(
 # Add a parity line and x/y axis labels
 plt.plot([np.min(y_val), np.max(y_val)], [np.min(y_val), np.max(y_val)], "k--")
 plt.axis("square")
-plt.xlabel("Actual abs(DFT_energy - output_gemnet_direct) [eV]")
-plt.ylabel("Predicted abs(DFT_energy - output_gemnet_direct) [eV]")
-plt.xlim([0,3])
-plt.ylim([0,3])
+plt.xlabel("Actual DFT Energy [eV]")
+plt.ylabel("Predicted DFT Energy [eV]")
 plt.show()
 ```
 
 This model doesn't work very well for predicting the absolute values of the residuals. There are many things you could try:
 * Different models
+* Predicting the difference between the expensive ML models and the DFT values (see challenges above)
 * Other ways of featurizing the data (especially the bulk compositions)
 * Building separate models for each adsorbate type
 * ...
