@@ -18,7 +18,7 @@ This work was adapted from lecture notes in John Kitchin's excellent 06-623 cour
 
 +++
 
-# Numerical ODE Integration (with Events!)
+# ODE Integration (with Events!)
 
 
 `````{note}

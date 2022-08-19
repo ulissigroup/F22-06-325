@@ -10,20 +10,24 @@ parts:
   - file: syllabus
   - file: software
   - file: helpful_resources
-- caption: Numerical Methods Recap
+- caption: Course Notes
   chapters:
-  - file: review_odes
-  - file: review_optimization
-- caption: Machine Learning Basics
-  chapters:
-  - file: extrapolation
+  - file: recap
+    sections:
+    - file: review_odes
+    - file: review_optimization
+  - file: ml_basics
+    sections:
+    - file: extrapolation
 - caption: Lab Office Hour Resources
   chapters:
   - file: python_debugging
-- caption: Projects
+- caption: Assignments
   chapters:
-  - file: projects/wildfires/wildfire_dataset
-  - file: projects/catalysts/catalyst_simulation
-- caption: Homeworks
-  chapters:
-  - file: homeworks/HW1
+  - file: projects/overview
+    sections:
+    - file: projects/wildfires/wildfire_dataset
+    - file: projects/catalysts/catalyst_simulation
+  - file: projects/homework
+    sections:
+    - file: homeworks/HW1

@@ -2,6 +2,7 @@
 **Video resources:**
 * [John Kitchin's youtube channel](https://www.youtube.com/c/JohnKitchin/videos)
     * Very relevant, starts at the basics and works up. Accompanying PDF textbooks available too!
+    * The notes for 06-623 are also very helpful. https://kitchingroup.cheme.cmu.edu/f19-06623/
     * [Prof. Kitchin also self-publishes guides to many of these topics](https://pointbreezepubs.gumroad.com/). Ask Prof. Ulissi for a discount code if you want to buy something!
     
 **Relevant courses (including videos/slides/etc):**
