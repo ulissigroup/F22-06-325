@@ -12,13 +12,13 @@ parts:
   - file: helpful_resources
 - caption: Course Notes
   chapters:
-  - file: recap
+  - file: notes/recap
     sections:
-    - file: review_odes
-    - file: review_optimization
+    - file: notes/review_odes
+    - file: notes/review_optimization
   - file: ml_basics
     sections:
-    - file: extrapolation
+    - file: notes/extrapolation
 - caption: Lab Office Hour Resources
   chapters:
   - file: python_debugging
