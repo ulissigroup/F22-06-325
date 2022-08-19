@@ -1,10 +1,13 @@
 
-# Tentative course schedule
+# Course schedule
+
+Dates/etc are tentative and might change!
+
 
 | **Day**      | **Date** | **Lecture**                                                                                              |**Notes Link**  |
 |--------------|----------|----------------------------------------------------------------------------------------------------------|---|
-| Monday       | 08/29/22 | Recap/review of linear algebra and ODEs                                                                  |  {doc}`review_odes` |
-| Wednesday    | 08/31/22 | Recap/review of black-box optimization and regression with minimize                                 |   {doc}`review_optimization`  |
+| Monday       | 08/29/22 | Recap/review of linear algebra and ODEs                                                                  |  {doc}`notes/review_odes` |
+| Wednesday    | 08/31/22 | Recap/review of black-box optimization and regression with minimize                                 |   {doc}`notes/review_optimization`  |
 | Optional lab |          | Python functions, error handling, exceptions, debugging                                                  |   |
 | Monday       | 09/05/22 | Labor day no class                                                                                       |   |
 | Wednesday    | 09/07/22 | What does it mean to build a data-driven model? How do we know if we're interpolating or extrapolating?  |   |
