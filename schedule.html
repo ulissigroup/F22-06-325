@@ -142,14 +142,31 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Lab Office Hour Resources
+  Course Notes
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python_debugging.html">
-   Python functions, error handling, exceptions, debugging
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notes/recap.html">
+   Recap of Numerical Methods
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notes/review_odes.html">
+     ODE Integration (with Events!)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notes/review_optimization.html">
+     Review of Numerical Methods for Local Optimization and Curve Fitting
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -162,8 +179,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="projects/overview.html">
    Course Project
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -373,12 +390,12 @@ title="Print to PDF"
 <tr class="row-even"><td><p>Monday</p></td>
 <td><p>08/29/22</p></td>
 <td><p>Recap/review of linear algebra and ODEs</p></td>
-<td><p><a class="reference internal" href="review_odes.html"><span class="doc">ODE Integration (with Events!)</span></a></p></td>
+<td><p><span class="xref std std-doc">review_odes</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>Wednesday</p></td>
 <td><p>08/31/22</p></td>
 <td><p>Recap/review of black-box optimization and regression with minimize</p></td>
-<td><p><a class="reference internal" href="review_optimization.html"><span class="doc">Review of Numerical Methods for Local Optimization and Curve Fitting</span></a></p></td>
+<td><p><span class="xref std std-doc">review_optimization</span></p></td>
 </tr>
 <tr class="row-even"><td><p>Optional lab</p></td>
 <td><p></p></td>
