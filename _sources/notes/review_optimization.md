@@ -18,7 +18,7 @@ This lecture was also adapted from lecture notes in John Kitchin's excellent 06-
 
 +++
 
-# Review of Numerical Methods for Local Optimization and Curve Fitting
+# Local Optimization and Curve Fitting
 
 
 `````{note}
@@ -132,6 +132,7 @@ from scipy.misc import derivative
 def ypd(x):
     return derivative(f, x, dx=1e-6)
 
+
 fsolve(ypd, 0.5)
 ```
 
@@ -168,6 +169,7 @@ Full documentation and notes on types of algorithms: https://docs.scipy.org/doc/
 :outputId: a1121bee-cb03-41f3-e55c-dadb66c1549a
 
 from scipy.optimize import minimize
+
 
 def f(x):
     return x**2 + np.exp(-5 * x**2)

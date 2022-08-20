@@ -6,7 +6,7 @@ There will be a group project to apply things you learn in 06-325 to datasets re
 * Experimenting with data featurization and ML modeling techniques
 * Communicating complex statistical and numerical analyses
 
-These are really hard problems. There is no one right way to solve them. 
+These are really hard problems. There is not one right way to solve them! 
 
 ## Project Choices
 
@@ -21,7 +21,20 @@ In addition, you are welcome to propose your own dataset/topic area if you have 
 
 ## Teams
 
+Teams of 4 students will be organized through CATME by 9/9 based on project interests and other factors. I think you all have used CATME in prior lab classes.
+
 ## Deliverables
+* **9/9:** Teams organized based on project interest
+* **9/23:** <1 page proposal due on gradescope with the below information. It's fine if these are drafts/etc, this is just to get you thinking about the process and what you will try.  
+    * Draft project title
+    * Team members
+    * Summary of challenge
+    * Short description of data
+    * Proposed approach (features, models, etc)
+    * How will you know if the model works?
+* **Week of 10/10 (precise date TBD):** Group poster presentation, and jupyter notebook due.
 
 ## Grading
-
+* 10% proposal 
+* 50% Poster presentation
+* 40% Notebook/code correctness, organization, description of methods, etc. 
