@@ -14,6 +14,9 @@
 * [Berkeley Data 8](http://data8.org/sp22/)
     * More statistics focused, but excellent examples and good background on the stats
     * Textbook: [Berkeley Data 8 Textbook (Inferential Thinking)](https://inferentialthinking.com/chapters/intro.html)
+* [CMU 10-601](http://www.cs.cmu.edu/~mgormley/courses/10601/schedule.html)
+    * Slides, lectures, etc all available
+    * Lecture recordings available for CMU students through panopto
     
 **Online textbooks:**
 * [deep learning for molecules & materials](https://dmol.pub/)
