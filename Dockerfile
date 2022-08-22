@@ -12,6 +12,7 @@ RUN mamba install --quiet --yes \
     python-lsp-server \
     jupyterlab-lsp \
     jupyterlab-myst \
+    jupyterlab-spellchecker \
     git-lfs \
     lmfit \
     pre-commit && \
