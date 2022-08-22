@@ -6,12 +6,12 @@
   * Email: zulissi@andrew.cmu.edu
   * Location: Doherty Hall A207A
   * Office Hours: TBD
-* TA 1 - TBD
+* TA - TBD
 
 ## Course Info
 
 * **Lectures:** Monday & Wednesday 2:30 – 4:20 pm
-* **Location:** Mellon Institute 348
+* **Location:** Gates 4215
 * **Format:** in-person expectation
 * **Textbook:** No required textbooks. Resources will be provided. 
 * **Prerequisites:** 06-262 (Math Methods), 15-110/112
@@ -21,11 +21,21 @@ This course will focus on applying numerical methods and machine learning to che
 
 ## Course Objectives:
 
-By the end of this course you will have learned and be comfortable in using: 
-* 
+By the end of this course you will have learned and be familiar with the concepts of: 
+* numerical linear algebra tools (numpy, arrays, etc)
+* numerical differential equation tools (scipy solve_ivp, etc)
+* plotting tools (matplotlib, seaborn, plotly)
+* data input/output tools for working with structured files (eg pandas)
+* linear and non-linear regression analyses (including basic uncertainty estimation)
+* machine learning and statistics packages for making cross-validation splits, etc (scikit-learn)
+* basic neural network or deep learning model development (pytorch or pytorch lightning)
 
 You will also have developed skills in: 
-* 
+* Communication of complex numerical and statistical analyses
+* Thinking critically about data format and limitations
+* Featurizing chemical engineering datasets in ways that ML models can understand
+* Differentiating between competing data-driven models
+* Debugging and constructing numerical and computational workflows and data analyses
 
 ## Course format
 This course is in-person expectation (IPE). Attendance will be required and assessed through participation in in-class exercises. We will all do our best to make classes helpful and interactive!
@@ -34,7 +44,20 @@ We will have a five minute stretch break at ~2:45 pm each day.
 
 ## Grading 
 
+* 50%: Homework (1 lowest grade dropped)
+* 30%: Group project
+* 20%: in-class participation (submission of in-class assignments)
+
+As a trial, for the first two weeks there will be bonus credit for participation. If you notice a typo in the online notes, or think a concept could be described more clearly, or have a helpful link/resource that should be added to understand more about the content, fork the course github (https://github.com/ulissigroup/F22-06-325), make the suggested edit, and open a pull request. Ask the TAs for help doing this at one of the office hours if that's not clear!
+* Typo: 1 bonus pt
+* Helpful link or resource (specific video/slides/etc from another course or content that explains a concept in more detail): 1 pt
+* Code improvement/clarification: 2 bonus pts
+If this is helpful and used, I will extend it for the semester and/or edit the bonus points / types.
+
+The course will be graded on the standard scale (90-100 A, 80-90 B, etc.). No curve is expected for this course. Numerical methods and coding is complicated and it will take time to develop the necessary skills, so expect that the homeworks will be challenging. With this system in place you should always know your current grade.
+
 ## Important Dates 
+The schedule should be up to date as we go ({doc}`schedule`). If it's not clear or you think there's a mistake, please open a github issue for it!
 
 ## Course Website
 You will need to access our course webpage on Canvas at https://www.cmu.edu/canvas - this is where grades will be posted. Canvas also contains links to the google drive for the course, which will contain the lecture notes, practice exams, etc.
@@ -49,22 +72,29 @@ Summary:
 
 ## Homework
 
-Homework assignments will be posted on google drive most Wednesdays and are due one week later on Wednesdays at noon (uploaded to Gradescope). There is a link to the Gradescope page on the canvas site, and there are helpful FAQs and tips from the Eberly Center:
-https://www.cmu.edu/teaching/gradescope/index.html.
-There is also a guide for scanning your homework assignments with your phone here:
-http://gradescope-static-assets.s3-us-west-2.amazonaws.com/help/submitting_hw_guide.pdf
+`````{admonition} TLDR
+1. HW due Mondays at noon
+2. Submit your assignment as a PDF to gradescope
+3. Submit your assignment as ipynb here: https://forms.gle/w1EXMCckbiV7p9cJ7
+`````
 
-Late homework will be accepted until Friday at noon for 50% credit. The purpose of homework assignments is to help you practice the material taught in lecture and to build upon it. This means the homework will be more difficult than what is taught in class. It is okay (and encouraged) to discuss an assignment with your classmates, but the written solutions must be your own. This includes assignments that involve software. Copying homework is plagiarism and will receive severe disciplinary action. 
+Homework assignments will be posted on google drive most Mondays and are due one week later on Mondays at noon (uploaded to Gradescope). As all assignments in this course will be in the form of interactive jupyter notebooks, you will submit PDFs of the assignments to gradescope, and the actual ipynb file via google drive. The {doc}`software` has more info on how to print nicely to PDF.
 
-A portion of your homework grade will be given for presentation, which will be at the discretion of the grader. Solutions should be neatly written and clearly organized and uploaded into Gradescope with pages in the correct order. Plots must be generated using software (such as python/matplotlib) unless a sketch is specifically requested. Figures should have titles, and the axes and any symbols must be clearly labeled. 
+Late homework will be accepted until Wednesday at noon for 50% credit. 
 
-Solutions will be available in Canvas after Friday at noon. Any issues with grading must be submitted through Gradescope within one week of the return of the homework. If extra points are requested, the homework will be regraded in its entirety. The only exception to this is if there was an error in totaling points.
+The purpose of homework assignments is to help you practice the material taught in lecture and to build upon it. This means the homework will be more difficult than what is taught in class. It is okay (and encouraged) to discuss an assignment with your classmates, but the written solutions must be your own. This includes assignments that involve software. Copying homework is plagiarism and will receive severe disciplinary action. 
+
+A portion of your homework grade will be given for presentation, which will be at the discretion of the grader:
+* Solutions should be neatly written and clearly organized and uploaded into Gradescope with pages in the correct order. 
+* Plots must be generated using software (such as python/matplotlib). 
+* Figures should have titles, and the axes and any symbols must be clearly labeled. 
+* Code should include helpful variable names, comments as possible. Please use the "format notebook" button to make the code easier to read.
+
+Solutions will be available in google drive after Wednesday at noon. Any issues with grading must be submitted through Gradescope within one week of the return of the homework. If extra points are requested, the homework will be regraded in its entirety. The only exception to this is if there was an error in totaling points.
 
 ## Group project
 
-In addition to the weekly homework, you will also have a numerical mini-project due approximately the last week of class. This project will incorporate most of the math that you will learn in this class (linear algebra, systems of nonlinear differential equations, etc), and will be closely tied to problems you might see in one of your engineering course next year. This project will include two assignments (one roughly mid-semester, and one at the end) that relate to the final project and build on each other to help solve the problem. 
-
-The final project will be submitted in the form of a python jupyter notebook that includes the mathematical challenge, numerical solutions to the various subsections of the problem, and discussion of the answers/results. This final project will be graded on quality of results and presentation style. Keep this project around for next year, it will be useful! We will provide suggestions for how to format this. 
+In addition to the weekly homework, you will have a group project due at the end of class to develop your skills in data analysis, exploring predictive models, and communicating your analyses. The project will take the form of a final jupyter notebook and a poster that you will have to present to your peers. Groups of ~4 students will be assigned using CATME based on student strengths and project interests. The details of the group project are in {doc}`projects/overview`.
 
 ## Academic (Dis)honesty
 
