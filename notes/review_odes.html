@@ -511,7 +511,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#review-of-scipy-integrate-solve-ivp">
-   Review of scipy.integrate.solve_ivp
+   Review of
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     scipy.integrate.solve_ivp
+    </span>
+   </code>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -555,7 +560,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#review-of-scipy-integrate-solve-ivp">
-   Review of scipy.integrate.solve_ivp
+   Review of
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     scipy.integrate.solve_ivp
+    </span>
+   </code>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -594,8 +604,8 @@ title="Print to PDF"
 </aside>
 <section class="tex2jax_ignore mathjax_ignore" id="ode-integration-with-events">
 <h1>ODE Integration (with Events!)<a class="headerlink" href="#ode-integration-with-events" title="Permalink to this headline">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="note admonition">
+<p class="admonition-title">Lecture summary</p>
 <p>This lecture is going to:</p>
 <ul class="simple">
 <li><p>Quickly review how scipy.integrate.solve_ivp works</p></li>
@@ -610,7 +620,7 @@ title="Print to PDF"
 </ul>
 </div>
 <section id="review-of-scipy-integrate-solve-ivp">
-<h2>Review of scipy.integrate.solve_ivp<a class="headerlink" href="#review-of-scipy-integrate-solve-ivp" title="Permalink to this headline">#</a></h2>
+<h2>Review of <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code><a class="headerlink" href="#review-of-scipy-integrate-solve-ivp" title="Permalink to this headline">#</a></h2>
 <p>As an example, consider the first order ODE:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -705,7 +715,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f942a71dc10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4cb880bc40&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_15_1.png" src="../_images/review_odes_15_1.png" />
@@ -758,17 +768,17 @@ y' = y + 2x - x^2; y(0) = 1
  y_events: None
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f942a63a6d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4cb8729610&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_17_2.png" src="../_images/review_odes_17_2.png" />
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Tolerances:</strong>
-solve_ivp is trying to estimate and control the error for you! rtol is the relative tolerance in the function (eg % error in the numbers coming out).</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Tolerances</strong></p>
+<p>solve_ivp is trying to estimate and control the error for you!</p>
 <ul class="simple">
+<li><p>rtol is the relative tolerance in the function (eg % error in the numbers coming out).</p></li>
 <li><p>atol is the absolute tolerance (I want the concentration +/- 0.00001).</p></li>
 <li><p>rtol is <span class="math notranslate nohighlight">\(10^{-3}\)</span> and atols is <span class="math notranslate nohighlight">\(10^{-6}\)</span>.</p></li>
 <li><p>If your concentration is on the scale of 0.000000001 M, you will have a problem!</p>
@@ -780,25 +790,23 @@ solve_ivp is trying to estimate and control the error for you! rtol is the relat
 <li><p>If decreasing rtol/atol changes your solution, they’re not set tightly enough or you have other problems!</p></li>
 </ul>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Integration failures:</strong>
-The solve_ivp documentation has some nice comments for what to do it things go wrong with the default RK45 algorithm:</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Integration failures</strong>  </p>
+<p>The solve_ivp documentation has some nice comments for what to do it things go wrong with the default RK45 algorithm:</p>
 <blockquote>
 <div><p>If not sure, first try to run ‘RK45’. If it makes unusually many iterations, diverges, or fails, your problem is likely to be stiff and you should use ‘Radau’ or ‘BDF’. ‘LSODA’ can also be a good universal choice, but it might be somewhat less convenient to work with as it wraps old Fortran code</p>
 </div></blockquote>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>Ask yourself these questions when solving ODE’s:</strong></p>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ask yourself these questions when solving ODE’s!</strong></p>
 <ul class="simple">
 <li><p>Is my problem coupled or not? Higher order or not?</p></li>
-<li><p>Is my problem stiff? Should I use a special solver?</p></li>
-<li><p>Is there anything I can infer about the solution from the differential euqations?</p></li>
-<li><p>How many steady states do I expect?</p></li>
+<li><p>Is my problem stiff? Should I use or do I need a special solver?</p></li>
+<li><p>Is there anything I can infer or guess about the solution from the differential  euqations that I can use to check my answers?</p></li>
 <li><p>How would I know if I made a mistake?</p></li>
-<li><p>Very important to check whether the answer is reasonable</p></li>
-<li><p>If you solve a problem with <span class="math notranslate nohighlight">\(\Delta t = 0.1\)</span> (or some other number like atol), always check that your answer does not change with <span class="math notranslate nohighlight">\(\Delta t = \frac{0.1}{2}\)</span></p></li>
+<li><p>Should there be a steady state? If so, how many steady states do I expect?</p></li>
+<li><p>Is the answer reasonable? Do the units make sense?</p></li>
+<li><p>If you solve a problem with some tolerance or setting like <span class="math notranslate nohighlight">\(\Delta t = 0.1\)</span> (or some other number like atol), always check that your answer does not change with <span class="math notranslate nohighlight">\(\Delta t = \frac{0.1}{2}\)</span></p></li>
 <li><p>Before solving a problem with numerical methods, make sure you can correctly code the RHS of the equation.</p></li>
 </ul>
 </div>
@@ -908,7 +916,7 @@ The solve_ivp documentation has some nice comments for what to do it things go w
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y=4 at x=1.0579740235381914. Confirming: y = 3.9998382237380805
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y=4 at x=1.0579740235381916. Confirming: y = 3.999838223738082
 </pre></div>
 </div>
 </div>
@@ -929,7 +937,7 @@ The solve_ivp documentation has some nice comments for what to do it things go w
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.9999994300847344
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.9999994300847335
 </pre></div>
 </div>
 </div>
@@ -1059,11 +1067,11 @@ The solve_ivp documentation has some nice comments for what to do it things go w
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2.07283325e+00  0.00000000e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2.07283325e+00 -1.38777878e-17]
  [ 2.02004874e+00  5.84601811e-16]
- [ 2.00590349e+00  5.82867088e-16]
+ [ 2.00590349e+00  5.55111512e-16]
  [ 2.00196134e+00 -3.21270788e-15]
- [ 2.00085100e+00  2.44249065e-15]
+ [ 2.00085100e+00  2.52575738e-15]
  [ 2.00053732e+00 -4.48252546e-15]
  [ 2.00044864e+00  6.62664368e-15]]
 </pre></div>
@@ -1188,19 +1196,12 @@ The solve_ivp documentation has some nice comments for what to do it things go w
 </div>
 </div>
 <p>This limit cycle shows the oscillatory behavior. You can see here that each cycle repeats on top of itself.</p>
-<p><strong>Review</strong> We have been working on finding a steady state oscillatory solution to <span class="math notranslate nohighlight">\(\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0\)</span>, which describes an oscillating system. We examined some ways to tell if a system is oscillating, and to estimate the period of the oscillation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>solve_ivp
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>We reviewed how to use solve_ivp and common tips/tricks. This includes plotting the results using matplotlib.</p>
 <p>In addition to reviewing what we knew from 06-262 on <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>, we also talked about how to use <strong>integration events</strong>. These allow us to stop integration at special points. It is very helpful for engineering/design problems.</p>
+<p>We have been working on finding a steady state oscillatory solution to <span class="math notranslate nohighlight">\(\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0\)</span>, which describes an oscillating system. We examined some ways to tell if a system is oscillating, and to estimate the period of the oscillation.</p>
 </section>
 </section>
 

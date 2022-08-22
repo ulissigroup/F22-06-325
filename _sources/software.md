@@ -2,6 +2,14 @@
 
 Like in 06-262, we will mostly use python in this class. In addition to google colab, I have also set up a course JupyterHub server.
 
+## Printing your assignments
+
+As you saw in 06-262, printing jupyter notebooks in colab is a bit hit or miss and sometimes the output is a hard to read or missing graphs. The situation should be better with jupyterlab:
+* Try file -> save and export notebook as -> pdf
+* Try file -> save and export notebook as -> html, open the link, then save the output as PDF
+
+Either way, double check the resulting PDF is complete and contains all of the output!
+
 ## Course JupyterHub
 
 As a trial this semester, I am running a JupyterHub server for this course to provide persistent python environments with a number of helpful python packages pre-installed. This has a number of advantages:
@@ -29,8 +37,10 @@ This should work like before. If you're on a notebook page, there should be a li
 
 If you have strong feelings about the language you want to use, or using local vs cloud environments (e.g. something fancy setup and installed on your own laptop/desktop instead of the cloud environments provided), you are welcome to do so. However, you will mostly be on your own if you have compatibility problems/etc. 
 
+If you have suggestions for what's worked for you, submit a pull request to the github repo with your suggestions (or I can show you how!)
+
 **Windows:** I would suggest running python/etc in WSL (Windows Subsystem for Linux) and use mamba for package installation in python. If you want more details, ask and I will update this section. This is what I use for day-to-day work and research.
 
-**Macs:** I don't have much experience with OSX, but it should be possible to install mamba and most python packages. If you want more details, ask and I will update this section.
+**Macs:** I don't have much experience with OSX, but it should be possible to install mamba and most python packages. If you want more details, ask and I will update this section. 
 
 **Linux:** I would suggest you install mamba and use that for python package installation. Check with the TAs or make a github issue and I can fill in details here if needed.

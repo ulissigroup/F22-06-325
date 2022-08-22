@@ -426,6 +426,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#printing-your-assignments">
+   Printing your assignments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#course-jupyterhub">
    Course JupyterHub
   </a>
@@ -467,6 +472,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#printing-your-assignments">
+   Printing your assignments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#course-jupyterhub">
    Course JupyterHub
   </a>
@@ -501,6 +511,15 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="software-environments">
 <h1>Software Environments<a class="headerlink" href="#software-environments" title="Permalink to this headline">#</a></h1>
 <p>Like in 06-262, we will mostly use python in this class. In addition to google colab, I have also set up a course JupyterHub server.</p>
+<section id="printing-your-assignments">
+<h2>Printing your assignments<a class="headerlink" href="#printing-your-assignments" title="Permalink to this headline">#</a></h2>
+<p>As you saw in 06-262, printing jupyter notebooks in colab is a bit hit or miss and sometimes the output is a hard to read or missing graphs. The situation should be better with jupyterlab:</p>
+<ul class="simple">
+<li><p>Try file -&gt; save and export notebook as -&gt; pdf</p></li>
+<li><p>Try file -&gt; save and export notebook as -&gt; html, open the link, then save the output as PDF</p></li>
+</ul>
+<p>Either way, double check the resulting PDF is complete and contains all of the output!</p>
+</section>
 <section id="course-jupyterhub">
 <h2>Course JupyterHub<a class="headerlink" href="#course-jupyterhub" title="Permalink to this headline">#</a></h2>
 <p>As a trial this semester, I am running a JupyterHub server for this course to provide persistent python environments with a number of helpful python packages pre-installed. This has a number of advantages:</p>
@@ -530,6 +549,7 @@ title="Print to PDF"
 <section id="other-software-environments">
 <h2>Other software/environments<a class="headerlink" href="#other-software-environments" title="Permalink to this headline">#</a></h2>
 <p>If you have strong feelings about the language you want to use, or using local vs cloud environments (e.g. something fancy setup and installed on your own laptop/desktop instead of the cloud environments provided), you are welcome to do so. However, you will mostly be on your own if you have compatibility problems/etc.</p>
+<p>If you have suggestions for what’s worked for you, submit a pull request to the github repo with your suggestions (or I can show you how!)</p>
 <p><strong>Windows:</strong> I would suggest running python/etc in WSL (Windows Subsystem for Linux) and use mamba for package installation in python. If you want more details, ask and I will update this section. This is what I use for day-to-day work and research.</p>
 <p><strong>Macs:</strong> I don’t have much experience with OSX, but it should be possible to install mamba and most python packages. If you want more details, ask and I will update this section.</p>
 <p><strong>Linux:</strong> I would suggest you install mamba and use that for python package installation. Check with the TAs or make a github issue and I can fill in details here if needed.</p>

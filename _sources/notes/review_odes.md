@@ -21,7 +21,8 @@ This work was adapted from lecture notes in John Kitchin's excellent 06-623 cour
 # ODE Integration (with Events!)
 
 
-`````{note}
+`````{admonition} Lecture summary
+:class: note
 This lecture is going to:
 * Quickly review how scipy.integrate.solve_ivp works
 * Practice coding up a system of differential equations we covered extensively in 06-262
@@ -35,7 +36,7 @@ Along the way, we will:
 
 +++ {"id": "sYhjkqf6WKfe", "tags": []}
 
-## Review of scipy.integrate.solve_ivp
+## Review of `scipy.integrate.solve_ivp`
 
 +++
 
@@ -147,9 +148,11 @@ plt.ylabel("y")
 plt.legend()
 ```
 
-`````{note} 
-**Tolerances:** 
-solve_ivp is trying to estimate and control the error for you! rtol is the relative tolerance in the function (eg % error in the numbers coming out). 
+`````{admonition} **Tolerances** 
+:class: note
+
+solve_ivp is trying to estimate and control the error for you! 
+* rtol is the relative tolerance in the function (eg % error in the numbers coming out). 
 * atol is the absolute tolerance (I want the concentration +/- 0.00001). 
 * rtol is $10^{-3}$ and atols is $10^{-6}$. 
 * If your concentration is on the scale of 0.000000001 M, you will have a problem! 
@@ -158,8 +161,9 @@ solve_ivp is trying to estimate and control the error for you! rtol is the relat
 * If decreasing rtol/atol changes your solution, they're not set tightly enough or you have other problems! 
 `````
 
-`````{note} 
-**Integration failures:** 
+`````{admonition} **Integration failures**  
+:class: note
+
 The solve_ivp documentation has some nice comments for what to do it things go wrong with the default RK45 algorithm:
 
 > If not sure, first try to run ‘RK45’. If it makes unusually many iterations, diverges, or fails, your problem is likely to be stiff and you should use ‘Radau’ or ‘BDF’. ‘LSODA’ can also be a good universal choice, but it might be somewhat less convenient to work with as it wraps old Fortran code
@@ -167,15 +171,16 @@ The solve_ivp documentation has some nice comments for what to do it things go w
 
 +++
 
-`````{tip} 
-**Ask yourself these questions when solving ODE's:**
+`````{admonition} **Ask yourself these questions when solving ODE's!**
+:class: tip
+
 * Is my problem coupled or not? Higher order or not?
-* Is my problem stiff? Should I use a special solver?
-* Is there anything I can infer about the solution from the differential euqations?
-* How many steady states do I expect? 
+* Is my problem stiff? Should I use or do I need a special solver?
+* Is there anything I can infer or guess about the solution from the differential  euqations that I can use to check my answers?
 * How would I know if I made a mistake?
-* Very important to check whether the answer is reasonable
-* If you solve a problem with $\Delta t = 0.1$ (or some other number like atol), always check that your answer does not change with $\Delta t = \frac{0.1}{2}$
+* Should there be a steady state? If so, how many steady states do I expect? 
+* Is the answer reasonable? Do the units make sense?
+* If you solve a problem with some tolerance or setting like $\Delta t = 0.1$ (or some other number like atol), always check that your answer does not change with $\Delta t = \frac{0.1}{2}$
 * Before solving a problem with numerical methods, make sure you can correctly code the RHS of the equation.
 `````
 
@@ -681,24 +686,6 @@ plt.axis("equal")
 
 This limit cycle shows the oscillatory behavior. You can see here that each cycle repeats on top of itself.
 
-**Review** We have been working on finding a steady state oscillatory solution to $\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0$, which describes an oscillating system. We examined some ways to tell if a system is oscillating, and to estimate the period of the oscillation.
-
-```{code-cell} ipython3
----
-executionInfo:
-  elapsed: 119
-  status: ok
-  timestamp: 1631796236856
-  user:
-    displayName: John Kitchin
-    photoUrl: https://lh3.googleusercontent.com/a/default-user=s64
-    userId: '14782011281593705406'
-  user_tz: 240
-id: Z3vm_Tx1F3OZ
----
-?solve_ivp
-```
-
 +++ {"id": "-nYCrqJzI5Vs"}
 
 ## Summary
@@ -708,6 +695,8 @@ id: Z3vm_Tx1F3OZ
 We reviewed how to use solve_ivp and common tips/tricks. This includes plotting the results using matplotlib.
 
 In addition to reviewing what we knew from 06-262 on `solve_ivp`, we also talked about how to use **integration events**. These allow us to stop integration at special points. It is very helpful for engineering/design problems.
+
+We have been working on finding a steady state oscillatory solution to $\frac{d^2x}{dt^2} - \mu(1-x^2)\frac{dx}{dt} + x = 0$, which describes an oscillating system. We examined some ways to tell if a system is oscillating, and to estimate the period of the oscillation.
 
 ```{code-cell} ipython3
 
