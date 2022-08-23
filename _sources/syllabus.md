@@ -6,7 +6,8 @@
   * Email: zulissi@andrew.cmu.edu
   * Location: Doherty Hall A207A
   * Office Hours: TBD
-* TA - TBD
+* TA
+  * Laurens Lueg (llueg@andrew.cmu.edu)
 
 ## Course Info
 

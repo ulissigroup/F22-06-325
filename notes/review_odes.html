@@ -520,8 +520,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy">
-   Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!
+  <a class="reference internal nav-link" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy">
+   Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -569,8 +569,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy">
-   Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!
+  <a class="reference internal nav-link" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy">
+   Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -715,7 +715,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f77547ea7c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7efc608977c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_15_1.png" src="../_images/review_odes_15_1.png" />
@@ -768,7 +768,7 @@ y' = y + 2x - x^2; y(0) = 1
  y_events: None
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f77546882b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7efc607372b0&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_17_2.png" src="../_images/review_odes_17_2.png" />
@@ -811,10 +811,10 @@ y' = y + 2x - x^2; y(0) = 1
 </ul>
 </div>
 </section>
-<section id="practice-lottka-coltera-review-of-solving-odes-with-scipy">
-<h2>Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!<a class="headerlink" href="#practice-lottka-coltera-review-of-solving-odes-with-scipy" title="Permalink to this headline">#</a></h2>
-<p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lottka Volterra (rabbit/wolf) example.</p>
-<p>We are interested in how the two populations of species (Rabbits and wolves) might change over time.</p>
+<section id="practice-lotka-volterra-review-of-solving-odes-with-scipy">
+<h2>Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!<a class="headerlink" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy" title="Permalink to this headline">#</a></h2>
+<p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lotka Volterra (rabbit/wolf) example.</p>
+<p>We are interested in how the two populations of species (rabbits and wolves) might change over time.</p>
 <ul class="simple">
 <li><p>Rabbits are <span class="math notranslate nohighlight">\(x(t)\)</span>, wolves are <span class="math notranslate nohighlight">\(y(t)\)</span></p></li>
 <li><p>The rate of rabbits being eaten by wolves is proportional to both (<span class="math notranslate nohighlight">\(\beta xy\)</span>)</p></li>
@@ -916,7 +916,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y=4 at x=1.0579740235381916. Confirming: y = 3.999838223738082
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y=4 at x=1.0579740235381914. Confirming: y = 3.9998382237380805
 </pre></div>
 </div>
 </div>
@@ -937,7 +937,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.9999994300847335
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.9999994300847344
 </pre></div>
 </div>
 </div>
@@ -1067,11 +1067,11 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2.07283325e+00 -1.38777878e-17]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2.07283325e+00  0.00000000e+00]
  [ 2.02004874e+00  5.84601811e-16]
- [ 2.00590349e+00  5.55111512e-16]
+ [ 2.00590349e+00  5.82867088e-16]
  [ 2.00196134e+00 -3.21270788e-15]
- [ 2.00085100e+00  2.52575738e-15]
+ [ 2.00085100e+00  2.44249065e-15]
  [ 2.00053732e+00 -4.48252546e-15]
  [ 2.00044864e+00  6.62664368e-15]]
 </pre></div>
