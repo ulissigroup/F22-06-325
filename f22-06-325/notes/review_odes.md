@@ -186,13 +186,13 @@ The solve_ivp documentation has some nice comments for what to do it things go w
 
 +++ {"tags": []}
 
-## Practice: Lottka-Coltera  Review of Solving ODEs with Scipy!
+## Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
 
 +++
 
-As a quick recap of where we left off in 06-262, let's start with an example we spent a lot of time covering, Lottka Volterra (rabbit/wolf) example.
+As a quick recap of where we left off in 06-262, let's start with an example we spent a lot of time covering, Lotka Volterra (rabbit/wolf) example.
 
-We are interested in how the two populations of species (Rabbits and wolves) might change over time. 
+We are interested in how the two populations of species (rabbits and wolves) might change over time. 
 
 * Rabbits are $x(t)$, wolves are $y(t)$
 * The rate of rabbits being eaten by wolves is proportional to both ($\beta xy$)
