@@ -18,14 +18,14 @@ As a trial this semester, I am running a JupyterHub server for this course to pr
 * You have access to a bash terminal (helpful for learning unix/bash commands, moving files around, etc).
 * You can ask for my (or the TAs) help, and we can collaboratively edit and interact with your notebooks.
 
-### Access to Jupyterhub server (https://laikapack-head.cheme.cmu.edu/hub):
-* You must be on CMU campus, or use the CMU VPN
-* You need to make a github account (github.com) and email Prof. Ulissi your githubid (e.g. Prof. Ulissi's github profile is at https://github.com/zulissi, so his username is `zulissi`). This is only used for authenatication/logging in to the server. 
+### Access to JupyterHub server (https://laikapack-head.cheme.cmu.edu/hub):
+* You must be on CMU campus, or use the (CMU VPN)[https://www.cmu.edu/computing/services/endpoint/network-access/vpn/]
 * Access your jupyterlab environment at https://laikapack-head.cheme.cmu.edu/hub
-* Use the minimum resources your need (if things are running fast, stick with the smallest server). If you need more resources, go to file, Hub Control Panel, stop your server, and start one with more resources. For
-* Every user is given 20gb of storage space that should be more than enough for the course. The file system is backed up daily in case you accidentally delete things. You can see recent backups of each folder by going to the `.snap` directory within any folder. 
+* Use the minimum resources your need 
+    * if things are running fast, stick with the smallest server). If you need more resources, go to file, Hub Control Panel, stop your server, and start one with more resources
+* Every user is given 10gb of storage space that should be more than enough for the course. The file system is backed up daily in case you accidentally delete things. You can see recent backups of each folder by going to the `.snap` directory within any folder. If you happen to fill the 10gb of space, email Prof Ulissi and he will raise your limit.
 
-Be aware that anything you store on the jupyterhub server Prof. Ulissi has access to if needed. Normal CMU computing policies on allowed used of resources apply (no pirating, illegal content, etc etc). Treat this as you would a lab computer in Doherty's lab.
+Be aware that anything you store on the jupyterhub server Prof. Ulissi and the TAs have access to if needed. Normal CMU computing policies on allowed used of resources apply (no pirating, illegal content, etc etc). Treat this as you would a lab computer in Doherty lab.
 
 This is an experiment and run on Prof. Ulissi's research cluster, so please be patient if there are hiccups and report anything strange on piazza.
 
