@@ -6,6 +6,8 @@ We will do some things a bit differently from 06-262, so please take a few momen
 
 Check out the content pages on the left hand side!
 
+[Access to JupyterHub server](https://laikapack-head.cheme.cmu.edu/hub)
+
 ## License
 
 The original portions of the course notes are licensed under the CC-BY 4.0 license, available [here](https://creativecommons.org/licenses/by/4.0/legalcode). The full license is also available in the corresponding github repository.
