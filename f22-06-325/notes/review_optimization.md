@@ -99,7 +99,7 @@ Cons:
 
 We can also derive the first derivative:
 
-$y' = 2 * x + e^{-5 x^2} (-10 * x)$
+$y' = 2x + e^{-5 x^2} (-10x)$
 
 and solve it for zero using fsolve.
 
