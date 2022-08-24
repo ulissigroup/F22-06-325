@@ -18,8 +18,8 @@ As a trial this semester, I am running a JupyterHub server for this course to pr
 * You have access to a bash terminal (helpful for learning unix/bash commands, moving files around, etc).
 * You can ask for my (or the TAs) help, and we can collaboratively edit and interact with your notebooks.
 
-### Access to JupyterHub server (https://laikapack-head.cheme.cmu.edu/hub):
-* You must be on CMU campus, or use the (CMU VPN)[https://www.cmu.edu/computing/services/endpoint/network-access/vpn/]
+### [Access to JupyterHub server](https://laikapack-head.cheme.cmu.edu/hub)
+* You must be on CMU campus, or use the [CMU VPN](https://www.cmu.edu/computing/services/endpoint/network-access/vpn/)
 * Access your jupyterlab environment at https://laikapack-head.cheme.cmu.edu/hub
 * Use the minimum resources your need 
     * if things are running fast, stick with the smallest server). If you need more resources, go to file, Hub Control Panel, stop your server, and start one with more resources
