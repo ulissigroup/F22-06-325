@@ -10,6 +10,11 @@
   * Laurens Lueg (llueg@andrew.cmu.edu)
   * Megan Walsh (mew2@andrew.cmu.edu)
   * Abilash Subbaraman (abilash@cmu.edu)
+  
+Office hours (just week of 8/29)
+* Thursday 11am-12pm (location TBD)
+* Thursday 330-430pm (location TBD)
+
 ## Course Info
 
 * **Lectures:** Monday & Wednesday 2:30 – 4:20 pm
