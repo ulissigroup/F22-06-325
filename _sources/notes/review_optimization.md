@@ -24,7 +24,8 @@ This lecture was also adapted from lecture notes in John Kitchin's excellent 06-
 `````{note}
 This lecture is going to:
 * Quickly review why we care about finding minima and maxima of functions
-* Demonstrate two methods for finding minima/maxima:
+* Demonstrate three methods for finding minima/maxima:
+    * Evaluate the function at a bunch of points and find the minimum one
     * Using a non-linear solver to find where the gradient is zero
     * Using a local optimizer from scipy
 * Show that finding minima and maxima are the same problem
@@ -162,6 +163,9 @@ Here is the basic use of scipy.optimize.minimize. As always, we should plot the 
 
 `````{seealso}
 Full documentation and notes on types of algorithms: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html
+
+More notes on various optimization techniques implemented in scipy: https://docs.scipy.org/doc/scipy/tutorial/optimize.html#optimization-scipy-optimize
+
 `````
 
 ```{code-cell} ipython3
@@ -253,6 +257,83 @@ You have to decide which one is better for the problem at hand. If this were a c
 Questions about local vs global minima and their use in decision making for engineering can be very interesting. You will discuss this in much more detail in your second mini (optimization) this semester!
 `````
 
++++
+
+## Animation of minima finding
+
+Just like in {doc}`review_odes`, we can visualize the points that are being sampled by the numerical method to find the local minimum. First, we'll make a quick wrapper function to save the function evaluations during the minimization.
+
+```{code-cell} ipython3
+def wrap_function_save_eval(x, function, function_eval_save):
+    y = function(x)
+    function_eval_save.append((x, y))
+    return y
+
+
+# List to contain all of the function evaluations
+function_eval_save = []
+x0 = 1
+
+sol = minimize(wrap_function_save_eval, x0, args=(h, function_eval_save))
+```
+
+Now, we'll use the saved points to make a quick animation of the solution process.
+
+```{code-cell} ipython3
+import matplotlib.pyplot as plt
+import numpy as np
+from IPython.display import HTML
+from matplotlib import animation, rc
+
+# First set up the figure, the axis, and the plot element we want to animate
+fig, ax = plt.subplots()
+plt.close()
+
+# Add the analytical solution
+x = np.linspace(0, 2 * np.pi)
+ax.plot(x, h(x))
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_xlim([-1, 7])
+ax.set_ylim([0, 4])
+
+# Make a blank line and quiver to hold the data points as they get evaluated
+(line,) = ax.plot([], [], "or", label="Function evaluations")
+ax.legend()
+
+# initialization function: plot the background of each frame
+def init():
+    line.set_data([], [])
+    return (line,)
+
+
+# animation function. This is called sequentially
+def animate(i):
+    # unzip the t, y, and yp vectors as separate vectors
+    x, y = zip(*function_eval_save)
+
+    # Set the data for the line
+    line.set_data(x[:i], y[:i])
+
+    return (line,)
+
+
+# Make the animation!
+anim = animation.FuncAnimation(
+    fig,
+    animate,
+    init_func=init,
+    frames=len(function_eval_save) + 1,
+    interval=1000,
+    repeat_delay=5000,
+    blit=True,
+)
+
+# Note: below is the part which helps it work on jupyterbook
+rc("animation", html="jshtml")
+anim
+```
+
 +++ {"id": "KDFDbY0Adsgn"}
 
 ### Finding maxima
@@ -299,7 +380,7 @@ Once again, here you have to decide which maximum is relevant
 
 +++ {"id": "gXyE36TCdsgn"}
 
-### Example: Application to maximizing profit in a PFR
+### Practice: Application to maximizing profit in a PFR
 
 +++ {"id": "JAYePfYNdsgo"}
 
