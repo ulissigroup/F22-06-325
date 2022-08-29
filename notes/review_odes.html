@@ -768,7 +768,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbec039c6d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4be457f6d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_15_1.png" src="../_images/review_odes_15_1.png" />
@@ -821,7 +821,7 @@ y' = y + 2x - x^2; y(0) = 1
  y_events: None
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbec02add00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4be449b1c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_17_2.png" src="../_images/review_odes_17_2.png" />
@@ -854,8 +854,8 @@ y' = y + 2x - x^2; y(0) = 1
 <section id="ode-solving-strategy-review">
 <h2>ODE solving strategy review<a class="headerlink" href="#ode-solving-strategy-review" title="Permalink to this headline">#</a></h2>
 <p>In 06-262 we spent a lecture talking about how ODE integrators worked. We started with simpler Euler integration and worked our way up through Runge-Kutta, which you coded in one of the homework assignments. As a reminder, the Runge-Kutta update rules were a sequence of calculations that estimated the function value:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8c68c27d-a044-47c2-a1b5-981042725e81">
-<span class="eqno">(1)<a class="headerlink" href="#equation-8c68c27d-a044-47c2-a1b5-981042725e81" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-45b9ce39-57eb-4181-955b-fd15fd71186d">
+<span class="eqno">(1)<a class="headerlink" href="#equation-45b9ce39-57eb-4181-955b-fd15fd71186d" title="Permalink to this equation">#</a></span>\[\begin{align}
 k_1 &amp;= \Delta t \cdot f(t^N, y^N)\\
 k_2 &amp;= \Delta t \cdot f\left(t^N+\frac{\Delta t}{2}, y^N + \frac{k_1}{2}\right)\\
 k_3 &amp;= \Delta t \cdot f\left(t^N+\frac{\Delta t}{2}, y^N + \frac{k_2}{2}\right)\\
@@ -1144,42 +1144,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_imgb90d346772164caea45c5c6473fb32db">
+  <img id="_anim_img53ce32b0c656478a85ce386a46e17794">
   <div class="anim-controls">
-    <input id="_anim_sliderb90d346772164caea45c5c6473fb32db" type="range" class="anim-slider"
+    <input id="_anim_slider53ce32b0c656478a85ce386a46e17794" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="animb90d346772164caea45c5c6473fb32db.set_frame(parseInt(this.value));">
+           oninput="anim53ce32b0c656478a85ce386a46e17794.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="animb90d346772164caea45c5c6473fb32db.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim53ce32b0c656478a85ce386a46e17794.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="animb90d346772164caea45c5c6473fb32db.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim53ce32b0c656478a85ce386a46e17794.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="animb90d346772164caea45c5c6473fb32db.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim53ce32b0c656478a85ce386a46e17794.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="animb90d346772164caea45c5c6473fb32db.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim53ce32b0c656478a85ce386a46e17794.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="animb90d346772164caea45c5c6473fb32db.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim53ce32b0c656478a85ce386a46e17794.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="animb90d346772164caea45c5c6473fb32db.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim53ce32b0c656478a85ce386a46e17794.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="animb90d346772164caea45c5c6473fb32db.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim53ce32b0c656478a85ce386a46e17794.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="animb90d346772164caea45c5c6473fb32db.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim53ce32b0c656478a85ce386a46e17794.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="animb90d346772164caea45c5c6473fb32db.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim53ce32b0c656478a85ce386a46e17794.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectb90d346772164caea45c5c6473fb32db"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select53ce32b0c656478a85ce386a46e17794"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_b90d346772164caea45c5c6473fb32db"
+      <input type="radio" name="state" value="once" id="_anim_radio1_53ce32b0c656478a85ce386a46e17794"
              >
-      <label for="_anim_radio1_b90d346772164caea45c5c6473fb32db">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_b90d346772164caea45c5c6473fb32db"
+      <label for="_anim_radio1_53ce32b0c656478a85ce386a46e17794">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_53ce32b0c656478a85ce386a46e17794"
              checked>
-      <label for="_anim_radio2_b90d346772164caea45c5c6473fb32db">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_b90d346772164caea45c5c6473fb32db"
+      <label for="_anim_radio2_53ce32b0c656478a85ce386a46e17794">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_53ce32b0c656478a85ce386a46e17794"
              >
-      <label for="_anim_radio3_b90d346772164caea45c5c6473fb32db">Reflect</label>
+      <label for="_anim_radio3_53ce32b0c656478a85ce386a46e17794">Reflect</label>
     </form>
   </div>
 </div>
@@ -1189,9 +1189,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_imgb90d346772164caea45c5c6473fb32db";
-    var slider_id = "_anim_sliderb90d346772164caea45c5c6473fb32db";
-    var loop_select_id = "_anim_loop_selectb90d346772164caea45c5c6473fb32db";
+    var img_id = "_anim_img53ce32b0c656478a85ce386a46e17794";
+    var slider_id = "_anim_slider53ce32b0c656478a85ce386a46e17794";
+    var loop_select_id = "_anim_loop_select53ce32b0c656478a85ce386a46e17794";
     var frames = new Array(21);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -8831,7 +8831,7 @@ ETGZ/wdzJDBs42MmXQAAAABJRU5ErkJggg==\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        animb90d346772164caea45c5c6473fb32db = new Animation(frames, img_id, slider_id, 1000.0,
+        anim53ce32b0c656478a85ce386a46e17794 = new Animation(frames, img_id, slider_id, 1000.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -8886,7 +8886,7 @@ ETGZ/wdzJDBs42MmXQAAAABJRU5ErkJggg==\
 </section>
 <section id="using-events-during-ode-integration">
 <h2>Using events during ODE integration<a class="headerlink" href="#using-events-during-ode-integration" title="Permalink to this headline">#</a></h2>
-<p>So far, <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> solves the issues with item 1 (we did not have to code the algorithm), and items 2 and 3 (it uses an adaptive step and converges to a tolerance for us). It will also help us solve for the inverse problem, i.e. for what value of <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(y=4\)</span>?</p>
+<p>So far, <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> solves hard differential equations (we did not have to code the algorithm) and handles much of the numerics for us behind the scene. It can also help us solve for the inverse problem. That is, for what value of <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(y=4\)</span>?</p>
 <p>To do this, we need a new concept of an “event function”. During each step of the integration, you can run a function that can detect an “event”. When an event is detected, the location of the event is stored, and if desired integration can be terminated. <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> can take a list of event functions. We consider only one for now.</p>
 <p>An event occurs when an event function is equal to zero. During integration, if the event function changes sign, then it is clear an event has occurred, and the algorithm determines where it occurred. Since we want to know when <span class="math notranslate nohighlight">\(y=4\)</span>, we will define a function that returns <span class="math notranslate nohighlight">\(y - 4\)</span>, because that will equal zero at that condition. We want the integration to terminate when that happens, so we set the “terminal” attribute on our function to True.</p>
 <p>An event function has a signature of f(x, y). Remember that <span class="math notranslate nohighlight">\(y\)</span> is going to be an array,</p>
