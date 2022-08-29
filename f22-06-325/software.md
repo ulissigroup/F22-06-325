@@ -39,7 +39,25 @@ If you have strong feelings about the language you want to use, or using local v
 
 If you have suggestions for what's worked for you, submit a pull request to the github repo with your suggestions (or I can show you how!)
 
-**Windows:** I would suggest running python/etc in WSL (Windows Subsystem for Linux) and use mamba for package installation in python. If you want more details, ask and I will update this section. This is what I use for day-to-day work and research.
+**All:** Follow the directions below to install a working unix environment, then use the following:
+* Inside a terminal install mambaforge: https://github.com/conda-forge/miniforge#install
+* Close and open your terminal after installation to make sure the conda scripts are used for activate/etc
+* Create an environment with
+```
+mamba create -n myjlabenv jupyterlab -c conda-forge
+conda activate myjlabenv  # activate our environment
+jupyter lab               # this will start up jupyter lab and open a browser
+```
+* Install additional packages (numpy, scipy, seaborn, etc)
+``` 
+conda activate myjlabenv
+mamba install -c conda-forge scipy seaborn numpy matplotlib
+```
+You can see what I installed by looking at https://github.com/ulissigroup/F22-06-325/blob/main/Dockerfile#L3 and everything listed in https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook
+
+
+**Windows:** I would suggest running python/etc in WSL (Windows Subsystem for Linux) and use mamba for package installation in python.
+* Install WSL using the directions here: https://docs.microsoft.com/en-us/windows/wsl/install
 
 **Macs:** I don't have much experience with OSX, but it should be possible to install mamba and most python packages. If you want more details, ask and I will update this section. 
 
