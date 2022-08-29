@@ -558,7 +558,29 @@ title="Print to PDF"
 <h2>Other software/environments<a class="headerlink" href="#other-software-environments" title="Permalink to this headline">#</a></h2>
 <p>If you have strong feelings about the language you want to use, or using local vs cloud environments (e.g. something fancy setup and installed on your own laptop/desktop instead of the cloud environments provided), you are welcome to do so. However, you will mostly be on your own if you have compatibility problems/etc.</p>
 <p>If you have suggestions for what’s worked for you, submit a pull request to the github repo with your suggestions (or I can show you how!)</p>
-<p><strong>Windows:</strong> I would suggest running python/etc in WSL (Windows Subsystem for Linux) and use mamba for package installation in python. If you want more details, ask and I will update this section. This is what I use for day-to-day work and research.</p>
+<p><strong>All:</strong> Follow the directions below to install a working unix environment, then use the following:</p>
+<ul class="simple">
+<li><p>Inside a terminal install mambaforge: https://github.com/conda-forge/miniforge#install</p></li>
+<li><p>Close and open your terminal after installation to make sure the conda scripts are used for activate/etc</p></li>
+<li><p>Create an environment with</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">myjlabenv</span> <span class="n">jupyterlab</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">myjlabenv</span>  <span class="c1"># activate our environment</span>
+<span class="n">jupyter</span> <span class="n">lab</span>               <span class="c1"># this will start up jupyter lab and open a browser</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Install additional packages (numpy, scipy, seaborn, etc)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">myjlabenv</span>
+<span class="n">mamba</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">scipy</span> <span class="n">seaborn</span> <span class="n">numpy</span> <span class="n">matplotlib</span>
+</pre></div>
+</div>
+<p>You can see what I installed by looking at https://github.com/ulissigroup/F22-06-325/blob/main/Dockerfile#L3 and everything listed in https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook</p>
+<p><strong>Windows:</strong> I would suggest running python/etc in WSL (Windows Subsystem for Linux) and use mamba for package installation in python.</p>
+<ul class="simple">
+<li><p>Install WSL using the directions here: https://docs.microsoft.com/en-us/windows/wsl/install</p></li>
+</ul>
 <p><strong>Macs:</strong> I don’t have much experience with OSX, but it should be possible to install mamba and most python packages. If you want more details, ask and I will update this section.</p>
 <p><strong>Linux:</strong> I would suggest you install mamba and use that for python package installation. Check with the TAs or make a github issue and I can fill in details here if needed.</p>
 </section>
