@@ -15,6 +15,7 @@ parts:
   - file: notes/recap
     sections:
     - file: notes/review_odes
+    - file: notes/ode_events_extra_example
     - file: notes/review_optimization
   - file: notes/ml_basics
     sections:
