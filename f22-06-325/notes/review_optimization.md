@@ -300,12 +300,16 @@ ax.set_ylim([0, 4])
 
 # Make a blank line and quiver to hold the data points as they get evaluated
 (line,) = ax.plot([], [], "or", label="Function evaluations")
+(linefinal,) = ax.plot([], [], "ok", label="Latest function evaluation")
+
 ax.legend()
 
 # initialization function: plot the background of each frame
 def init():
     line.set_data([], [])
-    return (line,)
+    linefinal.set_data([], [])
+
+    return (line, linefinal)
 
 
 # animation function. This is called sequentially
@@ -315,8 +319,9 @@ def animate(i):
 
     # Set the data for the line
     line.set_data(x[:i], y[:i])
+    linefinal.set_data(x[i - 1], y[i - 1])
 
-    return (line,)
+    return (line, linefinal)
 
 
 # Make the animation!
@@ -438,7 +443,7 @@ ax.set_ylim([0, 4])
 
 # Make a blank line and quiver to hold the data points as they get evaluated
 (line,) = ax.plot([], [], "or", label="Function evaluations")
-(linefinal,) = ax.plot([], [], "ok", label="Function evaluations")
+(linefinal,) = ax.plot([], [], "ok", label="Latest function evaluation")
 
 ax.legend()
 
