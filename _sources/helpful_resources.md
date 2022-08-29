@@ -19,6 +19,7 @@
     * Lecture recordings available for CMU students through panopto
     
 **Online textbooks:**
+* [Python Numerical Methods](https://pythonnumericalmethods.berkeley.edu/notebooks/Index.html)
 * [deep learning for molecules & materials](https://dmol.pub/)
     * Great overview of how to apply deep learning models to materials (graph networks, force fields, etc)
 * [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
