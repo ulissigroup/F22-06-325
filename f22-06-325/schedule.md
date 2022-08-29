@@ -15,11 +15,11 @@ Dates/etc are tentative and might change!
 | Monday       | 09/12/22 | AI/ML in chemical industry Guest Lectures (Toyota Research, Covestro)                           |   |
 | Wednesday    | 09/14/22 | Industrial AI and AI for Climate Guest Lectures (Facebook AI Research, ClimateChangeAI)       |   |
 | Optional lab |          | Matplotlib, plotly for interactive plots                                                                 |   |
-| Monday       | 09/19/22 | Exam 1                                                  |   |
-| Wednesday    | 09/21/22 | Featurizing/Representing data in ChE                                                                     |   |
+| Monday       | 09/19/22 | Featurizing/Representing data in ChE                                                  |   |
+| Wednesday    | 09/21/22 | Linear models, nonlinear features                                                       |   |
 | Optional lab |          | Github and code/data sharing                                                                             |   |
-| Monday       | 09/26/22 | Neural Networks                                                                                          |   |
-| Wednesday    | 09/28/22 | Gaussian Process Regression                                                                              |   |
+| Monday       | 09/26/22 | Gaussian Process Regression                                                                                         |   |
+| Wednesday    | 09/28/22 |  Neural Networks                                                                              |   |
 | Optional lab |          | GPUs and accelerated training of models                                                                  |   |
 | Monday       | 10/03/22 | Uncertainty estimation                                                                                   |   |
 | Wednesday    | 10/05/22 | Unsupervised regression, clustering                                                                      |   |
