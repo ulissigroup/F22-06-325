@@ -28,6 +28,7 @@ This lecture is going to:
     * Evaluate the function at a bunch of points and find the minimum one
     * Using a non-linear solver to find where the gradient is zero
     * Using a local optimizer from scipy
+* Demonstrate but not discuss in detail global
 * Show that finding minima and maxima are the same problem
 
 After covering these ideas, we will practice on a problem that we can also solve with ODE events!
@@ -146,7 +147,7 @@ These look the same within tolerance. This is not a beautiful solution, but it i
 **Pros/cons of finding minima/maxima by root finding of the derivatives!**
 
 Pros:
-1.  We've turned a new problem into a problem we already know how to solve.
+1.  We've turned a new problem into a different numerical problem that might be easier to solve
 
 Cons:
 1.  You have to do a derivative by hand or use a numerical estimate.
@@ -378,120 +379,108 @@ plt.ylabel("h(x)")
 
 Once again, here you have to decide which maximum is relevant
 
-+++ {"id": "gXyE36TCdsgn"}
++++
 
-### Practice: Application to maximizing profit in a PFR
+# Global optimization
 
-+++ {"id": "JAYePfYNdsgo"}
+We just covered how to do local optimization with scipy. Specifically, starting with a guess, we used an algorithm to iteratively update the guess to find a local minimum. 
 
-Compound X with concentration of $C_{X0} = 2.5$ kmol / m$^3$ at a flow rate of 12 m$^3$/min is converted to Y in a first order reaction with a rate constant of 30 1/min in a tubular reactor. The value of Y is $\$$1.5/kmol. The cost of operation is $\$$2.50 per minute per m$^3$. Find the reactor length that maximizes the profit (profit is value of products minus operating costs).
+We also showed that there are many functions that have multiple local minima. We knew this because we could plot the function and see the minima. But what do we do if there are multiple minima? We basically have two options:
+* Use optimization or PSE techniques to rigorously find the minima (what you will cover in the second mini of this semester)
+* Use a heuristic strategy to find the global minima
 
-First, consider why there is a maximum. At low volumes the operating cost is low, and the production of Y is low. At high volumes, you maximize production of Y, so you have the most value, but the operating costs go up (to infinity for complete conversion!). Somewhere in the middle is where a maximum is.
-
-Here are some relevant constants.
-
-```{code-cell} ipython3
-:id: H88WBDpUdsgo
-:outputId: a7fd9f66-aadf-4900-bc4f-75e4df39d7f6
-
-cost = 2.5  # dollar/min/m**3
-y_value = 1.5  # dollar / mol
-
-Cx0 = 2.5  # kmol / m**3
-v0 = 12.0  # m**3 / min
-
-k = 30.0  # 1/min
-```
-
-+++ {"id": "x_JosbU-dsgo"}
-
-To compute the profit as a function of reactor volume, we need to compute how much Y is produced, then multiply that by the value of Y and subtract the operating cost. To compute how much Y is produced, we use a mole balance on X and Y, and integrate it to the volume to get the molar flows of X and Y. I like to write mole balances like this.
+We will solve the above example using one of the built-in scipy global optimizers, but be aware
+* There are no guarantees you will find the global minima
+* It might be slow or take many evaluations
+* You will probably have to play with various optimizer settings
+For all of these reasons, the methods you learn in 06-326 are the better choice if you can frame your problem in the right way to take advantage of them!
 
 ```{code-cell} ipython3
-:id: 8NLNbeUqdsgo
-:outputId: 70cc0c2a-8183-443e-cb93-74ef2b20208c
-
-def dFdV(V, F):
-    "PFR mole balances on X and Y."
-    Fx, Fy = F
-    Cx = Fx / v0
-    rx = -k * Cx
-    ry = -rx
-
-    dFdX = rx
-    dFdY = ry
-    return [dFdX, dFdY]
+from scipy.optimize import basinhopping
 
 
-F0 = [Cx0 * v0, 0.0]  # Fx0  # Fy0
-```
-
-+++ {"id": "v-7ZZ8eDdsgo"}
-
-Now, we can write a profit function. It will take a V as the argument, integrate the PFR to that volume to find the molar exit flow rates, and then compute the profit.
-
-```{code-cell} ipython3
-:id: qlEnO4Vgdsgo
-:outputId: ff04a2d2-d8c6-4905-f8ab-8a93185830e0
-
-import numpy as np
-from scipy.integrate import solve_ivp
+def wrap_function_save_eval(x, function, function_eval_save):
+    y = function(x)
+    function_eval_save.append((x, y))
+    return y
 
 
-def profit(V, sign=1):
-    Vspan = (0, V)
-    sol = solve_ivp(dFdV, Vspan, F0)
-    Fx, Fy = sol.y
-    Fy_exit = Fy[-1]
-    return sign * (Fy_exit * y_value - cost * V)
-```
+# List to contain all of the function evaluations
+function_eval_save = []
+x0 = 5
 
-+++ {"id": "Gc71GFovdsgo"}
-
-It is always a good idea to plot the profit function. We use a list comprehension here because the profit function is not *vectorized*, which means we cannot pass an array of volumes in and get an array of profits out.
-
-```{code-cell} ipython3
-:id: QwHc7MRYdsgo
-:outputId: 056c0d2a-e4af-4625-abd6-37da6dee0028
-
-Vspan = np.linspace(0, 4)
-profit_array = [profit(V) for V in Vspan]
-
-import matplotlib.pyplot as plt
-
-plt.plot(Vspan, profit_array)
-plt.xlabel("V")
-plt.ylabel("profit")
-```
-
-+++ {"id": "VRHIDvV9dsgo"}
-
-You can see from this plot there is a maximum near V=1.5. We can use that as a guess for fmin.
-
-```{code-cell} ipython3
-:id: BbOkzYrhdsgo
-:outputId: 501165f5-fb45-4464-8c9f-7dfbfd64d8a7
-
-from scipy.optimize import fmin
-
-sol = minimize(profit, 1.5, args=(-1,))
-
-print(
-    f"The optimal volume is {sol.x[0]:1.2f} m^3 with a profit of ${profit(sol.x[0]):1.2f}."
+sol = basinhopping(
+    lambda x: wrap_function_save_eval(x, h, function_eval_save),
+    x0,
+    T=1,
+    stepsize=2,
+    niter=3,
 )
 ```
 
-+++ {"id": "a3QJdbUxdsgo"}
+```{code-cell} ipython3
+import matplotlib.pyplot as plt
+import numpy as np
+from IPython.display import HTML
+from matplotlib import animation, rc
 
-This problem highlights the opportunities we have to integrate many ideas together to solve complex problems. We have integration of an ODE, nonlinear algebra/minimization, with graphical estimates of the solution.
+# First set up the figure, the axis, and the plot element we want to animate
+fig, ax = plt.subplots()
+plt.close()
 
-+++
+# Add the analytical solution
+x = np.linspace(0, 2 * np.pi)
+ax.plot(x, h(x))
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_xlim([-1, 7])
+ax.set_ylim([0, 4])
 
-## **Practice:** Can you solve this with an event and solve\_ivp?
+# Make a blank line and quiver to hold the data points as they get evaluated
+(line,) = ax.plot([], [], "or", label="Function evaluations")
+(linefinal,) = ax.plot([], [], "ok", label="Function evaluations")
+
+ax.legend()
+
+# initialization function: plot the background of each frame
+def init():
+    line.set_data([], [])
+    linefinal.set_data([], [])
+
+    return (line, linefinal)
+
+
+# animation function. This is called sequentially
+def animate(i):
+    # unzip the t, y, and yp vectors as separate vectors
+    x, y = zip(*function_eval_save)
+
+    # Set the data for the line
+    line.set_data(x[:i], y[:i])
+    linefinal.set_data(x[i - 1], y[i - 1])
+
+    return (line, linefinal)
+
+
+# Make the animation!
+anim = animation.FuncAnimation(
+    fig,
+    animate,
+    init_func=init,
+    frames=len(function_eval_save) + 1,
+    interval=1000,
+    repeat_delay=5000,
+    blit=True,
+)
+
+# Note: below is the part which helps it work on jupyterbook
+rc("animation", html="jshtml")
+anim
+```
 
 +++ {"id": "NuhAt7rYgyuQ"}
 
-## Regression of data is a form of function minimization
+# Regression of data is a form of function minimization
 
 +++ {"id": "sj_moG5VgyuR"}
 
@@ -620,50 +609,6 @@ plt.xlabel("E0")
 plt.ylabel("summed squared error")
 ```
 
-+++ {"id": "xu4s-POdgyuV"}
-
-You can see visually that the error goes up on each side of the parameter estimate.
-
-**exercise** Repeat this analysis for the other three parameters.
-
-Later when we learn about linear algebra, we will learn that if you can show the eigenvalues of the Hessian of the objective function is positive definite, that also means you are at a minimum. It means the error goes up in any direction away from the minimum.
-
-Usually we do some regression to find one of these:
-
-1.  Parameters for the model - because the parameters mean something
-2.  Properties of the model - because the properties mean something
-
-In this particular case, we can do both. Some of the parameters are directly meaningful, like the E0, and V0 are the energy at the minimum, and the corresponding volume. B0 is also meaningful, it is called the bulk modulus, and it is a material property.
-
-Now that we have a model though we can also define properties of it, e.g. *in this case* we have from thermodynamics that $P = -dE/dV$. We can use our model to define this derivative. I use `scipy.misc.derivative` for this for convenience. The only issue with it is the energy function has arguments that are not in the right order for the derivative, so I make a proxy function here that just reverses the order of the arguments.
-
-```{code-cell} ipython3
-:id: H5HIeXMRgyuV
-:outputId: aab52dfb-847c-4a93-a5d3-aca02be473b7
-
-from scipy.misc import derivative
-
-pars = sol.x
-
-
-def P(V):
-    def proxy(V, pars):
-        return Murnaghan(pars, V)
-
-    dEdV = derivative(proxy, V, args=(pars,), dx=1e-6)
-    return -dEdV
-
-
-# Some examples
-P(16), P(pars[-1]), P(18)
-```
-
-+++ {"id": "S_n7xWwbgyuW"}
-
-The result above shows that it takes positive pressure to compress the material, the pressure is zero at the minimum, and it takes negative pressure to cause it to expand.
-
-This example is just meant to illustrate what one can do with a model once you have it.
-
 +++ {"id": "v8e-_RPlgyuW"}
 
 ## Parameter confidence intervals and curve fitting with `lmfit`
@@ -724,12 +669,9 @@ plt.ylabel("E")
 
 Today we introduced the concept of finding minima/maxima in functions. This is an iterative process, much like finding the roots of a nonlinear function. You can think of it as finding the zeros of the derivative of a nonlinear function! This method is the root of many important optimization problems including regression.
 
-`scipy.optimize.minimize` is the preferred function for doing minimization. There are other more specific ones described at [https://docs.scipy.org/doc/scipy/reference/optimize.html](https://docs.scipy.org/doc/scipy/reference/optimize.html), but `minimize` has a more consistent interface and provides almost all the functionality of those other methods.
-
-Next time, we will look at how to apply minimization to regression problems.
+`scipy.optimize.minimize` is the preferred function for doing minimization. There are other more specific ones described at [https://docs.scipy.org/doc/scipy/reference/optimize.html](https://docs.scipy.org/doc/scipy/reference/optimize.html), but `minimize` has a more consistent interface and provides almost all the functionality of those other methods. We also discussed how heuristic global optimization can be used to find function global minima.
 
 We covered a lot of ground today. The key points are:
-
 1.  Regression is a minimization of an accumulated error function.
-2.  If you need uncertainty on the parameters from a regression, use `pycse.nlinfit`.
-3.  If you need uncertainty on model predictions, you can either simulate it, or derive it. We will learn more about deriving it later.
+2.  If you need uncertainty on the parameters from a regression, use `lmfit` or another package to handle the statistics, but think about the assumptions being made!
+3.  If you need uncertainty on model predictions, you can either simulate it, or derive it. We will learn more about deriving it later in the context of machine learning models.

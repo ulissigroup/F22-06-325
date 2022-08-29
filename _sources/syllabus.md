@@ -19,7 +19,7 @@
 * **Prerequisites:** 06-262 (Math Methods), 15-110/112
 
 ## Course Description
-This course will focus on applying numerical methods and machine learning to chemical engineering problems. Students will learn how modern programming environments (on laptops and in the cloud) can run python code. Programming concepts such as defining functions and plotting quantities will be reviewed. Students will learn how to apply and debug numerical integration techniques to systems of ODEs. Solving systems of nonlinear equations and black-box optimization will be covered. Machine learning will be introduced starting with the statistics of linear and non-linear regression with regularization. Polynomial fitting and interpolation will be covered. With this base, students will learn how to apply machine learning techniques such as gaussian process regression and neural networks to regression tasks. 
+This course will focus on applying numerical methods and machine learning to chemical engineering problems. Students will learn how modern programming environments (on laptops and in the cloud) can run python code. Programming concepts such as defining functions and plotting quantities will be reviewed. Students will learn how to apply and debug numerical integration techniques to systems of ODEs. Solving systems of nonlinear equations and black-box optimization will be covered. Machine learning will be introduced starting with the statistics of linear and non-linear regression with regularization. Polynomial fitting and interpolation will be covered. With this base, students will learn how to apply machine learning techniques such as Gaussian Process regression and neural networks to regression tasks. 
 
 ## Course Objectives:
 
@@ -69,7 +69,7 @@ Questions about the lecture or homeworks will be answered on Piazza. There is a 
 Summary: 
 * Grades/etc: Canvas
 * Assignment submission: Gradescope
-* Notes/homework/etc:  github
+* Notes/homework/etc:  Course website and github
 * Discussions/questions: Piazza
 
 ## Homework
