@@ -530,6 +530,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy">
+   Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solve-for-and-plot-the-population-of-rabbits-and-wolves-over-the-first-20-days">
+     Solve for and plot the population of rabbits and wolves over the first 20 days
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-events-during-ode-integration">
    Using events during ODE integration
   </a>
@@ -540,15 +552,10 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy">
-   Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
+  <a class="reference internal nav-link" href="#practice-continued">
+   Practice continued
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solve-for-and-plot-the-population-of-rabbits-and-wolves-over-the-first-20-days">
-     Solve for and plot the population of rabbits and wolves over the first 20 days
-    </a>
-   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#find-the-the-first-occurrence-that-the-rabbit-population-hits-3">
      Find the the first occurrence that the rabbit population hits 3
@@ -596,6 +603,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy">
+   Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solve-for-and-plot-the-population-of-rabbits-and-wolves-over-the-first-20-days">
+     Solve for and plot the population of rabbits and wolves over the first 20 days
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-events-during-ode-integration">
    Using events during ODE integration
   </a>
@@ -606,15 +625,10 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy">
-   Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
+  <a class="reference internal nav-link" href="#practice-continued">
+   Practice continued
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solve-for-and-plot-the-population-of-rabbits-and-wolves-over-the-first-20-days">
-     Solve for and plot the population of rabbits and wolves over the first 20 days
-    </a>
-   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#find-the-the-first-occurrence-that-the-rabbit-population-hits-3">
      Find the the first occurrence that the rabbit population hits 3
@@ -754,7 +768,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0280009700&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f8af75256d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_15_1.png" src="../_images/review_odes_15_1.png" />
@@ -807,7 +821,7 @@ y' = y + 2x - x^2; y(0) = 1
  y_events: None
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f027ff23310&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f8af753ab20&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_17_2.png" src="../_images/review_odes_17_2.png" />
@@ -840,8 +854,8 @@ y' = y + 2x - x^2; y(0) = 1
 <section id="ode-solving-strategy-review">
 <h2>ODE solving strategy review<a class="headerlink" href="#ode-solving-strategy-review" title="Permalink to this headline">#</a></h2>
 <p>In 06-262 we spent a lecture talking about how ODE integrators worked. We started with simpler Euler integration and worked our way up through Runge-Kutta, which you coded in one of the homework assignments. As a reminder, the Runge-Kutta update rules were a sequence of calculations that estimated the function value:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ddcf9f0c-726e-4325-87f1-7bb148fc6f42">
-<span class="eqno">(1)<a class="headerlink" href="#equation-ddcf9f0c-726e-4325-87f1-7bb148fc6f42" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-26ef4328-a0ed-481a-8f88-89a8ae756543">
+<span class="eqno">(1)<a class="headerlink" href="#equation-26ef4328-a0ed-481a-8f88-89a8ae756543" title="Permalink to this equation">#</a></span>\[\begin{align}
 k_1 &amp;= \Delta t \cdot f(t^N, y^N)\\
 k_2 &amp;= \Delta t \cdot f\left(t^N+\frac{\Delta t}{2}, y^N + \frac{k_1}{2}\right)\\
 k_3 &amp;= \Delta t \cdot f\left(t^N+\frac{\Delta t}{2}, y^N + \frac{k_2}{2}\right)\\
@@ -1130,42 +1144,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_imgaeb521e685f9425986dd0b43ab4c3bfd">
+  <img id="_anim_img10d6c516105b42c891a8885c10864373">
   <div class="anim-controls">
-    <input id="_anim_slideraeb521e685f9425986dd0b43ab4c3bfd" type="range" class="anim-slider"
+    <input id="_anim_slider10d6c516105b42c891a8885c10864373" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="animaeb521e685f9425986dd0b43ab4c3bfd.set_frame(parseInt(this.value));">
+           oninput="anim10d6c516105b42c891a8885c10864373.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim10d6c516105b42c891a8885c10864373.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim10d6c516105b42c891a8885c10864373.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim10d6c516105b42c891a8885c10864373.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim10d6c516105b42c891a8885c10864373.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim10d6c516105b42c891a8885c10864373.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim10d6c516105b42c891a8885c10864373.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim10d6c516105b42c891a8885c10864373.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim10d6c516105b42c891a8885c10864373.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="animaeb521e685f9425986dd0b43ab4c3bfd.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim10d6c516105b42c891a8885c10864373.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectaeb521e685f9425986dd0b43ab4c3bfd"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select10d6c516105b42c891a8885c10864373"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_aeb521e685f9425986dd0b43ab4c3bfd"
+      <input type="radio" name="state" value="once" id="_anim_radio1_10d6c516105b42c891a8885c10864373"
              >
-      <label for="_anim_radio1_aeb521e685f9425986dd0b43ab4c3bfd">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_aeb521e685f9425986dd0b43ab4c3bfd"
+      <label for="_anim_radio1_10d6c516105b42c891a8885c10864373">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_10d6c516105b42c891a8885c10864373"
              checked>
-      <label for="_anim_radio2_aeb521e685f9425986dd0b43ab4c3bfd">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_aeb521e685f9425986dd0b43ab4c3bfd"
+      <label for="_anim_radio2_10d6c516105b42c891a8885c10864373">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_10d6c516105b42c891a8885c10864373"
              >
-      <label for="_anim_radio3_aeb521e685f9425986dd0b43ab4c3bfd">Reflect</label>
+      <label for="_anim_radio3_10d6c516105b42c891a8885c10864373">Reflect</label>
     </form>
   </div>
 </div>
@@ -1175,9 +1189,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_imgaeb521e685f9425986dd0b43ab4c3bfd";
-    var slider_id = "_anim_slideraeb521e685f9425986dd0b43ab4c3bfd";
-    var loop_select_id = "_anim_loop_selectaeb521e685f9425986dd0b43ab4c3bfd";
+    var img_id = "_anim_img10d6c516105b42c891a8885c10864373";
+    var slider_id = "_anim_slider10d6c516105b42c891a8885c10864373";
+    var loop_select_id = "_anim_loop_select10d6c516105b42c891a8885c10864373";
     var frames = new Array(21);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -8817,7 +8831,7 @@ ETGZ/wdzJDBs42MmXQAAAABJRU5ErkJggg==\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        animaeb521e685f9425986dd0b43ab4c3bfd = new Animation(frames, img_id, slider_id, 1000.0,
+        anim10d6c516105b42c891a8885c10864373 = new Animation(frames, img_id, slider_id, 1000.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -8837,6 +8851,38 @@ ETGZ/wdzJDBs42MmXQAAAABJRU5ErkJggg==\
 <li><p>Before solving a problem with numerical methods, make sure you can correctly code the RHS of the equation.</p></li>
 </ul>
 </div>
+</section>
+<section id="practice-lotka-volterra-review-of-solving-odes-with-scipy">
+<h2>Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!<a class="headerlink" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy" title="Permalink to this headline">#</a></h2>
+<p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lotka Volterra (rabbit/wolf) example.</p>
+<p>We are interested in how the two populations of species (rabbits and wolves) might change over time.</p>
+<ul class="simple">
+<li><p>Rabbits are <span class="math notranslate nohighlight">\(x(t)\)</span>, wolves are <span class="math notranslate nohighlight">\(y(t)\)</span></p></li>
+<li><p>The rate of rabbits being eaten by wolves is proportional to both (<span class="math notranslate nohighlight">\(\beta xy\)</span>)</p></li>
+<li><p>Rabbits reproduce on their own at a rate proportional to the number of rabbits, and rabbits are eaten by wolves at a rate proportional to the number of rabbits and wolves</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dx}{dt}=\alpha x-\beta xy
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are constants.</p>
+<ul class="simple">
+<li><p>Wolves are able to reproduce at a rate proportional to the number of wolves and rabbits (how quickly rabbits are being eaten) and die at a rate proportional to the number of wolves (sickness/injury/etc)</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dy}{dt}=\delta xy-\gamma y
+\end{align*}\]</div>
+<p>Let’s say we start with 1 rabbit and 5 wolves, and the constants are</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha=1 \)</span>[1/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta=0.2\)</span> [1/wolves/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta=0.5\)</span> [1/rabbits/day]</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma=0.2\)</span> [1/day]</p></li>
+</ul>
+<section id="solve-for-and-plot-the-population-of-rabbits-and-wolves-over-the-first-20-days">
+<h3>Solve for and plot the population of rabbits and wolves over the first 20 days<a class="headerlink" href="#solve-for-and-plot-the-population-of-rabbits-and-wolves-over-the-first-20-days" title="Permalink to this headline">#</a></h3>
+</section>
 </section>
 <section id="using-events-during-ode-integration">
 <h2>Using events during ODE integration<a class="headerlink" href="#using-events-during-ode-integration" title="Permalink to this headline">#</a></h2>
@@ -8962,38 +9008,8 @@ ETGZ/wdzJDBs42MmXQAAAABJRU5ErkJggg==\
 <p>More examples with ODE events are available at <a class="reference internal" href="ode_events_extra_example.html"><span class="doc">More complicated example: Van der Pol oscillator</span></a></p>
 </div>
 </section>
-<section id="practice-lotka-volterra-review-of-solving-odes-with-scipy">
-<h2>Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!<a class="headerlink" href="#practice-lotka-volterra-review-of-solving-odes-with-scipy" title="Permalink to this headline">#</a></h2>
-<p>As a quick recap of where we left off in 06-262, let’s start with an example we spent a lot of time covering, Lotka Volterra (rabbit/wolf) example.</p>
-<p>We are interested in how the two populations of species (rabbits and wolves) might change over time.</p>
-<ul class="simple">
-<li><p>Rabbits are <span class="math notranslate nohighlight">\(x(t)\)</span>, wolves are <span class="math notranslate nohighlight">\(y(t)\)</span></p></li>
-<li><p>The rate of rabbits being eaten by wolves is proportional to both (<span class="math notranslate nohighlight">\(\beta xy\)</span>)</p></li>
-<li><p>Rabbits reproduce on their own at a rate proportional to the number of rabbits, and rabbits are eaten by wolves at a rate proportional to the number of rabbits and wolves</p></li>
-</ul>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\frac{dx}{dt}=\alpha x-\beta xy
-\end{align*}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are constants.</p>
-<ul class="simple">
-<li><p>Wolves are able to reproduce at a rate proportional to the number of wolves and rabbits (how quickly rabbits are being eaten) and die at a rate proportional to the number of wolves (sickness/injury/etc)</p></li>
-</ul>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\frac{dy}{dt}=\delta xy-\gamma y
-\end{align*}\]</div>
-<p>Let’s say we start with 1 rabbit and 5 wolves, and the constants are</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\alpha=1 \)</span>[1/day]</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta=0.2\)</span> [1/wolves/day]</p></li>
-<li><p><span class="math notranslate nohighlight">\(\delta=0.5\)</span> [1/rabbits/day]</p></li>
-<li><p><span class="math notranslate nohighlight">\(\gamma=0.2\)</span> [1/day]</p></li>
-</ul>
-<p>Let’s take 10 minutes to warm up and try coding this up in python using (scipy)</p>
-<section id="solve-for-and-plot-the-population-of-rabbits-and-wolves-over-the-first-20-days">
-<h3>Solve for and plot the population of rabbits and wolves over the first 20 days<a class="headerlink" href="#solve-for-and-plot-the-population-of-rabbits-and-wolves-over-the-first-20-days" title="Permalink to this headline">#</a></h3>
-</section>
+<section id="practice-continued">
+<h2>Practice continued<a class="headerlink" href="#practice-continued" title="Permalink to this headline">#</a></h2>
 <section id="find-the-the-first-occurrence-that-the-rabbit-population-hits-3">
 <h3>Find the the first occurrence that the rabbit population hits 3<a class="headerlink" href="#find-the-the-first-occurrence-that-the-rabbit-population-hits-3" title="Permalink to this headline">#</a></h3>
 </section>

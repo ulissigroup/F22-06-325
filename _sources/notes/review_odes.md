@@ -284,6 +284,42 @@ anim
 
 +++ {"tags": []}
 
+## Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
+
++++
+
+As a quick recap of where we left off in 06-262, let's start with an example we spent a lot of time covering, Lotka Volterra (rabbit/wolf) example.
+
+We are interested in how the two populations of species (rabbits and wolves) might change over time. 
+
+* Rabbits are $x(t)$, wolves are $y(t)$
+* The rate of rabbits being eaten by wolves is proportional to both ($\beta xy$)
+* Rabbits reproduce on their own at a rate proportional to the number of rabbits, and rabbits are eaten by wolves at a rate proportional to the number of rabbits and wolves 
+\begin{align*}
+\frac{dx}{dt}=\alpha x-\beta xy
+\end{align*}
+where $\alpha$ and $\beta$ are constants.
+* Wolves are able to reproduce at a rate proportional to the number of wolves and rabbits (how quickly rabbits are being eaten) and die at a rate proportional to the number of wolves (sickness/injury/etc) 
+\begin{align*}
+\frac{dy}{dt}=\delta xy-\gamma y
+\end{align*}
+
+Let's say we start with 1 rabbit and 5 wolves, and the constants are 
+* $\alpha=1 $[1/day]
+* $\beta=0.2$ [1/wolves/day]
+* $\delta=0.5$ [1/rabbits/day]
+* $\gamma=0.2$ [1/day]
+
++++
+
+### Solve for and plot the population of rabbits and wolves over the first 20 days
+
+```{code-cell} ipython3
+
+```
+
++++ {"tags": []}
+
 ## Using events during ODE integration
 
 +++ {"id": "tIOg0zliWKff", "jp-MarkdownHeadingCollapsed": true, "tags": []}
@@ -377,43 +413,11 @@ In addition to reviewing what we knew from 06-262 on `solve_ivp`, we also talked
 More examples with ODE events are available at {doc}`./ode_events_extra_example`
 `````
 
-+++ {"tags": []}
-
-## Practice: Lotka-Volterra  Review of Solving ODEs with Scipy!
-
 +++
 
-As a quick recap of where we left off in 06-262, let's start with an example we spent a lot of time covering, Lotka Volterra (rabbit/wolf) example.
-
-We are interested in how the two populations of species (rabbits and wolves) might change over time. 
-
-* Rabbits are $x(t)$, wolves are $y(t)$
-* The rate of rabbits being eaten by wolves is proportional to both ($\beta xy$)
-* Rabbits reproduce on their own at a rate proportional to the number of rabbits, and rabbits are eaten by wolves at a rate proportional to the number of rabbits and wolves 
-\begin{align*}
-\frac{dx}{dt}=\alpha x-\beta xy
-\end{align*}
-where $\alpha$ and $\beta$ are constants.
-* Wolves are able to reproduce at a rate proportional to the number of wolves and rabbits (how quickly rabbits are being eaten) and die at a rate proportional to the number of wolves (sickness/injury/etc) 
-\begin{align*}
-\frac{dy}{dt}=\delta xy-\gamma y
-\end{align*}
-
-Let's say we start with 1 rabbit and 5 wolves, and the constants are 
-* $\alpha=1 $[1/day]
-* $\beta=0.2$ [1/wolves/day]
-* $\delta=0.5$ [1/rabbits/day]
-* $\gamma=0.2$ [1/day]
-
-Let's take 10 minutes to warm up and try coding this up in python using (scipy)
+## Practice continued
 
 +++
-
-### Solve for and plot the population of rabbits and wolves over the first 20 days
-
-```{code-cell} ipython3
-
-```
 
 ### Find the the first occurrence that the rabbit population hits 3
 
