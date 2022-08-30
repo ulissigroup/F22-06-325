@@ -768,7 +768,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f287c5f76d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3b575566d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_15_1.png" src="../_images/review_odes_15_1.png" />
@@ -821,7 +821,7 @@ y' = y + 2x - x^2; y(0) = 1
  y_events: None
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f287c50ac40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3b574703a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_17_2.png" src="../_images/review_odes_17_2.png" />
@@ -854,8 +854,8 @@ y' = y + 2x - x^2; y(0) = 1
 <section id="ode-solving-strategy-review">
 <h2>ODE solving strategy review<a class="headerlink" href="#ode-solving-strategy-review" title="Permalink to this headline">#</a></h2>
 <p>In 06-262 we spent a lecture talking about how ODE integrators worked. We started with simpler Euler integration and worked our way up through Runge-Kutta, which you coded in one of the homework assignments. As a reminder, the Runge-Kutta update rules were a sequence of calculations that estimated the function value:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1536599b-d8c0-426a-a169-e4ed89cd6b05">
-<span class="eqno">(1)<a class="headerlink" href="#equation-1536599b-d8c0-426a-a169-e4ed89cd6b05" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-717d19eb-b750-4976-8e84-b2992b0bb02e">
+<span class="eqno">(1)<a class="headerlink" href="#equation-717d19eb-b750-4976-8e84-b2992b0bb02e" title="Permalink to this equation">#</a></span>\[\begin{align}
 k_1 &amp;= \Delta t \cdot f(t^N, y^N)\\
 k_2 &amp;= \Delta t \cdot f\left(t^N+\frac{\Delta t}{2}, y^N + \frac{k_1}{2}\right)\\
 k_3 &amp;= \Delta t \cdot f\left(t^N+\frac{\Delta t}{2}, y^N + \frac{k_2}{2}\right)\\
@@ -1144,42 +1144,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img0b0d813e69b34d43ba443e9ab87d5ef1">
+  <img id="_anim_imga66336928c4c49df86a6e701a52a813d">
   <div class="anim-controls">
-    <input id="_anim_slider0b0d813e69b34d43ba443e9ab87d5ef1" type="range" class="anim-slider"
+    <input id="_anim_slidera66336928c4c49df86a6e701a52a813d" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim0b0d813e69b34d43ba443e9ab87d5ef1.set_frame(parseInt(this.value));">
+           oninput="anima66336928c4c49df86a6e701a52a813d.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anima66336928c4c49df86a6e701a52a813d.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anima66336928c4c49df86a6e701a52a813d.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anima66336928c4c49df86a6e701a52a813d.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anima66336928c4c49df86a6e701a52a813d.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anima66336928c4c49df86a6e701a52a813d.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anima66336928c4c49df86a6e701a52a813d.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anima66336928c4c49df86a6e701a52a813d.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anima66336928c4c49df86a6e701a52a813d.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim0b0d813e69b34d43ba443e9ab87d5ef1.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anima66336928c4c49df86a6e701a52a813d.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select0b0d813e69b34d43ba443e9ab87d5ef1"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selecta66336928c4c49df86a6e701a52a813d"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_0b0d813e69b34d43ba443e9ab87d5ef1"
+      <input type="radio" name="state" value="once" id="_anim_radio1_a66336928c4c49df86a6e701a52a813d"
              >
-      <label for="_anim_radio1_0b0d813e69b34d43ba443e9ab87d5ef1">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_0b0d813e69b34d43ba443e9ab87d5ef1"
+      <label for="_anim_radio1_a66336928c4c49df86a6e701a52a813d">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_a66336928c4c49df86a6e701a52a813d"
              checked>
-      <label for="_anim_radio2_0b0d813e69b34d43ba443e9ab87d5ef1">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_0b0d813e69b34d43ba443e9ab87d5ef1"
+      <label for="_anim_radio2_a66336928c4c49df86a6e701a52a813d">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_a66336928c4c49df86a6e701a52a813d"
              >
-      <label for="_anim_radio3_0b0d813e69b34d43ba443e9ab87d5ef1">Reflect</label>
+      <label for="_anim_radio3_a66336928c4c49df86a6e701a52a813d">Reflect</label>
     </form>
   </div>
 </div>
@@ -1189,9 +1189,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img0b0d813e69b34d43ba443e9ab87d5ef1";
-    var slider_id = "_anim_slider0b0d813e69b34d43ba443e9ab87d5ef1";
-    var loop_select_id = "_anim_loop_select0b0d813e69b34d43ba443e9ab87d5ef1";
+    var img_id = "_anim_imga66336928c4c49df86a6e701a52a813d";
+    var slider_id = "_anim_slidera66336928c4c49df86a6e701a52a813d";
+    var loop_select_id = "_anim_loop_selecta66336928c4c49df86a6e701a52a813d";
     var frames = new Array(21);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -8831,7 +8831,7 @@ ETGZ/wdzJDBs42MmXQAAAABJRU5ErkJggg==\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim0b0d813e69b34d43ba443e9ab87d5ef1 = new Animation(frames, img_id, slider_id, 1000.0,
+        anima66336928c4c49df86a6e701a52a813d = new Animation(frames, img_id, slider_id, 1000.0,
                                  loop_select_id);
     }, 0);
   })()

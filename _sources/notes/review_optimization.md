@@ -493,15 +493,26 @@ When we say regression, we really mean find some parameters of a model that best
 
 Suppose we have the following data that shows how the energy of a material depends on the volume of the material.
 
+```{seealso}
+Note that below we used pandas to read a CSV (comma separated value) file! You can read more about pandas here:
+
+[Documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
+
+[Tutorials (Python Data Science Handbook)](https://jakevdp.github.io/PythonDataScienceHandbook/03.00-introduction-to-pandas.html)
+```
+
 ```{code-cell} ipython3
 :id: Wnd2fDHDgyuR
 :outputId: d90784b9-8191-4ccd-bab6-8cbd9e28c808
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
-volumes = np.array([13.71, 14.82, 16.0, 17.23, 18.52])
-energies = np.array([-56.29, -56.41, -56.46, -56.463, -56.41])
+# Import csv using a pandas dataframe!
+df = pd.read_csv('review_optimization.csv')
+volumes = df['volumes'].values
+energies = df['energies'].values
 
 plt.plot(volumes, energies, "bo")
 plt.xlabel("V")
