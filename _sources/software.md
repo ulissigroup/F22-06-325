@@ -29,6 +29,12 @@ Be aware that anything you store on the jupyterhub server Prof. Ulissi and the T
 
 This is an experiment and run on Prof. Ulissi's research cluster, so please be patient if there are hiccups and report anything strange on piazza.
 
+### JupyterHub Usage Tips/Tricks
+
+A few suggestions if you're having issues with JupyterHub (I'll update this throughout the semester)
+* **Trouble saving a notebook** If your notebook doesn't seem to be saving for some reason, you can copy and paste all cells into a new notebook and save that. Edit -> select all cells, Edit -> copy cells, then go to a new notebook and Edit -> Paste all cells below. You can also try "save as" for the notebook and choose a new filename. If this is a recurring issue post on piazza so we can see if there's an underlying issue.
+* **HW editing** Before working on a homework, I would suggest duplicating the homework assignment (right click the file, then click duplicate), then edit that. This will ensure the homework doesn't get overwritten if I make changes to the homework and github resyncs. 
+
 ## Google Colab
 
 This should work like before. If you're on a notebook page, there should be a little "open in google colab" button if you mouse over the rocket symbol. You can also download the ipynb files from the course github page and upload them to colab yourself. Remember that local files you write (outside of the notebook) are not saved in colab!
