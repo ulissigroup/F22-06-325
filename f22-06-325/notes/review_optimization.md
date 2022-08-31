@@ -386,6 +386,55 @@ Once again, here you have to decide which maximum is relevant
 
 +++
 
+# Practice!
+
+`minimize` can work with functions of multiple variables. Just like with `solve_ivp`, it will expect a function with a vector input. You can unpack and use the variables with similar code like:
+```
+def f(X):
+    x, y = X
+    return f(x, y)
+```
+
+```{code-cell} ipython3
+import seaborn as sns
+
+plt.plot(
+```
+
+```{code-cell} ipython3
+xrange = np.linspace(-5,5)
+yrange = np.linspace(-5,5)
+xgrid, ygrid = np.meshgrid(xrange, yrange)
+
+plt.contourf(xgrid, ygrid, (x**2 + y - 11)**2 + (x + y**2 -7)**2,60,cmap='jet')
+plt.clim([0,400])
+```
+
+```{code-cell} ipython3
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.optimize import minimize
+
+x = np.linspace(-3,1)
+
+def f(X):
+    x,y = X
+    return (x**2 + y - 11)**2 + (x + y**2 -7)**2
+
+sol = minimize(f, 0.0)
+plt.plot(x, f(x))
+plt.plot(sol.x,sol.fun,'o')
+plt.ylim([-4,1])
+```
+
+```{code-cell} ipython3
+from scipy.misc import derivative
+```
+
+```{code-cell} ipython3
+
+```
+
 # Global optimization
 
 We just covered how to do local optimization with scipy. Specifically, starting with a guess, we used an algorithm to iteratively update the guess to find a local minimum. 
