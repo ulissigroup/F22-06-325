@@ -16,7 +16,7 @@ kernelspec:
 This lecture was also adapted from lecture notes in John Kitchin's excellent 06-623 course. His lecture notes are included in the helpful resources link if you want to know more details about how numerical methods work. These notes also contain content from Prof. Ulissi's 06-262 course. 
 ```
 
-+++
++++ {"tags": []}
 
 # Local Optimization and Curve Fitting
 
@@ -386,49 +386,35 @@ Once again, here you have to decide which maximum is relevant
 
 +++
 
-# Practice!
+# Practice with functions of multiple variables
 
-`minimize` can work with functions of multiple variables. Just like with `solve_ivp`, it will expect a function with a vector input. You can unpack and use the variables with similar code like:
+As practice, find the lowest of the local minima for the function $(x^2+y-11)^2+(x+y^2-7)^2$ in the domain  $x\in[-5,5],y\in[-5,5]$, visualized below!
+
+`````{tip}
+`minimize` can work with functions of multiple variables. Just like `solve_ivp`! It will expect a function with a vector input. You can unpack and use the variables with similar code like:
 ```
 def f(X):
     x, y = X
-    return f(x, y)
+    return x + y
+    
+minimize(f, [x0, y0])
 ```
+`````
 
 ```{code-cell} ipython3
-import seaborn as sns
+# Set limits for x/y
+xrange = np.linspace(-5, 5)
+yrange = np.linspace(-5, 5)
 
-plt.plot(
-```
-
-```{code-cell} ipython3
-xrange = np.linspace(-5,5)
-yrange = np.linspace(-5,5)
+# Make 2d arrays for all the unique values of x/y
 xgrid, ygrid = np.meshgrid(xrange, yrange)
 
-plt.contourf(xgrid, ygrid, (x**2 + y - 11)**2 + (x + y**2 -7)**2,60,cmap='jet')
-plt.clim([0,400])
-```
+# Generate the plot ofthe
+zgrid = (xgrid**2 + ygrid - 11) ** 2 + (xgrid + ygrid**2 - 7) ** 2
 
-```{code-cell} ipython3
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.optimize import minimize
-
-x = np.linspace(-3,1)
-
-def f(X):
-    x,y = X
-    return (x**2 + y - 11)**2 + (x + y**2 -7)**2
-
-sol = minimize(f, 0.0)
-plt.plot(x, f(x))
-plt.plot(sol.x,sol.fun,'o')
-plt.ylim([-4,1])
-```
-
-```{code-cell} ipython3
-from scipy.misc import derivative
+# Plot the function as a filled contour!
+plt.contourf(xgrid, ygrid, zgrid, 60, cmap="jet")
+plt.clim([0, 400])
 ```
 
 ```{code-cell} ipython3
@@ -559,9 +545,9 @@ import numpy as np
 import pandas as pd
 
 # Import csv using a pandas dataframe!
-df = pd.read_csv('review_optimization.csv')
-volumes = df['volumes'].values
-energies = df['energies'].values
+df = pd.read_csv("review_optimization.csv")
+volumes = df["volumes"].values
+energies = df["energies"].values
 
 plt.plot(volumes, energies, "bo")
 plt.xlabel("V")
