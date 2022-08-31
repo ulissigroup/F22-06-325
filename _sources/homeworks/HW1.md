@@ -43,20 +43,30 @@ with the initial condition $C_b(t=0)=C_{b0}=5$ M.
 
 ## Mol balance solve
 
-Solve the mole balance for $C_B(t)$ assuming $k$=0.6/hr and $k_d$=2/hr. Plot the conversion % for your solution (defined as $C_B(t)/C_{B0}$).
+Solve the mole balance for $C_B(t)$ assuming $k$=0.6/hr and $k_d$=2/hr for the first two hours. Plot the conversion % for your solution (defined as $C_B(t)/C_{B0}$).
 
-+++
+```{code-cell} ipython3
+
+```
 
 ## If it takes two hours to reach 50% conversion and the fresh catalyst has a rate constant of 0.6/hr what is the actual $k_d$?
 
-+++
+```{code-cell} ipython3
 
-## Using $k_d$ from 1.3, use solve_ivp events to determine how long it takes to reach 75% conversion in the reactor.
+```
 
-+++
+## Using $k_d$ you found from the previous step, use `solve_ivp` events to determine how long it takes to reach 75% conversion in the reactor.
+
+```{code-cell} ipython3
+
+```
 
 ## Catalyst refresh
 Say that we can stop the batch process after 2 hours, filter the spent catalyst, and replace with fresh catalyst. Solve and plot for $C_B(t)$ over 5 hours, and include the plot with the catalyst refresh. Include a legend on the plot to label each solution
+
+```{code-cell} ipython3
+
+```
 
 +++ {"tags": []}
 
