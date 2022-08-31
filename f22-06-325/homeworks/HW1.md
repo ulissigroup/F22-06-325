@@ -43,7 +43,7 @@ with the initial condition $C_b(t=0)=C_{b0}=5$ M.
 
 ## Mol balance solve
 
-Solve the mole balance for $C_B(t)$ assuming $k$=0.6/hr and $k_d$=2/hr for the first two hours. Plot the conversion % for your solution (defined as $C_B(t)/C_{B0}$).
+Solve the mole balance for $C_B(t)$ assuming $k$=0.6/hr and $k_d$=2/hr for the first two hours. Plot the conversion % for your solution (defined as $1-C_B(t)/C_{B0}$).
 
 ```{code-cell} ipython3
 
@@ -62,7 +62,7 @@ Solve the mole balance for $C_B(t)$ assuming $k$=0.6/hr and $k_d$=2/hr for the f
 ```
 
 ## Catalyst refresh
-Say that we can stop the batch process after 2 hours, filter the spent catalyst, and replace with fresh catalyst. Solve and plot for $C_B(t)$ over 5 hours, and include the plot with the catalyst refresh. Include a legend on the plot to label each solution
+Say that we can stop the batch process after 2 hours, filter the spent catalyst, and replace with fresh catalyst. $C_B$ will start wherever the first reaction left off. Solve and plot for $C_B(t)$ over 5 hours, and include the plot with the catalyst refresh. Include a legend on the plot to label each solution
 
 ```{code-cell} ipython3
 
@@ -81,7 +81,6 @@ with $r=kC_A^nC_B^m$ taking place in an isothermal liquid-phase batch reactor. M
 +++
 
 ## Load the data from the file into a numpy array and plot the concentration of each species
-
 
 You can use either the csv library https://docs.python.org/3/library/csv.html or pandas https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html. 
 
