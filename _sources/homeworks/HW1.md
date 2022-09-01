@@ -110,7 +110,7 @@ The first column is time in minutes. The second and third column is C_A and C_B 
 
 ```
 
-## Using the noisy data in isothermal_liquidphase_batch_errorfree.dat, repeat the fit using all of the data. Do the results agree with your initial trials?
+## Using the noise-free data in isothermal_liquidphase_batch_errorfree.dat, repeat the fit using all of the data. Do the results agree with your initial trials?
 
 +++
 
