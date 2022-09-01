@@ -15,6 +15,7 @@ RUN mamba install --quiet --yes \
     jupyterlab-spellchecker \
     git-lfs \
     lmfit \
+    plotly \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
