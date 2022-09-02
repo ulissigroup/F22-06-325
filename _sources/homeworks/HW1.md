@@ -104,7 +104,7 @@ The first column is time in minutes. The second and third column is C_A and C_B 
 
 ```
 
-## Estimate the parameters using both experiments simultaneously. Are the confidence intervals better? Comment on why or why not.
+## Estimate the parameters using both experiments simultaneously. Are the confidence intervals better? Comment on why or why not. *Hint*: For initial parameter guesses, consider the regions $k,n,m\in [1.5, 2.5]$. For the initial concentrations, there are natural guesses based on the data set.
 
 ```{code-cell} ipython3
 
