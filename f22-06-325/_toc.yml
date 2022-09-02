@@ -17,9 +17,9 @@ parts:
     - file: notes/review_odes
     - file: notes/ode_events_extra_example
     - file: notes/review_optimization
-  - file: notes/ml_basics
+  - file: notes/intro_ml
     sections:
-    - file: notes/extrapolation
+    - file: notes/ml_basics
   - file: labs/overview
     sections:
     - file: labs/python_debugging
