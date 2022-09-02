@@ -92,7 +92,7 @@ The first column is time in minutes. The second and third column is C_A and C_B 
 
 +++ {"tags": []}
 
-## Using lmfit, estimate rate parameters $k, n, m$ and initial concentration $C_{A0},C_{B0}$ from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + odeint).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value
+## Using lmfit, estimate rate parameters $k, n, m$ and initial concentration $C_{A0},C_{B0}$ from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + solve_ivp).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value
 
 ```{code-cell} ipython3
 
