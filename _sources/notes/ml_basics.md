@@ -303,8 +303,6 @@ print(f"The RMSE for the polynomial fit is {rmse:0.2f} C")
 ```
 
 ```{code-cell} ipython3
-from plotly.subplots import make_subplots
-
 # Make a plotly graph for the temperature data
 fig = make_subplots(rows=1, cols=2)
 fig.add_scatter(x=time, y=df["temperature"], name="Actual Data", row=1, col=1)
