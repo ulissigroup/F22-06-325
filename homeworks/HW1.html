@@ -571,7 +571,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-odeint-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
+    <a class="reference internal nav-link" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-solve-ivp-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
      Using lmfit, estimate rate parameters
      <span class="math notranslate nohighlight">
       \(k, n, m\)
@@ -580,7 +580,7 @@ title="Print to PDF"
      <span class="math notranslate nohighlight">
       \(C_{A0},C_{B0}\)
      </span>
-     from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + odeint).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value
+     from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + solve_ivp).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -689,7 +689,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-odeint-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
+    <a class="reference internal nav-link" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-solve-ivp-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
      Using lmfit, estimate rate parameters
      <span class="math notranslate nohighlight">
       \(k, n, m\)
@@ -698,7 +698,7 @@ title="Print to PDF"
      <span class="math notranslate nohighlight">
       \(C_{A0},C_{B0}\)
      </span>
-     from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + odeint).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value
+     from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + solve_ivp).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -794,8 +794,8 @@ k_b = \frac{k}{1+k_dt}
 <p>You can use either the csv library https://docs.python.org/3/library/csv.html or pandas https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html.</p>
 <p>The first column is time in minutes. The second and third column is C_A and C_B for the first experiment (in mol/L). The fourth and fifth column is C_A and C_B for the second experiment. Plot the data for <span class="math notranslate nohighlight">\(C_A\)</span> and <span class="math notranslate nohighlight">\(C_B\)</span> for each experiment (one experiment per figure).</p>
 </section>
-<section id="using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-odeint-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
-<h2>Using lmfit, estimate rate parameters <span class="math notranslate nohighlight">\(k, n, m\)</span> and initial concentration <span class="math notranslate nohighlight">\(C_{A0},C_{B0}\)</span> from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + odeint).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value<a class="headerlink" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-odeint-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value" title="Permalink to this headline">#</a></h2>
+<section id="using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-solve-ivp-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
+<h2>Using lmfit, estimate rate parameters <span class="math notranslate nohighlight">\(k, n, m\)</span> and initial concentration <span class="math notranslate nohighlight">\(C_{A0},C_{B0}\)</span> from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + solve_ivp).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value<a class="headerlink" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-solve-ivp-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="consider-the-second-experiment-estimate-the-parameters-using-only-this-data-comment-on-how-the-values-and-confidence-intervals-are-different-than-the-first-case">
 <h2>Consider the second experiment, estimate the parameters using only this data. Comment on how the values and confidence intervals are different than the first case<a class="headerlink" href="#consider-the-second-experiment-estimate-the-parameters-using-only-this-data-comment-on-how-the-values-and-confidence-intervals-are-different-than-the-first-case" title="Permalink to this headline">#</a></h2>
