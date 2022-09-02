@@ -16,7 +16,7 @@ $$\require{mhchem}$$
 
 +++
 
-# HW1 (due 9/4)
+# HW1 (due noon Monday 9/5)
 
 +++ {"tags": []}
 
