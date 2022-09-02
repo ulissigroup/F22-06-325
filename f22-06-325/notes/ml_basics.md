@@ -703,7 +703,7 @@ params = model.make_params(
     c0=1, c1=1, c2=1, c3=1, c4=1, frequency=2 * np.pi, amplitude=10, shift=-2 * np.pi
 )
 result = model.fit(y_train, params, x=X_train[:, 0])
-y_val_pred = polysin_result.eval(x=X_val[:, 0])
+y_val_pred = result.eval(x=X_val[:, 0])
 
 mae = mean_absolute_error(y_val, y_val_pred)
 rmse = mean_squared_error(y_val, y_val_pred) ** 0.5
@@ -736,7 +736,7 @@ gmodel = Model(
 )
 params = gmodel.make_params(c0=1, c1=1, c2=1, c3=1, d1=1, d2=1, d3=1, d4=1)
 
-result = gmodel.fit(y_train, params, year=X_train[:, 1], month=X_train[:, 2])
+monthyear_result = gmodel.fit(y_train, params, year=X_train[:, 1], month=X_train[:, 2])
 y_val_pred = monthyear_result.eval(year=X_val[:, 1], month=X_val[:, 2])
 
 mae = mean_absolute_error(y_val, y_val_pred)
@@ -784,7 +784,7 @@ fig.add_hline(y=0.0, row=1, col=1)
 # Make the parity plot!
 fig.add_scatter(
     x=y_val,
-    y=polysin_result.eval(x=X_val[:, 0]),
+    y=result.eval(x=X_val[:, 0]),
     mode="markers",
     name="Polynomial+Sin Fit",
     row=1,
@@ -877,8 +877,8 @@ model = sine_model + poly_model
 params = model.make_params(
     c0=1, c1=1, c2=1, c3=1, c4=1, frequency=2 * np.pi, amplitude=10, shift=-2 * np.pi
 )
-polysin_result = model.fit(y_train, params, x=X_train[:, 0])
-y_val_pred = polysin_result.eval(x=X_val[:, 0])
+result = model.fit(y_train, params, x=X_train[:, 0])
+y_val_pred = result.eval(x=X_val[:, 0])
 
 mae = mean_absolute_error(y_val, y_val_pred)
 rmse = mean_squared_error(y_val, y_val_pred) ** 0.5
@@ -912,7 +912,7 @@ gmodel = Model(
 params = gmodel.make_params(c0=1, c1=1, c2=1, c3=1, d1=1, d2=1, d3=1, d4=1)
 
 result = gmodel.fit(y_train, params, year=X_train[:, 1], month=X_train[:, 2])
-y_val_pred = monthyear_result.eval(year=X_val[:, 1], month=X_val[:, 2])
+y_val_pred = result.eval(year=X_val[:, 1], month=X_val[:, 2])
 
 mae = mean_absolute_error(y_val, y_val_pred)
 rmse = mean_squared_error(y_val, y_val_pred) ** 0.5
