@@ -8,13 +8,12 @@ Dates/etc are tentative and might change!
 |--------------|----------|----------------------------------------------------------------------------------------------------------|---|
 | Monday       | 08/29/22 | Recap/review of linear algebra and ODEs                                                                  |  {doc}`notes/review_odes` |
 | Wednesday    | 08/31/22 | Recap/review of black-box optimization and regression with minimize                                 |   {doc}`notes/review_optimization`  |
-| Optional lab |          | Python functions, error handling, exceptions, debugging                                                  |   |
 | Monday       | 09/05/22 | Labor day no class                                                                                       |   |
 | Wednesday    | 09/07/22 | Intro to supervised learning, model evaluation, and train/test splits  |   {doc}`notes/ml_basics` |
-| Optional lab |          | Installing python packages in colab (pip, etc)                                                           |   |
+| Optional lab |          | Python functions, error handling, exceptions, debugging                                                            |   |
 | Monday       | 09/12/22 | AI/ML in chemical industry Guest Lectures (Toyota Research, Covestro)                           |   |
 | Wednesday    | 09/14/22 | Industrial AI and AI for Climate Guest Lectures (Facebook AI Research, ClimateChangeAI)       |   |
-| Optional lab |          | Matplotlib, plotly for interactive plots                                                                 |   |
+| Optional lab |          | Installing python packages in colab (pip, etc)                                                                |   |
 | Monday       | 09/19/22 | Featurizing/Representing data in ChE                                                  |   |
 | Wednesday    | 09/21/22 | Linear models, nonlinear features                                                       |   |
 | Optional lab |          | Github and code/data sharing                                                                             |   |
