@@ -10,7 +10,7 @@ Dates/etc are tentative and might change!
 | Wednesday    | 08/31/22 | Recap/review of black-box optimization and regression with minimize                                 |   {doc}`notes/review_optimization`  |
 | Optional lab |          | Python functions, error handling, exceptions, debugging                                                  |   |
 | Monday       | 09/05/22 | Labor day no class                                                                                       |   |
-| Wednesday    | 09/07/22 | What does it mean to build a data-driven model? How do we know if we're interpolating or extrapolating?  |   |
+| Wednesday    | 09/07/22 | Intro to supervised learning, model evaluation, and train/test splits  |   {doc}`notes/ml_basics` |
 | Optional lab |          | Installing python packages in colab (pip, etc)                                                           |   |
 | Monday       | 09/12/22 | AI/ML in chemical industry Guest Lectures (Toyota Research, Covestro)                           |   |
 | Wednesday    | 09/14/22 | Industrial AI and AI for Climate Guest Lectures (Facebook AI Research, ClimateChangeAI)       |   |
