@@ -1009,7 +1009,3 @@ fig.show()
 ```
 
 We now have a pretty good idea of what level of accuracy we can expect moving forward. The parity plot looks reasonable, and the RMSE is ~0.52 C for the test set. Assuming that the system does not have major forces acting on it (like significant climate change action), we can probably use this model to forecast the next 10 years. Hopefully this isn't a good assumption!
-
-```{code-cell} ipython3
-
-```
