@@ -7,8 +7,9 @@ Like in 06-262, we will mostly use python in this class. In addition to google c
 As you saw in 06-262, printing jupyter notebooks in colab is a bit hit or miss and sometimes the output is a hard to read or missing graphs. The situation should be better with jupyterlab:
 * Try file -> save and export notebook as -> pdf
 * Try file -> save and export notebook as -> html, open the link, then save the output as PDF
+* Open a terminal, run `jupyter nbconvert HW1.ipynb --to html` (replace HW1.ipynb with your filename), then download the resulting html and print it
 
-Either way, double check the resulting PDF is complete and contains all of the output!
+Regardless, double check the resulting PDF is complete and contains all of the output!
 
 ## Course JupyterHub
 
