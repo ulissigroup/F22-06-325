@@ -5,7 +5,7 @@
 * Instructor: Prof. Ulissi
   * Email: zulissi@andrew.cmu.edu
   * Location: Doherty Hall A207A
-  * Office Hours: TBD
+  * Office Hours: Thursdays 530-630 [zoom link](https://cmu.zoom.us/j/97329669849?pwd=RW5Hdk5TTGVtbEk5cmorRmt2VUVqdz09)
 * TA
   * Laurens Lueg (llueg@andrew.cmu.edu)
   * Megan Walsh (mew2@andrew.cmu.edu)
