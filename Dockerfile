@@ -63,5 +63,10 @@ USER $NB_UID
 
 RUN cd /opt/ocp && python setup.py develop
 
-
-
+# Add texlive-science for mhchem package!
+USER root
+RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends \
+    texlive-science && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*USER $NB_UID
+USER $NB_UID
