@@ -9,8 +9,6 @@ RUN mamba install --quiet --yes \
     jupytext \
     nbgitpuller \
     jupyter-book \
-    python-lsp-server \
-    jupyterlab-lsp \
     jupyterlab-myst \
     jupyterlab-spellchecker \
     git-lfs \
@@ -21,6 +19,9 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+#    python-lsp-server \
+#    jupyterlab-lsp \
+    
 RUN jupyter labextension install jupyterlab-jupytext
 
 
