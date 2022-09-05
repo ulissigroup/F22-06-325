@@ -32,3 +32,4 @@ parts:
   - file: homeworks/homework
     sections:
     - file: homeworks/HW1
+    - file: homeworks/HW2
