@@ -63,10 +63,12 @@ USER $NB_UID
 
 RUN cd /opt/ocp && python setup.py develop
 
-# Add texlive-science for mhchem package!
+# Add texlive-science for mhchem package.
+# Also update the default latex format in nbconvert to add the mhchem package and disable all require statements
 USER root
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
     texlive-science && \
     apt-get clean && rm -rf /var/lib/apt/lists/*USER $NB_UID
 USER $NB_UID
+RUN sed -i '/{titling}/i \\\usepackage{mhchem}\n\\newcommand{\\require}[1]{}' /opt/conda/share/jupyter/nbconvert/templates/latex/base.tex.j2
