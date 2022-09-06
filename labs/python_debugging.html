@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Python functions, error handling, exceptions, debugging &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
+    <title>Python functions, Error handling, Exceptions, Debugging &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -203,7 +203,9 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Python functions, error handling, exceptions, debugging
+     <font color="red">
+      Python functions, Error handling, Exceptions, Debugging
+     </font>
     </a>
    </li>
   </ul>
@@ -315,6 +317,71 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ulissigroup/F22-06-325/main?urlpath=lab/tree/f22-06-325/labs/python_debugging.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://laikapack-head.cheme.cmu.edu/hub/hub/user-redirect/git-pull?repo=https%3A//github.com/ulissigroup/F22-06-325&urlpath=lab/tree/F22-06-325/f22-06-325/labs/python_debugging.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/ulissigroup/F22-06-325/blob/main/f22-06-325/labs/python_debugging.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -382,6 +449,23 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
+        <a href="../_sources/labs/python_debugging.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
         <a href="../_sources/labs/python_debugging.md"
    class="headerbtn"
    data-toggle="tooltip"
@@ -419,23 +503,186 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <font color="red">
+    Python functions, Error handling, Exceptions, Debugging
+   </font>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-functions">
+     Defining Functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-arguments">
+     Function Arguments
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#required-arguments">
+       Required Arguments:
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#keyword-arguements">
+       Keyword Arguements
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variable-length-arguements">
+       Variable Length Arguements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-setting-functions">
+     Type setting functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exception-handling">
+   Exception Handling
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#argument-of-an-exception">
+   Argument of an Exception
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finally-clause">
+     Finally clause
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assertions">
+     Assertions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Python functions, error handling, exceptions, debugging</h1>
+                <h1><font color='red'>Python functions, Error handling, Exceptions, Debugging</font></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <font color="red">
+    Python functions, Error handling, Exceptions, Debugging
+   </font>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-functions">
+     Defining Functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-arguments">
+     Function Arguments
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#required-arguments">
+       Required Arguments:
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#keyword-arguements">
+       Keyword Arguements
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variable-length-arguements">
+       Variable Length Arguements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-setting-functions">
+     Type setting functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exception-handling">
+   Exception Handling
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#argument-of-an-exception">
+   Argument of an Exception
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finally-clause">
+     Finally clause
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assertions">
+     Assertions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -443,8 +690,367 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="python-functions-error-handling-exceptions-debugging">
-<h1>Python functions, error handling, exceptions, debugging<a class="headerlink" href="#python-functions-error-handling-exceptions-debugging" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="font-color-red-python-functions-error-handling-exceptions-debugging-font">
+<h1><font color='red'>Python functions, Error handling, Exceptions, Debugging</font><a class="headerlink" href="#font-color-red-python-functions-error-handling-exceptions-debugging-font" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
+<p>Imagine that you have to open a file, read the contents of the file and close it. Pretty trivial, right? Now imagine that you have to read ten files, print their output or perform some computation on the contents and then close them. Now you don’t want to sit there and type file i/o operations for every file. What if there are over 500 files?</p>
+<p>This is where the functions come in. A function is a block of organized and reusable code in a program that performs a specific task which can be incorporated into a larger program or reused by passing different sets of parameters.</p>
+<p>The advantages of using functions are:</p>
+<ul class="simple">
+<li><p>Allowing code reuse.</p></li>
+<li><p>Reducing code duplication.</p></li>
+<li><p>Improving readability while reducing the complexity of the code.</p></li>
+</ul>
+<p>There are two basic types of functions:</p>
+<ul class="simple">
+<li><p>Built-in functions</p></li>
+<li><p>User defined functions.</p></li>
+</ul>
+<p>We have been using <a class="reference external" href="https://docs.python.org/3/library/functions.html">built-in</a> functions for quite some time without actually understanding how a function works. This is the beauty of Python. Now let’s see how you can create your own functions and call them in your code.</p>
+<section id="defining-functions">
+<h2>Defining Functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">#</a></h2>
+<p>A function is defined using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword followed by the name of the function. The parameters or the arguments should be placed within the parentheses followed by the function name. The code block within every function starts with a colon and should be indented.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> * </span><span class="si">{}</span><span class="s1"> = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">mul</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 * 5 = 20
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="function-arguments">
+<h2>Function Arguments<a class="headerlink" href="#function-arguments" title="Permalink to this headline">#</a></h2>
+<p>A function can be called by using following types of formal arguments:</p>
+<ul class="simple">
+<li><p>Required arguments</p></li>
+<li><p>Keyword arguments</p></li>
+<li><p>Default arguments</p></li>
+<li><p>Variable-length arguments</p></li>
+</ul>
+<section id="required-arguments">
+<h3>Required Arguments:<a class="headerlink" href="#required-arguments" title="Permalink to this headline">#</a></h3>
+<p>Required arguments are passed to a function in correct positional order. The number of arguments being passed should be equal to the number or arguments expected by the function that is defined. Let’s take a look at the example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">sem</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My name is: &#39;</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This is semester&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">sem</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Abilash&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="c1"># What if we change the order in which we are passing the arguments?</span>
+<span class="n">info</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Abilash&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My name is:  Abilash
+This is semester 2
+
+
+My name is:  2
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># What if we change the order in which we are passing the arguments?</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">info</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Abilash&#39;</span><span class="p">)</span>
+
+<span class="nn">Input In [2],</span> in <span class="ni">info</span><span class="nt">(name, sem)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">sem</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My name is: &#39;</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This is semester&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">sem</span><span class="p">))</span>
+
+<span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;Abilash&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see how swapping the order of function arguements can break it. There are cases where you will be able to make the function works independently of the order of arguement inputs.</p>
+</section>
+<section id="keyword-arguements">
+<h3>Keyword Arguements<a class="headerlink" href="#keyword-arguements" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span><span class="p">(</span><span class="n">sem</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Abilash&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here by specifiying which input we are giving first we can change the order of our arguement inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Abilash&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">info2</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">sem</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My name is: &#39;</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This is semester&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">sem</span><span class="p">))</span>
+
+<span class="n">info2</span><span class="p">(</span><span class="s1">&#39;Abilash&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see above that in <code class="docutils literal notranslate"><span class="pre">info</span></code> when the arguement sem was not given it threw a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> unlike in the case of <code class="docutils literal notranslate"><span class="pre">info2</span></code>. This is because we defined a default value for sem in info2 which will be used if no value is given during the function call.</p>
+</section>
+<section id="variable-length-arguements">
+<h3>Variable Length Arguements<a class="headerlink" href="#variable-length-arguements" title="Permalink to this headline">#</a></h3>
+<p>At some point, you may need to process the function for more than the arguments that you specified when you defined the function. <code class="docutils literal notranslate"><span class="pre">print()</span></code> is on such examples. These arguments can be of variable length and are not named in the function definition, unlike required and default arguments. So how do you handle this?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">names</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name of course: &#39;</span><span class="p">,</span><span class="n">course</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name of students in the course:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">names</span><span class="p">(</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Mat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="type-setting-functions">
+<h2>Type setting functions<a class="headerlink" href="#type-setting-functions" title="Permalink to this headline">#</a></h2>
+<p>In Python, you can indicate the function argument and return value type. This makes it easier to read your code and for others to work on it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">numberremover</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">delim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    We are trying to remove a specific number from a string. We take in a string text and integer int</span>
+<span class="sd">    to return the editted string.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">newtext</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">delim</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">newtext</span><span class="p">)</span>
+
+<span class="n">numberremover</span><span class="p">(</span><span class="s1">&#39;Lets3test4this3and333see if this69works&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, it is essential to remember that if we give an input of the wrong type, python will <em><strong>NOT</strong></em> throw and error. We need to have other ways to check for this if we desire it. We will look at it at the end of the next section.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exception-handling">
+<h1>Exception Handling<a class="headerlink" href="#exception-handling" title="Permalink to this headline">#</a></h1>
+<p>An exception is a python object that represents an error. It is an event, which occurs during the execution of a program that disrupts the normal flow of the program’s instructions. When such a situation occurs and if python is not able to cope with it, it raises an exception. We have been seeing errors like TypeError and NameError or IndentationError throughout our tutorial which caused our application or that code to stop the execution. To prevent this from happening, we have to handle such exceptions.</p>
+<p>Following is a hierarchy for some built-in exceptions in python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">BaseException</span>
+ <span class="o">+--</span> <span class="ne">KeyboardInterrupt</span>
+ <span class="o">+--</span> <span class="ne">Exception</span>
+      <span class="o">+--</span> <span class="n">StandardError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">ArithmeticError</span>
+      <span class="o">|</span>    <span class="o">|</span>    <span class="o">+--</span> <span class="ne">FloatingPointError</span>
+      <span class="o">|</span>    <span class="o">|</span>    <span class="o">+--</span> <span class="ne">OverflowError</span>
+      <span class="o">|</span>    <span class="o">|</span>    <span class="o">+--</span> <span class="ne">ZeroDivisionError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">AssertionError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">ImportError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">LookupError</span>
+      <span class="o">|</span>    <span class="o">|</span>    <span class="o">+--</span> <span class="ne">IndexError</span>
+      <span class="o">|</span>    <span class="o">|</span>    <span class="o">+--</span> <span class="ne">KeyError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">NameError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">RuntimeError</span>
+      <span class="o">|</span>    <span class="o">|</span>    <span class="o">+--</span> <span class="ne">NotImplementedError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">SyntaxError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">SystemError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">TypeError</span>
+      <span class="o">|</span>    <span class="o">+--</span> <span class="ne">ValueError</span>
+
+      <span class="o">+--</span> <span class="ne">Warning</span>
+           <span class="o">+--</span> <span class="ne">DeprecationWarning</span>
+           <span class="o">+--</span> <span class="ne">PendingDeprecationWarning</span>
+           <span class="o">+--</span> <span class="ne">RuntimeWarning</span>
+           <span class="o">+--</span> <span class="ne">SyntaxWarning</span>
+           <span class="o">+--</span> <span class="ne">UserWarning</span>
+           <span class="o">+--</span> <span class="ne">FutureWarning</span>
+</pre></div>
+</div>
+<p>Let’s take a look at an example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we try to access a variable that has not been defined yet. Python raises a NameError and the execution halts. There are basically two ways to handle this error.</p>
+<p>Make sure the variable is defined first.</p>
+<p>Use try-catch block. Place the code to be executed inside the try block and place the exception to be handled in the except block.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have not defined this variable yet!!!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As observed from the above example, our execution continued even after we tried to print the non-exsistent variable x.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="argument-of-an-exception">
+<h1>Argument of an Exception<a class="headerlink" href="#argument-of-an-exception" title="Permalink to this headline">#</a></h1>
+<p>An exception can have an argument, which is a value that gives additional information about the problem that caused the exception. The contents of argument vary by exception.</p>
+<p>Here we see the case of a divide by zero error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets try to use a try-catch block with an error message.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;i =&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;    Zero Division Error: &#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="finally-clause">
+<h2>Finally clause<a class="headerlink" href="#finally-clause" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">finally</span></code> keyword is a clause which contains the block of code that will always be executed regardless of whether there was any exception in the code or not. This is generally used to cleanup some resources in a program, especially when using file I/O operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fhandler</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Open file in read-only mode. Try renaming file to test1.txt</span>
+    <span class="n">fhandler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./sample_datasets/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="c1"># Read all lines</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fhandler</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error Opening File&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have a zero division error&#39;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># If the file was opened</span>
+    <span class="k">if</span> <span class="n">fhandler</span><span class="p">:</span>
+        <span class="c1"># Close the file</span>
+        <span class="n">fhandler</span><span class="o">.</span><span class="n">close</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above example we can observe that we are trying to open a file and read its contents. If the file doesn’t exist, it will raise an IOError exception. If that happens, our try-catch block will handle it. However once the file has been read, we need to close the file so that other processes or other functions in our code can access it. (Remember: when accessing/ modifying a file, the file is locked to that process which is performing the I/O operation on it. Unless the lock is released, no other process will be able to modify it.. )</p>
+<p>To make sure we release the resources, in the <code class="docutils literal notranslate"><span class="pre">finally</span></code> block we are checking if fhandler is not null and closing it.</p>
+</section>
+<section id="assertions">
+<h2>Assertions<a class="headerlink" href="#assertions" title="Permalink to this headline">#</a></h2>
+<p>We can check our code at anypoint during run time to see if things are running as expected. This can be done using <code class="docutils literal notranslate"><span class="pre">assert</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">raiser</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    We want to raise number x  to the nth power(n&gt;=1)</span>
+<span class="sd">    x and n must be integers and positive.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">num</span> <span class="o">*=</span> <span class="n">x</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">num</span> <span class="o">*=-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">num</span>
+
+<span class="n">raiser</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">raiser</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">raiser</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that the above function works flawlessly. As we know when we raise a positive number to the (n-1)th power, we expect a positive value. However, due to some flaws in the code it might not happen so. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raiser</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will then want to check if our code makes an error at any stage. This can be either due to inputs, the code flow or the output. We can check this by asserting at each stage if our output meets our expectation. <code class="docutils literal notranslate"><span class="pre">Assert</span>&#160; <span class="pre">&lt;check&gt;,</span> <span class="pre">&lt;error</span> <span class="pre">message&gt;</span></code> The assert check must output a boolean result for it to work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">raiser</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    We want to raise number x  to the nth power(n&gt;=1)</span>
+<span class="sd">    x and n must be integers and positive.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+    <span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+    <span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    
+    <span class="n">num</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">num</span> <span class="o">*=</span> <span class="n">x</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">num</span> <span class="o">*=-</span><span class="mi">1</span>
+        <span class="k">assert</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+    <span class="k">return</span> <span class="n">num</span>
+
+<span class="n">raiser</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see an AssertionError but have dont have an understanding of where in the loop it is happening. We can thus add a message.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">raiser</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    We want to raise number x  to the nth power(n&gt;=1)</span>
+<span class="sd">    x and n must be integers and positive.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+    <span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+    <span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    
+    <span class="n">num</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">num</span> <span class="o">*=</span> <span class="n">x</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">num</span> <span class="o">*=-</span><span class="mi">1</span>
+        <span class="k">assert</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Error occuring when i = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+    <span class="k">return</span> <span class="n">num</span>
+
+<span class="n">raiser</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that asserting excessively can slow down code, so dont be overboard with them or comment them out after debugging</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
