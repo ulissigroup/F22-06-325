@@ -29,6 +29,7 @@ parts:
     sections:
     - file: projects/wildfires/wildfire_dataset
     - file: projects/catalysts/catalyst_simulation
+    - file: projects/travelling_salesman/travelling_salesman
   - file: homeworks/homework
     sections:
     - file: homeworks/HW1
