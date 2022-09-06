@@ -11,8 +11,8 @@ Dates/etc are tentative and might change!
 | Monday       | 09/05/22 | Labor day no class                                                                                       |   |
 | Wednesday    | 09/07/22 | Intro to supervised learning, model evaluation, and train/test splits  |   {doc}`notes/ml_basics` |
 | Optional lab |          | Python functions, error handling, exceptions, debugging                                                            |   |
-| Monday       | 09/12/22 | AI/ML in chemical industry Guest Lectures (Toyota Research, Covestro)                           |   |
-| Wednesday    | 09/14/22 | Industrial AI and AI for Climate Guest Lectures (Facebook AI Research, ClimateChangeAI)       |   |
+| Monday       | 09/12/22 | AI/ML in Chemistry and Industry Guest Lectures (Covestro, Meta Fundamental AI Research)                           |   |
+| Wednesday    | 09/14/22 | AI/ML in Chemistry and Industry Guest Lectures (ClimateChangeAI, Toyota Research Institute)     |   |
 | Optional lab |          | Installing python packages in colab (pip, etc)                                                                |   |
 | Monday       | 09/19/22 | Featurizing/Representing data in ChE                                                  |   |
 | Wednesday    | 09/21/22 | Linear models, nonlinear features                                                       |   |
@@ -25,4 +25,3 @@ Dates/etc are tentative and might change!
 | Optional lab |          |                                                                                                          |   |
 | Monday       | 10/10/22 | Guest lecture on Engineering ethics of AI/ML                                                             |   |
 | Wednesday    | 10/12/22 | Final project poster session                                                                             |   |
-| Saturday     | 10/15/22 | Final Exam                                                                                                    |   |
