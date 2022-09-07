@@ -1,0 +1,1552 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>HW1 (due 9/4) &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Methods and ML for ChE (F22-06-325)</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction & License
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Info
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notes.html">
+   Logistics/Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../schedule.html">
+   Course schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../software.html">
+   Software Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../helpful_resources.html">
+   Helpful Resources
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../notes/recap.html">
+   Recap of Numerical Methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/review_odes.html">
+     ODE Integration (with Events!)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/ode_events_extra_example.html">
+     More complicated example: Van der Pol oscillator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/review_optimization.html">
+     Local Optimization and Curve Fitting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../notes/intro_ml.html">
+   Introduction to Machine Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/ml_basics.html">
+     Intro to Supervised Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../labs/overview.html">
+   Labs and Python/Software Tips
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../labs/python_debugging.html">
+     <font color="red">
+      Python functions, Error handling, Exceptions, Debugging
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../projects/overview.html">
+   Course Project Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/wildfires/wildfire_dataset.html">
+     Predicting Wildfire Smoke Composition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/catalysts/catalyst_simulation.html">
+     Using ML to Predict Catalyst Properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/travelling_salesman/travelling_salesman.html">
+     Finding optimal tours for the Travelling Salesman Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../homework.html">
+   Homeworks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../HW1.html">
+     HW1 (due noon Monday 9/5)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../HW2.html">
+     HW2 (due 9/12)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ulissigroup/F22-06-325/main?urlpath=lab/tree/f22-06-325/homeworks/solutions/HW1/HW1_solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://laikapack-head.cheme.cmu.edu/hub/hub/user-redirect/git-pull?repo=https%3A//github.com/ulissigroup/F22-06-325&urlpath=lab/tree/F22-06-325/f22-06-325/homeworks/solutions/HW1/HW1_solution.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/ulissigroup/F22-06-325/blob/main/f22-06-325/homeworks/solutions/HW1/HW1_solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ulissigroup/F22-06-325"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ulissigroup/F22-06-325/issues/new?title=Issue%20on%20page%20%2Fhomeworks/solutions/HW1/HW1_solution.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/homeworks/solutions/HW1/HW1_solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../../_sources/homeworks/solutions/HW1/HW1_solution.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   HW1 (due 9/4)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#catalyst-deactivation-in-a-batch-reactor-50-pts">
+   Catalyst deactivation in a batch reactor [50 pts]
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mol-balance-solve">
+     Mol balance solve
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-it-takes-two-hours-to-reach-50-conversion-and-the-fresh-catalyst-has-a-rate-constant-of-0-6-hr-what-is-the-actual-k-d">
+     If it takes two hours to reach 50% conversion and the fresh catalyst has a rate constant of 0.6/hr what is the actual
+     <span class="math notranslate nohighlight">
+      \(k_d\)
+     </span>
+     ?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-k-d-you-found-from-the-previous-step-use-solve-ivp-events-to-determine-how-long-it-takes-to-reach-75-conversion-in-the-reactor">
+     Using
+     <span class="math notranslate nohighlight">
+      \(k_d\)
+     </span>
+     you found from the previous step, use
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       solve_ivp
+      </span>
+     </code>
+     events to determine how long it takes to reach 75% conversion in the reactor.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#catalyst-refresh">
+     Catalyst refresh
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#curve-fitting-with-two-species-and-multiple-data-50-pt">
+   Curve fitting with two species and multiple data (50 pt)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-the-data-from-the-file-into-a-numpy-array-and-plot-the-concentration-of-each-species">
+     Load the data from the file into a numpy array and plot the concentration of each species
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-odeint-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
+     Using lmfit, estimate rate parameters
+     <span class="math notranslate nohighlight">
+      \(k, n, m\)
+     </span>
+     and initial concentration
+     <span class="math notranslate nohighlight">
+      \(C_{A0},C_{B0}\)
+     </span>
+     from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + odeint).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#consider-the-second-experiment-estimate-the-parameters-using-only-this-data-comment-on-how-the-values-and-confidence-intervals-are-different-than-the-first-case">
+     Consider the second experiment, estimate the parameters using only this data. Comment on how the values and confidence intervals are different than the first case
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimate-the-parameters-using-both-experiments-simultaneously-are-the-confidence-intervals-better-comment-on-why-or-why-not">
+     Estimate the parameters using both experiments simultaneously. Are the confidence intervals better? Comment on why or why not.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-noisy-data-in-isothermal-liquidphase-batch-errorfree-dat-repeat-the-fit-using-all-of-the-data-do-the-results-agree-with-your-initial-trials">
+     Using the noisy data in isothermal_liquidphase_batch_errorfree.dat, repeat the fit using all of the data. Do the results agree with your initial trials?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#based-on-these-results-to-determine-the-order-of-the-rate-expression-with-respect-to-two-different-species-how-should-you-choose-the-initial-conditions-of-the-two-species">
+     Based on these results, to determine the order of the rate expression with respect to two different species, how should you choose the initial conditions of the two species?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>HW1 (due 9/4)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   HW1 (due 9/4)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#catalyst-deactivation-in-a-batch-reactor-50-pts">
+   Catalyst deactivation in a batch reactor [50 pts]
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mol-balance-solve">
+     Mol balance solve
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-it-takes-two-hours-to-reach-50-conversion-and-the-fresh-catalyst-has-a-rate-constant-of-0-6-hr-what-is-the-actual-k-d">
+     If it takes two hours to reach 50% conversion and the fresh catalyst has a rate constant of 0.6/hr what is the actual
+     <span class="math notranslate nohighlight">
+      \(k_d\)
+     </span>
+     ?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-k-d-you-found-from-the-previous-step-use-solve-ivp-events-to-determine-how-long-it-takes-to-reach-75-conversion-in-the-reactor">
+     Using
+     <span class="math notranslate nohighlight">
+      \(k_d\)
+     </span>
+     you found from the previous step, use
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       solve_ivp
+      </span>
+     </code>
+     events to determine how long it takes to reach 75% conversion in the reactor.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#catalyst-refresh">
+     Catalyst refresh
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#curve-fitting-with-two-species-and-multiple-data-50-pt">
+   Curve fitting with two species and multiple data (50 pt)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-the-data-from-the-file-into-a-numpy-array-and-plot-the-concentration-of-each-species">
+     Load the data from the file into a numpy array and plot the concentration of each species
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-odeint-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
+     Using lmfit, estimate rate parameters
+     <span class="math notranslate nohighlight">
+      \(k, n, m\)
+     </span>
+     and initial concentration
+     <span class="math notranslate nohighlight">
+      \(C_{A0},C_{B0}\)
+     </span>
+     from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + odeint).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#consider-the-second-experiment-estimate-the-parameters-using-only-this-data-comment-on-how-the-values-and-confidence-intervals-are-different-than-the-first-case">
+     Consider the second experiment, estimate the parameters using only this data. Comment on how the values and confidence intervals are different than the first case
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimate-the-parameters-using-both-experiments-simultaneously-are-the-confidence-intervals-better-comment-on-why-or-why-not">
+     Estimate the parameters using both experiments simultaneously. Are the confidence intervals better? Comment on why or why not.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-noisy-data-in-isothermal-liquidphase-batch-errorfree-dat-repeat-the-fit-using-all-of-the-data-do-the-results-agree-with-your-initial-trials">
+     Using the noisy data in isothermal_liquidphase_batch_errorfree.dat, repeat the fit using all of the data. Do the results agree with your initial trials?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#based-on-these-results-to-determine-the-order-of-the-rate-expression-with-respect-to-two-different-species-how-should-you-choose-the-initial-conditions-of-the-two-species">
+     Based on these results, to determine the order of the rate expression with respect to two different species, how should you choose the initial conditions of the two species?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="math notranslate nohighlight">
+\[\require{mhchem}\]</div>
+<section class="tex2jax_ignore mathjax_ignore" id="hw1-due-9-4">
+<h1>HW1 (due 9/4)<a class="headerlink" href="#hw1-due-9-4" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="catalyst-deactivation-in-a-batch-reactor-50-pts">
+<h1>Catalyst deactivation in a batch reactor [50 pts]<a class="headerlink" href="#catalyst-deactivation-in-a-batch-reactor-50-pts" title="Permalink to this headline">#</a></h1>
+<p>Consider the irreversible, liquid-phase isomerization reaction carried out in a solvent containing dissolved catalyst at 25 C in a batch reactor:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\ce{B -&gt;[k_b] C}
+\end{align*}\]</div>
+<p>The apparent first-order reaction rate constant <span class="math notranslate nohighlight">\(k_b\)</span> decreases with time because of catalyst deterioriation. A chemist friend of yours has studied the catalyst deactivation process and has proposed that it can be modeled with</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+k_b = \frac{k}{1+k_dt}
+\end{align*}\]</div>
+<p>in which <span class="math notranslate nohighlight">\(k\)</span> is the fresh catalyst rate constant and <span class="math notranslate nohighlight">\(k_d\)</span> is the deactivation rate constant.</p>
+<p>We can derive the ODE to solve by starting with a mol balance on the entire system:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dN_b}{dt} &amp;=N_b^0 - Vr \\
+\frac{dC_b}{dt} &amp;= -k_bC_b=-\frac{kC_b}{1+k_dt} 
+\end{align*}\]</div>
+<p>with the initial condition <span class="math notranslate nohighlight">\(C_b(t=0)=C_{b0}=5\)</span> M.</p>
+<section id="mol-balance-solve">
+<h2>Mol balance solve<a class="headerlink" href="#mol-balance-solve" title="Permalink to this headline">#</a></h2>
+<p>Solve the mole balance for <span class="math notranslate nohighlight">\(C_B(t)\)</span> assuming <span class="math notranslate nohighlight">\(k\)</span>=0.6/hr and <span class="math notranslate nohighlight">\(k_d\)</span>=2/hr for the first two hours. Plot the conversion % for your solution (defined as <span class="math notranslate nohighlight">\(1-C_B(t)/C_{B0}\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="c1"># define parameters</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.6</span>  <span class="c1"># 1/hr</span>
+<span class="n">k_d</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># 1/hr</span>
+<span class="n">Cb_0</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># M</span>
+
+
+<span class="c1"># define the ODE</span>
+<span class="k">def</span> <span class="nf">dCb_dt</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Cb</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">Cb</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">k_d</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+
+<span class="c1"># define time span and eval times</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">t_span</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># integrate ODE</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">dCb_dt</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="n">t_span</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Cb_0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+
+<span class="c1"># get Cb(t)</span>
+<span class="n">Cb_t</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># compute conversion %</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">Cb_t</span> <span class="o">/</span> <span class="n">Cb_0</span>
+
+<span class="c1"># plot conversion</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">conv</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t [hr]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;conversion %&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;conversion %&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/HW1_solution_4_1.png" src="../../../_images/HW1_solution_4_1.png" />
+</div>
+</div>
+</section>
+<section id="if-it-takes-two-hours-to-reach-50-conversion-and-the-fresh-catalyst-has-a-rate-constant-of-0-6-hr-what-is-the-actual-k-d">
+<h2>If it takes two hours to reach 50% conversion and the fresh catalyst has a rate constant of 0.6/hr what is the actual <span class="math notranslate nohighlight">\(k_d\)</span>?<a class="headerlink" href="#if-it-takes-two-hours-to-reach-50-conversion-and-the-fresh-catalyst-has-a-rate-constant-of-0-6-hr-what-is-the-actual-k-d" title="Permalink to this headline">#</a></h2>
+<p>We know that <span class="math notranslate nohighlight">\(C_b(t=0)=C_{b0}\)</span>, <span class="math notranslate nohighlight">\(\frac{C_b(t=2)}{C_{b0}} = 0.5\)</span> and <span class="math notranslate nohighlight">\(k = 0.6/hr\)</span>. We attempt to solve the ODE analytically to find an expression for <span class="math notranslate nohighlight">\(C_b(t)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dC_b}{dt} &amp;= -\frac{k C_b}{1+k_d t}  \\
+\Rightarrow \ln \frac{C_b(t)}{C_{b0}} &amp;= -\frac{k}{k_d} \ln(k_d t +1) \\
+\end{align*}\]</div>
+<p>To solve for <span class="math notranslate nohighlight">\(k_d\)</span>, we use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fsolve.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize.fsolve</span></code></a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
+<span class="c1"># define parameters</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># h</span>
+<span class="n">conv_at_t</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># C_b(t=2)/C_b0</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.6</span>  <span class="c1"># 1/hr</span>
+
+<span class="c1"># ODE function to integrate</span>
+<span class="k">def</span> <span class="nf">dCb_dt</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Cb</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">k_d</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">Cb</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">k_d</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+
+<span class="c1"># Objective to decide how close the solution is for a given k_d</span>
+<span class="c1"># We want to make this objective equal to 0!</span>
+<span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">k_d</span><span class="p">):</span>
+
+    <span class="c1"># Solve the ODE</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">dCb_dt</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Cb_0</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k_d</span><span class="p">,))</span>
+
+    <span class="c1"># Get the final concentration</span>
+    <span class="n">Cb</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Return how far the final conversion is from 0.5</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">Cb</span> <span class="o">/</span> <span class="n">Cb_0</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+
+<span class="n">k_d_actual</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The actual k_d is </span><span class="si">{</span><span class="n">k_d_actual</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The actual k_d is 0.877
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-k-d-you-found-from-the-previous-step-use-solve-ivp-events-to-determine-how-long-it-takes-to-reach-75-conversion-in-the-reactor">
+<h2>Using <span class="math notranslate nohighlight">\(k_d\)</span> you found from the previous step, use <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> events to determine how long it takes to reach 75% conversion in the reactor.<a class="headerlink" href="#using-k-d-you-found-from-the-previous-step-use-solve-ivp-events-to-determine-how-long-it-takes-to-reach-75-conversion-in-the-reactor" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create new event for conversion = 0.75</span>
+<span class="k">def</span> <span class="nf">conversionTargetReached</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Cb</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">k_d</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">Cb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">Cb_0</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.75</span>
+
+
+<span class="n">conversionTargetReached</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># set longer time span</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">t_span</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># integrate ODE with event</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">fun</span><span class="o">=</span><span class="n">dCb_dt</span><span class="p">,</span>
+    <span class="n">t_span</span><span class="o">=</span><span class="n">t_span</span><span class="p">,</span>
+    <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Cb_0</span><span class="p">],</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k_d_actual</span><span class="p">,),</span>
+    <span class="n">events</span><span class="o">=</span><span class="n">conversionTargetReached</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># print time of event</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conversion target hit at: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; h.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Conversion target hit at: 7.508500707147827 h.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="catalyst-refresh">
+<h2>Catalyst refresh<a class="headerlink" href="#catalyst-refresh" title="Permalink to this headline">#</a></h2>
+<p>Say that we can stop the batch process after 2 hours, filter the spent catalyst, and replace with fresh catalyst. <span class="math notranslate nohighlight">\(C_B\)</span> will start wherever the first reaction left off. Solve and plot for <span class="math notranslate nohighlight">\(C_B(t)\)</span> over 5 hours, and include the plot with the catalyst refresh. Include a legend on the plot to label each solution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we define a piecewise function to model the catalyst refresh</span>
+<span class="k">def</span> <span class="nf">dCb_dt_refresh</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Cb</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">refresh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="mf">2.0</span> <span class="ow">and</span> <span class="n">refresh</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">k_b</span> <span class="o">=</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">k_d_actual</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mf">2.0</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">k_b</span> <span class="o">=</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">k_d_actual</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="n">k_b</span> <span class="o">*</span> <span class="n">Cb</span>
+
+
+<span class="c1"># set longer time span</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">t_span</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># integrate with refresh</span>
+<span class="c1"># Note: k_b(t) is non-smooth -&gt; use implicit method</span>
+<span class="n">sol_with_refresh</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">fun</span><span class="o">=</span><span class="n">dCb_dt_refresh</span><span class="p">,</span>
+    <span class="n">t_span</span><span class="o">=</span><span class="n">t_span</span><span class="p">,</span>
+    <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Cb_0</span><span class="p">],</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="kc">True</span><span class="p">,),</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;Radau&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">Cb_with_refresh</span> <span class="o">=</span> <span class="n">sol_with_refresh</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># integrate without refresh</span>
+<span class="n">sol_without_refresh</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">fun</span><span class="o">=</span><span class="n">dCb_dt_refresh</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="n">t_span</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Cb_0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="kc">False</span><span class="p">,)</span>
+<span class="p">)</span>
+
+<span class="n">Cb_without_refresh</span> <span class="o">=</span> <span class="n">sol_without_refresh</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># plot concentrations over time</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">Cb_with_refresh</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;with catalyst refresh&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">Cb_without_refresh</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;without catalyst refresh&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t [hr]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$C_b(t)$ [M]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f68e7a99f70&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/HW1_solution_11_1.png" src="../../../_images/HW1_solution_11_1.png" />
+</div>
+</div>
+<p>We could also do this with two different ODE solves! Both give the same answer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we define a piecewise function to model the catalyst refresh</span>
+<span class="k">def</span> <span class="nf">dCb_dt</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Cb</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">k_b</span> <span class="o">=</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">k_d_actual</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">k_b</span> <span class="o">*</span> <span class="n">Cb</span>
+
+
+<span class="c1"># integrate before refresh</span>
+<span class="n">sol_before_refresh</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">fun</span><span class="o">=</span><span class="n">dCb_dt</span><span class="p">,</span>
+    <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Cb_0</span><span class="p">],</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Integrate after refresh using the final concentration from the previous step</span>
+<span class="n">sol_after_refresh</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">fun</span><span class="o">=</span><span class="n">dCb_dt</span><span class="p">,</span>
+    <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">sol_before_refresh</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Combine the times and concentrations into one solution</span>
+<span class="c1"># Note that the second time has 2 added to it!</span>
+<span class="n">Cb_with_refresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">sol_before_refresh</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">sol_after_refresh</span><span class="o">.</span><span class="n">y</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+<span class="n">t_eval_with_refresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">sol_before_refresh</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">sol_after_refresh</span><span class="o">.</span><span class="n">t</span><span class="p">))</span>
+
+<span class="c1"># Integrate without refresh</span>
+<span class="n">sol_without_refresh</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">dCb_dt</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="n">t_span</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Cb_0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+<span class="n">Cb_without_refresh</span> <span class="o">=</span> <span class="n">sol_without_refresh</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># plot concentrations over time</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_eval_with_refresh</span><span class="p">,</span> <span class="n">Cb_with_refresh</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;with catalyst refresh&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">Cb_without_refresh</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;without catalyst refresh&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t [hr]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$C_b(t)$ [M]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f68e793a670&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/HW1_solution_13_1.png" src="../../../_images/HW1_solution_13_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="curve-fitting-with-two-species-and-multiple-data-50-pt">
+<h1>Curve fitting with two species and multiple data (50 pt)<a class="headerlink" href="#curve-fitting-with-two-species-and-multiple-data-50-pt" title="Permalink to this headline">#</a></h1>
+<p>Consider the irreversible reaction:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\ce{A + B -&gt; Products}
+\end{align*}\]</div>
+<p>with <span class="math notranslate nohighlight">\(r=kC_A^nC_B^m\)</span> taking place in an isothermal liquid-phase batch reactor. Measurements of <span class="math notranslate nohighlight">\(C_A\)</span> vs <span class="math notranslate nohighlight">\(C_B\)</span> are included in the attached file isothermal_liquidphase_batch_data.dat. We wish to determine from the data the rate constant and the order of the reaction with respect to A and B.  We have data from two experiments.</p>
+<section id="load-the-data-from-the-file-into-a-numpy-array-and-plot-the-concentration-of-each-species">
+<h2>Load the data from the file into a numpy array and plot the concentration of each species<a class="headerlink" href="#load-the-data-from-the-file-into-a-numpy-array-and-plot-the-concentration-of-each-species" title="Permalink to this headline">#</a></h2>
+<p>You can use either the csv library https://docs.python.org/3/library/csv.html or pandas https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html.</p>
+<p>The first column is time in minutes. The second and third column is C_A and C_B for the first experiment (in mol/L). The fourth and fifth column is C_A and C_B for the second experiment. Plot the data for <span class="math notranslate nohighlight">\(C_A\)</span> and <span class="math notranslate nohighlight">\(C_B\)</span> for each experiment (one experiment per figure).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># read data using regular expression separator</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;isothermal_liquidphase_batch.dat&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;\s{2,}&quot;</span><span class="p">,</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A1&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B1&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A2&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B2&quot;</span><span class="p">],</span>
+    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># divide data into two data frames with same columns</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B&quot;</span><span class="p">]</span>
+<span class="n">df_exp1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A1&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B1&quot;</span><span class="p">]]</span>
+<span class="n">df_exp1</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
+<span class="n">df_exp2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A2&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B2&quot;</span><span class="p">]]</span>
+<span class="n">df_exp2</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
+
+<span class="c1"># plot data from experiment 1</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># df_exp1.plot(x=&quot;t&quot;, ax=ax1)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df_exp1</span><span class="p">[[</span><span class="s2">&quot;t&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df_exp1</span><span class="p">[[</span><span class="s2">&quot;C_A&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C_A&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df_exp1</span><span class="p">[[</span><span class="s2">&quot;t&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df_exp1</span><span class="p">[[</span><span class="s2">&quot;C_B&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C_B&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t [min]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Experiment 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># plot data from experiment 2</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df_exp2</span><span class="p">[[</span><span class="s2">&quot;t&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df_exp2</span><span class="p">[[</span><span class="s2">&quot;C_A&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C_A&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df_exp2</span><span class="p">[[</span><span class="s2">&quot;t&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df_exp2</span><span class="p">[[</span><span class="s2">&quot;C_B&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C_B&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;C [mol/L]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t [min]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Experiment 2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/HW1_solution_16_0.png" src="../../../_images/HW1_solution_16_0.png" />
+</div>
+</div>
+</section>
+<section id="using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-odeint-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value">
+<h2>Using lmfit, estimate rate parameters <span class="math notranslate nohighlight">\(k, n, m\)</span> and initial concentration <span class="math notranslate nohighlight">\(C_{A0},C_{B0}\)</span> from the data in the first experiment using a numerical solution for the concentrations of each species (standard mol balance + odeint).  Plot the final fit of the experiment along with the experimental data and calculate the uncertainty in each value<a class="headerlink" href="#using-lmfit-estimate-rate-parameters-k-n-m-and-initial-concentration-c-a0-c-b0-from-the-data-in-the-first-experiment-using-a-numerical-solution-for-the-concentrations-of-each-species-standard-mol-balance-odeint-plot-the-final-fit-of-the-experiment-along-with-the-experimental-data-and-calculate-the-uncertainty-in-each-value" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lmfit</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span><span class="p">,</span> <span class="n">solve_ivp</span>
+
+
+<span class="c1"># define ODe for ivp</span>
+<span class="k">def</span> <span class="nf">reaction_ODE_ivp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">C_A</span><span class="p">,</span> <span class="n">C_B</span> <span class="o">=</span> <span class="n">C</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">C_A</span><span class="o">**</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">C_B</span><span class="o">**</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">dC_A_dt</span> <span class="o">=</span> <span class="o">-</span><span class="n">r</span>
+    <span class="n">dC_B_dt</span> <span class="o">=</span> <span class="o">-</span><span class="n">r</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dC_A_dt</span><span class="p">,</span> <span class="n">dC_B_dt</span><span class="p">])</span>
+
+
+<span class="c1"># integrate ODE using ivp</span>
+<span class="k">def</span> <span class="nf">integrate_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_A0</span><span class="p">,</span> <span class="n">C_B0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+        <span class="n">reaction_ODE_ivp</span><span class="p">,</span>
+        <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
+        <span class="n">y0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">C_A0</span><span class="p">,</span> <span class="n">C_B0</span><span class="p">]),</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span>
+    <span class="k">return</span> <span class="n">C</span>
+
+
+<span class="c1"># define model and fit to data</span>
+<span class="k">def</span> <span class="nf">fit_model_to_data</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_A</span><span class="p">,</span> <span class="n">C_B</span><span class="p">,</span> <span class="n">integration_method</span><span class="o">=</span><span class="s2">&quot;RK45&quot;</span><span class="p">):</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">C_A</span><span class="p">,</span> <span class="n">C_B</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">gmodel</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
+        <span class="n">integrate_ODE</span><span class="p">,</span>
+        <span class="n">independent_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">],</span>
+        <span class="n">param_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;C_A0&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B0&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">],</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">integration_method</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="n">gmodel</span><span class="o">.</span><span class="n">make_params</span><span class="p">(</span><span class="n">C_A0</span><span class="o">=</span><span class="n">C_A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">C_B0</span><span class="o">=</span><span class="n">C_B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">gmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="c1"># plot data and predictions</span>
+<span class="k">def</span> <span class="nf">plot_result</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">C_A</span><span class="p">,</span> <span class="n">C_B</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+    <span class="c1"># plot data from experiment</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data $C_A$&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_B</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data $C_B$&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="c1"># plot predictions</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">prediction</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Prediction&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">prediction</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;C [mol/L]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t [min]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+
+<span class="c1"># get data as numpy arrays</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">C_A1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;C_A1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">C_B1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;C_B1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">result1</span> <span class="o">=</span> <span class="n">fit_model_to_data</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_A1</span><span class="p">,</span> <span class="n">C_B1</span><span class="p">)</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">t</span>
+
+<span class="c1"># plot data from experiment 1</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plot_result</span><span class="p">(</span><span class="n">result1</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">C_A1</span><span class="p">,</span> <span class="n">C_B1</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Experiment 1&quot;</span><span class="p">)</span>
+
+<span class="c1"># print model info</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result1</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[Model]]
+    Model(integrate_ODE, method=&#39;RK45&#39;)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 613
+    # data points      = 200
+    # variables        = 5
+    chi-square         = 1.74113683
+    reduced chi-square = 0.00892891
+    Akaike info crit   = -938.755824
+    Bayesian info crit = -922.264237
+[[Variables]]
+    C_A0:  1.95374598 +/- 0.04451124 (2.28%) (init = 1.785)
+    C_B0:  3.96043184 +/- 0.04452466 (1.12%) (init = 4.036)
+    k:     3.26348562 +/- 17.0540000 (522.57%) (init = 2)
+    n:     3.15625683 +/- 1.64028660 (51.97%) (init = 2)
+    m:    -2.16720723 +/- 4.74031974 (218.73%) (init = 2)
+[[Correlations]] (unreported correlations are &lt; 0.100)
+    C(k, m)       = -1.000
+    C(n, m)       = -0.997
+    C(k, n)       = 0.997
+    C(C_A0, C_B0) = 0.955
+    C(C_B0, m)    = 0.584
+    C(C_B0, k)    = -0.583
+    C(C_A0, m)    = 0.579
+    C(C_A0, k)    = -0.579
+    C(C_B0, n)    = -0.550
+    C(C_A0, n)    = -0.540
+</pre></div>
+</div>
+<img alt="../../../_images/HW1_solution_18_1.png" src="../../../_images/HW1_solution_18_1.png" />
+</div>
+</div>
+</section>
+<section id="consider-the-second-experiment-estimate-the-parameters-using-only-this-data-comment-on-how-the-values-and-confidence-intervals-are-different-than-the-first-case">
+<h2>Consider the second experiment, estimate the parameters using only this data. Comment on how the values and confidence intervals are different than the first case<a class="headerlink" href="#consider-the-second-experiment-estimate-the-parameters-using-only-this-data-comment-on-how-the-values-and-confidence-intervals-are-different-than-the-first-case" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get data as numpy arrays</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">C_A2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;C_A2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">C_B2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;C_B2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">result2</span> <span class="o">=</span> <span class="n">fit_model_to_data</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_A2</span><span class="p">,</span> <span class="n">C_B2</span><span class="p">,</span> <span class="n">integration_method</span><span class="o">=</span><span class="s2">&quot;RK45&quot;</span><span class="p">)</span>
+
+<span class="c1"># plot data from experiment 2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plot_result</span><span class="p">(</span><span class="n">result2</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">C_A2</span><span class="p">,</span> <span class="n">C_B2</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Experiment 2&quot;</span><span class="p">)</span>
+
+<span class="c1"># print model info</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result2</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[Model]]
+    Model(integrate_ODE, method=&#39;RK45&#39;)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 194
+    # data points      = 200
+    # variables        = 5
+    chi-square         = 1.68848917
+    reduced chi-square = 0.00865892
+    Akaike info crit   = -944.896644
+    Bayesian info crit = -928.405057
+[[Variables]]
+    C_A0:  5.02591001 +/- 0.05648774 (1.12%) (init = 5.059)
+    C_B0:  3.01505138 +/- 0.05636400 (1.87%) (init = 2.888)
+    k:     0.03315831 +/- 0.01859468 (56.08%) (init = 2)
+    n:     2.98279103 +/- 0.48681468 (16.32%) (init = 2)
+    m:     0.69365669 +/- 0.14775385 (21.30%) (init = 2)
+[[Correlations]] (unreported correlations are &lt; 0.100)
+    C(k, n)       = -1.000
+    C(n, m)       = -0.979
+    C(k, m)       = 0.979
+    C(C_A0, C_B0) = 0.973
+    C(C_A0, n)    = 0.440
+    C(C_A0, k)    = -0.430
+    C(C_B0, n)    = 0.419
+    C(C_B0, k)    = -0.409
+    C(C_A0, m)    = -0.354
+    C(C_B0, m)    = -0.324
+</pre></div>
+</div>
+<img alt="../../../_images/HW1_solution_20_1.png" src="../../../_images/HW1_solution_20_1.png" />
+</div>
+</div>
+</section>
+<section id="estimate-the-parameters-using-both-experiments-simultaneously-are-the-confidence-intervals-better-comment-on-why-or-why-not">
+<h2>Estimate the parameters using both experiments simultaneously. Are the confidence intervals better? Comment on why or why not.<a class="headerlink" href="#estimate-the-parameters-using-both-experiments-simultaneously-are-the-confidence-intervals-better-comment-on-why-or-why-not" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># integrate both ODEs using respective initial conditions</span>
+<span class="k">def</span> <span class="nf">integrate_ODE_both</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_A0_1</span><span class="p">,</span> <span class="n">C_B0_1</span><span class="p">,</span> <span class="n">C_A0_2</span><span class="p">,</span> <span class="n">C_B0_2</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+    <span class="n">C_1</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+        <span class="n">reaction_ODE_ivp</span><span class="p">,</span>
+        <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
+        <span class="n">y0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">C_A0_1</span><span class="p">,</span> <span class="n">C_B0_1</span><span class="p">]),</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">C_2</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+        <span class="n">reaction_ODE_ivp</span><span class="p">,</span>
+        <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
+        <span class="n">y0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">C_A0_2</span><span class="p">,</span> <span class="n">C_B0_2</span><span class="p">]),</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">C_1</span><span class="p">,</span> <span class="n">C_2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1"># define and fit model</span>
+<span class="k">def</span> <span class="nf">fit_model_to_data_both</span><span class="p">(</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">C_A_1</span><span class="p">,</span> <span class="n">C_B_1</span><span class="p">,</span> <span class="n">C_A_2</span><span class="p">,</span> <span class="n">C_B_2</span><span class="p">,</span> <span class="n">integration_method</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span> <span class="s2">&quot;RK45&quot;</span><span class="p">]</span>
+<span class="p">):</span>
+    <span class="c1"># define data set</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">C_A_1</span><span class="p">,</span> <span class="n">C_B_1</span><span class="p">,</span> <span class="n">C_A_2</span><span class="p">,</span> <span class="n">C_B_2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># define model</span>
+    <span class="n">gmodel</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
+        <span class="n">integrate_ODE_both</span><span class="p">,</span>
+        <span class="n">independent_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">],</span>
+        <span class="n">param_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;C_A0_1&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B0_1&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A0_2&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B0_2&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">],</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">integration_method</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="n">gmodel</span><span class="o">.</span><span class="n">make_params</span><span class="p">(</span>
+        <span class="c1"># initial guesses - very sensitive</span>
+        <span class="n">C_A0_1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">C_B0_1</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">C_A0_2</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">C_B0_2</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">integration_method</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">gmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="c1"># plot predictions and data</span>
+<span class="k">def</span> <span class="nf">plot_results_both</span><span class="p">(</span><span class="n">results_both</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">C_A1</span><span class="p">,</span> <span class="n">C_B1</span><span class="p">,</span> <span class="n">C_A2</span><span class="p">,</span> <span class="n">C_B2</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">result_both</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_A1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data $C_A$&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_B1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data $C_B$&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">prediction</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Prediction&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">prediction</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;C [mol/L]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t [min]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Experiment 1 &quot;</span> <span class="o">+</span> <span class="n">title</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_A2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data $C_A$&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_B2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data $C_B$&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">prediction</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Prediction&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">prediction</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;C [mol/L]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;t [min]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Experiment 2 &quot;</span> <span class="o">+</span> <span class="n">title</span><span class="p">)</span>
+
+
+<span class="c1"># fit model</span>
+<span class="n">result_both</span> <span class="o">=</span> <span class="n">fit_model_to_data_both</span><span class="p">(</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">C_A1</span><span class="p">,</span> <span class="n">C_B1</span><span class="p">,</span> <span class="n">C_A2</span><span class="p">,</span> <span class="n">C_B2</span><span class="p">,</span> <span class="n">integration_method</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span> <span class="s2">&quot;RK45&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># plot data from both experiments</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_results_both</span><span class="p">(</span><span class="n">result_both</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">C_A1</span><span class="p">,</span> <span class="n">C_B1</span><span class="p">,</span> <span class="n">C_A2</span><span class="p">,</span> <span class="n">C_B2</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;noisy&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># print model info</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result_both</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[Model]]
+    Model(integrate_ODE_both, method=&#39;[&#39;RK45&#39;, &#39;RK45&#39;]&#39;)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 175
+    # data points      = 400
+    # variables        = 7
+    chi-square         = 3.46646955
+    reduced chi-square = 0.00882053
+    Akaike info crit   = -1885.33116
+    Bayesian info crit = -1857.39091
+[[Variables]]
+    C_A0_1:  1.96326640 +/- 0.02921224 (1.49%) (init = 2)
+    C_B0_1:  3.96989620 +/- 0.02957283 (0.74%) (init = 4)
+    C_A0_2:  4.98419433 +/- 0.04920060 (0.99%) (init = 5)
+    C_B0_2:  2.97642345 +/- 0.04963032 (1.67%) (init = 3)
+    k:       0.09838761 +/- 0.00342137 (3.48%) (init = 2)
+    n:       2.03729617 +/- 0.03103060 (1.52%) (init = 2)
+    m:       0.98457641 +/- 0.02522301 (2.56%) (init = 2)
+[[Correlations]] (unreported correlations are &lt; 0.100)
+    C(C_A0_2, C_B0_2) = 0.965
+    C(C_A0_1, C_B0_1) = 0.898
+    C(k, n)           = -0.893
+    C(k, m)           = -0.697
+    C(n, m)           = 0.572
+    C(C_B0_2, n)      = 0.524
+    C(C_A0_2, n)      = 0.500
+    C(C_B0_2, m)      = 0.413
+    C(C_B0_2, k)      = -0.370
+    C(C_A0_2, m)      = 0.343
+    C(C_B0_1, m)      = 0.333
+    C(C_A0_2, k)      = -0.312
+    C(C_A0_1, m)      = 0.300
+    C(C_A0_1, C_B0_2) = 0.146
+    C(C_B0_1, C_B0_2) = 0.137
+    C(C_A0_1, C_A0_2) = 0.135
+    C(C_B0_1, C_A0_2) = 0.127
+    C(C_B0_1, k)      = 0.116
+</pre></div>
+</div>
+<img alt="../../../_images/HW1_solution_22_1.png" src="../../../_images/HW1_solution_22_1.png" />
+</div>
+</div>
+</section>
+<section id="using-the-noisy-data-in-isothermal-liquidphase-batch-errorfree-dat-repeat-the-fit-using-all-of-the-data-do-the-results-agree-with-your-initial-trials">
+<h2>Using the noisy data in isothermal_liquidphase_batch_errorfree.dat, repeat the fit using all of the data. Do the results agree with your initial trials?<a class="headerlink" href="#using-the-noisy-data-in-isothermal-liquidphase-batch-errorfree-dat-repeat-the-fit-using-all-of-the-data-do-the-results-agree-with-your-initial-trials" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load noise-free data</span>
+<span class="n">df_ef</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;isothermal_liquidphase_batch_errorfree.dat&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;\s{2,}&quot;</span><span class="p">,</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A1&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B1&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A2&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B2&quot;</span><span class="p">],</span>
+    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># divide data into two data frames with same columns</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B&quot;</span><span class="p">]</span>
+<span class="n">df_exp1_ef</span> <span class="o">=</span> <span class="n">df_ef</span><span class="p">[[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A1&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B1&quot;</span><span class="p">]]</span>
+<span class="n">df_exp1_ef</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
+<span class="n">df_exp2_ef</span> <span class="o">=</span> <span class="n">df_ef</span><span class="p">[[</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;C_A2&quot;</span><span class="p">,</span> <span class="s2">&quot;C_B2&quot;</span><span class="p">]]</span>
+<span class="n">df_exp2_ef</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
+
+<span class="n">t_ef</span> <span class="o">=</span> <span class="n">df_ef</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">C_A1_ef</span> <span class="o">=</span> <span class="n">df_ef</span><span class="p">[</span><span class="s2">&quot;C_A1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">C_B1_ef</span> <span class="o">=</span> <span class="n">df_ef</span><span class="p">[</span><span class="s2">&quot;C_B1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">C_A2_ef</span> <span class="o">=</span> <span class="n">df_ef</span><span class="p">[</span><span class="s2">&quot;C_A2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">C_B2_ef</span> <span class="o">=</span> <span class="n">df_ef</span><span class="p">[</span><span class="s2">&quot;C_B2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># fit model to data</span>
+<span class="n">result_both_ef</span> <span class="o">=</span> <span class="n">fit_model_to_data_both</span><span class="p">(</span>
+    <span class="n">t_ef</span><span class="p">,</span> <span class="n">C_A1_ef</span><span class="p">,</span> <span class="n">C_B1_ef</span><span class="p">,</span> <span class="n">C_A2_ef</span><span class="p">,</span> <span class="n">C_B2_ef</span><span class="p">,</span> <span class="n">integration_method</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span> <span class="s2">&quot;RK45&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># plot data from both experiments</span>
+<span class="n">fig_ef</span><span class="p">,</span> <span class="n">ax_ef</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_results_both</span><span class="p">(</span>
+    <span class="n">result_both_ef</span><span class="p">,</span> <span class="n">t_ef</span><span class="p">,</span> <span class="n">C_A1_ef</span><span class="p">,</span> <span class="n">C_B1_ef</span><span class="p">,</span> <span class="n">C_A2_ef</span><span class="p">,</span> <span class="n">C_B2_ef</span><span class="p">,</span> <span class="n">ax_ef</span><span class="p">,</span> <span class="s2">&quot;noise-free&quot;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># print model info</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result_both_ef</span><span class="o">.</span><span class="n">fit_report</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[Model]]
+    Model(integrate_ODE_both, method=&#39;[&#39;RK45&#39;, &#39;RK45&#39;]&#39;)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 232
+    # data points      = 400
+    # variables        = 7
+    chi-square         = 3.0180e-04
+    reduced chi-square = 7.6793e-07
+    Akaike info crit   = -5624.88794
+    Bayesian info crit = -5596.94769
+[[Variables]]
+    C_A0_1:  2.00087760 +/- 2.7655e-04 (0.01%) (init = 2)
+    C_B0_1:  4.00093588 +/- 2.7998e-04 (0.01%) (init = 4)
+    C_A0_2:  5.00230800 +/- 4.5646e-04 (0.01%) (init = 5)
+    C_B0_2:  3.00237988 +/- 4.6023e-04 (0.02%) (init = 3)
+    k:       0.10032598 +/- 3.2176e-05 (0.03%) (init = 2)
+    n:       1.99989908 +/- 2.8352e-04 (0.01%) (init = 2)
+    m:       1.00227331 +/- 2.3422e-04 (0.02%) (init = 2)
+[[Correlations]] (unreported correlations are &lt; 0.100)
+    C(C_A0_2, C_B0_2) = 0.964
+    C(C_A0_1, C_B0_1) = 0.901
+    C(k, n)           = -0.890
+    C(k, m)           = -0.704
+    C(n, m)           = 0.571
+    C(C_B0_2, n)      = 0.523
+    C(C_A0_2, n)      = 0.501
+    C(C_B0_2, m)      = 0.412
+    C(C_B0_2, k)      = -0.371
+    C(C_A0_2, m)      = 0.341
+    C(C_B0_1, m)      = 0.339
+    C(C_A0_2, k)      = -0.312
+    C(C_A0_1, m)      = 0.307
+    C(C_A0_1, C_B0_2) = 0.152
+    C(C_B0_1, C_B0_2) = 0.143
+    C(C_A0_1, C_A0_2) = 0.141
+    C(C_B0_1, C_A0_2) = 0.132
+    C(C_B0_1, k)      = 0.100
+</pre></div>
+</div>
+<img alt="../../../_images/HW1_solution_24_1.png" src="../../../_images/HW1_solution_24_1.png" />
+</div>
+</div>
+</section>
+<section id="based-on-these-results-to-determine-the-order-of-the-rate-expression-with-respect-to-two-different-species-how-should-you-choose-the-initial-conditions-of-the-two-species">
+<h2>Based on these results, to determine the order of the rate expression with respect to two different species, how should you choose the initial conditions of the two species?<a class="headerlink" href="#based-on-these-results-to-determine-the-order-of-the-rate-expression-with-respect-to-two-different-species-how-should-you-choose-the-initial-conditions-of-the-two-species" title="Permalink to this headline">#</a></h2>
+<p>The parameters should be chosen according to the optimal solutions computed using the full data set.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./homeworks/solutions/HW1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary Ulissi<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
