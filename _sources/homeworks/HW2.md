@@ -28,7 +28,7 @@ You're going to help me:
 
 +++ {"id": "scEB7e1nIGGN"}
 
-## Data download
+## 1.1 Data download
 
 Go to the Mauna Loa data website and find the link to the "Mauna Loa CO2 weekly mean and historical comparisons" text or csv file. Download it with wget.
 
@@ -44,7 +44,7 @@ outputId: 6cd4d228-6ea4-429f-be0c-a68b5c441da7
 
 +++ {"id": "M-bb_vFjImJF"}
 
-## Load and visualize the data
+## 1.2 Load and visualize the data
 
 First, load the data with pandas. You will probably have to change the column names and the number of rows that are skipped compared to the example from class. Depending on whether you download the csv or the txt file you may also have to change delim_whitespace.
 
@@ -72,7 +72,7 @@ outputId: b7ed72ec-73ba-466a-a86b-055a65515423
 
 ```
 
-## Filter the data
+## 1.3 Filter the data
 
 Note that some of the data is reported as -999.99. Those are days when there was no data at Mauna Loa for various reasons. Filter the dataframe to only include rows with positive ppm measurements. Repeat the plot from above to confirm the data looks good now!
 
@@ -84,7 +84,7 @@ https://www.google.com/search?q=pandas+filter+values+greater+than
 
 ```
 
-## Train/val-test split
+## 1.4 Train/val-test split
 
 To start, split your data into train/val (90%) and test (10%). Use `sklearn.model_selection.train_test_split` like we did in class. Make sure you don't shuffle when you do it, so that the test data is the most recent 10% of the data!
 
@@ -98,7 +98,7 @@ To start, split your data into train/val (90%) and test (10%). Use `sklearn.mode
 
 +++ {"id": "YLZHcggdKwBP", "tags": []}
 
-# Your first scikit-learn model
+# 1.5 Your first scikit-learn model
 
 Scikit-learn can handle all of the things we talked about in class! 
 * Take data and featurizing it
@@ -144,7 +144,7 @@ cross_validate(
 )
 ```
 
-## Underfitting/overfitting
+## 1.6 Underfitting/overfitting
 
 Vary the degree of the polynomial features above, and find the degree that minimized the mean absolute error on the final train/val split. Plot the MAE as a function of the polynomial degree.
 
@@ -156,7 +156,7 @@ Vary the degree of the polynomial features above, and find the degree that minim
 
 ```
 
-## Visualize your best model
+## 1.7 Visualize your best model
 
 Now that you've optimized the degree of the polynomial to be most predictive for the train/val splits you identified, let's see how it does on the test data you set aside earlier!
 
@@ -173,7 +173,7 @@ Include predictions for the next 5 years. Do these seem reasonable to you?
 
 ```
 
-## Sources of bias and limitations
+## 1.8 Sources of bias and limitations
 
 Discuss potential sources of bias or difficulties with this data? Is it possible to predict CO2 concentrations in the future without knowing if the world will take drastic action on CO2 emissions? Why or why not?
 
