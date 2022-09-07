@@ -5,15 +5,15 @@
 * Instructor: Prof. Ulissi
   * Email: zulissi@andrew.cmu.edu
   * Location: Doherty Hall A207A
-  * Office Hours: Thursdays 530-630 [zoom link](https://cmu.zoom.us/j/97329669849?pwd=RW5Hdk5TTGVtbEk5cmorRmt2VUVqdz09)
 * TA
   * Laurens Lueg (llueg@andrew.cmu.edu)
   * Megan Walsh (mew2@andrew.cmu.edu)
   * Abilash Subbaraman (abilash@cmu.edu)
   
-Office hours (just week of 8/29)
-* Thursday 11am-12pm (location TBD)
-* Thursday 330-430pm (location TBD)
+Office hours:
+* Thursday 530-630 Ulissi office hours ([zoom link](https://cmu.zoom.us/j/97329669849?pwd=RW5Hdk5TTGVtbEk5cmorRmt2VUVqdz09))
+* Friday 330-430 Optional Python Lab (DH1102 Conference Room). See the schedule for what will be discussed.
+* Additional OH TBD
 
 ## Course Info
 
