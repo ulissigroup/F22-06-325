@@ -421,6 +421,8 @@ More examples with ODE events are available at {doc}`./ode_events_extra_example`
 
 ### Find the the first occurrence that the rabbit population hits 3
 
+Hint: does it ever hit 3?
+
 ```{code-cell} ipython3
 
 ```
