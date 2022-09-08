@@ -10,7 +10,7 @@ Dates/etc are tentative and might change!
 | Wednesday    | 08/31/22 | Recap/review of black-box optimization and regression with minimize                                 |   {doc}`notes/review_optimization`  |
 | Monday       | 09/05/22 | Labor day no class                                                                                       |   |
 | Wednesday    | 09/07/22 | Intro to supervised learning, model evaluation, and train/test splits  |   {doc}`notes/ml_basics` |
-| Optional lab |          | Python functions, error handling, exceptions, debugging                                                            |   |
+| Optional lab |          | Python functions, error handling, exceptions, debugging                                                            |   {doc}`labs/python_debugging` |
 | Monday       | 09/12/22 | AI/ML in Chemistry and Industry Guest Lectures (Covestro, Meta Fundamental AI Research)                           |   |
 | Wednesday    | 09/14/22 | AI/ML in Chemistry and Industry Guest Lectures (ClimateChangeAI, Toyota Research Institute)     |   |
 | Optional lab |          | Installing python packages in colab (pip, etc)                                                                |   |
