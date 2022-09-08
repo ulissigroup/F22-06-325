@@ -126,9 +126,6 @@ from sklearn.model_selection import TimeSeriesSplit, cross_validate
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import PolynomialFeatures
 
-# We expect a dataframe df_trainval generated above that contains the train and validation data
-df_train, df_val = train_test_split(df_trainval, test_size=0.1, shuffle=False)
-
 # Make a pipeline where we first generate quadratic polynomial features from the time data
 # then fit using linear regression
 model = make_pipeline(PolynomialFeatures(2), LinearRegression())
@@ -137,8 +134,8 @@ model = make_pipeline(PolynomialFeatures(2), LinearRegression())
 # fitting the model from above on each train, and evaluating the MAE for the validation in each
 cross_validate(
     model,
-    df_train["decimal"].values.reshape(-1, 1), # The date in decimal format, X
-    df_train["ppm"].values, # the CO2 concentration in ppm, y
+    df_trainval["decimal"].values.reshape(-1, 1), # The date in decimal format, X
+    df_trainval["ppm"].values, # the CO2 concentration in ppm, y
     cv=TimeSeriesSplit(),
     scoring=["neg_mean_absolute_error", "neg_root_mean_squared_error"],
 )

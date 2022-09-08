@@ -752,9 +752,6 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
 
-<span class="c1"># We expect a dataframe df_trainval generated above that contains the train and validation data</span>
-<span class="n">df_train</span><span class="p">,</span> <span class="n">df_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df_trainval</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
 <span class="c1"># Make a pipeline where we first generate quadratic polynomial features from the time data</span>
 <span class="c1"># then fit using linear regression</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">LinearRegression</span><span class="p">())</span>
@@ -763,8 +760,8 @@ title="Print to PDF"
 <span class="c1"># fitting the model from above on each train, and evaluating the MAE for the validation in each</span>
 <span class="n">cross_validate</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
-    <span class="n">df_train</span><span class="p">[</span><span class="s2">&quot;decimal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1"># The date in decimal format, X</span>
-    <span class="n">df_train</span><span class="p">[</span><span class="s2">&quot;ppm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="c1"># the CO2 concentration in ppm, y</span>
+    <span class="n">df_trainval</span><span class="p">[</span><span class="s2">&quot;decimal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1"># The date in decimal format, X</span>
+    <span class="n">df_trainval</span><span class="p">[</span><span class="s2">&quot;ppm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="c1"># the CO2 concentration in ppm, y</span>
     <span class="n">cv</span><span class="o">=</span><span class="n">TimeSeriesSplit</span><span class="p">(),</span>
     <span class="n">scoring</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span> <span class="s2">&quot;neg_root_mean_squared_error&quot;</span><span class="p">],</span>
 <span class="p">)</span>
@@ -774,15 +771,19 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 11&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># We expect a dataframe df_trainval generated above that contains the train and validation data</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">df_train</span><span class="p">,</span> <span class="n">df_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df_trainval</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># Make a pipeline where we first generate quadratic polynomial features from the time data</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># then fit using linear regression</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">LinearRegression</span><span class="p">())</span>
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 16&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">LinearRegression</span><span class="p">())</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># Evaluate the model by generate 5 different train/val splits using TimseSeriesSplit,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># fitting the model from above on each train, and evaluating the MAE for the validation in each</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">cross_validate</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">model</span><span class="p">,</span>
+<span class="ne">---&gt; </span><span class="mi">18</span>     <span class="n">df_trainval</span><span class="p">[</span><span class="s2">&quot;decimal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1"># The date in decimal format, X</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">df_trainval</span><span class="p">[</span><span class="s2">&quot;ppm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="c1"># the CO2 concentration in ppm, y</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="n">cv</span><span class="o">=</span><span class="n">TimeSeriesSplit</span><span class="p">(),</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="n">scoring</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span> <span class="s2">&quot;neg_root_mean_squared_error&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;train_test_split&#39; is not defined
+<span class="ne">NameError</span>: name &#39;df_trainval&#39; is not defined
 </pre></div>
 </div>
 </div>

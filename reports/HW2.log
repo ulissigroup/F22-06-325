@@ -26,9 +26,6 @@ from sklearn.model_selection import TimeSeriesSplit, cross_validate
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import PolynomialFeatures
 
-# We expect a dataframe df_trainval generated above that contains the train and validation data
-df_train, df_val = train_test_split(df_trainval, test_size=0.1, shuffle=False)
-
 # Make a pipeline where we first generate quadratic polynomial features from the time data
 # then fit using linear regression
 model = make_pipeline(PolynomialFeatures(2), LinearRegression())
@@ -37,8 +34,8 @@ model = make_pipeline(PolynomialFeatures(2), LinearRegression())
 # fitting the model from above on each train, and evaluating the MAE for the validation in each
 cross_validate(
     model,
-    df_train["decimal"].values.reshape(-1, 1), # The date in decimal format, X
-    df_train["ppm"].values, # the CO2 concentration in ppm, y
+    df_trainval["decimal"].values.reshape(-1, 1), # The date in decimal format, X
+    df_trainval["ppm"].values, # the CO2 concentration in ppm, y
     cv=TimeSeriesSplit(),
     scoring=["neg_mean_absolute_error", "neg_root_mean_squared_error"],
 )
@@ -46,14 +43,18 @@ cross_validate(
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<cell line: 11>[0;34m()[0m
-[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpreprocessing[39;00m [38;5;28;01mimport[39;00m PolynomialFeatures
-[1;32m     10[0m [38;5;66;03m# We expect a dataframe df_trainval generated above that contains the train and validation data[39;00m
-[0;32m---> 11[0m df_train, df_val [38;5;241m=[39m [43mtrain_test_split[49m(df_trainval, test_size[38;5;241m=[39m[38;5;241m0.1[39m, shuffle[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
-[1;32m     13[0m [38;5;66;03m# Make a pipeline where we first generate quadratic polynomial features from the time data[39;00m
-[1;32m     14[0m [38;5;66;03m# then fit using linear regression[39;00m
-[1;32m     15[0m model [38;5;241m=[39m make_pipeline(PolynomialFeatures([38;5;241m2[39m), LinearRegression())
+Input [0;32mIn [1][0m, in [0;36m<cell line: 16>[0;34m()[0m
+[1;32m     12[0m model [38;5;241m=[39m make_pipeline(PolynomialFeatures([38;5;241m2[39m), LinearRegression())
+[1;32m     14[0m [38;5;66;03m# Evaluate the model by generate 5 different train/val splits using TimseSeriesSplit,[39;00m
+[1;32m     15[0m [38;5;66;03m# fitting the model from above on each train, and evaluating the MAE for the validation in each[39;00m
+[1;32m     16[0m cross_validate(
+[1;32m     17[0m     model,
+[0;32m---> 18[0m     [43mdf_trainval[49m[[38;5;124m"[39m[38;5;124mdecimal[39m[38;5;124m"[39m][38;5;241m.[39mvalues[38;5;241m.[39mreshape([38;5;241m-[39m[38;5;241m1[39m, [38;5;241m1[39m), [38;5;66;03m# The date in decimal format, X[39;00m
+[1;32m     19[0m     df_trainval[[38;5;124m"[39m[38;5;124mppm[39m[38;5;124m"[39m][38;5;241m.[39mvalues, [38;5;66;03m# the CO2 concentration in ppm, y[39;00m
+[1;32m     20[0m     cv[38;5;241m=[39mTimeSeriesSplit(),
+[1;32m     21[0m     scoring[38;5;241m=[39m[[38;5;124m"[39m[38;5;124mneg_mean_absolute_error[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mneg_root_mean_squared_error[39m[38;5;124m"[39m],
+[1;32m     22[0m )
 
-[0;31mNameError[0m: name 'train_test_split' is not defined
-NameError: name 'train_test_split' is not defined
+[0;31mNameError[0m: name 'df_trainval' is not defined
+NameError: name 'df_trainval' is not defined
 
