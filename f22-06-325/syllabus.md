@@ -11,9 +11,10 @@
   * Abilash Subbaraman (abilash@cmu.edu)
   
 Office hours:
-* Thursday 530-630 Ulissi office hours ([zoom link](https://cmu.zoom.us/j/97329669849?pwd=RW5Hdk5TTGVtbEk5cmorRmt2VUVqdz09))
+* Wednesday 1130-1230 (DH2100A Conference Room)
+* Thursday 530-630  ([zoom link](https://cmu.zoom.us/j/97329669849?pwd=RW5Hdk5TTGVtbEk5cmorRmt2VUVqdz09))
 * Friday 330-430 Optional Python Lab (DH1102 Conference Room). See the schedule for what will be discussed.
-* Additional OH TBD
+* Additional weekend OH to be announced each week (depends on TA weekend availability)
 
 ## Course Info
 
