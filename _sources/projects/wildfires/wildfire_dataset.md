@@ -35,6 +35,8 @@ In each case, you should think critically about the question how you want to set
 ````
 
 ## Dataset download/availability instructions
+https://github.com/ulissigroup/F22-06-325/tree/main/f22-06-325/projects/wildfires/data
+
 
 
 ## Dataset/file format details
@@ -65,5 +67,13 @@ In each case, you should think critically about the question how you want to set
 3. Run Log.xlsx details where each filter was collected in Blodgett by GPS location and forest plot that burned. Tab “Flight Log” provides the details of filters collected from the drone. Tab “ground Station” provides details of filters collected at ground level.
 4. All_Shrubcovony_01_16.xlsx displays the types of shrubs that grew at Blodgett. The sheet of interest is “16” which stands for 2016 when they conducted a plant inventory. Focus on Unit (1st column) 60, 340, and 400 which stand for the plots that we burned at Blodgett. Species column lists the shorthand for the shrub/grass that they observed growing in the plot. BFRSPlantCodes.xlsx translate the shorthand plant code to a real plant.
 
+
+
+
 ## Hints and possible approaches
+
+## Example Model 
+
+For hints, information about loading in the data, and an example model, see this notebook: https://github.com/ulissigroup/F22-06-325/tree/main/f22-06-325/projects/wildfires/wildfire_notebook.ipynb
+
 
