@@ -527,13 +527,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classification-dataset">
-   Classification dataset
+  <a class="reference internal nav-link" href="#binary-classification">
+   Binary classification
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistic-regression-for-binary-classification">
-   Logistic regression for binary classification
+  <a class="reference internal nav-link" href="#train-test-split">
+   Train/test split
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-model-guess-the-most-common-label">
+   Naive model (guess the most common label)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics-for-binary-classification-problems">
+   Metrics for binary classification problems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression">
+   Logistic regression
   </a>
  </li>
 </ul>
@@ -561,13 +576,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classification-dataset">
-   Classification dataset
+  <a class="reference internal nav-link" href="#binary-classification">
+   Binary classification
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistic-regression-for-binary-classification">
-   Logistic regression for binary classification
+  <a class="reference internal nav-link" href="#train-test-split">
+   Train/test split
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-model-guess-the-most-common-label">
+   Naive model (guess the most common label)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics-for-binary-classification-problems">
+   Metrics for binary classification problems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression">
+   Logistic regression
   </a>
  </li>
 </ul>
@@ -585,11 +615,28 @@ title="Print to PDF"
 <p>This lecture was adapted from the scikit-learn MOOC, which is available under the CC-by 4.0 license here: https://github.com/INRIA/scikit-learn-mooc</p>
 <p>Artwork by &#64;allison_horst!</p>
 </aside>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lecture is going to:</p>
+<ul class="simple">
+<li><p>Introduce a new dataset with categorical variables (penguins!)</p></li>
+<li><p>Demonstrate the use of a linear model (logistic regression) for binary classification problems</p></li>
+<li><p>Show how we can visualize the binary classification problems</p></li>
+<li><p>Discuss the primary metric for binary classification problems (accuracy)</p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html</p></li>
+<li><p>https://www.youtube.com/watch?v=het9HFqo1TQ&amp;list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU&amp;index=3</p></li>
+</ul>
+</div>
 <section class="tex2jax_ignore mathjax_ignore" id="linear-models-for-classification">
 <h1>Linear models for classification<a class="headerlink" href="#linear-models-for-classification" title="Permalink to this headline">#</a></h1>
 <p>In regression, we saw that the target to be predicted was a continuous
 variable. In classification, this target will be discrete (e.g. categorical).</p>
-<p>Before we jump in to our first linear model, let’s talk about a new dataset (that could be somewhat relevant to BME double majors!).</p>
+<p>Before we jump in to our first linear model, let’s talk about a new dataset (that could be somewhat relevant to BME double majors who have taken physiology!).</p>
 <section id="the-penguins-datasets">
 <h2>The penguins datasets<a class="headerlink" href="#the-penguins-datasets" title="Permalink to this headline">#</a></h2>
 <p>To demonstrate linear classification models we’ll use the
@@ -597,9 +644,6 @@ variable. In classification, this target will be discrete (e.g. categorical).</p
 dataset. We use this dataset for both classification and regression
 problems by selecting a subset of the features to make our explanations
 intuitive.</p>
-</section>
-<section id="classification-dataset">
-<h2>Classification dataset<a class="headerlink" href="#classification-dataset" title="Permalink to this headline">#</a></h2>
 <p>We will use this dataset in classification setting to predict the penguins’
 species from anatomical information.</p>
 <p>Each penguin is from one of the three following species: Adelie, Gentoo, and
@@ -703,7 +747,7 @@ samples distribution.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/classification_logistic_regression_7_0.png" src="../_images/classification_logistic_regression_7_0.png" />
+<img alt="../_images/classification_logistic_regression_8_0.png" src="../_images/classification_logistic_regression_8_0.png" />
 </div>
 </div>
 <p>First let’s check the feature distributions by looking at the diagonal plots
@@ -715,12 +759,11 @@ species depending on the culmen length;</p></li>
 species depending on the culmen depth.</p></li>
 </ul>
 </section>
-<section id="logistic-regression-for-binary-classification">
-<h2>Logistic regression for binary classification<a class="headerlink" href="#logistic-regression-for-binary-classification" title="Permalink to this headline">#</a></h2>
-<p>We will go back to our penguin dataset. However, this time we will try to
-predict the penguin species using the culmen information. We will also
+<section id="binary-classification">
+<h2>Binary classification<a class="headerlink" href="#binary-classification" title="Permalink to this headline">#</a></h2>
+<p>We will try to predict the penguin species using the culmen information. We will also
 simplify our classification problem by selecting only 2 of the penguin
-species to solve a binary classification problem.</p>
+species (Adelie and Chinstrap) to solve a binary classification problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -728,8 +771,7 @@ species to solve a binary classification problem.</p>
 <span class="n">penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;datasets/penguins_classification.csv&quot;</span><span class="p">)</span>
 
 <span class="c1"># only keep the Adelie and Chinstrap classes</span>
-<span class="n">penguins</span> <span class="o">=</span> <span class="n">penguins</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">[</span><span class="s2">&quot;Adelie&quot;</span><span class="p">,</span> <span class="s2">&quot;Chinstrap&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">penguins</span> <span class="o">=</span> <span class="n">penguins</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Adelie&quot;</span><span class="p">,</span> <span class="s2">&quot;Chinstrap&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">culmen_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Culmen Length (mm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Culmen Depth (mm)&quot;</span><span class="p">]</span>
 <span class="n">target_column</span> <span class="o">=</span> <span class="s2">&quot;Species&quot;</span>
 </pre></div>
@@ -752,10 +794,13 @@ species to solve a binary classification problem.</p>
 </div>
 <p>We can observe that we have quite a simple problem. When the culmen
 length increases, the probability that the penguin is a Chinstrap is closer
-to 1. However, the culmen depth is not helpful for predicting the penguin
+to 1. However, the culmen depth is less helpful for predicting the penguin
 species.</p>
+</section>
+<section id="train-test-split">
+<h2>Train/test split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h2>
 <p>For model fitting, we will separate the target from the data and
-we will create a training and a testing set.</p>
+we will create a training and a testing set. We could make a validation set as well if we wanted to be a bit more careful.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -771,7 +816,69 @@ we will create a training and a testing set.</p>
 </div>
 </div>
 </div>
-<p>The linear regression that we previously saw will predict a continuous
+</section>
+<section id="naive-model-guess-the-most-common-label">
+<h2>Naive model (guess the most common label)<a class="headerlink" href="#naive-model-guess-the-most-common-label" title="Permalink to this headline">#</a></h2>
+<p>To get some intuition, let’s try the simplest possible model we can think of using just the labels. We will make find the most common type of penguin in the dataset, and always guess that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">most_common_penguin</span> <span class="o">=</span> <span class="n">target_train</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">naivemodel</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">most_common_penguin</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">naivemodel</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Adelie&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="metrics-for-binary-classification-problems">
+<h2>Metrics for binary classification problems<a class="headerlink" href="#metrics-for-binary-classification-problems" title="Permalink to this headline">#</a></h2>
+<p><strong>accuracy</strong> is the primary metric for classification problems, and is the percentage of the data that is correctly classified by the model.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Statistics for binary classification problems is a complicated area, especially if the dataset is imbalanced (see the danger note at the end of the lecture) or if there is prior information known about the classification. There are more metrics that can be used in these cases, most of which are various combinations of the true positive, false positive, true negative, false negative statistics:</p>
+<ul class="simple">
+<li><p>https://en.wikipedia.org/wiki/Confusion_matrix</p></li>
+</ul>
+</div>
+<p>We can do this by hand or using sklearn’s built-in scoring function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correct_classification</span> <span class="o">=</span> <span class="n">target_test</span> <span class="o">==</span> <span class="n">naivemodel</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">correct_classification</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">correct_classification</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy with custom code: </span><span class="si">{</span><span class="n">accuracy</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">sklearn_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">naivemodel</span><span class="p">(</span><span class="n">data_test</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy with sklearn scoring code: </span><span class="si">{</span><span class="n">sklearn_accuracy</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy with custom code: 61.8%
+Accuracy with sklearn scoring code: 61.8%
+</pre></div>
+</div>
+</div>
+</div>
+<p>~62% of the penguins in the dataset set were Adelie, so our naive model (no ML required!) gets 62% correct. We should be able to do better than this if our ML model has any value.</p>
+</section>
+<section id="logistic-regression">
+<h2>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h2>
+<p>The linear regression that we have seen so far  will predict a continuous
 output. When the target is a binary outcome, one can use the logistic
 function to model the probability. This model is known as logistic
 regression.</p>
@@ -780,6 +887,7 @@ algorithm.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
+
 <span class="n">sklearn</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s2">&quot;diagram&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -787,15 +895,26 @@ algorithm.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
 <span class="n">logistic_regression</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
     <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="n">logistic_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">logistic_regression</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
+                (&#x27;logisticregression&#x27;, LogisticRegression(penalty=&#x27;none&#x27;))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
+                (&#x27;logisticregression&#x27;, LogisticRegression(penalty=&#x27;none&#x27;))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(penalty=&#x27;none&#x27;)</pre></div></div></div></div></div></div></div></div></div>
+</div>
+<p>We can calculate our model performance using the scoring function attached to the model. This is basically the same as predicting on the test set and using the scoring function above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">logistic_regression</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy on test set: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -826,8 +945,12 @@ learned by the classifier in a 2 dimensional feature space.</p></p>
     <span class="n">logistic_regression</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">response_method</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
 <span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">penguins_test</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">hue</span><span class="o">=</span><span class="n">target_column</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">])</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins_test</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">target_column</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">],</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Decision boundary of the trained</span><span class="se">\n</span><span class="s2"> LogisticRegression&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -869,6 +992,16 @@ is:</p>
 </pre></div>
 </div>
 <p>which is the equation of a straight line.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Skeptical chemical engineering students might notice that the metric we’re using here (<strong>accuracy</strong>) here can lead to problems if the dataset is imbalanced.</p>
+<p>Imagine a dataset of where there were 1000 penguins, 999 of which were Adelie and 1 of which was Chinstrap. In this case, a naive model that always predicted “Adelie”, regardless of the penguin features, would be 99.9% correct! At first glance the model would sound very impressive, but it would actually be worthless for predicting Chinstrap penguins.</p>
+<p>If you’re dealing with strongly imbalanced, you should think carefully about the statistics:</p>
+<ul class="simple">
+<li><p>https://en.wikipedia.org/wiki/Confusion_matrix</p></li>
+<li><p>https://arxiv.org/ftp/arxiv/papers/2108/2108.00071.pdf</p></li>
+</ul>
+</div>
 </section>
 </section>
 
