@@ -20,8 +20,8 @@ Dates/etc are tentative and might change!
 | Monday       | 09/26/22 |  Featurizing/Representing data in ChE                                                        |   |
 | Wednesday    | 09/28/22 |  Neural Networks                                                                              |   |
 | Optional lab |          | GPUs and accelerated training of models                                                                  |   |
-| Monday       | 10/03/22 | Gaussian Process Regression                                                                                  |   |
-| Wednesday    | 10/05/22 | Unsupervised regression, clustering                                                                      |   |
+| Monday       | 10/03/22 | Non-parametric models (Gaussian processes and trees)                                                                                  |   |
+| Wednesday    | 10/05/22 | Unsupervised regression, clustering  (or active learning?)                                                                    |   |
 | Optional lab |          |                                                                                                          |   |
 | Monday       | 10/10/22 | Guest lecture on Engineering ethics of AI/ML                                                             |   |
 | Wednesday    | 10/12/22 | Final project poster session                                                                             |   |
