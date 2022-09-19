@@ -342,6 +342,71 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ulissigroup/F22-06-325/main?urlpath=lab/tree/f22-06-325/projects/wildfires/wildfire_dataset.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://laikapack-head.cheme.cmu.edu/hub/hub/user-redirect/git-pull?repo=https%3A//github.com/ulissigroup/F22-06-325&urlpath=lab/tree/F22-06-325/f22-06-325/projects/wildfires/wildfire_dataset.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/ulissigroup/F22-06-325/blob/main/f22-06-325/projects/wildfires/wildfire_dataset.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -408,6 +473,23 @@ title="Open an issue"
   </button>
   <div class="menu-dropdown__content">
     <ul>
+      <li>
+        <a href="../../_sources/projects/wildfires/wildfire_dataset.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
       <li>
         <a href="../../_sources/projects/wildfires/wildfire_dataset.md"
    class="headerbtn"
@@ -492,6 +574,40 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#example-model">
    Example Model
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-in-data">
+     Loading in Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#blodgettcombinedblobtable-csv">
+       BlodgettCombinedBlobTable.csv
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#all-shrubcovonly-01-16-xlsx">
+       All_ShrubCovOnly_01_16.xlsx
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bfrsplantcodes-xlsx">
+       BFRSPlantCodes.xlsx
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#run-log-xlsx">
+       Run_Log.xlsx
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-mass-concentration-from-bloblid">
+     Predicting Mass Concentration from BloblID
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -536,6 +652,40 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#example-model">
    Example Model
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-in-data">
+     Loading in Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#blodgettcombinedblobtable-csv">
+       BlodgettCombinedBlobTable.csv
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#all-shrubcovonly-01-16-xlsx">
+       All_ShrubCovOnly_01_16.xlsx
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bfrsplantcodes-xlsx">
+       BFRSPlantCodes.xlsx
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#run-log-xlsx">
+       Run_Log.xlsx
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-mass-concentration-from-bloblid">
+     Predicting Mass Concentration from BloblID
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -638,7 +788,679 @@ title="Print to PDF"
 </section>
 <section id="example-model">
 <h2>Example Model<a class="headerlink" href="#example-model" title="Permalink to this headline">#</a></h2>
-<p>For hints, information about loading in the data, and an example model, see this notebook: <a class="reference internal" href="wildfire_notebook.html"><span class="doc">Predicting Wildfire Smoke Composition</span></a></p>
+<section id="loading-in-data">
+<h3>Loading in Data<a class="headerlink" href="#loading-in-data" title="Permalink to this headline">#</a></h3>
+<p>Let’s start by uploading the data. We’ll start with BlodgettCombinedBlobTable.csv.</p>
+<section id="blodgettcombinedblobtable-csv">
+<h4>BlodgettCombinedBlobTable.csv<a class="headerlink" href="#blodgettcombinedblobtable-csv" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># define column names</span>
+<span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Unused tags 1&quot;</span><span class="p">,</span> <span class="s2">&quot;BlobID1&quot;</span><span class="p">,</span> <span class="s2">&quot;Unused tags 2&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;1D Retention Time (min)&quot;</span><span class="p">,</span> <span class="s2">&quot;2D Retention Time (sec)&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;Peak Height&quot;</span><span class="p">,</span> <span class="s2">&quot;Peak Volume&quot;</span><span class="p">,</span> <span class="s2">&quot;Peak volume/nearest internal standard peak volume&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;Calculated d-alkane retention index&quot;</span><span class="p">,</span> <span class="s2">&quot;matched retention index&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;Unused tags 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Unused tags 4&quot;</span><span class="p">,</span> <span class="s2">&quot;Unused tags 5&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;BlobID_2&quot;</span><span class="p">,</span> <span class="s2">&quot;Filter number&quot;</span><span class="p">,</span> <span class="s2">&quot;Unused tags 6&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;Mass concentration of compound (ng/m3)&quot;</span><span class="p">]</span>
+
+<span class="c1"># import csv file</span>
+<span class="n">df_blobtable</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/BlodgettCombinedBlobTable.csv&quot;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
+
+<span class="n">df_blobtable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unused tags 1</th>
+      <th>BlobID1</th>
+      <th>Unused tags 2</th>
+      <th>1D Retention Time (min)</th>
+      <th>2D Retention Time (sec)</th>
+      <th>Peak Height</th>
+      <th>Peak Volume</th>
+      <th>Peak volume/nearest internal standard peak volume</th>
+      <th>Calculated d-alkane retention index</th>
+      <th>matched retention index</th>
+      <th>Unused tags 3</th>
+      <th>Unused tags 4</th>
+      <th>Unused tags 5</th>
+      <th>BlobID_2</th>
+      <th>Filter number</th>
+      <th>Unused tags 6</th>
+      <th>Mass concentration of compound (ng/m3)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>541</td>
+      <td>181</td>
+      <td>541</td>
+      <td>40.608204</td>
+      <td>1.026330</td>
+      <td>105.022469</td>
+      <td>1263.347317</td>
+      <td>1.000000</td>
+      <td>1652.439024</td>
+      <td>1653.0</td>
+      <td>866</td>
+      <td>868</td>
+      <td>39</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>598</td>
+      <td>1553</td>
+      <td>598</td>
+      <td>40.037744</td>
+      <td>1.414941</td>
+      <td>31.052483</td>
+      <td>479.394947</td>
+      <td>1.000000</td>
+      <td>1634.146341</td>
+      <td>1633.0</td>
+      <td>775</td>
+      <td>782</td>
+      <td>32</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>766</td>
+      <td>62</td>
+      <td>766</td>
+      <td>63.502673</td>
+      <td>1.135938</td>
+      <td>8.124082</td>
+      <td>135.140907</td>
+      <td>1.000000</td>
+      <td>2524.561404</td>
+      <td>2520.0</td>
+      <td>871</td>
+      <td>877</td>
+      <td>35</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>530</td>
+      <td>776</td>
+      <td>530</td>
+      <td>27.259436</td>
+      <td>1.355154</td>
+      <td>281.546460</td>
+      <td>3376.619472</td>
+      <td>1.000000</td>
+      <td>1263.387978</td>
+      <td>1277.0</td>
+      <td>842</td>
+      <td>883</td>
+      <td>40</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>540</td>
+      <td>61</td>
+      <td>540</td>
+      <td>32.013271</td>
+      <td>0.328824</td>
+      <td>118.679093</td>
+      <td>946.665804</td>
+      <td>1.000000</td>
+      <td>1400.000000</td>
+      <td>1800.0</td>
+      <td>0</td>
+      <td>830</td>
+      <td>20</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>44635</th>
+      <td>970</td>
+      <td>2811</td>
+      <td>522</td>
+      <td>40.312724</td>
+      <td>0.981316</td>
+      <td>4.096229</td>
+      <td>57.013969</td>
+      <td>0.019236</td>
+      <td>1644.171779</td>
+      <td>1646.0</td>
+      <td>713</td>
+      <td>755</td>
+      <td>6</td>
+      <td>176</td>
+      <td>9</td>
+      <td>0.022829</td>
+      <td>0.783983</td>
+    </tr>
+    <tr>
+      <th>44636</th>
+      <td>529</td>
+      <td>2812</td>
+      <td>522</td>
+      <td>40.274506</td>
+      <td>1.131518</td>
+      <td>155.203347</td>
+      <td>1839.028248</td>
+      <td>0.620461</td>
+      <td>1642.944785</td>
+      <td>1642.0</td>
+      <td>837</td>
+      <td>845</td>
+      <td>824</td>
+      <td>176</td>
+      <td>9</td>
+      <td>4.682465</td>
+      <td>160.803335</td>
+    </tr>
+    <tr>
+      <th>44637</th>
+      <td>524</td>
+      <td>2813</td>
+      <td>522</td>
+      <td>40.045199</td>
+      <td>0.891195</td>
+      <td>201.872901</td>
+      <td>2958.995344</td>
+      <td>0.998322</td>
+      <td>1635.582822</td>
+      <td>1637.0</td>
+      <td>883</td>
+      <td>885</td>
+      <td>8</td>
+      <td>176</td>
+      <td>9</td>
+      <td>0.712658</td>
+      <td>24.473803</td>
+    </tr>
+    <tr>
+      <th>44638</th>
+      <td>783</td>
+      <td>2818</td>
+      <td>530</td>
+      <td>45.892543</td>
+      <td>0.931249</td>
+      <td>6.134070</td>
+      <td>124.792845</td>
+      <td>0.043840</td>
+      <td>1825.675676</td>
+      <td>1824.0</td>
+      <td>681</td>
+      <td>689</td>
+      <td>722</td>
+      <td>176</td>
+      <td>9</td>
+      <td>0.038751</td>
+      <td>1.330786</td>
+    </tr>
+    <tr>
+      <th>44639</th>
+      <td>755</td>
+      <td>2838</td>
+      <td>548</td>
+      <td>46.389376</td>
+      <td>0.540725</td>
+      <td>7.531315</td>
+      <td>125.108783</td>
+      <td>0.157806</td>
+      <td>1843.243243</td>
+      <td>1844.0</td>
+      <td>810</td>
+      <td>828</td>
+      <td>801</td>
+      <td>176</td>
+      <td>9</td>
+      <td>0.200291</td>
+      <td>6.878302</td>
+    </tr>
+  </tbody>
+</table>
+<p>44640 rows × 17 columns</p>
+</div></div></div>
+</div>
+<p>We can remove all of the columns with the unused tags and drop the NaN’s.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unusedtags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Unused tags 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Unused tags 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Unused tags 3&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;Unused tags 4&quot;</span><span class="p">,</span> <span class="s2">&quot;Unused tags 5&quot;</span><span class="p">,</span> <span class="s2">&quot;Unused tags 6&quot;</span><span class="p">]</span>
+
+<span class="c1">#import numpy as np </span>
+
+<span class="c1">#df_blobtable.replace(np.inf, np.nan, inplace=True)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;use_inf_as_na&#39;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df_blobtable</span> <span class="o">=</span> <span class="n">df_blobtable</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">unusedtags</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_blobtable</span> <span class="o">=</span> <span class="n">df_blobtable</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_blobtable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BlobID1</th>
+      <th>1D Retention Time (min)</th>
+      <th>2D Retention Time (sec)</th>
+      <th>Peak Height</th>
+      <th>Peak Volume</th>
+      <th>Peak volume/nearest internal standard peak volume</th>
+      <th>Calculated d-alkane retention index</th>
+      <th>matched retention index</th>
+      <th>BlobID_2</th>
+      <th>Filter number</th>
+      <th>Mass concentration of compound (ng/m3)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>181</td>
+      <td>40.608204</td>
+      <td>1.026330</td>
+      <td>105.022469</td>
+      <td>1263.347317</td>
+      <td>1.000000</td>
+      <td>1652.439024</td>
+      <td>1653.0</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1553</td>
+      <td>40.037744</td>
+      <td>1.414941</td>
+      <td>31.052483</td>
+      <td>479.394947</td>
+      <td>1.000000</td>
+      <td>1634.146341</td>
+      <td>1633.0</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>62</td>
+      <td>63.502673</td>
+      <td>1.135938</td>
+      <td>8.124082</td>
+      <td>135.140907</td>
+      <td>1.000000</td>
+      <td>2524.561404</td>
+      <td>2520.0</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>776</td>
+      <td>27.259436</td>
+      <td>1.355154</td>
+      <td>281.546460</td>
+      <td>3376.619472</td>
+      <td>1.000000</td>
+      <td>1263.387978</td>
+      <td>1277.0</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>61</td>
+      <td>32.013271</td>
+      <td>0.328824</td>
+      <td>118.679093</td>
+      <td>946.665804</td>
+      <td>1.000000</td>
+      <td>1400.000000</td>
+      <td>1800.0</td>
+      <td>0</td>
+      <td>201</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>44635</th>
+      <td>2811</td>
+      <td>40.312724</td>
+      <td>0.981316</td>
+      <td>4.096229</td>
+      <td>57.013969</td>
+      <td>0.019236</td>
+      <td>1644.171779</td>
+      <td>1646.0</td>
+      <td>176</td>
+      <td>9</td>
+      <td>0.783983</td>
+    </tr>
+    <tr>
+      <th>44636</th>
+      <td>2812</td>
+      <td>40.274506</td>
+      <td>1.131518</td>
+      <td>155.203347</td>
+      <td>1839.028248</td>
+      <td>0.620461</td>
+      <td>1642.944785</td>
+      <td>1642.0</td>
+      <td>176</td>
+      <td>9</td>
+      <td>160.803335</td>
+    </tr>
+    <tr>
+      <th>44637</th>
+      <td>2813</td>
+      <td>40.045199</td>
+      <td>0.891195</td>
+      <td>201.872901</td>
+      <td>2958.995344</td>
+      <td>0.998322</td>
+      <td>1635.582822</td>
+      <td>1637.0</td>
+      <td>176</td>
+      <td>9</td>
+      <td>24.473803</td>
+    </tr>
+    <tr>
+      <th>44638</th>
+      <td>2818</td>
+      <td>45.892543</td>
+      <td>0.931249</td>
+      <td>6.134070</td>
+      <td>124.792845</td>
+      <td>0.043840</td>
+      <td>1825.675676</td>
+      <td>1824.0</td>
+      <td>176</td>
+      <td>9</td>
+      <td>1.330786</td>
+    </tr>
+    <tr>
+      <th>44639</th>
+      <td>2838</td>
+      <td>46.389376</td>
+      <td>0.540725</td>
+      <td>7.531315</td>
+      <td>125.108783</td>
+      <td>0.157806</td>
+      <td>1843.243243</td>
+      <td>1844.0</td>
+      <td>176</td>
+      <td>9</td>
+      <td>6.878302</td>
+    </tr>
+  </tbody>
+</table>
+<p>43394 rows × 11 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="all-shrubcovonly-01-16-xlsx">
+<h4>All_ShrubCovOnly_01_16.xlsx<a class="headerlink" href="#all-shrubcovonly-01-16-xlsx" title="Permalink to this headline">#</a></h4>
+<p>We can also load in the data from All_ShrubCovOnly_01_16.xlsx to get information about what plants are present at certain sites.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shrub</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/All_ShrubCovOnly_01_16.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;16&quot;</span><span class="p">)</span>
+
+<span class="n">df_shrub</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/compat/_optional.py:138,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">138</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/importlib/__init__.py:127,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">127</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1030,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1007,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:984,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_shrub</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/All_ShrubCovOnly_01_16.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;16&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df_shrub</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:457,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, decimal, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">457</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">461</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span>     <span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:1419,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1416</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
+<span class="g g-Whitespace">   </span><span class="mi">1417</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
+<span class="ne">-&gt; </span><span class="mi">1419</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_openpyxl.py:524,</span> in <span class="ni">OpenpyxlReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">509</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span>     <span class="n">filepath_or_buffer</span><span class="p">:</span> <span class="n">FilePath</span> <span class="o">|</span> <span class="n">ReadBuffer</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="n">storage_options</span><span class="p">:</span> <span class="n">StorageOptions</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">515</span><span class="sd">     Reader using openpyxl engine.</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span><span class="sd">         passed to fsspec for appropriate URLs (see ``_get_filepath_or_buffer``)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">524</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;openpyxl&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/compat/_optional.py:141,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">141</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>         <span class="k">return</span> <span class="kc">None</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;openpyxl&#39;.  Use pip or conda to install openpyxl.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bfrsplantcodes-xlsx">
+<h4>BFRSPlantCodes.xlsx<a class="headerlink" href="#bfrsplantcodes-xlsx" title="Permalink to this headline">#</a></h4>
+<p>Now the data from BFRSPlantCodes.xlsx is read in to get information that links the shorthand code name to the real plant name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_plantnames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/BFRSPlantCodes.xlsx&quot;</span><span class="p">)</span>
+
+<span class="n">df_plantnames</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-log-xlsx">
+<h4>Run_Log.xlsx<a class="headerlink" href="#run-log-xlsx" title="Permalink to this headline">#</a></h4>
+<p>We can also load in the data from Run_Log.xlsx for data collected during the flight and ground collections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_filter_flight</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/Run_Log.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Flight Log&quot;</span><span class="p">)</span>
+
+<span class="n">df_filter_flight</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_filter_ground</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/Run_Log.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Ground Station&quot;</span><span class="p">)</span>
+
+<span class="n">df_filter_ground</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="predicting-mass-concentration-from-bloblid">
+<h3>Predicting Mass Concentration from BloblID<a class="headerlink" href="#predicting-mass-concentration-from-bloblid" title="Permalink to this headline">#</a></h3>
+<p>Now that some of the data has been read in, we can start to make our model. For this simple example model, we will try and predict a correlation between the BlobID, or the compound, and the amount of that compound in the smoke, given by the mass concentration. We will use RandomForestRegressor as part of sklearn.</p>
+<p>We start with splittig our data into a train/test split.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df_blobtable</span><span class="p">[</span><span class="s2">&quot;BlobID1&quot;</span><span class="p">],</span> <span class="n">df_blobtable</span><span class="p">[</span><span class="s2">&quot;Mass concentration of compound (ng/m3)&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now fit the correlation between the BlobID and mass flow of that compound in the smoke. We will then test it on the test data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Y_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;BlobID&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mass Concentration of Compound in Smoke (ng/m3) &#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Train Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Prediction&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This model is not too conclusive about the mass concentration of the compound based on it’s BlobID. This could be due to the data being collected at multiple plots and both measured on the ground and in the air. To improve upon this, you can try and see if there is a correlation between the mass concentration of a compound at a certain plot, or the elevation during a burn.</p>
+<p>There are also several other paths you can take for your project. However, this simple model does show how you can load in the data and start to use it.</p>
+</section>
 </section>
 </section>
 
