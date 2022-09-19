@@ -71,6 +71,6 @@ https://github.com/ulissigroup/F22-06-325/tree/main/f22-06-325/projects/wildfire
 
 ## Example Model 
 
-For hints, information about loading in the data, and an example model, see this notebook: {doc}`wildfires/wildfire_notebook`
+For hints, information about loading in the data, and an example model, see this notebook: {doc}`wildfire_notebook`
 
 
