@@ -14,6 +14,7 @@ RUN mamba install --quiet --yes \
     git-lfs \
     lmfit \
     plotly \
+    openpyxl \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
