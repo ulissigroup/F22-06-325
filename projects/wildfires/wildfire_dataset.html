@@ -1306,82 +1306,208 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/compat/_optional.py:138,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">138</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/conda/lib/python3.9/importlib/__init__.py:127,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
-<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">127</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1030,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1007,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:984,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_shrub</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/All_ShrubCovOnly_01_16.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;16&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df_shrub</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:457,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, decimal, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">455</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">456</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="ne">--&gt; </span><span class="mi">457</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">458</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">459</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">460</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">461</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">462</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:1419,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1416</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
-<span class="g g-Whitespace">   </span><span class="mi">1417</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
-<span class="ne">-&gt; </span><span class="mi">1419</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_openpyxl.py:524,</span> in <span class="ni">OpenpyxlReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">509</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>     <span class="n">filepath_or_buffer</span><span class="p">:</span> <span class="n">FilePath</span> <span class="o">|</span> <span class="n">ReadBuffer</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="n">storage_options</span><span class="p">:</span> <span class="n">StorageOptions</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span><span class="sd">     Reader using openpyxl engine.</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">522</span><span class="sd">         passed to fsspec for appropriate URLs (see ``_get_filepath_or_buffer``)</span>
-<span class="g g-Whitespace">    </span><span class="mi">523</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">524</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;openpyxl&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">525</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/compat/_optional.py:141,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">141</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>         <span class="k">return</span> <span class="kc">None</span>
-
-<span class="ne">ImportError</span>: Missing optional dependency &#39;openpyxl&#39;.  Use pip or conda to install openpyxl.
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unit</th>
+      <th>Plot</th>
+      <th>StandID</th>
+      <th>Year</th>
+      <th>Species</th>
+      <th>Stature</th>
+      <th>Pcover</th>
+      <th>Aveht</th>
+      <th>Unnamed: 8</th>
+      <th>Unnamed: 9</th>
+      <th>Unnamed: 10</th>
+      <th>Unnamed: 11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>40</td>
+      <td>2</td>
+      <td>402</td>
+      <td>2016</td>
+      <td>LIDE</td>
+      <td>Tall</td>
+      <td>2</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>Sum of Pcover</td>
+      <td>Column Labels</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>40</td>
+      <td>3</td>
+      <td>403</td>
+      <td>2016</td>
+      <td>LIDE</td>
+      <td>Tall</td>
+      <td>4</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>Row Labels</td>
+      <td>Short</td>
+      <td>Tall</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>40</td>
+      <td>3</td>
+      <td>403</td>
+      <td>2016</td>
+      <td>SYMO</td>
+      <td>Short</td>
+      <td>2</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>18010</td>
+      <td>2</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>40</td>
+      <td>7</td>
+      <td>407</td>
+      <td>2016</td>
+      <td>LIDE</td>
+      <td>Tall</td>
+      <td>8</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>180101</td>
+      <td>4</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>40</td>
+      <td>12</td>
+      <td>4012</td>
+      <td>2016</td>
+      <td>LIDE</td>
+      <td>Tall</td>
+      <td>30</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>180102</td>
+      <td>0</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>771</th>
+      <td>590</td>
+      <td>117</td>
+      <td>590117</td>
+      <td>2016</td>
+      <td>ROGY</td>
+      <td>Short</td>
+      <td>2</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>772</th>
+      <td>590</td>
+      <td>118</td>
+      <td>590118</td>
+      <td>2016</td>
+      <td>ARPA</td>
+      <td>Tall</td>
+      <td>2</td>
+      <td>1.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>773</th>
+      <td>590</td>
+      <td>118</td>
+      <td>590118</td>
+      <td>2016</td>
+      <td>CEIN</td>
+      <td>Tall</td>
+      <td>10</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>774</th>
+      <td>590</td>
+      <td>118</td>
+      <td>590118</td>
+      <td>2016</td>
+      <td>CHFO</td>
+      <td>Short</td>
+      <td>2</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>775</th>
+      <td>590</td>
+      <td>118</td>
+      <td>590118</td>
+      <td>2016</td>
+      <td>ROGY</td>
+      <td>Short</td>
+      <td>2</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>776 rows × 12 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="bfrsplantcodes-xlsx">
@@ -1395,6 +1521,137 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sp-Code</th>
+      <th>Name</th>
+      <th>Common</th>
+      <th>Family</th>
+      <th>Sp-Notes</th>
+      <th>BFRSCode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>GAL-1</td>
+      <td>Galium</td>
+      <td>Bedstraw</td>
+      <td>Rubiaceae</td>
+      <td>??????????????</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CRUCIF</td>
+      <td>Brassicaceae (Cruciferae)</td>
+      <td>Mustard Family</td>
+      <td>Brassicaceae (Cruciferae)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CHGR-1</td>
+      <td>Cheilanthes gracillima</td>
+      <td>NaN</td>
+      <td>Pteridaceae (fern)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>STLE-1</td>
+      <td>Achnatherum lemmonii (Stipa l.)</td>
+      <td>NaN</td>
+      <td>Poaceae (Gramineae)(Stipeae)</td>
+      <td>Name change, Jepson '93.</td>
+      <td>ACLE (STLE)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ACMA</td>
+      <td>Acer macrophyllum</td>
+      <td>Bigleaf Maple</td>
+      <td>Aceraceae</td>
+      <td>NaN</td>
+      <td>ACMA</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>332</th>
+      <td>VIO-1</td>
+      <td>Viola spp.</td>
+      <td>Violet</td>
+      <td>Violaceae</td>
+      <td>NaN</td>
+      <td>VIO-</td>
+    </tr>
+    <tr>
+      <th>333</th>
+      <td>VIOLAC</td>
+      <td>Violaceae</td>
+      <td>Violet Family</td>
+      <td>Violaceae</td>
+      <td>NaN</td>
+      <td>VIOZ</td>
+    </tr>
+    <tr>
+      <th>334</th>
+      <td>VIPU</td>
+      <td>Viola purpurea  (some subspecies = new species)</td>
+      <td>NaN</td>
+      <td>Violaceae</td>
+      <td>Several new species described from this specie...</td>
+      <td>VIPU</td>
+    </tr>
+    <tr>
+      <th>335</th>
+      <td>WHDE</td>
+      <td>Whitneya dealbata</td>
+      <td>NaN</td>
+      <td>Asteraceae (Compositae)</td>
+      <td>NaN</td>
+      <td>WHDE</td>
+    </tr>
+    <tr>
+      <th>336</th>
+      <td>WOFI</td>
+      <td>Woodwardia fimbriata</td>
+      <td>Giant Chain Fern</td>
+      <td>Blechnaceae (fern)</td>
+      <td>NaN</td>
+      <td>WOFI</td>
+    </tr>
+  </tbody>
+</table>
+<p>337 rows × 6 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="run-log-xlsx">
@@ -1408,6 +1665,1205 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Plot Number</th>
+      <th>Flight #</th>
+      <th>Pump on</th>
+      <th>take off time</th>
+      <th>In Plume</th>
+      <th>Out of plume</th>
+      <th>Land time</th>
+      <th>Pump off</th>
+      <th>Filter #</th>
+      <th>...</th>
+      <th>Unnamed: 17</th>
+      <th>flight display times</th>
+      <th>Unnamed: 19</th>
+      <th>Unnamed: 20</th>
+      <th>Unnamed: 21</th>
+      <th>Unnamed: 22</th>
+      <th>Unnamed: 23</th>
+      <th>Unnamed: 24</th>
+      <th>Unnamed: 25</th>
+      <th>Unnamed: 26</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>340.0</td>
+      <td>1.0</td>
+      <td>11:54:00</td>
+      <td>11:55:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12:13:00</td>
+      <td>A1</td>
+      <td>...</td>
+      <td>340.0</td>
+      <td>1.0</td>
+      <td>11:57:00</td>
+      <td>12:16:00</td>
+      <td>A1</td>
+      <td>B1</td>
+      <td>P1</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1900-01-03 11:57:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>340.0</td>
+      <td>2.0</td>
+      <td>12:59:00</td>
+      <td>13:00:00</td>
+      <td>13:03:00</td>
+      <td>13:14:00</td>
+      <td>NaN</td>
+      <td>13:16:00</td>
+      <td>A2</td>
+      <td>...</td>
+      <td>340.0</td>
+      <td>2.0</td>
+      <td>13:02:00</td>
+      <td>13:19:00</td>
+      <td>A2</td>
+      <td>B2</td>
+      <td>P2</td>
+      <td>53.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>340.0</td>
+      <td>3.0</td>
+      <td>16:50:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>17:03:00</td>
+      <td>NaN</td>
+      <td>17:05:00</td>
+      <td>A3</td>
+      <td>...</td>
+      <td>340.0</td>
+      <td>3.0</td>
+      <td>16:58:00</td>
+      <td>17:12:00</td>
+      <td>A3</td>
+      <td>B3</td>
+      <td>P3</td>
+      <td>41.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>340.0</td>
+      <td>4.0</td>
+      <td>18:08:00</td>
+      <td>NaN</td>
+      <td>18:10:00</td>
+      <td>18:22:00</td>
+      <td>NaN</td>
+      <td>18:24:00</td>
+      <td>A4</td>
+      <td>...</td>
+      <td>340.0</td>
+      <td>4.0</td>
+      <td>18:23:00</td>
+      <td>18:39:00</td>
+      <td>A4</td>
+      <td>B4</td>
+      <td>P4</td>
+      <td>14.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>5.0</td>
+      <td>11:32:00</td>
+      <td>NaN</td>
+      <td>11:35:00</td>
+      <td>11:49:00</td>
+      <td>NaN</td>
+      <td>11:51:00</td>
+      <td>A5</td>
+      <td>...</td>
+      <td>60.0</td>
+      <td>5.0</td>
+      <td>11:32:00</td>
+      <td>11:51:00</td>
+      <td>A5</td>
+      <td>B5</td>
+      <td>P5</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>6.0</td>
+      <td>12:10:00</td>
+      <td>NaN</td>
+      <td>12:11:00</td>
+      <td>12:24:00</td>
+      <td>NaN</td>
+      <td>12:25:00</td>
+      <td>A6</td>
+      <td>...</td>
+      <td>60.0</td>
+      <td>6.0</td>
+      <td>12:10:00</td>
+      <td>12:25:00</td>
+      <td>A6</td>
+      <td>B6</td>
+      <td>P6</td>
+      <td>40.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>7.0</td>
+      <td>12:45:00</td>
+      <td>NaN</td>
+      <td>12:45:00</td>
+      <td>12:55:00</td>
+      <td>NaN</td>
+      <td>12:58:00</td>
+      <td>A7</td>
+      <td>...</td>
+      <td>60.0</td>
+      <td>7.0</td>
+      <td>12:45:00</td>
+      <td>12:58:00</td>
+      <td>A7</td>
+      <td>B7</td>
+      <td>P7</td>
+      <td>32.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>8.0</td>
+      <td>13:25:00</td>
+      <td>NaN</td>
+      <td>13:25:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13:35:00</td>
+      <td>A8</td>
+      <td>...</td>
+      <td>60.0</td>
+      <td>8.0</td>
+      <td>13:25:00</td>
+      <td>13:35:00</td>
+      <td>A8</td>
+      <td>B8</td>
+      <td>P8</td>
+      <td>35.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>15:12:00</td>
+      <td>15:15:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15:25:00</td>
+      <td>15:28:00</td>
+      <td>A9</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>15:12:00</td>
+      <td>15:28:00</td>
+      <td>A9</td>
+      <td>B9</td>
+      <td>P9</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>10.0</td>
+      <td>16:06:00</td>
+      <td>16:08:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>16:29:00</td>
+      <td>16:30:00</td>
+      <td>A10</td>
+      <td>...</td>
+      <td>60.0</td>
+      <td>10.0</td>
+      <td>16:06:00</td>
+      <td>16:30:00</td>
+      <td>A10</td>
+      <td>B10</td>
+      <td>P10</td>
+      <td>20.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>11.0</td>
+      <td>16:42:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>16:52:00</td>
+      <td>NaN</td>
+      <td>16:54:00</td>
+      <td>A11</td>
+      <td>...</td>
+      <td>60.0</td>
+      <td>11.0</td>
+      <td>16:42:00</td>
+      <td>16:54:00</td>
+      <td>A11</td>
+      <td>B11</td>
+      <td>P11</td>
+      <td>35.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>12.0</td>
+      <td>21:53:00</td>
+      <td>NaN</td>
+      <td>21:54:00</td>
+      <td>22:05:00</td>
+      <td>NaN</td>
+      <td>22:07:00</td>
+      <td>A12</td>
+      <td>...</td>
+      <td>60.0</td>
+      <td>12.0</td>
+      <td>21:53:00</td>
+      <td>10:07:00</td>
+      <td>A12</td>
+      <td>B12</td>
+      <td>P12</td>
+      <td>30.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>13.0</td>
+      <td>22:20:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>22:34:00</td>
+      <td>A13</td>
+      <td>...</td>
+      <td>60.0</td>
+      <td>13.0</td>
+      <td>22:20:00</td>
+      <td>22:34:00</td>
+      <td>A13</td>
+      <td>B13</td>
+      <td>P13</td>
+      <td>20.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>14.0</td>
+      <td>11:26:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>11:38:00</td>
+      <td>NaN</td>
+      <td>11:41:00</td>
+      <td>A32</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>14.0</td>
+      <td>11:26:00</td>
+      <td>11:41:00</td>
+      <td>A32</td>
+      <td>B32</td>
+      <td>P32</td>
+      <td>70.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>15.0</td>
+      <td>12:14:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12:29:00</td>
+      <td>12:37:00</td>
+      <td>A33</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>15.0</td>
+      <td>12:14:00</td>
+      <td>12:37:00</td>
+      <td>A33</td>
+      <td>B33</td>
+      <td>P33</td>
+      <td>95.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>16.0</td>
+      <td>12:57:00</td>
+      <td>13:02:00</td>
+      <td>NaN</td>
+      <td>13:15:00</td>
+      <td>13:17:00</td>
+      <td>13:22:00</td>
+      <td>A14</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>16.0</td>
+      <td>12:57:00</td>
+      <td>13:22:00</td>
+      <td>A14</td>
+      <td>B14</td>
+      <td>P14</td>
+      <td>100.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>17.0</td>
+      <td>13:29:00</td>
+      <td>13:34:00</td>
+      <td>13:36:00</td>
+      <td>13:47:00</td>
+      <td>13:49:00</td>
+      <td>13:50:00</td>
+      <td>A15</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>17.0</td>
+      <td>13:29:00</td>
+      <td>13:50:00</td>
+      <td>A15</td>
+      <td>B15</td>
+      <td>P15</td>
+      <td>100.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>18.0</td>
+      <td>15:10:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15:20:00</td>
+      <td>15:22:00</td>
+      <td>15:23:00</td>
+      <td>A16</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>18.0</td>
+      <td>15:10:00</td>
+      <td>15:23:00</td>
+      <td>A16</td>
+      <td>B16</td>
+      <td>P16</td>
+      <td>72.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>19.0</td>
+      <td>15:37:00</td>
+      <td>15:40:00</td>
+      <td>15:41:00</td>
+      <td>15:50:00</td>
+      <td>15:51:00</td>
+      <td>15:55:00</td>
+      <td>A17</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>19.0</td>
+      <td>15:37:00</td>
+      <td>15:55:00</td>
+      <td>A17</td>
+      <td>B17</td>
+      <td>P17</td>
+      <td>70.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>20.0</td>
+      <td>16:56:00</td>
+      <td>17:01:00</td>
+      <td>17:02:00</td>
+      <td>17:13:00</td>
+      <td>17:15:00</td>
+      <td>05:18:00</td>
+      <td>A18</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>20.0</td>
+      <td>16:56:00</td>
+      <td>05:18:00</td>
+      <td>A18</td>
+      <td>B18</td>
+      <td>P18</td>
+      <td>60.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>21.0</td>
+      <td>17:45:00</td>
+      <td>17:49:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18:02:00</td>
+      <td>18:04:00</td>
+      <td>A19</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>21.0</td>
+      <td>17:45:00</td>
+      <td>18:04:00</td>
+      <td>A19</td>
+      <td>B19</td>
+      <td>P19</td>
+      <td>60.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>22.0</td>
+      <td>18:08:00</td>
+      <td>18:12:00</td>
+      <td>18:13:00</td>
+      <td>18:21:00</td>
+      <td>18:23:00</td>
+      <td>18:29:00</td>
+      <td>A20</td>
+      <td>...</td>
+      <td>400.0</td>
+      <td>22.0</td>
+      <td>18:08:00</td>
+      <td>18:29:00</td>
+      <td>A20</td>
+      <td>B20</td>
+      <td>P20</td>
+      <td>60.0</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>assumed time</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>for integrating flow rates</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>340.0</td>
+      <td>1.0</td>
+      <td>11:57:00</td>
+      <td>12:16:00</td>
+      <td>A1</td>
+      <td>B1</td>
+      <td>P1</td>
+      <td>50</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>340.0</td>
+      <td>2.0</td>
+      <td>13:05:00</td>
+      <td>13:16:00</td>
+      <td>A2</td>
+      <td>B2</td>
+      <td>P2</td>
+      <td>53</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>340.0</td>
+      <td>3.0</td>
+      <td>16:58:30</td>
+      <td>17:11:00</td>
+      <td>A3</td>
+      <td>B3</td>
+      <td>P3</td>
+      <td>41</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>340.0</td>
+      <td>4.0</td>
+      <td>18:25:30</td>
+      <td>18:37:00</td>
+      <td>A4</td>
+      <td>B4</td>
+      <td>P4</td>
+      <td>14</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>5.0</td>
+      <td>11:32:00</td>
+      <td>11:51:00</td>
+      <td>A5</td>
+      <td>B5</td>
+      <td>P5</td>
+      <td>50</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>6.0</td>
+      <td>12:11:00</td>
+      <td>12:25:00</td>
+      <td>A6</td>
+      <td>B6</td>
+      <td>P6</td>
+      <td>40</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>7.0</td>
+      <td>12:45:00</td>
+      <td>12:58:30</td>
+      <td>A7</td>
+      <td>B7</td>
+      <td>P7</td>
+      <td>32</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>8.0</td>
+      <td>13:25:00</td>
+      <td>13:35:00</td>
+      <td>A8</td>
+      <td>B8</td>
+      <td>P8</td>
+      <td>35</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>15:12:00</td>
+      <td>15:28:00</td>
+      <td>A9</td>
+      <td>B9</td>
+      <td>P9</td>
+      <td>50</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>10.0</td>
+      <td>16:10:00</td>
+      <td>16:21:00</td>
+      <td>A10</td>
+      <td>B10</td>
+      <td>P10</td>
+      <td>20</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>11.0</td>
+      <td>16:44:00</td>
+      <td>16:54:30</td>
+      <td>A11</td>
+      <td>B11</td>
+      <td>P11</td>
+      <td>35</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>12.0</td>
+      <td>21:53:00</td>
+      <td>10:07:00</td>
+      <td>A12</td>
+      <td>B12</td>
+      <td>P12</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>60.0</td>
+      <td>13.0</td>
+      <td>22:20:00</td>
+      <td>22:34:00</td>
+      <td>A13</td>
+      <td>B13</td>
+      <td>P13</td>
+      <td>20</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>14.0</td>
+      <td>11:27:00</td>
+      <td>11:41:00</td>
+      <td>A32</td>
+      <td>B32</td>
+      <td>P32</td>
+      <td>70</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>15.0</td>
+      <td>12:18:00</td>
+      <td>12:31:00</td>
+      <td>A33</td>
+      <td>B33</td>
+      <td>P33</td>
+      <td>95</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>16.0</td>
+      <td>13:01:00</td>
+      <td>13:20:00</td>
+      <td>A14</td>
+      <td>B14</td>
+      <td>P14</td>
+      <td>100</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>17.0</td>
+      <td>13:29:00</td>
+      <td>13:50:00</td>
+      <td>A15</td>
+      <td>B15</td>
+      <td>P15</td>
+      <td>100</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>18.0</td>
+      <td>15:10:00</td>
+      <td>15:23:00</td>
+      <td>A16</td>
+      <td>B16</td>
+      <td>P16</td>
+      <td>72</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>19.0</td>
+      <td>15:39:30</td>
+      <td>15:55:00</td>
+      <td>A17</td>
+      <td>B17</td>
+      <td>P17</td>
+      <td>70</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>20.0</td>
+      <td>16:56:00</td>
+      <td>05:18:00</td>
+      <td>A18</td>
+      <td>B18</td>
+      <td>P18</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>21.0</td>
+      <td>17:51:00</td>
+      <td>18:04:00</td>
+      <td>A19</td>
+      <td>B19</td>
+      <td>P19</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>400.0</td>
+      <td>22.0</td>
+      <td>18:11:00</td>
+      <td>18:26:00</td>
+      <td>A20</td>
+      <td>B20</td>
+      <td>P20</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+  </tbody>
+</table>
+<p>48 rows × 27 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1417,6 +2873,686 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start date</th>
+      <th>Start time</th>
+      <th>Date end</th>
+      <th>End Time</th>
+      <th>Combined Start</th>
+      <th>Combined End</th>
+      <th>Channel #</th>
+      <th>Flow Rate (P)</th>
+      <th>Flow Rate (G)</th>
+      <th>Fliter (F)</th>
+      <th>Tube</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>12:33:40</td>
+      <td>2017-10-30</td>
+      <td>13:33:40</td>
+      <td>2017-10-30 12:33:40</td>
+      <td>2017-10-30 13:33:40</td>
+      <td>1.0</td>
+      <td>20.19</td>
+      <td>0.277</td>
+      <td>201.0</td>
+      <td>1101096.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>13:35:00</td>
+      <td>2017-10-30</td>
+      <td>14:35:00</td>
+      <td>2017-10-30 13:35:00</td>
+      <td>2017-10-30 14:35:00</td>
+      <td>2.0</td>
+      <td>20.17</td>
+      <td>0.268</td>
+      <td>202.0</td>
+      <td>1100926.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>14:36:44</td>
+      <td>2017-10-30</td>
+      <td>15:36:44</td>
+      <td>2017-10-30 14:36:44</td>
+      <td>2017-10-30 15:36:44</td>
+      <td>3.0</td>
+      <td>20.69</td>
+      <td>0.277</td>
+      <td>203.0</td>
+      <td>1101437.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>16:41:16</td>
+      <td>2017-10-30</td>
+      <td>17:44:00</td>
+      <td>2017-10-30 16:41:16</td>
+      <td>2017-10-30 17:44:00</td>
+      <td>4.0</td>
+      <td>19.93</td>
+      <td>0.265</td>
+      <td>204.0</td>
+      <td>1100936.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>17:45:00</td>
+      <td>2017-10-30</td>
+      <td>18:38:00</td>
+      <td>2017-10-30 17:45:00</td>
+      <td>2017-10-30 18:38:00</td>
+      <td>5.0</td>
+      <td>20.25</td>
+      <td>0.258</td>
+      <td>205.0</td>
+      <td>1048717.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>19:45:00</td>
+      <td>2017-10-30</td>
+      <td>20:15:00</td>
+      <td>2017-10-30 19:45:00</td>
+      <td>2017-10-30 20:15:00</td>
+      <td>1.0</td>
+      <td>20.19</td>
+      <td>0.277</td>
+      <td>207.0</td>
+      <td>1048371.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>20:15:00</td>
+      <td>2017-10-30</td>
+      <td>20:45:00</td>
+      <td>2017-10-30 20:15:00</td>
+      <td>2017-10-30 20:45:00</td>
+      <td>2.0</td>
+      <td>20.17</td>
+      <td>0.268</td>
+      <td>208.0</td>
+      <td>1101043.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>20:45:00</td>
+      <td>2017-10-30</td>
+      <td>21:15:00</td>
+      <td>2017-10-30 20:45:00</td>
+      <td>2017-10-30 21:15:00</td>
+      <td>3.0</td>
+      <td>20.69</td>
+      <td>0.258</td>
+      <td>209.0</td>
+      <td>1101022.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>21:15:00</td>
+      <td>2017-10-30</td>
+      <td>21:45:00</td>
+      <td>2017-10-30 21:15:00</td>
+      <td>2017-10-30 21:45:00</td>
+      <td>4.0</td>
+      <td>19.93</td>
+      <td>0.265</td>
+      <td>210.0</td>
+      <td>1079817.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2017-10-30 00:00:00</td>
+      <td>21:45:00</td>
+      <td>2017-10-30</td>
+      <td>22:15:00</td>
+      <td>2017-10-30 21:45:00</td>
+      <td>2017-10-30 22:15:00</td>
+      <td>5.0</td>
+      <td>20.25</td>
+      <td>0.258</td>
+      <td>211.0</td>
+      <td>1101103.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>11:36:43</td>
+      <td>2017-10-31</td>
+      <td>12:06:43</td>
+      <td>2017-10-31 11:36:43</td>
+      <td>2017-10-31 12:06:43</td>
+      <td>1.0</td>
+      <td>20.19</td>
+      <td>0.277</td>
+      <td>213.0</td>
+      <td>1100909.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>12:11:44</td>
+      <td>2017-10-31</td>
+      <td>12:41:44</td>
+      <td>2017-10-31 12:11:44</td>
+      <td>2017-10-31 12:41:44</td>
+      <td>2.0</td>
+      <td>20.17</td>
+      <td>0.268</td>
+      <td>214.0</td>
+      <td>1101094.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>13:12:33</td>
+      <td>2017-10-31</td>
+      <td>13:42:33</td>
+      <td>2017-10-31 13:12:33</td>
+      <td>2017-10-31 13:42:33</td>
+      <td>1.0</td>
+      <td>20.19</td>
+      <td>0.277</td>
+      <td>213.0</td>
+      <td>1100909.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>14:00:00</td>
+      <td>2017-10-31</td>
+      <td>14:30:00</td>
+      <td>2017-10-31 14:00:00</td>
+      <td>2017-10-31 14:30:00</td>
+      <td>3.0</td>
+      <td>20.69</td>
+      <td>0.277</td>
+      <td>215.0</td>
+      <td>1079974.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>14:30:00</td>
+      <td>2017-10-31</td>
+      <td>15:00:00</td>
+      <td>2017-10-31 14:30:00</td>
+      <td>2017-10-31 15:00:00</td>
+      <td>4.0</td>
+      <td>19.93</td>
+      <td>0.265</td>
+      <td>216.0</td>
+      <td>1101411.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>15:00:00</td>
+      <td>2017-10-31</td>
+      <td>15:30:00</td>
+      <td>2017-10-31 15:00:00</td>
+      <td>2017-10-31 15:30:00</td>
+      <td>5.0</td>
+      <td>20.25</td>
+      <td>0.258</td>
+      <td>217.0</td>
+      <td>1101441.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>15:30:00</td>
+      <td>2017-10-31</td>
+      <td>16:00:00</td>
+      <td>2017-10-31 15:30:00</td>
+      <td>2017-10-31 16:00:00</td>
+      <td>6.0</td>
+      <td>21.22</td>
+      <td>0.278</td>
+      <td>218.0</td>
+      <td>1100878.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>22:00:00</td>
+      <td>2017-10-31</td>
+      <td>22:45:00</td>
+      <td>2017-10-31 22:00:00</td>
+      <td>2017-10-31 22:45:00</td>
+      <td>1.0</td>
+      <td>20.19</td>
+      <td>0.277</td>
+      <td>219.0</td>
+      <td>1048568.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2017-10-31 00:00:00</td>
+      <td>23:45:00</td>
+      <td>2017-11-11</td>
+      <td>00:30:00</td>
+      <td>2017-10-31 23:45:00</td>
+      <td>2017-11-11 00:30:00</td>
+      <td>2.0</td>
+      <td>20.17</td>
+      <td>0.268</td>
+      <td>220.0</td>
+      <td>1099860.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>01:30:00</td>
+      <td>2017-11-01</td>
+      <td>02:15:00</td>
+      <td>2017-11-01 01:30:00</td>
+      <td>2017-11-01 02:15:00</td>
+      <td>3.0</td>
+      <td>20.69</td>
+      <td>0.258</td>
+      <td>221.0</td>
+      <td>1100967.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>03:15:00</td>
+      <td>2017-11-01</td>
+      <td>04:00:00</td>
+      <td>2017-11-01 03:15:00</td>
+      <td>2017-11-01 04:00:00</td>
+      <td>4.0</td>
+      <td>19.93</td>
+      <td>0.265</td>
+      <td>222.0</td>
+      <td>1101166.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>05:00:00</td>
+      <td>2017-11-01</td>
+      <td>05:45:00</td>
+      <td>2017-11-01 05:00:00</td>
+      <td>2017-11-01 05:45:00</td>
+      <td>5.0</td>
+      <td>20.25</td>
+      <td>0.258</td>
+      <td>223.0</td>
+      <td>1048688.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>06:45:00</td>
+      <td>2017-11-01</td>
+      <td>07:21:54</td>
+      <td>2017-11-01 06:45:00</td>
+      <td>2017-11-01 07:21:54</td>
+      <td>6.0</td>
+      <td>21.22</td>
+      <td>0.278</td>
+      <td>224.0</td>
+      <td>1048611.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>11:15:35</td>
+      <td>2017-11-01</td>
+      <td>12:00:45</td>
+      <td>2017-11-01 11:15:35</td>
+      <td>2017-11-01 12:00:45</td>
+      <td>1.0</td>
+      <td>20.19</td>
+      <td>0.277</td>
+      <td>225.0</td>
+      <td>1101112.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>13:00:00</td>
+      <td>2017-11-01</td>
+      <td>13:30:00</td>
+      <td>2017-11-01 13:00:00</td>
+      <td>2017-11-01 13:30:00</td>
+      <td>2.0</td>
+      <td>20.17</td>
+      <td>0.268</td>
+      <td>226.0</td>
+      <td>1101165.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>13:30:00</td>
+      <td>2017-11-01</td>
+      <td>14:00:00</td>
+      <td>2017-11-01 13:30:00</td>
+      <td>2017-11-01 14:00:00</td>
+      <td>3.0</td>
+      <td>20.69</td>
+      <td>0.258</td>
+      <td>227.0</td>
+      <td>1048351.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>14:00:00</td>
+      <td>2017-11-01</td>
+      <td>14:30:00</td>
+      <td>2017-11-01 14:00:00</td>
+      <td>2017-11-01 14:30:00</td>
+      <td>4.0</td>
+      <td>19.93</td>
+      <td>0.265</td>
+      <td>228.0</td>
+      <td>1100928.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>14:30:00</td>
+      <td>2017-11-01</td>
+      <td>15:00:00</td>
+      <td>2017-11-01 14:30:00</td>
+      <td>2017-11-01 15:00:00</td>
+      <td>5.0</td>
+      <td>20.25</td>
+      <td>0.258</td>
+      <td>230.0</td>
+      <td>1048319.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>15:00:00</td>
+      <td>2017-11-01</td>
+      <td>15:30:00</td>
+      <td>2017-11-01 15:00:00</td>
+      <td>2017-11-01 15:30:00</td>
+      <td>6.0</td>
+      <td>21.22</td>
+      <td>0.278</td>
+      <td>231.0</td>
+      <td>1100953.0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2017-11-01 00:00:00</td>
+      <td>22:15:00</td>
+      <td>2017-11-01</td>
+      <td>23:15:00</td>
+      <td>2017-11-01 22:15:00</td>
+      <td>2017-11-01 23:15:00</td>
+      <td>1.0</td>
+      <td>20.19</td>
+      <td>0.277</td>
+      <td>232.0</td>
+      <td>1101013.0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2017-11-02 00:00:00</td>
+      <td>00:00:00</td>
+      <td>2017-11-02</td>
+      <td>01:00:00</td>
+      <td>2017-11-02 00:00:00</td>
+      <td>2017-11-02 01:00:00</td>
+      <td>2.0</td>
+      <td>20.17</td>
+      <td>0.268</td>
+      <td>233.0</td>
+      <td>1048585.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>2017-11-02 00:00:00</td>
+      <td>01:45:00</td>
+      <td>2017-11-02</td>
+      <td>02:45:00</td>
+      <td>2017-11-02 01:45:00</td>
+      <td>2017-11-02 02:45:00</td>
+      <td>3.0</td>
+      <td>20.69</td>
+      <td>0.258</td>
+      <td>234.0</td>
+      <td>1101005.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2017-11-02 00:00:00</td>
+      <td>03:30:00</td>
+      <td>2017-11-02</td>
+      <td>04:30:00</td>
+      <td>2017-11-02 03:30:00</td>
+      <td>2017-11-02 04:30:00</td>
+      <td>4.0</td>
+      <td>19.93</td>
+      <td>0.265</td>
+      <td>235.0</td>
+      <td>1048655.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2017-11-02 00:00:00</td>
+      <td>05:15:00</td>
+      <td>2017-11-02</td>
+      <td>06:15:00</td>
+      <td>2017-11-02 05:15:00</td>
+      <td>2017-11-02 06:15:00</td>
+      <td>5.0</td>
+      <td>20.25</td>
+      <td>0.258</td>
+      <td>236.0</td>
+      <td>1100808.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>2017-11-02 00:00:00</td>
+      <td>07:00:00</td>
+      <td>2017-11-02</td>
+      <td>07:52:34</td>
+      <td>2017-11-02 07:00:00</td>
+      <td>2017-11-02 07:52:34</td>
+      <td>6.0</td>
+      <td>21.22</td>
+      <td>0.278</td>
+      <td>237.0</td>
+      <td>1079950.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Flow rates</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Channel #</td>
+      <td>Gas (LPM)</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>1</td>
+      <td>0.277</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>2</td>
+      <td>0.268</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>3</td>
+      <td>0.258</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>4</td>
+      <td>0.265</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>5</td>
+      <td>0.258</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>6</td>
+      <td>0.278</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>
@@ -1443,6 +3579,12 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_542/1210977809.py:4: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
+  model.fit(X_train.values.reshape(-1, 1), Y_train.values.reshape(-1, 1))
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestRegressor()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestRegressor</label><div class="sk-toggleable__content"><pre>RandomForestRegressor()</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1456,6 +3598,9 @@ title="Print to PDF"
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Train Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Prediction&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/wildfire_dataset_17_0.png" src="../../_images/wildfire_dataset_17_0.png" />
 </div>
 </div>
 <p>This model is not too conclusive about the mass concentration of the compound based on it’s BlobID. This could be due to the data being collected at multiple plots and both measured on the ground and in the air. To improve upon this, you can try and see if there is a correlation between the mass concentration of a compound at a certain plot, or the elevation during a burn.</p>
