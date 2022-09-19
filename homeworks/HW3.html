@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>HW3 &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
+    <title>HW3 (due 9/26) &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -596,8 +596,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regurization">
-   Regurization
+  <a class="reference internal nav-link" href="#regularization">
+   Regularization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -614,7 +614,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>HW3</h1>
+                <h1>HW3 (due 9/26)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -692,8 +692,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regurization">
-   Regurization
+  <a class="reference internal nav-link" href="#regularization">
+   Regularization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -713,19 +713,21 @@ title="Print to PDF"
                 
   <div class="math notranslate nohighlight">
 \[\require{mhchem}\]</div>
-<section class="tex2jax_ignore mathjax_ignore" id="hw3">
-<h1>HW3<a class="headerlink" href="#hw3" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="hw3-due-9-26">
+<h1>HW3 (due 9/26)<a class="headerlink" href="#hw3-due-9-26" title="Permalink to this headline">#</a></h1>
 <section id="challenger-rocket-o-ring-failures-40-pt">
 <h2>Challenger Rocket O-ring Failures [40 pt]<a class="headerlink" href="#challenger-rocket-o-ring-failures-40-pt" title="Permalink to this headline">#</a></h2>
 <p><img alt="Challenger" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Challenger_explosion.jpg/296px-Challenger_explosion.jpg" /></p>
-<p>The space shuttle Challenger flew 9 missions from 1983-1986. On its final launch, Challenger exploded a bit more than 1 minute after launch.</p>
+<p>The space shuttle Challenger flew 9 missions from 1983-1986. On its final launch, Challenger exploded a bit more than 1 minute after launch. Among the astronauts on board was Judith Resnik, a CMU alum (ECE), for whom the Resnik award at CMU for exceptional senior women is named after, and Ronald McNair, the second African American to fly to space and for whom the national McNair scholars program is named after.</p>
 <p>The Rogers commission was tasked with identifying the factors that led to the disaster, and notably Nobel-prize-winning physicist Richard Feynman was on the commission. The cause of the failure was eventually determined to be a failed O-ring that led to an explosion in the fuel tank, and the temperature on the day of the launch one of the primary considerations.</p>
-<p>This was a particularly dark day for NASA and engineers as the Challenger incident exposed major issues around reliability and engineering statistics. The disaster was not just a technical failure in the O-ring, but the way failure analysis was conducted at NASA.</p>
+<p>This was a particularly dark period for NASA and engineers as the Challenger incident exposed major issues around reliability and engineering statistics. The disaster was not just a technical failure in the O-ring, but a failure in the engineering organization at NASA.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p>Feynman’s special report is in the appendix to the Rogers commission report (Appendix F) https://www.govinfo.gov/content/pkg/GPO-CRPT-99hrpt1016/pdf/GPO-CRPT-99hrpt1016.pdf</p></li>
 <li><p>Mr Feynman Goes to Washington, available here: https://calteches.library.caltech.edu/3570/1/Feynman.pdf</p></li>
+<li><p>https://www.youtube.com/watch?v=ZOzoLdfWyKw (Feynman testimony starts at 1:53)</p></li>
+<li><p>https://www.cmu.edu/education-office/academic-resources/resnik-award.html</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
@@ -818,16 +820,16 @@ https://github.com/CJBartel/perovskite-stability</p>
 <section id="add-features">
 <h2>Add features<a class="headerlink" href="#add-features" title="Permalink to this headline">#</a></h2>
 <p>First, add some features to the input matrix X: 1/R_A, 1/R_B Then add polynomial features (varying the polynomial features degrees from 1 to 3).</p>
-<p>Like we did in class in the features lecture, vary the polynomial powers from 1-3 and see the effect on the train and validation accuracy.</p>
+<p>Like we did in class in the features lecture, vary the polynomial powers from 1-3 and study the effect on the train and validation accuracy. Which one is the most predictive for your train/validation split?</p>
 </section>
-<section id="regurization">
-<h2>Regurization<a class="headerlink" href="#regurization" title="Permalink to this headline">#</a></h2>
+<section id="regularization">
+<h2>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">#</a></h2>
 <p>Try varying the type of regularization (“penalty”), and the strength of the regularization (“C”) in LogisticRegression. For the highest validation set accuracy you can find, fit the model to the entire train+validation dataset and predict on the test set to report your final model accuracy.</p>
 </section>
 <section id="bonus">
 <h2>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">#</a></h2>
-<p>This problem is based on a paper that used a special method (SISSO) to generate and screen billions of possible algebraic features to see which ones correlated the best.</p>
-<p>Read the paper to find the tolerance factor <span class="math notranslate nohighlight">\(\tau\)</span>, and use it as a single logistic regression feature. How accurate is your model compared to <span class="math notranslate nohighlight">\(\tau\)</span> on your test set?</p>
+<p>This problem is based on a paper that used a special method (SISSO) to generate and screen billions of possible algebraic formulae to see which ones correlated the best with perovskite structure. If you’re interested the code for that is here: https://github.com/rouyang2017/SISSO</p>
+<p>Read the paper to find the tolerance factor <span class="math notranslate nohighlight">\(\tau\)</span>, and use it as a single logistic regression feature. How accurate is your model compared to <span class="math notranslate nohighlight">\(\tau\)</span> on your test set? How do your results compare to what the paper claims for accuracy?</p>
 </section>
 </section>
 

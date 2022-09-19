@@ -6,6 +6,7 @@
     * [Prof. Kitchin also self-publishes guides to many of these topics](https://pointbreezepubs.gumroad.com/). Ask Prof. Ulissi for a discount code if you want to buy something!
     
 **Relevant courses (including videos/slides/etc):**
+* Collated list of relevant courses by topic area: https://github.com/dair-ai/ML-YouTube-Courses
 * [Stanford CS229 Lectures by Andrew Ng](https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU)
     * More details than needed for this course, but great if you're interested in the underlying methods
     * Andrew Ng is extremely well known for his work in AI/ML
