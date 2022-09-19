@@ -37,5 +37,6 @@ parts:
     sections:
     - file: homeworks/HW1
     - file: homeworks/HW2
+    - file: homeworks/HW3
     - file: homeworks/hw_solutions
 
