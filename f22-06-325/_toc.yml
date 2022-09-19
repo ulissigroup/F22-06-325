@@ -21,7 +21,7 @@ parts:
   - file: notes/intro_ml
     sections:
     - file: notes/ml_basics
-    - file: notes/features_feature_selection
+    - file: notes/overfitting_regularization
     - file: notes/classification_logistic_regression
   - file: labs/overview
     sections:
