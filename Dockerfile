@@ -23,9 +23,6 @@ RUN mamba install --quiet --yes \
     
 RUN jupyter labextension install jupyterlab-jupytext
 
-# Install matminer
-RUN pip install --no-deps git+https://github.com/hackingmaterials/matminer.git
-
 # OCP repo requirements
 RUN echo '' > /opt/conda/conda-meta/pinned
 RUN mamba uninstall nomkl --quiet --yes
@@ -58,11 +55,14 @@ RUN mamba install --quiet --yes \
 
 ENV OMP_NUM_THREADS=1 
 
+# Install OCP
 USER root
 RUN git clone https://github.com/Open-Catalyst-Project/ocp /opt/ocp && fix-permissions /opt/ocp
 USER $NB_UID
-
 RUN cd /opt/ocp && python setup.py develop
+
+# Install matminer
+RUN pip install --no-deps matminer
 
 # Add texlive-science for mhchem package.
 # Also update the default latex format in nbconvert to add the mhchem package and disable all require statements

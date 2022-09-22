@@ -23,6 +23,7 @@ parts:
     - file: notes/ml_basics
     - file: notes/overfitting_regularization
     - file: notes/classification_logistic_regression
+    - file: notes/materials_descriptors
   - file: labs/overview
     sections:
     - file: labs/python_debugging
