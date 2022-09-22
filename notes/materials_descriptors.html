@@ -55,6 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Labs and Python/Software Tips" href="../labs/overview.html" />
+    <link rel="prev" title="Linear models for classification" href="classification_logistic_regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
   Course Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="recap.html">
    Recap of Numerical Methods
@@ -179,16 +181,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro_ml.html">
    Introduction to Machine Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="ml_basics.html">
      Intro to Supervised Learning
@@ -202,6 +204,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="classification_logistic_regression.html">
      Linear models for classification
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Descriptors for Materials Science
     </a>
    </li>
   </ul>
@@ -1177,8 +1184,8 @@ title="Print to PDF"
 <section id="featurizers-transform-materials-primitives-into-machine-learnable-features">
 <h3>Featurizers transform materials primitives into machine-learnable features<a class="headerlink" href="#featurizers-transform-materials-primitives-into-machine-learnable-features" title="Permalink to this headline">#</a></h3>
 <p>The general idea of featurizers is that they accept a materials primitive (e.g., pymatgen Composition) and output a vector. For example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8737b74e-b6ff-44c6-a5bc-d2b29865c8e2">
-<span class="eqno">()<a class="headerlink" href="#equation-8737b74e-b6ff-44c6-a5bc-d2b29865c8e2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7866806b-da37-41ab-8bfb-fc95db8cb817">
+<span class="eqno">(5)<a class="headerlink" href="#equation-7866806b-da37-41ab-8bfb-fc95db8cb817" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(\mathrm{Fe}_2\mathrm{O}_3) \rightarrow [1.5, 7.8, 9.1, 0.09]
 \end{align}\]</div>
 <section id="matminer-contains-featurizers-for-the-following-pymatgen-objects">
@@ -1886,6 +1893,20 @@ f(\mathrm{Fe}_2\mathrm{O}_3) \rightarrow [1.5, 7.8, 9.1, 0.09]
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="classification_logistic_regression.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Linear models for classification</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../labs/overview.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Labs and Python/Software Tips</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
