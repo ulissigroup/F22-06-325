@@ -14,17 +14,17 @@ RUN mamba install --quiet --yes \
     git-lfs \
     lmfit \
     plotly \
+    pymatgen \
     openpyxl \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-
-#    python-lsp-server \
-#    jupyterlab-lsp \
     
 RUN jupyter labextension install jupyterlab-jupytext
 
+# Install matminer
+RUN pip install --no-deps git+https://github.com/hackingmaterials/matminer.git
 
 # OCP repo requirements
 RUN echo '' > /opt/conda/conda-meta/pinned
@@ -73,3 +73,4 @@ RUN apt-get update --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/*USER $NB_UID
 USER $NB_UID
 RUN sed -i '/{titling}/i \\\usepackage{mhchem}\n\\newcommand{\\require}[1]{}' /opt/conda/share/jupyter/nbconvert/templates/latex/base.tex.j2
+
