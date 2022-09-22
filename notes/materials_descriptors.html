@@ -1,0 +1,1914 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Descriptors for Materials Science &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Methods and ML for ChE (F22-06-325)</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction & License
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Info
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes.html">
+   Logistics/Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../schedule.html">
+   Course schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../software.html">
+   Software Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../helpful_resources.html">
+   Helpful Resources
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="recap.html">
+   Recap of Numerical Methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="review_odes.html">
+     ODE Integration (with Events!)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ode_events_extra_example.html">
+     More complicated example: Van der Pol oscillator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="review_optimization.html">
+     Local Optimization and Curve Fitting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="intro_ml.html">
+   Introduction to Machine Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ml_basics.html">
+     Intro to Supervised Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="overfitting_regularization.html">
+     Model Capacity, Overfitting, Regularization, and Ridge/LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classification_logistic_regression.html">
+     Linear models for classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/overview.html">
+   Labs and Python/Software Tips
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/python_debugging.html">
+     <font color="red">
+      Python functions, Error handling, Exceptions, Debugging
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../projects/overview.html">
+   Course Project Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/wildfires/wildfire_dataset.html">
+     Predicting Wildfire Smoke Composition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/catalysts/catalyst_simulation.html">
+     Using ML to Predict Catalyst Properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/travelling_salesman/travelling_salesman.html">
+     Finding optimal tours for the Travelling Salesman Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../homeworks/homework.html">
+   Homeworks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homeworks/HW1.html">
+     HW1 (due noon Monday 9/5)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homeworks/HW2.html">
+     HW2 (due 9/12)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homeworks/HW3.html">
+     HW3 (due 9/26)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homeworks/hw_solutions.html">
+     Homework solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ulissigroup/F22-06-325/main?urlpath=lab/tree/f22-06-325/notes/materials_descriptors.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://laikapack-head.cheme.cmu.edu/hub/hub/user-redirect/git-pull?repo=https%3A//github.com/ulissigroup/F22-06-325&urlpath=lab/tree/F22-06-325/f22-06-325/notes/materials_descriptors.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/ulissigroup/F22-06-325/blob/main/f22-06-325/notes/materials_descriptors.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ulissigroup/F22-06-325"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ulissigroup/F22-06-325/issues/new?title=Issue%20on%20page%20%2Fnotes/materials_descriptors.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/materials_descriptors.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-data-retrieval-and-filtering">
+   Part 1: Data retrieval and filtering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulating-and-examining-pandas-dataframe-objects">
+     Manipulating and examining pandas
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame
+      </span>
+     </code>
+     objects
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inspecting-the-dataset">
+       Inspecting the dataset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-the-dataset">
+       Indexing the dataset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#filtering-the-dataset">
+       Filtering the dataset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#generating-new-columns">
+       Generating new columns
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-generating-descriptors-for-machine-learning">
+   Part 2: Generating descriptors for machine learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#featurizers-transform-materials-primitives-into-machine-learnable-features">
+     Featurizers transform materials primitives into machine-learnable features
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matminer-contains-featurizers-for-the-following-pymatgen-objects">
+       Matminer contains featurizers for the following pymatgen objects:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#depending-on-the-featurizer-the-features-returned-may-be">
+       Depending on the featurizer, the features returned may be:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#featurizers-play-nice-with-dataframes">
+       Featurizers play nice with dataframes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#featurizers-present-in-matminer">
+       Featurizers present in matminer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-featurize-method-and-basics">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       featurize
+      </span>
+     </code>
+     method and basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#featurizing-dataframes">
+     Featurizing  dataframes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#structure-featurizers">
+     Structure Featurizers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-featurizers">
+     Conversion Featurizers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advanced-capabilities">
+     Advanced capabilities
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dealing-with-errors">
+       Dealing with Errors
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#citing-the-authors">
+       Citing the authors
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-machine-learning-models">
+   Part 3: Machine learning models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scikit-learn">
+     Scikit-Learn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-and-prepare-a-pre-featurized-model">
+     Load and prepare a pre-featurized model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-a-random-forest-model-using-scikit-learn">
+     Try a random forest model using scikit-learn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluating-model-performance">
+     Evaluating model performance
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-validation">
+       Cross validation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-model-performance">
+     Visualizing model performance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-interpretation">
+     Model interpretation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-curated-ml-datasets-with-matbench">
+   Bonus: Curated ML datasets with Matbench
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-matbench-datasets-with-matminer">
+     Loading Matbench datasets with Matminer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-matbench-leaderboard-and-benchmarking-code">
+   The Matbench Leaderboard and Benchmarking Code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#https-hackingmaterials-lbl-gov-matbench">
+     https://hackingmaterials.lbl.gov/matbench
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-purpose-leaderboard">
+     General purpose leaderboard
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Descriptors for Materials Science</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-data-retrieval-and-filtering">
+   Part 1: Data retrieval and filtering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulating-and-examining-pandas-dataframe-objects">
+     Manipulating and examining pandas
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame
+      </span>
+     </code>
+     objects
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inspecting-the-dataset">
+       Inspecting the dataset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-the-dataset">
+       Indexing the dataset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#filtering-the-dataset">
+       Filtering the dataset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#generating-new-columns">
+       Generating new columns
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-generating-descriptors-for-machine-learning">
+   Part 2: Generating descriptors for machine learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#featurizers-transform-materials-primitives-into-machine-learnable-features">
+     Featurizers transform materials primitives into machine-learnable features
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matminer-contains-featurizers-for-the-following-pymatgen-objects">
+       Matminer contains featurizers for the following pymatgen objects:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#depending-on-the-featurizer-the-features-returned-may-be">
+       Depending on the featurizer, the features returned may be:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#featurizers-play-nice-with-dataframes">
+       Featurizers play nice with dataframes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#featurizers-present-in-matminer">
+       Featurizers present in matminer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-featurize-method-and-basics">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       featurize
+      </span>
+     </code>
+     method and basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#featurizing-dataframes">
+     Featurizing  dataframes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#structure-featurizers">
+     Structure Featurizers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-featurizers">
+     Conversion Featurizers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advanced-capabilities">
+     Advanced capabilities
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dealing-with-errors">
+       Dealing with Errors
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#citing-the-authors">
+       Citing the authors
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-machine-learning-models">
+   Part 3: Machine learning models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scikit-learn">
+     Scikit-Learn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-and-prepare-a-pre-featurized-model">
+     Load and prepare a pre-featurized model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-a-random-forest-model-using-scikit-learn">
+     Try a random forest model using scikit-learn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluating-model-performance">
+     Evaluating model performance
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-validation">
+       Cross validation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-model-performance">
+     Visualizing model performance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-interpretation">
+     Model interpretation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-curated-ml-datasets-with-matbench">
+   Bonus: Curated ML datasets with Matbench
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-matbench-datasets-with-matminer">
+     Loading Matbench datasets with Matminer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-matbench-leaderboard-and-benchmarking-code">
+   The Matbench Leaderboard and Benchmarking Code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#https-hackingmaterials-lbl-gov-matbench">
+     https://hackingmaterials.lbl.gov/matbench
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-purpose-leaderboard">
+     General purpose leaderboard
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <aside class="margin sidebar">
+<p class="sidebar-title">Adaptation!</p>
+<p>This work was adapted from the Materials Project workshop lessons, available at https://github.com/materialsproject/workshop/. As such, this notebook is available under the BSD-3-clause license.</p>
+</aside>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lecture is going to:</p>
+<ul class="simple">
+<li><p>Discuss why and how we can generate descriptors for materials problems</p></li>
+<li><p>Introduce several descriptors/features that can be used for:</p>
+<ul>
+<li><p>chemical compositions</p></li>
+<li><p>structure (atomic xyz structure) features</p></li>
+<li><p>…</p></li>
+</ul>
+</li>
+<li><p>Demonstrate one package for generating features (matminer)</p></li>
+<li><p>Fit a simple linear model to a material science dataset</p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="descriptors-for-materials-science">
+<h1>Descriptors for Materials Science<a class="headerlink" href="#descriptors-for-materials-science" title="Permalink to this headline">#</a></h1>
+<p>Firstly, what does a typical machine learning workflow look like? The overall process can be summarized as:</p>
+<ol class="simple">
+<li><p>Take raw inputs, such as a list of compositions, and an associated target property to learn.</p></li>
+<li><p>Convert the raw inputs into <em>descriptors</em> or <em>features</em> that can be learned by machine learning algorithms.</p></li>
+<li><p>Train a machine learning model on the data.</p></li>
+<li><p>Plot and analyze the performance of the model.</p></li>
+</ol>
+<p><img alt="machine learning workflow" src="../_images/ml_workflow.png" /></p>
+<p>Typically, questions asked by a new practitioner in the field include:</p>
+<ul class="simple">
+<li><p>Where do we get the raw data from?</p></li>
+<li><p>How do we convert the raw data into learnable features?</p></li>
+<li><p>How can we plot and interpret the results of a model?</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">matminer</span></code> package has been developed to help make machine learning of materials properties easy and hassle free. The aim of matminer is to connect materials data with data mining algorithms and data visualization.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Many more tutorials on how to use matminer (beyond the scope of this workshop) are available in the <code class="docutils literal notranslate"><span class="pre">matminer_examples</span></code> repository, available <a class="reference external" href="https://github.com/hackingmaterials/matminer_examples">here</a>.</p>
+</div>
+<p><img alt="matminer overview" src="../_images/matminer.png" /></p>
+<section id="part-1-data-retrieval-and-filtering">
+<h2>Part 1: Data retrieval and filtering<a class="headerlink" href="#part-1-data-retrieval-and-filtering" title="Permalink to this headline">#</a></h2>
+<p>Matminer interfaces with many materials databases,  including:</p>
+<ul class="simple">
+<li><p>Materials Project</p></li>
+<li><p>Citrine</p></li>
+<li><p>AFLOW</p></li>
+<li><p>Materials Data Facility (MDF)</p></li>
+<li><p>Materials Platform for Data Science (MPDS)</p></li>
+</ul>
+<p>In addition, it also includes datasets from published literature. Matminer hosts a repository of <strong>45 (and growing)</strong> datasets which comes from published and peer-reviewed machine learning investigations of materials properties or publications of high-throughput computing studies.</p>
+<p>In this section, we will show how to access and manipulate the pre-formatted datasets from the published literature. More information on accessing other materials databases are detailed in the <a class="reference external" href="https://github.com/hackingmaterials/matminer_examples">matminer_examples</a> repository.</p>
+<p>A list of the literature-based datasets can be printed using the <code class="docutils literal notranslate"><span class="pre">get_available_datasets()</span></code> function. This also prints information about what the dataset contains, such as the number of samples, the target properties, and how the data was obtained (e.g., via theory or experiment).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.datasets</span> <span class="kn">import</span> <span class="n">get_available_datasets</span>
+
+<span class="n">get_available_datasets</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">matminer.datasets</span> <span class="kn">import</span> <span class="n">get_available_datasets</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">get_available_datasets</span><span class="p">()</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matminer&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>All datasets can be loaded using the <code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> function and the database name. To save installation space, the datasets are not automatically downloaded when matminer is installed. Instead, the first time the dataset is loaded, it will be downloaded from the internet and stored in the matminer installation directory.</p>
+<p>Let’s say we’re interested in the <code class="docutils literal notranslate"><span class="pre">dielectric_constant</span></code> dataset,  which contains 1,056 structures with dielectric properties calculated with DFPT-PBE. We can download it with the <code class="docutils literal notranslate"><span class="pre">load_dataset</span></code> function.</p>
+<p>We’ll set an environment variable <code class="docutils literal notranslate"><span class="pre">MATMINER_DATA</span></code> which will tell matminer to download all our dataset to a directory <code class="docutils literal notranslate"><span class="pre">./data</span></code>. If you are running this locally, you usually don’t need to set this variable as matminer will download the dataset directly to your matminer source code folder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> MATMINER_DATA data
+
+<span class="kn">from</span> <span class="nn">matminer.datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;dielectric_constant&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can get some more detailed information about this dataset using the <code class="docutils literal notranslate"><span class="pre">get_all_dataset_info(&lt;dataset&gt;)</span></code> function from matminer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.datasets</span> <span class="kn">import</span> <span class="n">get_all_dataset_info</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">get_all_dataset_info</span><span class="p">(</span><span class="s2">&quot;dielectric_constant&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="manipulating-and-examining-pandas-dataframe-objects">
+<h3>Manipulating and examining pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects<a class="headerlink" href="#manipulating-and-examining-pandas-dataframe-objects" title="Permalink to this headline">#</a></h3>
+<p>The datasets are made available as pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects. You can think of these as a type of “spreadsheet” object in Python. DataFrames have several useful methods you can use to explore and clean the data, some of which we’ll explore below.</p>
+<p><strong>Dataframes are central objects for retrieving and holding data, adding features, training models, and visualizing with graphs in Python.</strong> In the rest of the lesson we will be working with them a lot.</p>
+<section id="inspecting-the-dataset">
+<h4>Inspecting the dataset<a class="headerlink" href="#inspecting-the-dataset" title="Permalink to this headline">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">head()</span></code> function prints a summary of the first few rows of a data set. You can scroll across to see more columns. From this, it is easy to see the types of data available in in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes, if a dataset is very large, you will be unable to see all the available columns. Instead, you can see the full list of columns using the <code class="docutils literal notranslate"><span class="pre">columns</span></code> attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> includes a function called <code class="docutils literal notranslate"><span class="pre">describe()</span></code> that helps determine statistics for the various numerical/categorical columns in the data. Note that the <code class="docutils literal notranslate"><span class="pre">describe()</span></code> function only describes numerical columns by default.</p>
+<p>Sometimes, the <code class="docutils literal notranslate"><span class="pre">describe()</span></code> function will reveal outliers that indicate mistakes in the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indexing-the-dataset">
+<h4>Indexing the dataset<a class="headerlink" href="#indexing-the-dataset" title="Permalink to this headline">#</a></h4>
+<p>We can access a particular column of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> by indexing the object using the column name. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;band_gap&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also access multiple columns by indexing with a list of column names rather than a single column name:</p>
+<p>Alternatively, we can access a particular row of a <code class="docutils literal notranslate"><span class="pre">Dataframe</span></code> using the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> attribute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering-the-dataset">
+<h4>Filtering the dataset<a class="headerlink" href="#filtering-the-dataset" title="Permalink to this headline">#</a></h4>
+<p>Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects make it very easy to filter the data based on a specific column. We can use the typical Python comparison operators (==, &gt;, &gt;=, &lt;, etc) to filter numerical values. For example, let’s find all entries where the cell volume is greater than 580. We do this by filtering on the <code class="docutils literal notranslate"><span class="pre">volume</span></code> column.</p>
+<p>Note that we first produce a <em>boolean mask</em> – a series of <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> depending on the comparison. We can then use the mask to filter the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;volume&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">580</span>
+<span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use this method of filtering to clean our dataset. For example, if we only wanted our dataset to only include nonmetals (materials with a non-zero band gap), we can do this easily by filtering the <code class="docutils literal notranslate"><span class="pre">band_gap</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;band_gap&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">nonmetal_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">nonmetal_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Often, a dataset contains many additional columns that are not necessary for machine learning. Before we can train a model on the data, we need to remove any extraneous columns. We can remove whole columns from the dataset using the <code class="docutils literal notranslate"><span class="pre">drop()</span></code> function. This function can be used to drop both rows and columns.</p>
+<p>The function takes a list of items to drop. For columns, this is column names whereas for rows it is the row number. Finally, the <code class="docutils literal notranslate"><span class="pre">axis</span></code> option specifies whether the data to drop is columns (<code class="docutils literal notranslate"><span class="pre">1</span></code>) or rows (<code class="docutils literal notranslate"><span class="pre">0</span></code>).</p>
+<p>For example, to remove the <code class="docutils literal notranslate"><span class="pre">nsites</span></code>, <code class="docutils literal notranslate"><span class="pre">space_group</span></code>, <code class="docutils literal notranslate"><span class="pre">e_electronic</span></code>, and <code class="docutils literal notranslate"><span class="pre">e_total</span></code> columns, we can run:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;nsites&quot;</span><span class="p">,</span> <span class="s2">&quot;space_group&quot;</span><span class="p">,</span> <span class="s2">&quot;e_electronic&quot;</span><span class="p">,</span> <span class="s2">&quot;e_total&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s examine the cleaned <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to see that the columns have been removed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can alternatively <em>select</em> multiple columns by passing in a list of column names as an index.</p>
+<p>For example, if we’re only interested in the <code class="docutils literal notranslate"><span class="pre">band_gap</span></code> and <code class="docutils literal notranslate"><span class="pre">structure</span></code> columns, we can index with <code class="docutils literal notranslate"><span class="pre">[&quot;band_gap&quot;,</span> <span class="pre">&quot;structure&quot;]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;band_gap&quot;</span><span class="p">,</span> <span class="s2">&quot;structure&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generating-new-columns">
+<h4>Generating new columns<a class="headerlink" href="#generating-new-columns" title="Permalink to this headline">#</a></h4>
+<p>Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects also make it easy to perform simple calculations on the data. Think of this as using formulas in Excel spreadsheets. All fundamental Python math operators (such as +, -, /, and *) can be used.</p>
+<p>For example, the dielectric dataset contains the electronic contribution to the dielectric constant (<span class="math notranslate nohighlight">\(\epsilon_\mathrm{electronic}\)</span>, in the <code class="docutils literal notranslate"><span class="pre">poly_electronic</span></code> column) and the total (static) dielectric constant (<span class="math notranslate nohighlight">\(\epsilon_\mathrm{total}\)</span>, in the <code class="docutils literal notranslate"><span class="pre">poly_total</span></code> column). The ionic contribution to the dataset is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\epsilon_\mathrm{ionic} = \epsilon_\mathrm{total} - \epsilon_\mathrm{electronic}
+\]</div>
+<p>Below, we calculate the ionic contribution to the dielectric constant and store it in a new column called <code class="docutils literal notranslate"><span class="pre">poly_ionic</span></code>. This is as simple as assigning the data to the new column, even if the column doesn’t already exist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;poly_ionic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;poly_total&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;poly_electronic&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check the new data was added correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="part-2-generating-descriptors-for-machine-learning">
+<h2>Part 2: Generating descriptors for machine learning<a class="headerlink" href="#part-2-generating-descriptors-for-machine-learning" title="Permalink to this headline">#</a></h2>
+<p>In this section, we will learn a bit about how to generate machine-learning descriptors from materials objects in pymatgen. First, we’ll generate some descriptors with matminer’s “featurizers” classes. Next, we’ll use some of what we learned about dataframes in the previous section to examine our descriptors and prepare them for input to machine learning models.</p>
+<p><img alt="featurizers_overview.png" src="../_images/featurizers_overview.png" /></p>
+<section id="featurizers-transform-materials-primitives-into-machine-learnable-features">
+<h3>Featurizers transform materials primitives into machine-learnable features<a class="headerlink" href="#featurizers-transform-materials-primitives-into-machine-learnable-features" title="Permalink to this headline">#</a></h3>
+<p>The general idea of featurizers is that they accept a materials primitive (e.g., pymatgen Composition) and output a vector. For example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8737b74e-b6ff-44c6-a5bc-d2b29865c8e2">
+<span class="eqno">()<a class="headerlink" href="#equation-8737b74e-b6ff-44c6-a5bc-d2b29865c8e2" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(\mathrm{Fe}_2\mathrm{O}_3) \rightarrow [1.5, 7.8, 9.1, 0.09]
+\end{align}\]</div>
+<section id="matminer-contains-featurizers-for-the-following-pymatgen-objects">
+<h4>Matminer contains featurizers for the following pymatgen objects:<a class="headerlink" href="#matminer-contains-featurizers-for-the-following-pymatgen-objects" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Composition</p></li>
+<li><p>Crystal structure</p></li>
+<li><p>Crystal sites</p></li>
+<li><p>Bandstructure</p></li>
+<li><p>Density of states</p></li>
+</ul>
+</section>
+<section id="depending-on-the-featurizer-the-features-returned-may-be">
+<h4>Depending on the featurizer, the features returned may be:<a class="headerlink" href="#depending-on-the-featurizer-the-features-returned-may-be" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>numerical, categorical, or mixed vectors</p></li>
+<li><p>matrices</p></li>
+<li><p>other pymatgen objects (for further processing)</p></li>
+</ul>
+</section>
+<section id="featurizers-play-nice-with-dataframes">
+<h4>Featurizers play nice with dataframes<a class="headerlink" href="#featurizers-play-nice-with-dataframes" title="Permalink to this headline">#</a></h4>
+<p>Since most of the time we are working with pandas dataframes, all featurizers work natively with pandas dataframes. We’ll provide examples of this later in the lesson.</p>
+</section>
+<section id="featurizers-present-in-matminer">
+<h4>Featurizers present in matminer<a class="headerlink" href="#featurizers-present-in-matminer" title="Permalink to this headline">#</a></h4>
+<p>Matminer hosts over 60 featurizers, most of which are implemented from methods published in peer reviewed papers. You can find a full list of featurizers on the <a class="reference external" href="https://hackingmaterials.lbl.gov/matminer/featurizer_summary.html">matminer website</a>. All featurizers have parallelization and convenient error tolerance built into their core methods.</p>
+<p>In this lesson, we’ll go over the main methods present in all featurizers. By the end of this unit, you will be able to generate descriptors for a wide range of materials informatics problems using one common software interface.</p>
+</section>
+</section>
+<section id="the-featurize-method-and-basics">
+<h3>The <code class="docutils literal notranslate"><span class="pre">featurize</span></code> method and basics<a class="headerlink" href="#the-featurize-method-and-basics" title="Permalink to this headline">#</a></h3>
+<p>The core method of any matminer is “featurize”. This method accepts a materials object and returns a machine learning vector or matrix. Let’s see an example on a pymatgen composition:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymatgen.core</span> <span class="kn">import</span> <span class="n">Composition</span>
+
+<span class="n">fe2o3</span> <span class="o">=</span> <span class="n">Composition</span><span class="p">(</span><span class="s2">&quot;Fe2O3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As a trivial example, we’ll get the element fractions with the <code class="docutils literal notranslate"><span class="pre">ElementFraction</span></code> featurizer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.featurizers.composition.element</span> <span class="kn">import</span> <span class="n">ElementFraction</span>
+
+<span class="n">ef</span> <span class="o">=</span> <span class="n">ElementFraction</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can featurize our composition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">element_fractions</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">featurize</span><span class="p">(</span><span class="n">fe2o3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">element_fractions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ve managed to generate features for learning, but what do they mean? One way to check is by reading the <code class="docutils literal notranslate"><span class="pre">Features</span></code> section in the documentation of any featurizer… but a much easier way is to use the <code class="docutils literal notranslate"><span class="pre">feature_labels()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">element_fraction_labels</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">feature_labels</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">element_fraction_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now see the labels in the order that we generated the features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">element_fraction_labels</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">element_fractions</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">element_fraction_labels</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">element_fractions</span><span class="p">[</span><span class="mi">25</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="featurizing-dataframes">
+<h3>Featurizing  dataframes<a class="headerlink" href="#featurizing-dataframes" title="Permalink to this headline">#</a></h3>
+<p>We just generated some descriptors and their labels from an individual sample but most of the time our data is in pandas dataframes. Fortunately, matminer featurizers implement a <code class="docutils literal notranslate"><span class="pre">featurize_dataframe()</span></code> method which interacts natively with dataframes.</p>
+<p>Let’s grab a new dataset from matminer and use our <code class="docutils literal notranslate"><span class="pre">ElementFraction</span></code> featurizer on it.</p>
+<p>First, we download a dataset as we did in the previous unit. In this example, we’ll download a dataset of super hard materials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.datasets.dataset_retrieval</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;brgoch_superhard_training&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we can use the <code class="docutils literal notranslate"><span class="pre">featurize_dataframe()</span></code> method (implemented by all featurizers) to apply ElementFraction to all of our data at once. The only required arguments are the dataframe as input and the input column name (in this case it is <code class="docutils literal notranslate"><span class="pre">composition</span></code>). <code class="docutils literal notranslate"><span class="pre">featurize_dataframe()</span></code> is parallelized by default using multiprocessing.</p>
+<p>If we look at the dataframe, now we can see our new feature columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;composition&quot;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="structure-featurizers">
+<h3>Structure Featurizers<a class="headerlink" href="#structure-featurizers" title="Permalink to this headline">#</a></h3>
+<p>We can use the same syntax for other kinds of featurizers. Let’s now assign descriptors to a structure. We do this with the same syntax as the composition featurizers. First, let’s load a dataset containing structures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;phonon_dielectric_mp&quot;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s calculate some basic density features of these structures using <code class="docutils literal notranslate"><span class="pre">DensityFeatures</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.featurizers.structure</span> <span class="kn">import</span> <span class="n">DensityFeatures</span>
+
+<span class="n">densityf</span> <span class="o">=</span> <span class="n">DensityFeatures</span><span class="p">()</span>
+<span class="n">densityf</span><span class="o">.</span><span class="n">feature_labels</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These are the features we will get. Now we use <code class="docutils literal notranslate"><span class="pre">featurize_dataframe()</span></code> to generate these features for all the samples in the dataframe. Since we are using the structures as input to the featurizer, we select the “structure” column.</p>
+<p>Let’s examine the dataframe and see the structural features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">densityf</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;structure&quot;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conversion-featurizers">
+<h3>Conversion Featurizers<a class="headerlink" href="#conversion-featurizers" title="Permalink to this headline">#</a></h3>
+<p>In addition to Bandstructure/DOS/Structure/Composition featurizers, matminer also provides a featurizer interface for converting between pymatgen objects (e.g., assinging oxidation states to compositions) in a fault-tolerant fashion. These featurizers are found in <code class="docutils literal notranslate"><span class="pre">matminer.featurizers.conversion</span></code> and work with the same <code class="docutils literal notranslate"><span class="pre">featurize</span></code>/<code class="docutils literal notranslate"><span class="pre">featurize_dataframe</span></code> etc. syntax as the other featurizers.</p>
+<p>The dataset we loaded previously only contains a <code class="docutils literal notranslate"><span class="pre">formula</span></code> column with string objects. To convert this data into a <code class="docutils literal notranslate"><span class="pre">composition</span></code> column containing pymatgen <code class="docutils literal notranslate"><span class="pre">Composition</span></code> objects, we can use the <code class="docutils literal notranslate"><span class="pre">StrToComposition</span></code> conversion featurizer on the <code class="docutils literal notranslate"><span class="pre">formula</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.featurizers.conversions</span> <span class="kn">import</span> <span class="n">StrToComposition</span>
+
+<span class="n">stc</span> <span class="o">=</span> <span class="n">StrToComposition</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">stc</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;formula&quot;</span><span class="p">,</span> <span class="n">pbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see a new <code class="docutils literal notranslate"><span class="pre">composition</span></code> column has been added to the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="advanced-capabilities">
+<h3>Advanced capabilities<a class="headerlink" href="#advanced-capabilities" title="Permalink to this headline">#</a></h3>
+<p>There are powerful functionalities of Featurizers which are worth quickly mentioning before we go practice (and <em>many</em> more not mentioned here).</p>
+<section id="dealing-with-errors">
+<h4>Dealing with Errors<a class="headerlink" href="#dealing-with-errors" title="Permalink to this headline">#</a></h4>
+<p>Often, data is messy and certain featurizers will encounter errors. Set <code class="docutils literal notranslate"><span class="pre">ignore_errors=True</span></code> in <code class="docutils literal notranslate"><span class="pre">featurize_dataframe()</span></code> to skip errors; if you’d like to see the errors returned in an additional column, also set <code class="docutils literal notranslate"><span class="pre">return_errors=True</span></code>.</p>
+</section>
+<section id="citing-the-authors">
+<h4>Citing the authors<a class="headerlink" href="#citing-the-authors" title="Permalink to this headline">#</a></h4>
+<p>Many featurizers are implemented using methods found in peer reviewed studies. Please cite these original works using the <code class="docutils literal notranslate"><span class="pre">citations()</span></code> method, which returns the BibTex-formatted references in a Python list. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.featurizers.structure.bonding</span> <span class="kn">import</span> <span class="n">GlobalInstabilityIndex</span>
+
+
+<span class="n">GlobalInstabilityIndex</span><span class="p">()</span><span class="o">.</span><span class="n">citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="part-3-machine-learning-models">
+<h2>Part 3: Machine learning models<a class="headerlink" href="#part-3-machine-learning-models" title="Permalink to this headline">#</a></h2>
+<p>In parts 1 and 2, we demonstrated how to download a dataset and add machine learnable features. In part 3, we show how to train a machine learning model on a dataset and analyze the results.</p>
+<section id="scikit-learn">
+<h3>Scikit-Learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">#</a></h3>
+<p>This unit makes extensive use of the <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> package, an open-source python package for  machine learning. Matminer has been designed to make machine learning with scikit-learn as easy as possible. Other machine learning packages exist, such as <a class="reference external" href="https://www.tensorflow.org">TensorFlow</a>, which implement neural network architectures. These packages can also be used with <code class="docutils literal notranslate"><span class="pre">matminer</span></code> but are outside the scope of this workshop.</p>
+</section>
+<section id="load-and-prepare-a-pre-featurized-model">
+<h3>Load and prepare a pre-featurized model<a class="headerlink" href="#load-and-prepare-a-pre-featurized-model" title="Permalink to this headline">#</a></h3>
+<p>First, let’s load a dataset that we can use for machine learning. In advance, we’ve added some composition and structure features to the <code class="docutils literal notranslate"><span class="pre">elastic_tensor_2015</span></code> dataset used in exercises 1 and 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">matminer.utils.io</span> <span class="kn">import</span> <span class="n">load_dataframe_from_json</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_dataframe_from_json</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="s2">&quot;elastic_tensor_2015_featurized.json&quot;</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We first need to split the dataset into the “target” property, and the “features” used for learning. In this model, we will be using the bulk modulus (<code class="docutils literal notranslate"><span class="pre">K_VRH</span></code>) as the target property. We use the <code class="docutils literal notranslate"><span class="pre">values</span></code> attribute of the dataframe to give the target properties a numpy array, rather than pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;K_VRH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The machine learning algorithm can only use numerical features for training. Accordingly, we need to remove any non-numerical columns from our dataset. Additionally, we want to remove the <code class="docutils literal notranslate"><span class="pre">K_VRH</span></code> column from the set of features, as the model should not know about the target property in advance.</p>
+<p>The dataset loaded above, includes <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">formula</span></code>, and <code class="docutils literal notranslate"><span class="pre">composition</span></code> columns that were previously used to generate the machine learnable features. Let’s remove them using the pandas <code class="docutils literal notranslate"><span class="pre">drop()</span></code> function, discussed in unit 1. Remember, <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> indicates we are dropping columns rather than rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;structure&quot;</span><span class="p">,</span> <span class="s2">&quot;formula&quot;</span><span class="p">,</span> <span class="s2">&quot;composition&quot;</span><span class="p">,</span> <span class="s2">&quot;K_VRH&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see all the descriptors in model using the <code class="docutils literal notranslate"><span class="pre">column</span></code> attribute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">{}</span><span class="s2"> possible descriptors:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="try-a-random-forest-model-using-scikit-learn">
+<h3>Try a random forest model using scikit-learn<a class="headerlink" href="#try-a-random-forest-model-using-scikit-learn" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> library makes it easy to use our generated features for training machine learning models. It implements a variety of different regression models and contains tools for cross-validation.</p>
+<p>In the interests of time, in this example we will only trial a single model but it is good practice to trial multiple models to see which performs best for your machine learning problem. A good “starting” model is the random forest model. Let’s create a random forest model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice we created the model with the number of estimators (<code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>) set to <code class="docutils literal notranslate"><span class="pre">100</span></code>. <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> is an example of a machine learning <em>hyper-parameter</em>. Most models contain many tunable hyper-parameters. To obtain good performance, it is necessary to fine tune these parameters for each individual machine learning problem. There is currently no simple way to know in advance what hyper-parameters will be optimal. Usually, a trial and error approach is used.</p>
+<p>We can now train our model to use the input features (<code class="docutils literal notranslate"><span class="pre">X</span></code>) to predict the target property (<code class="docutils literal notranslate"><span class="pre">y</span></code>). This is achieved using the <code class="docutils literal notranslate"><span class="pre">fit()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s it, we have trained our first machine learning model!</p>
+</section>
+<section id="evaluating-model-performance">
+<h3>Evaluating model performance<a class="headerlink" href="#evaluating-model-performance" title="Permalink to this headline">#</a></h3>
+<p>Next, we need to assess how the model is performing. To do this, we first ask the model to predict the bulk modulus for every entry in our original dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we can check the accuracy of our model by looking at the <em>root mean squared error</em> of our predictions. Scikit-learn provides a <code class="docutils literal notranslate"><span class="pre">mean_squared_error()</span></code> function to calculate the mean squared error. We then take the square-root of this to obtain our final performance metric.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;training RMSE = </span><span class="si">{:.3f}</span><span class="s1"> GPa&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An RMSE of 7.2 GPa looks very reasonable! However, as the model was trained and evaluated on exactly the same data, this is not a true estimate of how the model will perform for unseen materials (the primary purpose of machine learning studies).</p>
+<section id="cross-validation">
+<h4>Cross validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h4>
+<p>To obtain a more accurate estimate of prediction performance and validate that we are not over-fitting, we need to check the <strong>cross-validation score</strong> rather than the fitting score.</p>
+<p>In cross-validation, the data is partitioned randomly into <span class="math notranslate nohighlight">\(n\)</span> “splits” (in this case 10), each containing roughly the same number of samples. The model is trained on <span class="math notranslate nohighlight">\(n-1\)</span> splits (the training set) and the model performance evaluated by comparing the actual and predicted values for the final split (the testing set). In total, this process is repeated <span class="math notranslate nohighlight">\(n\)</span> times, such that each split is at some point used as the testing set. The cross-validation score is the average score across all testing sets.</p>
+<p>There are a number of ways to partition the data into splits. In this example, we use the <code class="docutils literal notranslate"><span class="pre">KFold</span></code> method and select the number of splits to be 10. I.e., 90 % of the data will be used as the training set, with 10 % used as the testing set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+
+<span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, we set <code class="docutils literal notranslate"><span class="pre">random_state=1</span></code> to ensure every attendee gets the same answer for their model.</p>
+<p>Finally, obtaining the cross validation score can be automated using the Scikit-Learn <code class="docutils literal notranslate"><span class="pre">cross_val_score()</span></code> function. This function requires a machine learning model, the input features, and target property as arguments. Note, we pass the <code class="docutils literal notranslate"><span class="pre">kfold</span></code> object as the<code class="docutils literal notranslate"><span class="pre">cv</span></code> argument, to make <code class="docutils literal notranslate"><span class="pre">cross_val_score()</span></code> use the correct test/train splits.</p>
+<p>For each split, the model will be trained from scratch, before the performance is evaluated. As we have to train and predict 10 times, cross validation can often take some time to perform. In our case, the model is quite small, so the process only takes about a minute. The final cross validation score is the average across all splits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
+
+<span class="n">rmse_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean RMSE: </span><span class="si">{:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rmse_scores</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that our RMSE has almost tripled as now it reflects the true predictive power of the model. However, a root-mean-squared error of ~19 GPa is still not bad!</p>
+</section>
+</section>
+<section id="visualizing-model-performance">
+<h3>Visualizing model performance<a class="headerlink" href="#visualizing-model-performance" title="Permalink to this headline">#</a></h3>
+<p>We can visualize the predictive performance of our model by plotting the our predictions against the actual value, for each sample in the test set for all test/train splits. First, we get the predicted values of the testing set for each split using the <code class="docutils literal notranslate"><span class="pre">cross_val_predict</span></code> method. This is similar to the <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> method, except it returns the actual predictions, rather than the model score.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now add our predicted values to our dataframe and calculate an absolute percentage error for each sample.</p>
+<p>We can do this conveniently for all of our samples with the dataframe columns.</p>
+<p>If we scroll to the end of the dataframe, our predicted <code class="docutils literal notranslate"><span class="pre">K_VRH</span></code> and percentage errors are given for each sample. This might allow us to examine manually which samples are performing well and which are performing poorly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;K_VRH predicted&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;percentage_error&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;K_VRH&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;K_VRH predicted&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;K_VRH&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A more convient way of examining our model’s performance is by creating a graph comparing our cross-validation predicted bulk modulus to the actual bulk modulus for every sample. Here, we use <code class="docutils literal notranslate"><span class="pre">plotly.express</span></code> from the Plotly package to create our graphs.</p>
+<p>Plotly Express is designed to create many kinds of plots directly from dataframes. Since we already have our data inside a dataframe, we can specify the column names to tell Plotly the data we’d like to show.</p>
+<p>We make two series of data:</p>
+<ul class="simple">
+<li><p>First, a reference line indicating “perfect” peformance of the model.</p></li>
+<li><p>Second, a scatter plot of the predicted K_VRH vs the actual K_VRH for every sample.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="n">reference_line</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s2">&quot;dash&quot;</span><span class="p">),</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span>
+    <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> 
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;K_VRH&quot;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;K_VRH predicted&quot;</span><span class="p">,</span> 
+    <span class="n">hover_name</span><span class="o">=</span><span class="s2">&quot;formula&quot;</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;percentage_error&quot;</span><span class="p">,</span> 
+    <span class="n">color_continuous_scale</span><span class="o">=</span><span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">sequential</span><span class="o">.</span><span class="n">Bluered</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">reference_line</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Not too bad! However, there are definitely some outliers (you can hover over the points with your mouse to see what they are).</p>
+</section>
+<section id="model-interpretation">
+<h3>Model interpretation<a class="headerlink" href="#model-interpretation" title="Permalink to this headline">#</a></h3>
+<p>An important aspect of machine learning is being able to understand why a model is making certain predictions. Random forest models are particularly amenable to interpretation as they possess a <code class="docutils literal notranslate"><span class="pre">feature_importances</span></code> attribute, which contains the importance of each feature in deciding the final prediction. Let’s look at the feature importances of our model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To make sense of this, we need to know which feature each number corresponds to. We can use <code class="docutils literal notranslate"><span class="pre">PlotlyFig</span></code> to plot the importances of the 5 most important features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">importances</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">included</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">fig_bar</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">included</span><span class="p">[</span><span class="n">indices</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> 
+    <span class="n">y</span><span class="o">=</span><span class="n">importances</span><span class="p">[</span><span class="n">indices</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Feature Importances of Random Forest&quot;</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;Importance&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">fig_bar</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bonus-curated-ml-datasets-with-matbench">
+<h2>Bonus: Curated ML datasets with Matbench<a class="headerlink" href="#bonus-curated-ml-datasets-with-matbench" title="Permalink to this headline">#</a></h2>
+<p>If you are interested in comparing your machine learning algorithms with the state of the art, matminer also offers access to a curated set of 13 benchmarking datasets called Matbench, which have been used to benchmark SoTA algorithms like RooSt, CGCNN, CRABNet, MEGNet, Automatminer, and more.</p>
+<p><img alt="matbench" src="../_images/mb.png" /></p>
+<p>The Matbench datasets span a wide variety of materials informatics tasks such as:</p>
+<ul class="simple">
+<li><p>Predicting materials properties given <strong>only composition</strong>, or given <strong>composition <em>and</em> structure</strong></p></li>
+<li><p>Predicting a <strong>wide array of target properties</strong>, such as elastic constants, dielectric constants, formation energies, and steel yield strength</p></li>
+<li><p><strong>Data-sparse</strong> tasks (300 samples) and (relatively) <strong>data-rich</strong> tasks (100k+ samples)</p></li>
+<li><p>Both regression and classification tasks</p></li>
+</ul>
+<p>The full set of datasets is given in the table below:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task name</p></th>
+<th class="head"><p>Task type</p></th>
+<th class="head"><p>Target column (unit)</p></th>
+<th class="head"><p>Input type</p></th>
+<th class="head"><p>Samples</p></th>
+<th class="head"><p>MAD (regression) or Fraction True (classification)</p></th>
+<th class="head"><p>Links</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_steels</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">strength</span></code> (MPa)</p></td>
+<td><p>composition</p></td>
+<td><p>312</p></td>
+<td><p>229.3743</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_steels.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_steels">interactive</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_jdft2d</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exfoliation_en</span></code> (meV/atom)</p></td>
+<td><p>structure</p></td>
+<td><p>636</p></td>
+<td><p>67.2020</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_jdft2d.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_jdft2d">interactive</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_phonons</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">last</span> <span class="pre">phdos</span> <span class="pre">peak</span></code> (cm^-1)</p></td>
+<td><p>structure</p></td>
+<td><p>1,265</p></td>
+<td><p>323.7870</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_phonons.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_phonons">interactive</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_expt_gap</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gap</span> <span class="pre">expt</span></code> (eV)</p></td>
+<td><p>composition</p></td>
+<td><p>4,604</p></td>
+<td><p>1.1432</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_expt_gap.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_expt_gap">interactive</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_dielectric</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">n</span></code> (unitless)</p></td>
+<td><p>structure</p></td>
+<td><p>4,764</p></td>
+<td><p>0.8085</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_dielectric.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_dielectric">interactive</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_expt_is_metal</span></code></p></td>
+<td><p>classification</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">is_metal</span></code></p></td>
+<td><p>composition</p></td>
+<td><p>4,921</p></td>
+<td><p>0.4981</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_expt_is_metal.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_expt_is_metal">interactive</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_glass</span></code></p></td>
+<td><p>classification</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gfa</span></code></p></td>
+<td><p>composition</p></td>
+<td><p>5,680</p></td>
+<td><p>0.7104</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_glass.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_glass">interactive</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_log_gvrh</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">log10(G_VRH)</span></code> (log10(GPa))</p></td>
+<td><p>structure</p></td>
+<td><p>10,987</p></td>
+<td><p>0.2931</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_log_gvrh.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_log_gvrh">interactive</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_log_kvrh</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">log10(K_VRH)</span></code> (log10(GPa))</p></td>
+<td><p>structure</p></td>
+<td><p>10,987</p></td>
+<td><p>0.2897</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_log_kvrh.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_log_kvrh">interactive</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_perovskites</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">e_form</span></code> (eV/unit cell)</p></td>
+<td><p>structure</p></td>
+<td><p>18,928</p></td>
+<td><p>0.5660</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_perovskites.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_perovskites">interactive</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_mp_gap</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gap</span> <span class="pre">pbe</span></code> (eV)</p></td>
+<td><p>structure</p></td>
+<td><p>106,113</p></td>
+<td><p>1.3271</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_mp_gap.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_mp_gap">interactive</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_mp_is_metal</span></code></p></td>
+<td><p>classification</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">is_metal</span></code></p></td>
+<td><p>structure</p></td>
+<td><p>106,113</p></td>
+<td><p>0.4349</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_mp_is_metal.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_mp_is_metal">interactive</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">matbench_mp_e_form</span></code></p></td>
+<td><p>regression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">e_form</span></code> (eV/atom)</p></td>
+<td><p>structure</p></td>
+<td><p>132,752</p></td>
+<td><p>1.0059</p></td>
+<td><p><a class="reference external" href="https://ml.materialsproject.org/projects/matbench_mp_e_form.json.gz">download</a>, <a class="reference external" href="https://ml.materialsproject.org/projects/matbench_mp_e_form">interactive</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>You can click on the “download” links above to download the raw files, or alternatively click on “interactive” to explore the datasets on MPContribs (<strong>note: you must be logged in to MPContribs to see the data</strong>).</p>
+<img src="resources/mpcontribs.png" alt="matbench" style="width: 700px">
+<section id="loading-matbench-datasets-with-matminer">
+<h3>Loading Matbench datasets with Matminer<a class="headerlink" href="#loading-matbench-datasets-with-matminer" title="Permalink to this headline">#</a></h3>
+<p>We can easily load and examine any of these datasets using the exact same <code class="docutils literal notranslate"><span class="pre">load_dataset</span></code> function we have used throughout this lesson in matminer. Let’s look at the smallest of the matbench datasets, <code class="docutils literal notranslate"><span class="pre">matbench_steels</span></code>, which has 312 samples and contains chemical compositions and yield strengths in MPa as the target property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;matbench_steels&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>All Matbench datasets are reduced to the minimum possible format, including a single column for input (either structure or composition) and a single target property (a number for regression or a <code class="docutils literal notranslate"><span class="pre">bool</span></code> for binary classification).</p>
+<p>If we use the <code class="docutils literal notranslate"><span class="pre">get_all_dataset_info</span></code> we can examine some more about where this data came from, how it was edited into this form, as well as the meaning of columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.datasets</span> <span class="kn">import</span> <span class="n">get_all_dataset_info</span>
+
+
+<span class="n">info</span> <span class="o">=</span> <span class="n">get_all_dataset_info</span><span class="p">(</span><span class="s2">&quot;matbench_steels&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-matbench-leaderboard-and-benchmarking-code">
+<h2>The Matbench Leaderboard and Benchmarking Code<a class="headerlink" href="#the-matbench-leaderboard-and-benchmarking-code" title="Permalink to this headline">#</a></h2>
+<p>We host an online benchmark leaderboard - similar to an “ImageNet” for materials science - at the following URL:</p>
+<section id="https-hackingmaterials-lbl-gov-matbench">
+<h3><a class="reference external" href="https://hackingmaterials.lbl.gov/matbench">https://hackingmaterials.lbl.gov/matbench</a><a class="headerlink" href="#https-hackingmaterials-lbl-gov-matbench" title="Permalink to this headline">#</a></h3>
+<p>Which contains comprehensive data on various SoTA algorithm’s performance across tasks in Matbench. On the website you can find:</p>
+<ul class="simple">
+<li><p><strong>A general purpose leaderboard comparing only the most-widely applicable algorithms</strong></p></li>
+<li><p><strong>Individual per-task (per-dataset) leaderboards for comparing any ML model on a particular task</strong></p></li>
+<li><p>Comprehensive breakdowns of cross-validation performance, statistics, and metadata for every model</p></li>
+<li><p><strong>Access to individual sample predictions for each and every submission</strong></p></li>
+</ul>
+<p><img alt="website_mb" src="../_images/website_mb.png" /></p>
+</section>
+<section id="general-purpose-leaderboard">
+<h3>General purpose leaderboard<a class="headerlink" href="#general-purpose-leaderboard" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task name</p></th>
+<th class="head"><p>Samples</p></th>
+<th class="head"><p>Algorithm</p></th>
+<th class="head"><p>Verified MAE (unit) or ROCAUC</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>matbench_steels</p></td>
+<td><p>312</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_automatminer_expressv2020">AMMExpress v2020</a></p></td>
+<td><p><strong>97.4929 (MPa)</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>matbench_jdft2d</p></td>
+<td><p>636</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_automatminer_expressv2020">AMMExpress v2020</a></p></td>
+<td><p><strong>39.8497 (meV/atom)</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>matbench_phonons</p></td>
+<td><p>1,265</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_CrabNet">CrabNet</a></p></td>
+<td><p><strong>55.1114 (cm^-1)</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>matbench_expt_gap</p></td>
+<td><p>4,604</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_CrabNet">CrabNet</a></p></td>
+<td><p><strong>0.3463 (eV)</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>matbench_dielectric</p></td>
+<td><p>4,764</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_automatminer_expressv2020">AMMExpress v2020</a></p></td>
+<td><p><strong>0.3150 (unitless)</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>matbench_expt_is_metal</p></td>
+<td><p>4,921</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_automatminer_expressv2020">AMMExpress v2020</a></p></td>
+<td><p><strong>0.9209</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>matbench_glass</p></td>
+<td><p>5,680</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_automatminer_expressv2020">AMMExpress v2020</a></p></td>
+<td><p><strong>0.8607</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>matbench_log_gvrh</p></td>
+<td><p>10,987</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_automatminer_expressv2020">AMMExpress v2020</a></p></td>
+<td><p><strong>0.0874 (log10(GPa))</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>matbench_log_kvrh</p></td>
+<td><p>10,987</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_automatminer_expressv2020">AMMExpress v2020</a></p></td>
+<td><p><strong>0.0647 (log10(GPa))</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>matbench_perovskites</p></td>
+<td><p>18,928</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_cgcnnv2019">CGCNN v2019</a></p></td>
+<td><p><strong>0.0452 (eV/unit cell)</strong></p></td>
+<td><p>structure required</p></td>
+</tr>
+<tr class="row-even"><td><p>matbench_mp_gap</p></td>
+<td><p>106,113</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_CrabNet">CrabNet</a></p></td>
+<td><p><strong>0.2655 (eV)</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>matbench_mp_is_metal</p></td>
+<td><p>106,113</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_cgcnnv2019">CGCNN v2019</a></p></td>
+<td><p><strong>0.9520</strong></p></td>
+<td><p>structure required</p></td>
+</tr>
+<tr class="row-even"><td><p>matbench_mp_e_form</p></td>
+<td><p>132,752</p></td>
+<td><p><a class="reference external" href="https://hackingmaterials.github.io/matbench/Full%20Benchmark%20Data/matbench_v0.1_cgcnnv2019">CGCNN v2019</a></p></td>
+<td><p><strong>0.0337 (eV/atom)</strong></p></td>
+<td><p>structure required</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary Ulissi<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
