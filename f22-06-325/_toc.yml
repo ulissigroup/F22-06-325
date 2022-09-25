@@ -24,7 +24,7 @@ parts:
     - file: notes/overfitting_regularization
     - file: notes/classification_logistic_regression
     - file: notes/materials_descriptors
-    - file: notes/nonparameteric
+    - file: notes/nonparametric
   - file: labs/overview
     sections:
     - file: labs/python_debugging
