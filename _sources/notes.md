@@ -1,4 +1,9 @@
 # Logistics/Notes
+Monday 3/26
+* **Lecture:** Train/validation splits, and non-parametric models
+* HW4 posted; should be able to get started after today's lecture
+* Project feedback posted on gradescope, follow up if you have questions!
+
 Monday 9/19
 * **Lecture:** Overfitting, model capacity, simple feature selection
 * Feedback from ML guest lectures was excellent. Quick discussion about class schedule. 
