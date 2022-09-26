@@ -41,5 +41,6 @@ parts:
     - file: homeworks/HW1
     - file: homeworks/HW2
     - file: homeworks/HW3
+    - file: homeworks/HW4
     - file: homeworks/hw_solutions
 
