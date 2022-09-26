@@ -773,76 +773,172 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;impurity_dataset-training.xlsx&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/util/_decorators.py:211,</span> in <span class="ni">deprecate_kwarg.&lt;locals&gt;._deprecate_kwarg.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">209</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
-<span class="ne">--&gt; </span><span class="mi">211</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/util/_decorators.py:317,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()),</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">317</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:483,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, decimal, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">481</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">482</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="ne">--&gt; </span><span class="mi">483</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">484</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">485</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:1629,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1627</span>     <span class="n">ext</span> <span class="o">=</span> <span class="s2">&quot;xls&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1628</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1629</span>     <span class="n">ext</span> <span class="o">=</span> <span class="n">inspect_excel_format</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1630</span>         <span class="n">content_or_path</span><span class="o">=</span><span class="n">path_or_buffer</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span>
-<span class="g g-Whitespace">   </span><span class="mi">1631</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1632</span>     <span class="k">if</span> <span class="n">ext</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1633</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1634</span>             <span class="s2">&quot;Excel file format cannot be determined, you must specify &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1635</span>             <span class="s2">&quot;an engine manually.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1636</span>         <span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:1502,</span> in <span class="ni">inspect_excel_format</span><span class="nt">(content_or_path, storage_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1499</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content_or_path</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1500</span>     <span class="n">content_or_path</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">content_or_path</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1502</span> <span class="k">with</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1503</span>     <span class="n">content_or_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">is_text</span><span class="o">=</span><span class="kc">False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1504</span> <span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1505</span>     <span class="n">stream</span> <span class="o">=</span> <span class="n">handle</span><span class="o">.</span><span class="n">handle</span>
-<span class="g g-Whitespace">   </span><span class="mi">1506</span>     <span class="n">stream</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/io/common.py:866,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">857</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">859</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="c1"># Binary mode</span>
-<span class="ne">--&gt; </span><span class="mi">866</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>     <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">869</span> <span class="c1"># Convert BytesIO or file objects passed with an encoding</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;impurity_dataset-training.xlsx&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>x1:Primary Column Reflux Flow</th>
+      <th>x2:Primary Column Tails Flow</th>
+      <th>x3:Input to Primary Column Bed 3 Flow</th>
+      <th>x4:Input to Primary Column Bed 2 Flow</th>
+      <th>x5:Primary Column Feed Flow from Feed Column</th>
+      <th>x6:Primary Column Make Flow</th>
+      <th>x7:Primary Column Base Level</th>
+      <th>x8:Primary Column Reflux Drum Pressure</th>
+      <th>x9:Primary Column Condenser Reflux Drum Level</th>
+      <th>...</th>
+      <th>x36: Feed Column Recycle Flow</th>
+      <th>x37: Feed Column Tails Flow to Primary Column</th>
+      <th>x38: Feed Column Calculated DP</th>
+      <th>x39: Feed Column Steam Flow</th>
+      <th>x40: Feed Column Tails Flow</th>
+      <th>Avg_Reactor_Outlet_Impurity</th>
+      <th>Avg_Delta_Composition Primary Column</th>
+      <th>y:Impurity</th>
+      <th>Primary Column Reflux/Feed Ratio</th>
+      <th>Primary Column Make/Reflux Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-12-01 00:00:00</td>
+      <td>327.813</td>
+      <td>45.7920</td>
+      <td>2095.06</td>
+      <td>2156.01</td>
+      <td>98.5005</td>
+      <td>95.4674</td>
+      <td>54.3476</td>
+      <td>41.0121</td>
+      <td>52.2353</td>
+      <td>...</td>
+      <td>62.8707</td>
+      <td>45.0085</td>
+      <td>66.6604</td>
+      <td>8.68813</td>
+      <td>99.9614</td>
+      <td>5.38024</td>
+      <td>1.49709</td>
+      <td>1.77833</td>
+      <td>3.32803</td>
+      <td>0.291226</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-12-01 01:00:00</td>
+      <td>322.970</td>
+      <td>46.1643</td>
+      <td>2101.00</td>
+      <td>2182.90</td>
+      <td>98.0014</td>
+      <td>94.9673</td>
+      <td>54.2247</td>
+      <td>41.0076</td>
+      <td>52.5378</td>
+      <td>...</td>
+      <td>62.8651</td>
+      <td>45.0085</td>
+      <td>66.5496</td>
+      <td>8.70683</td>
+      <td>99.8637</td>
+      <td>5.33345</td>
+      <td>1.51392</td>
+      <td>1.76964</td>
+      <td>3.29556</td>
+      <td>0.294044</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-12-01 02:00:00</td>
+      <td>319.674</td>
+      <td>45.9927</td>
+      <td>2102.96</td>
+      <td>2151.39</td>
+      <td>98.8229</td>
+      <td>96.0785</td>
+      <td>54.6130</td>
+      <td>41.0451</td>
+      <td>52.0159</td>
+      <td>...</td>
+      <td>62.8656</td>
+      <td>45.0085</td>
+      <td>66.0599</td>
+      <td>8.69269</td>
+      <td>100.2490</td>
+      <td>5.37677</td>
+      <td>1.50634</td>
+      <td>1.76095</td>
+      <td>3.23481</td>
+      <td>0.300552</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-12-01 03:00:00</td>
+      <td>327.223</td>
+      <td>46.0960</td>
+      <td>2101.37</td>
+      <td>2172.14</td>
+      <td>98.7733</td>
+      <td>96.1223</td>
+      <td>54.9153</td>
+      <td>41.0405</td>
+      <td>52.9477</td>
+      <td>...</td>
+      <td>62.8669</td>
+      <td>45.0085</td>
+      <td>67.9697</td>
+      <td>8.70482</td>
+      <td>100.3200</td>
+      <td>5.32315</td>
+      <td>1.47935</td>
+      <td>1.75226</td>
+      <td>3.31287</td>
+      <td>0.293752</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-12-01 04:00:00</td>
+      <td>331.177</td>
+      <td>45.8493</td>
+      <td>2114.06</td>
+      <td>2157.77</td>
+      <td>99.3231</td>
+      <td>94.7521</td>
+      <td>54.0925</td>
+      <td>40.9934</td>
+      <td>53.0507</td>
+      <td>...</td>
+      <td>62.8673</td>
+      <td>45.0085</td>
+      <td>67.6454</td>
+      <td>8.70077</td>
+      <td>100.6590</td>
+      <td>5.28227</td>
+      <td>1.44489</td>
+      <td>1.74357</td>
+      <td>3.33435</td>
+      <td>0.286107</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 46 columns</p>
+</div></div></div>
 </div>
 <p>To use this data, we need to remove some problematic rows. We also want to select all the columns with “x” as features, and select the impurity as “y”. This will leave 10297 data points with 40 features, with the goal being to predict the impurity in the output stream! You should use this code to generate the features (X) and target (y).</p>
 <div class="cell docutils container">
