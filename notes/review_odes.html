@@ -212,13 +212,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="materials_descriptors.html">
-     Featurizing molecules and materials for chemical engineering
+    <a class="reference internal" href="nonparametric.html">
+     Non-parametric models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nonparametric.html">
-     Non-parametric models
+    <a class="reference internal" href="materials_descriptors.html">
+     Featurizing molecules and materials for chemical engineering
     </a>
    </li>
   </ul>
@@ -826,7 +826,7 @@ y' = y + 2x - x^2; y(0) = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0e1e1df8e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f581d0b68e0&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_15_1.png" src="../_images/review_odes_15_1.png" />
@@ -879,7 +879,7 @@ y' = y + 2x - x^2; y(0) = 1
  y_events: None
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0e1e0fe730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f581cfd9730&gt;
 </pre></div>
 </div>
 <img alt="../_images/review_odes_17_2.png" src="../_images/review_odes_17_2.png" />
@@ -912,8 +912,8 @@ y' = y + 2x - x^2; y(0) = 1
 <section id="ode-solving-strategy-review">
 <h2>ODE solving strategy review<a class="headerlink" href="#ode-solving-strategy-review" title="Permalink to this headline">#</a></h2>
 <p>In 06-262 we spent a lecture talking about how ODE integrators worked. We started with simpler Euler integration and worked our way up through Runge-Kutta, which you coded in one of the homework assignments. As a reminder, the Runge-Kutta update rules were a sequence of calculations that estimated the function value:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dea5f739-e4b4-492c-be67-100653732bef">
-<span class="eqno">(1)<a class="headerlink" href="#equation-dea5f739-e4b4-492c-be67-100653732bef" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dddf125e-c7b1-4ca6-94dc-44dcd51a15fc">
+<span class="eqno">(1)<a class="headerlink" href="#equation-dddf125e-c7b1-4ca6-94dc-44dcd51a15fc" title="Permalink to this equation">#</a></span>\[\begin{align}
 k_1 &amp;= \Delta t \cdot f(t^N, y^N)\\
 k_2 &amp;= \Delta t \cdot f\left(t^N+\frac{\Delta t}{2}, y^N + \frac{k_1}{2}\right)\\
 k_3 &amp;= \Delta t \cdot f\left(t^N+\frac{\Delta t}{2}, y^N + \frac{k_2}{2}\right)\\
@@ -1202,42 +1202,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img36a902b053c3460f8994f84d20b8a3fa">
+  <img id="_anim_imgd0dc6b2771544397aecd2b05453527be">
   <div class="anim-controls">
-    <input id="_anim_slider36a902b053c3460f8994f84d20b8a3fa" type="range" class="anim-slider"
+    <input id="_anim_sliderd0dc6b2771544397aecd2b05453527be" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim36a902b053c3460f8994f84d20b8a3fa.set_frame(parseInt(this.value));">
+           oninput="animd0dc6b2771544397aecd2b05453527be.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim36a902b053c3460f8994f84d20b8a3fa.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="animd0dc6b2771544397aecd2b05453527be.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim36a902b053c3460f8994f84d20b8a3fa.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="animd0dc6b2771544397aecd2b05453527be.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim36a902b053c3460f8994f84d20b8a3fa.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="animd0dc6b2771544397aecd2b05453527be.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim36a902b053c3460f8994f84d20b8a3fa.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="animd0dc6b2771544397aecd2b05453527be.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim36a902b053c3460f8994f84d20b8a3fa.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="animd0dc6b2771544397aecd2b05453527be.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim36a902b053c3460f8994f84d20b8a3fa.play_animation()">
+      <button title="Play" aria-label="Play" onclick="animd0dc6b2771544397aecd2b05453527be.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim36a902b053c3460f8994f84d20b8a3fa.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="animd0dc6b2771544397aecd2b05453527be.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim36a902b053c3460f8994f84d20b8a3fa.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="animd0dc6b2771544397aecd2b05453527be.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim36a902b053c3460f8994f84d20b8a3fa.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="animd0dc6b2771544397aecd2b05453527be.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select36a902b053c3460f8994f84d20b8a3fa"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectd0dc6b2771544397aecd2b05453527be"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_36a902b053c3460f8994f84d20b8a3fa"
+      <input type="radio" name="state" value="once" id="_anim_radio1_d0dc6b2771544397aecd2b05453527be"
              >
-      <label for="_anim_radio1_36a902b053c3460f8994f84d20b8a3fa">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_36a902b053c3460f8994f84d20b8a3fa"
+      <label for="_anim_radio1_d0dc6b2771544397aecd2b05453527be">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_d0dc6b2771544397aecd2b05453527be"
              checked>
-      <label for="_anim_radio2_36a902b053c3460f8994f84d20b8a3fa">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_36a902b053c3460f8994f84d20b8a3fa"
+      <label for="_anim_radio2_d0dc6b2771544397aecd2b05453527be">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_d0dc6b2771544397aecd2b05453527be"
              >
-      <label for="_anim_radio3_36a902b053c3460f8994f84d20b8a3fa">Reflect</label>
+      <label for="_anim_radio3_d0dc6b2771544397aecd2b05453527be">Reflect</label>
     </form>
   </div>
 </div>
@@ -1247,9 +1247,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img36a902b053c3460f8994f84d20b8a3fa";
-    var slider_id = "_anim_slider36a902b053c3460f8994f84d20b8a3fa";
-    var loop_select_id = "_anim_loop_select36a902b053c3460f8994f84d20b8a3fa";
+    var img_id = "_anim_imgd0dc6b2771544397aecd2b05453527be";
+    var slider_id = "_anim_sliderd0dc6b2771544397aecd2b05453527be";
+    var loop_select_id = "_anim_loop_selectd0dc6b2771544397aecd2b05453527be";
     var frames = new Array(21);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -8889,7 +8889,7 @@ ETGZ/wdzJDBs42MmXQAAAABJRU5ErkJggg==\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim36a902b053c3460f8994f84d20b8a3fa = new Animation(frames, img_id, slider_id, 1000.0,
+        animd0dc6b2771544397aecd2b05453527be = new Animation(frames, img_id, slider_id, 1000.0,
                                  loop_select_id);
     }, 0);
   })()
