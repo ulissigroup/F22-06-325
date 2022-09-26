@@ -23,6 +23,7 @@ parts:
     - file: notes/ml_basics
     - file: notes/overfitting_regularization
     - file: notes/classification_logistic_regression
+    - file: notes/train_validation
     - file: notes/materials_descriptors
     - file: notes/nonparametric
   - file: labs/overview
