@@ -508,6 +508,11 @@ title="Print to PDF"
      JupyterHub Usage Tips/Tricks
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-conda-environment-specific-python-versions-packages-etc">
+     Custom conda environment (specific python versions, packages, etc)
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -557,6 +562,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#jupyterhub-usage-tips-tricks">
      JupyterHub Usage Tips/Tricks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-conda-environment-specific-python-versions-packages-etc">
+     Custom conda environment (specific python versions, packages, etc)
     </a>
    </li>
   </ul>
@@ -625,6 +635,40 @@ title="Print to PDF"
 <li><p><strong>Trouble saving a notebook</strong> If your notebook doesn’t seem to be saving for some reason, you can copy and paste all cells into a new notebook and save that. Edit -&gt; select all cells, Edit -&gt; copy cells, then go to a new notebook and Edit -&gt; Paste all cells below. You can also try “save as” for the notebook and choose a new filename. If this is a recurring issue post on piazza so we can see if there’s an underlying issue.</p></li>
 <li><p><strong>HW editing</strong> Before working on a homework, I would suggest duplicating the homework assignment (right click the file, then click duplicate), then edit that. This will ensure the homework doesn’t get overwritten if I make changes to the homework and github resyncs.</p></li>
 </ul>
+</section>
+<section id="custom-conda-environment-specific-python-versions-packages-etc">
+<h3>Custom conda environment (specific python versions, packages, etc)<a class="headerlink" href="#custom-conda-environment-specific-python-versions-packages-etc" title="Permalink to this headline">#</a></h3>
+<p>The default installed packages should work for almost everything you need to do in the class or the homework. If you find there’s something you need for your project (one student was using code that required an older version of python for some reason), you can do that with a custom conda environment. Conda is the package manager that manages the installed python packages in your server.</p>
+<ol class="simple">
+<li><p>Open the terminal and switch to the bash shell</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Make a new conda environment in your home directory (which is persistent even when your server shuts down over night)</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jovyan</span><span class="o">/</span><span class="n">my_test_environment</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Switch to the conda environment, and install whatever you need. Use mamba instead of conda (same thing, but way faster!). Make sure to install ipykernel as well</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jovyan</span><span class="o">/</span><span class="n">my_test_environment</span>
+<span class="n">mamba</span> <span class="n">install</span> <span class="n">ipykernel</span> 
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Install the kernel for jupyter so it shows up when you open notebooks</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jovyan</span><span class="o">/</span><span class="n">my_test_environment</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span> <span class="n">my_test_environment</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span> <span class="n">my_test_environment</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Shut down and restart your jupyterhub https://laikapack-head.cheme.cmu.edu/hub/hub/home</p></li>
+</ol>
+<p>After that, when you open a notebook you can click in the upper right and select your my_test_environment kernel. Everything that runs in that notebook will then use the installation and packages in that conda environment!</p>
 </section>
 </section>
 <section id="google-colab">
