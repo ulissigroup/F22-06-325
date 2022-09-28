@@ -48,3 +48,5 @@ You can find two sample poster template here (modified from the template for the
 A few helpful links (thanks to Matt Cline!):
 * https://guides.nyu.edu/posters  (Very thorough. Note “tabs” at top of page)
 * http://www.personal.psu.edu/drs18/postershow/index.html (Good overview)
+
+[You can print the poster using the department poster printer.](https://www.cmu.edu/cheme/computing/services/poster-printing.html) Make sure you list "06-325 course project" in the email!
