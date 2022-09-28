@@ -38,3 +38,13 @@ Teams of 4 students will be organized through CATME by 9/9 based on project inte
 * 10% proposal 
 * 50% Poster presentation
 * 40% Notebook/code correctness, organization, description of methods, etc. 
+
+## Poster templates and info
+
+You can find two sample poster template here (modified from the template for the Berg Research Symposium posters): [06-325 poster template](https://github.com/ulissigroup/F22-06-325/tree/main/f22-06-325/projects)
+* One has some suggested content/suggestions for your 06-325 project
+* The second one is a a complete research poster by one of the PhD students in my group last year (Brook Wander)
+
+A few helpful links (thanks to Matt Cline!):
+* https://guides.nyu.edu/posters  (Very thorough. Note “tabs” at top of page)
+* http://www.personal.psu.edu/drs18/postershow/index.html (Good overview)
