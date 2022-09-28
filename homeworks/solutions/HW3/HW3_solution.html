@@ -1,0 +1,1849 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>HW3 (due 9/26) &#8212; Numerical Methods and ML for ChE (F22-06-325)</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Methods and ML for ChE (F22-06-325)</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction & License
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Info
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notes.html">
+   Logistics/Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../schedule.html">
+   Course schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../software.html">
+   Software Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../helpful_resources.html">
+   Helpful Resources
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../notes/recap.html">
+   Recap of Numerical Methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/review_odes.html">
+     ODE Integration (with Events!)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/ode_events_extra_example.html">
+     More complicated example: Van der Pol oscillator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/review_optimization.html">
+     Local Optimization and Curve Fitting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../notes/intro_ml.html">
+   Introduction to Machine Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/ml_basics.html">
+     Intro to Supervised Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/overfitting_regularization.html">
+     Model Capacity, Overfitting, Regularization, and Ridge/LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/classification_logistic_regression.html">
+     Linear models for classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/train_validation.html">
+     Validation and Test Splits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/nonparametric.html">
+     Non-parametric models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notes/materials_descriptors.html">
+     Featurizing molecules and materials for chemical engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../labs/overview.html">
+   Labs and Python/Software Tips
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../labs/python_debugging.html">
+     <font color="red">
+      Python functions, Error handling, Exceptions, Debugging
+     </font>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../projects/overview.html">
+   Course Project Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/wildfires/wildfire_dataset.html">
+     Predicting Wildfire Smoke Composition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/catalysts/catalyst_simulation.html">
+     Using ML to Predict Catalyst Properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/travelling_salesman/travelling_salesman.html">
+     Finding optimal tours for the Travelling Salesman Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../homework.html">
+   Homeworks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../HW1.html">
+     HW1 (due noon Monday 9/5)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../HW2.html">
+     HW2 (due 9/12)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../HW3.html">
+     HW3 (due 9/26)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../HW4.html">
+     HW4 (due Monday 10/3 noon) [100 pts]
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hw_solutions.html">
+     Homework solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ulissigroup/F22-06-325/main?urlpath=lab/tree/f22-06-325/homeworks/solutions/HW3/HW3_solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://laikapack-head.cheme.cmu.edu/hub/hub/user-redirect/git-pull?repo=https%3A//github.com/ulissigroup/F22-06-325&urlpath=lab/tree/F22-06-325/f22-06-325/homeworks/solutions/HW3/HW3_solution.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/ulissigroup/F22-06-325/blob/main/f22-06-325/homeworks/solutions/HW3/HW3_solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ulissigroup/F22-06-325"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ulissigroup/F22-06-325/issues/new?title=Issue%20on%20page%20%2Fhomeworks/solutions/HW3/HW3_solution.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/homeworks/solutions/HW3/HW3_solution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#challenger-rocket-o-ring-failures-40-pt">
+   Challenger Rocket O-ring Failures [40 pt]
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-the-o-ring-dataset-from-uc-irvine-s-website">
+     Download the o-ring dataset from UC Irvine’s website
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-variable-and-plot">
+     Binary variable and plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-test-split">
+     Train/test split
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logistic-regression">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-of-failure">
+     Probability of failure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-analysis">
+     Problem analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perovskite-classification-and-discovery-60-pt">
+   Perovskite classification and discovery [60 pt]
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-dataset-and-load-with-pandas">
+   Download the dataset and load with pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-val-test-split">
+   Train/val/test split
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualize-the-goldschmidt-ratio">
+   Visualize the Goldschmidt ratio
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Logistic regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-features">
+   Add features
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regularization">
+   Regularization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>HW3 (due 9/26)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#challenger-rocket-o-ring-failures-40-pt">
+   Challenger Rocket O-ring Failures [40 pt]
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#download-the-o-ring-dataset-from-uc-irvine-s-website">
+     Download the o-ring dataset from UC Irvine’s website
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-variable-and-plot">
+     Binary variable and plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-test-split">
+     Train/test split
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logistic-regression">
+     Logistic regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-of-failure">
+     Probability of failure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-analysis">
+     Problem analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perovskite-classification-and-discovery-60-pt">
+   Perovskite classification and discovery [60 pt]
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-the-dataset-and-load-with-pandas">
+   Download the dataset and load with pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-val-test-split">
+   Train/val/test split
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualize-the-goldschmidt-ratio">
+   Visualize the Goldschmidt ratio
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Logistic regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-features">
+   Add features
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regularization">
+   Regularization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="math notranslate nohighlight">
+\[\require{mhchem}\]</div>
+<section class="tex2jax_ignore mathjax_ignore" id="hw3-due-9-26">
+<h1>HW3 (due 9/26)<a class="headerlink" href="#hw3-due-9-26" title="Permalink to this headline">#</a></h1>
+<section id="challenger-rocket-o-ring-failures-40-pt">
+<h2>Challenger Rocket O-ring Failures [40 pt]<a class="headerlink" href="#challenger-rocket-o-ring-failures-40-pt" title="Permalink to this headline">#</a></h2>
+<p><img alt="Challenger" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Challenger_explosion.jpg/296px-Challenger_explosion.jpg" /></p>
+<p>The space shuttle Challenger flew 9 missions from 1983-1986. On its final launch, Challenger exploded a bit more than 1 minute after launch. Among the astronauts on board was Judith Resnik, a CMU alum (ECE), for whom the Resnik award at CMU for exceptional senior women is named after, and Ronald McNair, the second African American to fly to space and for whom the national McNair scholars program is named after.</p>
+<p>The Rogers commission was tasked with identifying the factors that led to the disaster, and notably Nobel-prize-winning physicist Richard Feynman was on the commission. The cause of the failure was eventually determined to be a failed O-ring that led to an explosion in the fuel tank, and the temperature on the day of the launch one of the primary considerations.</p>
+<p>This was a particularly dark period for NASA and engineers as the Challenger incident exposed major issues around reliability and engineering statistics. The disaster was not just a technical failure in the O-ring, but a failure in the engineering organization at NASA.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>Feynman’s special report is in the appendix to the Rogers commission report (Appendix F) https://www.govinfo.gov/content/pkg/GPO-CRPT-99hrpt1016/pdf/GPO-CRPT-99hrpt1016.pdf</p></li>
+<li><p>Mr Feynman Goes to Washington, available here: https://calteches.library.caltech.edu/3570/1/Feynman.pdf</p></li>
+<li><p>https://www.youtube.com/watch?v=ZOzoLdfWyKw (Feynman testimony starts at 1:53)</p></li>
+<li><p>https://www.cmu.edu/education-office/academic-resources/resnik-award.html</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<section id="download-the-o-ring-dataset-from-uc-irvine-s-website">
+<h3>Download the o-ring dataset from UC Irvine’s website<a class="headerlink" href="#download-the-o-ring-dataset-from-uc-irvine-s-website" title="Permalink to this headline">#</a></h3>
+<p>Find the data file on the website (you want the O-ring erosion only one), download the data file using wget, and load it into pandas.
+https://archive.ics.uci.edu/ml/datasets/Challenger+USA+Space+Shuttle+O-Ring
+<code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">wget</span> <span class="pre">https://archive.ics.uci.edu/ml/machine-learning-databases/space-shuttle/o-ring-erosion-only.data</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Get columns from data website</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#rings at risk&#39;</span><span class="p">,</span> <span class="s1">&#39;#rings with distress&#39;</span><span class="p">,</span> <span class="s1">&#39;T (F)&#39;</span><span class="p">,</span> <span class="s1">&#39;p (psi)&#39;</span><span class="p">,</span> <span class="s1">&#39;temporal order&#39;</span><span class="p">]</span>
+<span class="n">full_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;o-ring-erosion-only.data&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">full_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>#rings at risk</th>
+      <th>#rings with distress</th>
+      <th>T (F)</th>
+      <th>p (psi)</th>
+      <th>temporal order</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>0</td>
+      <td>66</td>
+      <td>50</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>1</td>
+      <td>70</td>
+      <td>50</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6</td>
+      <td>0</td>
+      <td>69</td>
+      <td>50</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>0</td>
+      <td>68</td>
+      <td>50</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6</td>
+      <td>0</td>
+      <td>67</td>
+      <td>50</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>0</td>
+      <td>72</td>
+      <td>50</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>0</td>
+      <td>73</td>
+      <td>100</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>6</td>
+      <td>0</td>
+      <td>70</td>
+      <td>100</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>6</td>
+      <td>1</td>
+      <td>57</td>
+      <td>200</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>6</td>
+      <td>1</td>
+      <td>63</td>
+      <td>200</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>6</td>
+      <td>1</td>
+      <td>70</td>
+      <td>200</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>6</td>
+      <td>0</td>
+      <td>78</td>
+      <td>200</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>6</td>
+      <td>0</td>
+      <td>67</td>
+      <td>200</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>6</td>
+      <td>2</td>
+      <td>53</td>
+      <td>200</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>6</td>
+      <td>0</td>
+      <td>67</td>
+      <td>200</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>6</td>
+      <td>0</td>
+      <td>75</td>
+      <td>200</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>6</td>
+      <td>0</td>
+      <td>70</td>
+      <td>200</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>6</td>
+      <td>0</td>
+      <td>81</td>
+      <td>200</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>6</td>
+      <td>0</td>
+      <td>76</td>
+      <td>200</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>6</td>
+      <td>0</td>
+      <td>79</td>
+      <td>200</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>6</td>
+      <td>0</td>
+      <td>75</td>
+      <td>200</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>6</td>
+      <td>0</td>
+      <td>76</td>
+      <td>200</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>6</td>
+      <td>1</td>
+      <td>58</td>
+      <td>200</td>
+      <td>23</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="binary-variable-and-plot">
+<h3>Binary variable and plot<a class="headerlink" href="#binary-variable-and-plot" title="Permalink to this headline">#</a></h3>
+<p>Make a binary variable that represents whether the number of O-ring failures is greater than or equal to 1 (e.g. 0 if no failure, 1 if failure). Plot the binary variable as a function of the temperature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">full_data</span><span class="p">[[</span><span class="s1">&#39;T (F)&#39;</span><span class="p">,</span><span class="s1">&#39;#rings with distress&#39;</span><span class="p">]]</span> 
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;Failure&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Failure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Failure&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Failure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;T (F)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&gt;1 failure occurs&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_362/3525197699.py:6: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  data.loc[:,&#39;Failure&#39;] = np.where(data.loc[:,&#39;Failure&#39;] &gt; 0, 1, 0)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     66
+1     70
+2     69
+3     68
+4     67
+5     72
+6     73
+7     70
+8     57
+9     63
+10    70
+11    78
+12    67
+13    53
+14    67
+15    75
+16    70
+17    81
+18    76
+19    79
+20    75
+21    76
+22    58
+Name: T, dtype: int64
+</pre></div>
+</div>
+<img alt="../../../_images/HW3_solution_6_2.png" src="../../../_images/HW3_solution_6_2.png" />
+</div>
+</div>
+</section>
+<section id="train-test-split">
+<h3>Train/test split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h3>
+<p>Make a simple train 80/20 train/test split using the available data. Don’t use shuffle, so that this is effectively a time series split (e.g. first 80% of the launches is train, then last 20% is test).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+
+<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Failure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;Failure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logistic-regression">
+<h3>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h3>
+<p>Fit a simple LogistRegression model to the data and evaluate the accuracy on the test set. Is it statistically significant with such a small dataset?</p>
+<p>Plot whether a failure is predicted at all temperatures from 20F to 80F.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">acc</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;test accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">Xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xp</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xp</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prediction&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;test data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;T (F)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;predicted failure&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test accuracy: 1.000
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5bc8e714f0&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/HW3_solution_10_2.png" src="../../../_images/HW3_solution_10_2.png" />
+</div>
+</div>
+</section>
+<section id="probability-of-failure">
+<h3>Probability of failure<a class="headerlink" href="#probability-of-failure" title="Permalink to this headline">#</a></h3>
+<p>One of the helpful things about logistic regression is that you can make predictions for the probability of outcomes. Use the <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method on your classifier to predict the probability of a failure at 32F.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_fail</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">32</span><span class="p">,])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predicted probability of failure at 32F: </span><span class="si">{</span><span class="n">p_fail</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted probability of failure at 32F: 0.99997
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-analysis">
+<h3>Problem analysis<a class="headerlink" href="#problem-analysis" title="Permalink to this headline">#</a></h3>
+<p>Skim the “Mr. Feynman Goes to Washington” article or the wikipedia article and answer the following questions with a few sentences each</p>
+<ul class="simple">
+<li><p>What was the primary chemical engineering / material cause for O-ring failures at low temperatures?</p></li>
+<li><p>What factors led to such large disparities in risk assessment for the launch (they ranged from near certainty, to 1-in-100, to 1-in-100,000 odds of a catastrophic failure).</p></li>
+</ul>
+<p>The low temperatures before and during the launch reduced the elasticity of the rubber O-rings, which caused them to not seal the field joints as intended. Thus, hot gas escaped from the booster and burned, damaging the connector holding it in place. As the booster rotated, the propellant tank collapsed and exploded.</p>
+<p>Feynmann attributes the large disparities in risk assessment largely to insufficient communication between management and engineers. Repeated lowering of safety criteria by management causes the engineers to loose confidence in the safety of their machines.</p>
+</section>
+</section>
+<section id="perovskite-classification-and-discovery-60-pt">
+<h2>Perovskite classification and discovery [60 pt]<a class="headerlink" href="#perovskite-classification-and-discovery-60-pt" title="Permalink to this headline">#</a></h2>
+<p><img alt="NREL PV chart" src="https://www.nrel.gov/pv/assets/images/best-research-cell-efficiencies-thumbnail-rev220630.jpg" />
+https://www.nrel.gov/pv/cell-efficiency.html/</p>
+<p>Perovskites are a special type of inorganic crystal that are now one of the most efficient and popular research materials for photovoltaics, as shown in the chart above!</p>
+<p>Perovskite refers to a specific material (<span class="math notranslate nohighlight">\(\ce{CaTiO3}\)</span>). There are many substitutions that you can make for Ca and Ti of the form <span class="math notranslate nohighlight">\(\ce{ABX3}\)</span> that may be stable in the same crystal structure; some will be stable in the perovskite structure, and some will not be.</p>
+<ul class="simple">
+<li><p>A is a replacement for Ca, usually a transition metal</p></li>
+<li><p>B is a replacement for Ti, usually a transition metal</p></li>
+<li><p>X is a replacement for Cl, often O, S, Se, F, Cl, Br, I</p></li>
+</ul>
+<p>One factor (but not the only one) is that the radii of the two elements need to be similar to the original Ca/Ti ratio. For example, one proposed factor (commonly referred to as the Goldschmidt tolerance factor <span class="math notranslate nohighlight">\(t\)</span>) is:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+t=\frac{R_A+R_X}{\sqrt{2}(R_B+R_X)}
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R_A\)</span> is the radius of element A, <span class="math notranslate nohighlight">\(R_B\)</span> is the radius of element <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(R_X\)</span> is the radius of element X (the units don’t matter as long as you are consistent with all three!). If <span class="math notranslate nohighlight">\(t\)</span> is between 0.75 and 1.0, the combination is often stable in the perovskite structure.</p>
+<p>One way to identify whether a particular combination of elements A, B and X is stable is to do a quantum chemistry simulation like the guest speakers last week discussed. This often works but is not perfectly accurate</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>https://en.wikipedia.org/wiki/Perovskite</p></li>
+<li><p>https://en.wikipedia.org/wiki/Perovskite_(structure)</p></li>
+</ul>
+</div>
+<p>I want your help to identify some polynomial features that correlate with whether a particular combination will form a perovskite!</p>
+</section>
+<section id="download-the-dataset-and-load-with-pandas">
+<h2>Download the dataset and load with pandas<a class="headerlink" href="#download-the-dataset-and-load-with-pandas" title="Permalink to this headline">#</a></h2>
+<p>You can find an experimental dataset for whether the perovskite structure is stable for 576 A/B/X compounds here:
+https://github.com/CJBartel/perovskite-stability</p>
+<p>Download the file Table1.csv using <code class="docutils literal notranslate"><span class="pre">wget</span></code> and use pandas to load as a dataframe.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The url for the “raw” file in github is one that you can use with wget.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">wget</span> <span class="pre">https://raw.githubusercontent.com/CJBartel/perovskite-stability/master/TableS1.csv</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;TableS1.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;rA (Ang)&#39;</span><span class="p">:</span> <span class="s1">&#39;rA&#39;</span><span class="p">,</span> <span class="s1">&#39;rB (Ang)&#39;</span><span class="p">:</span> <span class="s1">&#39;rB&#39;</span><span class="p">,</span> <span class="s1">&#39;rX (Ang)&#39;</span><span class="p">:</span> <span class="s1">&#39;rX&#39;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ABX3</th>
+      <th>exp_label</th>
+      <th>is_train</th>
+      <th>A</th>
+      <th>B</th>
+      <th>X</th>
+      <th>nA</th>
+      <th>nB</th>
+      <th>nX</th>
+      <th>rA</th>
+      <th>rB</th>
+      <th>rX</th>
+      <th>t</th>
+      <th>tau</th>
+      <th>t_pred</th>
+      <th>tau_pred</th>
+      <th>tau_prob</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AgBrO3</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>Ag</td>
+      <td>Br</td>
+      <td>O</td>
+      <td>1</td>
+      <td>5</td>
+      <td>-2</td>
+      <td>1.28</td>
+      <td>0.31</td>
+      <td>1.40</td>
+      <td>1.11</td>
+      <td>6.43</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.05</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AgCdBr3</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>Ag</td>
+      <td>Cd</td>
+      <td>Br</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>1.28</td>
+      <td>0.95</td>
+      <td>1.96</td>
+      <td>0.79</td>
+      <td>5.58</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.12</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PbAgBr3</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>Pb</td>
+      <td>Ag</td>
+      <td>Br</td>
+      <td>2</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>1.49</td>
+      <td>1.15</td>
+      <td>1.96</td>
+      <td>0.78</td>
+      <td>7.71</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AgCaCl3</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>Ag</td>
+      <td>Ca</td>
+      <td>Cl</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>1.28</td>
+      <td>1.00</td>
+      <td>1.81</td>
+      <td>0.78</td>
+      <td>6.00</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.07</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AgClO3</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>Ag</td>
+      <td>Cl</td>
+      <td>O</td>
+      <td>1</td>
+      <td>5</td>
+      <td>-2</td>
+      <td>1.28</td>
+      <td>0.12</td>
+      <td>1.40</td>
+      <td>1.25</td>
+      <td>15.17</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="train-val-test-split">
+<h2>Train/val/test split<a class="headerlink" href="#train-val-test-split" title="Permalink to this headline">#</a></h2>
+<p>Split the data into a random 90/10 train/validation (90) and test (10) split using sklearn. The label we want to predict (y) is “exp_label”. Allowed features for X are the columns [A,B,X,nA,nB,nX,rA (Ang),rB (Ang),rX (Ang)]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;exp_label&#39;</span><span class="p">]</span>
+<span class="c1"># Drop categorical features</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nA&#39;</span><span class="p">,</span><span class="s1">&#39;nB&#39;</span><span class="p">,</span><span class="s1">&#39;nX&#39;</span><span class="p">,</span><span class="s1">&#39;rA&#39;</span><span class="p">,</span><span class="s1">&#39;rB&#39;</span><span class="p">,</span><span class="s1">&#39;rX&#39;</span><span class="p">]</span>
+<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data_train</span><span class="p">,</span> <span class="n">data_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">data_train</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+<span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">data_val</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">data_val</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">data_test</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+<span class="n">X_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nA</th>
+      <th>nB</th>
+      <th>nX</th>
+      <th>rA</th>
+      <th>rB</th>
+      <th>rX</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>406</th>
+      <td>1</td>
+      <td>5</td>
+      <td>-2</td>
+      <td>1.39</td>
+      <td>0.76</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <th>269</th>
+      <td>3</td>
+      <td>3</td>
+      <td>-2</td>
+      <td>1.12</td>
+      <td>0.64</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <th>419</th>
+      <td>1</td>
+      <td>5</td>
+      <td>-2</td>
+      <td>1.72</td>
+      <td>0.38</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <th>313</th>
+      <td>3</td>
+      <td>3</td>
+      <td>-2</td>
+      <td>1.11</td>
+      <td>0.62</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>1</td>
+      <td>5</td>
+      <td>-2</td>
+      <td>1.64</td>
+      <td>0.54</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>420</th>
+      <td>1</td>
+      <td>5</td>
+      <td>-2</td>
+      <td>1.72</td>
+      <td>0.78</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>2</td>
+      <td>4</td>
+      <td>-2</td>
+      <td>1.34</td>
+      <td>0.78</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>1</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>1.88</td>
+      <td>0.83</td>
+      <td>1.96</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1</td>
+      <td>5</td>
+      <td>-2</td>
+      <td>1.28</td>
+      <td>0.38</td>
+      <td>1.40</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>1</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>1.88</td>
+      <td>1.35</td>
+      <td>1.96</td>
+    </tr>
+  </tbody>
+</table>
+<p>466 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="visualize-the-goldschmidt-ratio">
+<h2>Visualize the Goldschmidt ratio<a class="headerlink" href="#visualize-the-goldschmidt-ratio" title="Permalink to this headline">#</a></h2>
+<p>Plot a histogram for the t-values in the data set. Highlight the desired range of 0.75-1.00. Color code the histogram based on the “exp_label” (Hint: This should look similar to Fig. 2A in the paper that the data was generated for).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t_data_1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;exp_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
+<span class="n">t_data_2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;exp_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">t_data_1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">t_data_2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;-1&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Goldschmidt Ratio&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">1.00</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;exp_label&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5bc8d502e0&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/HW3_solution_21_1.png" src="../../../_images/HW3_solution_21_1.png" />
+</div>
+</div>
+<p>Define a simple ‘Goldschmidt classifier’, which uses the t-ratio to predict ‘exp_label’. What is its accuracy on the full data set? Is this significantly better than a naive classifier?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pred_g</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">pred_g</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">acc_g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pred_g</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;exp_label&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy of Goldschmidt classifier on full data set: </span><span class="si">{</span><span class="n">acc_g</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">naive_pred</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;exp_label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">acc_naive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">naive_pred</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;exp_label&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy of naive classifier on full data set: </span><span class="si">{</span><span class="n">acc_naive</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alternatively, use t as input to Logistic Regression and record test set acccuracy</span>
+<span class="n">lr_t</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">))</span>
+<span class="n">lr_t</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;exp_label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">acc_lr_test</span> <span class="o">=</span> <span class="n">lr_t</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;exp_label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Test accuracy using LogReg with t feature: </span><span class="si">{</span><span class="n">acc_lr_test</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>                         
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of Goldschmidt classifier on full data set: 0.61458
+Accuracy of naive classifier on full data set: 0.54340
+Test accuracy using LogReg with t feature: 0.67241
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Logistic regression<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>Using the columns above, fit a logistic regression model using the available features. Report the accuracy and compare it to the Goldschmidt ratio.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="k">def</span> <span class="nf">print_scores</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+    <span class="n">acc_train</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">acc_val</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_val</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">acc_test</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Train Score: </span><span class="si">{</span><span class="n">acc_train</span><span class="si">:</span><span class="s1">.7f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Val Score: </span><span class="si">{</span><span class="n">acc_val</span><span class="si">:</span><span class="s1">.7f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Test Score: </span><span class="si">{</span><span class="n">acc_test</span><span class="si">:</span><span class="s1">.7f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    
+<span class="n">lr</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">))</span>
+
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+
+<span class="n">print_scores</span><span class="p">(</span><span class="n">lr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.8090129
+Val Score: 0.7692308
+Test Score: 0.8448276
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-features">
+<h2>Add features<a class="headerlink" href="#add-features" title="Permalink to this headline">#</a></h2>
+<p>First, add some features to the input matrix X: 1/R_A, 1/R_B Then add polynomial features (varying the polynomial features degrees from 1 to 3).</p>
+<p>Like we did in class in the features lecture, vary the polynomial powers from 1-3 and study the effect on the train and validation accuracy. Which one is the most predictive for your train/validation split?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="c1"># add reciprocal features</span>
+<span class="k">def</span> <span class="nf">add_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">rA_inv</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span>  <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">rA</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">rB_inv</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span>  <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">rB</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">rX_inv</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span>  <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">rX</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">add_features</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_val</span> <span class="o">=</span> <span class="n">add_features</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">add_features</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># fit models of varying polynomial degree</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Degree </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+    <span class="n">lr_pol</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">p</span><span class="p">),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">))</span>
+    <span class="n">lr_pol</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">print_scores</span><span class="p">(</span><span class="n">lr_pol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree 1
+Train Score: 0.8562232
+Val Score: 0.8269231
+Test Score: 0.8793103
+Degree 2
+Train Score: 0.9291845
+Val Score: 0.9230769
+Test Score: 0.9482759
+Degree 3
+Train Score: 0.9506438
+Val Score: 0.9038462
+Test Score: 0.9310345
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:444: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:444: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="regularization">
+<h2>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">#</a></h2>
+<p>Try varying the type of regularization (“penalty”), and the strength of the regularization (“C”) in LogisticRegression. For the highest validation set accuracy you can find, fit the model to the entire train+validation dataset and predict on the test set to report your final model accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># L1 Regularization</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">10e5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;L1, C = </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+    <span class="n">lr_pol</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">))</span>
+    <span class="n">lr_pol</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">print_scores</span><span class="p">(</span><span class="n">lr_pol</span><span class="p">)</span>
+    
+<span class="c1"># L2 Regularization  </span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">10e5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;L2, C = </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+    <span class="n">lr_pol</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">))</span>
+    <span class="n">lr_pol</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">print_scores</span><span class="p">(</span><span class="n">lr_pol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L1, C = 0.00
+Train Score: 0.5493562
+Val Score: 0.4230769
+Test Score: 0.6034483
+L1, C = 0.10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.8819742
+Val Score: 0.8461538
+Test Score: 0.9482759
+L1, C = 1.00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.9077253
+Val Score: 0.8846154
+Test Score: 0.9655172
+L1, C = 1000000.00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.9163090
+Val Score: 0.8846154
+Test Score: 0.9655172
+L2, C = 0.00
+Train Score: 0.7703863
+Val Score: 0.7307692
+Test Score: 0.8448276
+L2, C = 0.10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.9012876
+Val Score: 0.8653846
+Test Score: 0.9655172
+L2, C = 1.00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.9098712
+Val Score: 0.8846154
+Test Score: 0.9655172
+L2, C = 1000000.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.9163090
+Val Score: 0.8846154
+Test Score: 0.9655172
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Xf</span>
+<span class="n">lr_pol</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">))</span>
+<span class="n">lr_pol</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xf</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">yf</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">print_scores</span><span class="p">(</span><span class="n">lr_pol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.9077253
+Val Score: 0.8846154
+Test Score: 0.9655172
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bonus">
+<h2>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">#</a></h2>
+<p>This problem is based on a paper that used a special method (SISSO) to generate and screen billions of possible algebraic formulae to see which ones correlated the best with perovskite structure. If you’re interested the code for that is here: https://github.com/rouyang2017/SISSO</p>
+<p>Read the paper to find the tolerance factor <span class="math notranslate nohighlight">\(\tau\)</span>, and use it as a single logistic regression feature. How accurate is your model compared to <span class="math notranslate nohighlight">\(\tau\)</span> on your test set? How do your results compare to what the paper claims for accuracy?</p>
+<p>The accuracy achieved on test set are close to the one reported in the paper (89% to 91%). This is much better accuracy than the one achieved by just using <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_tau_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">]</span>
+<span class="n">X_tau_val</span> <span class="o">=</span> <span class="n">data_val</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">]</span>
+<span class="n">X_tau_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">]</span>
+<span class="n">lr_tau</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">))</span>
+<span class="n">lr_tau</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tau_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="n">lr_tau</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_tau_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">acc_val</span> <span class="o">=</span> <span class="n">lr_tau</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_tau_val</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="n">lr_tau</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_tau_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Train Score: </span><span class="si">{</span><span class="n">acc_train</span><span class="si">:</span><span class="s1">.7f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Val Score: </span><span class="si">{</span><span class="n">acc_val</span><span class="si">:</span><span class="s1">.7f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Test Score: </span><span class="si">{</span><span class="n">acc_test</span><span class="si">:</span><span class="s1">.7f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.8669528
+Val Score: 0.9423077
+Test Score: 0.8965517
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./homeworks/solutions/HW3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Zachary Ulissi<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
