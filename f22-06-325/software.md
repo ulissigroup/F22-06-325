@@ -36,6 +36,31 @@ A few suggestions if you're having issues with JupyterHub (I'll update this thro
 * **Trouble saving a notebook** If your notebook doesn't seem to be saving for some reason, you can copy and paste all cells into a new notebook and save that. Edit -> select all cells, Edit -> copy cells, then go to a new notebook and Edit -> Paste all cells below. You can also try "save as" for the notebook and choose a new filename. If this is a recurring issue post on piazza so we can see if there's an underlying issue.
 * **HW editing** Before working on a homework, I would suggest duplicating the homework assignment (right click the file, then click duplicate), then edit that. This will ensure the homework doesn't get overwritten if I make changes to the homework and github resyncs. 
 
+### Custom conda environment (specific python versions, packages, etc)
+
+The default installed packages should work for almost everything you need to do in the class or the homework. If you find there's something you need for your project (one student was using code that required an older version of python for some reason), you can do that with a custom conda environment. Conda is the package manager that manages the installed python packages in your server.
+1. Open the terminal and switch to the bash shell
+```
+bash
+```
+2. Make a new conda environment in your home directory (which is persistent even when your server shuts down over night)
+```
+conda create -n /home/jovyan/my_test_environment
+```
+3. Switch to the conda environment, and install whatever you need. Use mamba instead of conda (same thing, but way faster!). Make sure to install ipykernel as well
+```
+conda activate /home/jovyan/my_test_environment
+mamba install ipykernel 
+```
+4. Install the kernel for jupyter so it shows up when you open notebooks
+```
+conda activate /home/jovyan/my_test_environment
+python -m ipykernel install --user --name my_test_environment --display-name my_test_environment
+```
+5. Shut down and restart your jupyterhub https://laikapack-head.cheme.cmu.edu/hub/hub/home
+
+After that, when you open a notebook you can click in the upper right and select your my_test_environment kernel. Everything that runs in that notebook will then use the installation and packages in that conda environment!
+
 ## Google Colab
 
 This should work like before. If you're on a notebook page, there should be a little "open in google colab" button if you mouse over the rocket symbol. You can also download the ipynb files from the course github page and upload them to colab yourself. Remember that local files you write (outside of the notebook) are not saved in colab!
