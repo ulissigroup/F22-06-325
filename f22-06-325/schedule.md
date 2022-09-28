@@ -17,8 +17,8 @@ Dates/etc are tentative and might change!
 | Monday       | 09/19/22 | Overfitting and regularization                               |  {doc}`notes/overfitting_regularization` |
 | Wednesday    | 09/21/22 | Classification and logistic regression                                    | {doc}`notes/classification_logistic_regression`  |
 | Optional lab |          | Github and code/data sharing                                                                             |   |
-| Monday    | 09/26/22 |  Non-parametric models (trees, GPs, etc)                                                                              |  {doc}`notes/nonparametric` |
-| Wednesday       | 09/28/22 |  Featurizing/Representing data in ChE                                                        |{doc}`notes/train_validation` , {doc}`notes/materials_descriptors`  |
+| Monday    | 09/26/22 |  Non-parametric models (trees, GPs, etc)                                                                              |  {doc}`notes/train_validation`, {doc}`notes/nonparametric` |
+| Wednesday       | 09/28/22 |  Featurizing/Representing data in ChE                                                        |{doc}`notes/materials_descriptors`  |
 | Optional lab |          | GPUs and accelerated training of models                                                                  |   |
 | Monday       | 10/03/22 | Neural networks                                                                             |   |
 | Wednesday    | 10/05/22 | Unsupervised regression, clustering  (or active learning?)                                                                    |   |
