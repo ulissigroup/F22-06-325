@@ -16,6 +16,7 @@ RUN mamba install --quiet --yes \
     plotly \
     pymatgen \
     openpyxl \
+    jax \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
