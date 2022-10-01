@@ -49,7 +49,7 @@ Cell [0;32mIn [1], line 18[0m
 [1;32m     15[0m [38;5;66;03m# fitting the model from above on each train, and evaluating the MAE for the validation in each[39;00m
 [1;32m     16[0m cross_validate(
 [1;32m     17[0m     model,
-[0;32m---> 18[0m     [43mdf_trainval[49m[[38;5;124m"[39m[38;5;124mdecimal[39m[38;5;124m"[39m][38;5;241m.[39mvalues[38;5;241m.[39mreshape([38;5;241m-[39m[38;5;241m1[39m, [38;5;241m1[39m), [38;5;66;03m# The date in decimal format, X[39;00m
+[0;32m---> 18[0m     df_trainval[[38;5;124m"[39m[38;5;124mdecimal[39m[38;5;124m"[39m][38;5;241m.[39mvalues[38;5;241m.[39mreshape([38;5;241m-[39m[38;5;241m1[39m, [38;5;241m1[39m), [38;5;66;03m# The date in decimal format, X[39;00m
 [1;32m     19[0m     df_trainval[[38;5;124m"[39m[38;5;124mppm[39m[38;5;124m"[39m][38;5;241m.[39mvalues, [38;5;66;03m# the CO2 concentration in ppm, y[39;00m
 [1;32m     20[0m     cv[38;5;241m=[39mTimeSeriesSplit(),
 [1;32m     21[0m     scoring[38;5;241m=[39m[[38;5;124m"[39m[38;5;124mneg_mean_absolute_error[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mneg_root_mean_squared_error[39m[38;5;124m"[39m],

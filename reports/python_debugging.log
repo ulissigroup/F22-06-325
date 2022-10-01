@@ -29,7 +29,7 @@ info(2, 'Abilash')
 Cell [0;32mIn [3], line 5[0m
 [1;32m      3[0m [38;5;28mprint[39m()
 [1;32m      4[0m [38;5;66;03m# What if we change the order in which we are passing the arguments?[39;00m
-[0;32m----> 5[0m [43minfo[49m[43m([49m[38;5;241;43m2[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mAbilash[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[0;32m----> 5[0m info([38;5;241m2[39m, [38;5;124m'[39m[38;5;124mAbilash[39m[38;5;124m'[39m)
 
 Cell [0;32mIn [2], line 3[0m, in [0;36minfo[0;34m(name, sem)[0m
 [1;32m      1[0m [38;5;28;01mdef[39;00m [38;5;21minfo[39m(name, sem):

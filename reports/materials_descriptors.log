@@ -35,7 +35,7 @@ fig_bar.show()
 Cell [0;32mIn [35], line 3[0m
 [1;32m      1[0m coefficients [38;5;241m=[39m np[38;5;241m.[39mabs(model[38;5;241m.[39mcoef_)
 [1;32m      2[0m included [38;5;241m=[39m X_train[38;5;241m.[39mcolumns[38;5;241m.[39mvalues
-[0;32m----> 3[0m indices [38;5;241m=[39m np[38;5;241m.[39margsort([43mimportances[49m)[::[38;5;241m-[39m[38;5;241m1[39m]
+[0;32m----> 3[0m indices [38;5;241m=[39m np[38;5;241m.[39margsort(importances)[::[38;5;241m-[39m[38;5;241m1[39m]
 [1;32m      5[0m fig_bar [38;5;241m=[39m px[38;5;241m.[39mbar(
 [1;32m      6[0m     x[38;5;241m=[39mincluded[indices][[38;5;241m0[39m:[38;5;241m5[39m],
 [1;32m      7[0m     y[38;5;241m=[39mimportances[indices][[38;5;241m0[39m:[38;5;241m5[39m],
