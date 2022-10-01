@@ -45,7 +45,7 @@ bash
 ```
 2. Make a new conda environment in your home directory (which is persistent even when your server shuts down over night)
 ```
-conda create -n /home/jovyan/my_test_environment
+conda create -p /home/jovyan/my_test_environment
 ```
 3. Switch to the conda environment, and install whatever you need. Use mamba instead of conda (same thing, but way faster!). Make sure to install ipykernel as well
 ```
