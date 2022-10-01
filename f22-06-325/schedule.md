@@ -20,7 +20,7 @@ Dates/etc are tentative and might change!
 | Monday    | 09/26/22 |  Non-parametric models (trees, GPs, etc)                                                                              |  {doc}`notes/train_validation`, {doc}`notes/nonparametric` |
 | Wednesday       | 09/28/22 |  Featurizing/Representing data in ChE                                                        |{doc}`notes/materials_descriptors`  |
 | Optional lab |          | GPUs and accelerated training of models                                                                  |   |
-| Monday       | 10/03/22 | Neural networks                                                                             |   |
+| Monday       | 10/03/22 | Neural networks                                                                             |   {doc}`notes/neural_networks`|
 | Wednesday    | 10/05/22 | Unsupervised regression, clustering  (or active learning?)                                                                    |   |
 | Optional lab |          |                                                                                                          |   |
 | Monday       | 10/10/22 | Guest lecture on Engineering ethics of AI/ML                                                             |   |
