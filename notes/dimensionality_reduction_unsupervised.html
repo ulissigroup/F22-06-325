@@ -931,7 +931,7 @@ title="Print to PDF"
 <h1>Feature correlations<a class="headerlink" href="#feature-correlations" title="Permalink to this headline">#</a></h1>
 <p>There are 40 features in the dataset, but from our engineering knowledge we expect that some might end up being correlated. For example, if there’s an energy balance, the energy in one unit may be directly correlated with the energy in another unit or stream.</p>
 <p>We can formalize this with a <strong>correlation coefficient</strong>. The most common/useful correlation coefficient is the Pearson correlation coefficient. It is a number in the range [-1,1] that describes how correlated two variables are. I find this plot from the wikipedia page to be extremely helpful!</p>
-<p><img alt="correlation examples from wikipedia article" src="notes/resources/Correlation_examples2.svg" /></p>
+<p><img alt="correlation examples from wikipedia article" src="../_images/Correlation_examples2.svg" /></p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>https://en.wikipedia.org/wiki/Pearson_correlation_coefficient</p>
@@ -1073,7 +1073,7 @@ title="Print to PDF"
 <h2>Principal component analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">#</a></h2>
 <p>You can identify linear combinations of the original features that contain independent information using principal component analysis (PCA). PCA works by using the eigenvectors of the covariance matrix to identify linear combinations.
 The eigenvectors of the covariance matrix identify the “natural” coordinate system of the data.</p>
-<p><img alt="correlation examples from wikipedia article" src="notes/resources/PCA.gif" /></p>
+<p><img alt="correlation examples from wikipedia article" src="../_images/PCA.gif" /></p>
 <p>PCA isn’t too hard to implement from scratch, but we’ll use the sklearn interface since the details are not so important. Unsupervised methods like PCA have a similar interface to sklearn ML models, but instead of a <code class="docutils literal notranslate"><span class="pre">predict</span></code> function they have a <code class="docutils literal notranslate"><span class="pre">transform</span></code> function.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
