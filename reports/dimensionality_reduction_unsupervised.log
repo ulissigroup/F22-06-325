@@ -1,0 +1,118 @@
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/conda/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/conda/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import pandas as pd
+
+df = pd.read_excel("datasets/impurity_dataset-training.xlsx")
+
+
+def is_real_and_finite(x):
+    if not np.isreal(x):
+        return False
+    elif not np.isfinite(x):
+        return False
+    else:
+        return True
+
+
+all_data = df[df.columns[1:]].values  # drop the first column (date)
+numeric_map = df[df.columns[1:]].applymap(is_real_and_finite)
+real_rows = (
+    numeric_map.all(axis=1).copy().values
+)  # True if all values in a row are real numbers
+X = np.array(
+    all_data[real_rows, :-5], dtype="float"
+)  # drop the last 5 cols that are not inputs
+y = np.array(all_data[real_rows, -3], dtype="float")
+
+x_names = [str(x) for x in df.columns[1:41]]
+y_name = str(df.columns[-3])
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn [1], line 4[0m
+[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[0;32m----> 4[0m df [38;5;241m=[39m pd[38;5;241m.[39mread_excel([38;5;124m"[39m[38;5;124mdatasets/impurity_dataset-training.xlsx[39m[38;5;124m"[39m)
+[1;32m      7[0m [38;5;28;01mdef[39;00m [38;5;21mis_real_and_finite[39m(x):
+[1;32m      8[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m np[38;5;241m.[39misreal(x):
+
+File [0;32m/opt/conda/lib/python3.9/site-packages/pandas/util/_decorators.py:211[0m, in [0;36mdeprecate_kwarg.<locals>._deprecate_kwarg.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    209[0m     [38;5;28;01melse[39;00m:
+[1;32m    210[0m         kwargs[new_arg_name] [38;5;241m=[39m new_arg_value
+[0;32m--> 211[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/conda/lib/python3.9/site-packages/pandas/util/_decorators.py:317[0m, in [0;36mdeprecate_nonkeyword_arguments.<locals>.decorate.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    311[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(args) [38;5;241m>[39m num_allow_args:
+[1;32m    312[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    313[0m         msg[38;5;241m.[39mformat(arguments[38;5;241m=[39marguments),
+[1;32m    314[0m         [38;5;167;01mFutureWarning[39;00m,
+[1;32m    315[0m         stacklevel[38;5;241m=[39mfind_stack_level(inspect[38;5;241m.[39mcurrentframe()),
+[1;32m    316[0m     )
+[0;32m--> 317[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:483[0m, in [0;36mread_excel[0;34m(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, decimal, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)[0m
+[1;32m    481[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(io, ExcelFile):
+[1;32m    482[0m     should_close [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[0;32m--> 483[0m     io [38;5;241m=[39m [43mExcelFile[49m[43m([49m[43mio[49m[43m,[49m[43m [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m[43m,[49m[43m [49m[43mengine[49m[38;5;241;43m=[39;49m[43mengine[49m[43m)[49m
+[1;32m    484[0m [38;5;28;01melif[39;00m engine [38;5;129;01mand[39;00m engine [38;5;241m!=[39m io[38;5;241m.[39mengine:
+[1;32m    485[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m    486[0m         [38;5;124m"[39m[38;5;124mEngine should not be specified when passing [39m[38;5;124m"[39m
+[1;32m    487[0m         [38;5;124m"[39m[38;5;124man ExcelFile - ExcelFile already has the engine set[39m[38;5;124m"[39m
+[1;32m    488[0m     )
+
+File [0;32m/opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:1629[0m, in [0;36mExcelFile.__init__[0;34m(self, path_or_buffer, engine, storage_options)[0m
+[1;32m   1627[0m     ext [38;5;241m=[39m [38;5;124m"[39m[38;5;124mxls[39m[38;5;124m"[39m
+[1;32m   1628[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1629[0m     ext [38;5;241m=[39m [43minspect_excel_format[49m[43m([49m
+[1;32m   1630[0m [43m        [49m[43mcontent_or_path[49m[38;5;241;43m=[39;49m[43mpath_or_buffer[49m[43m,[49m[43m [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m
+[1;32m   1631[0m [43m    [49m[43m)[49m
+[1;32m   1632[0m     [38;5;28;01mif[39;00m ext [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1633[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m   1634[0m             [38;5;124m"[39m[38;5;124mExcel file format cannot be determined, you must specify [39m[38;5;124m"[39m
+[1;32m   1635[0m             [38;5;124m"[39m[38;5;124man engine manually.[39m[38;5;124m"[39m
+[1;32m   1636[0m         )
+
+File [0;32m/opt/conda/lib/python3.9/site-packages/pandas/io/excel/_base.py:1502[0m, in [0;36minspect_excel_format[0;34m(content_or_path, storage_options)[0m
+[1;32m   1499[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(content_or_path, [38;5;28mbytes[39m):
+[1;32m   1500[0m     content_or_path [38;5;241m=[39m BytesIO(content_or_path)
+[0;32m-> 1502[0m [38;5;28;01mwith[39;00m [43mget_handle[49m[43m([49m
+[1;32m   1503[0m [43m    [49m[43mcontent_or_path[49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mrb[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m[43m,[49m[43m [49m[43mis_text[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m
+[1;32m   1504[0m [43m[49m[43m)[49m [38;5;28;01mas[39;00m handle:
+[1;32m   1505[0m     stream [38;5;241m=[39m handle[38;5;241m.[39mhandle
+[1;32m   1506[0m     stream[38;5;241m.[39mseek([38;5;241m0[39m)
+
+File [0;32m/opt/conda/lib/python3.9/site-packages/pandas/io/common.py:866[0m, in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    857[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(
+[1;32m    858[0m             handle,
+[1;32m    859[0m             ioargs[38;5;241m.[39mmode,
+[0;32m   (...)[0m
+[1;32m    862[0m             newline[38;5;241m=[39m[38;5;124m"[39m[38;5;124m"[39m,
+[1;32m    863[0m         )
+[1;32m    864[0m     [38;5;28;01melse[39;00m:
+[1;32m    865[0m         [38;5;66;03m# Binary mode[39;00m
+[0;32m--> 866[0m         handle [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m[43mhandle[49m[43m,[49m[43m [49m[43mioargs[49m[38;5;241;43m.[39;49m[43mmode[49m[43m)[49m
+[1;32m    867[0m     handles[38;5;241m.[39mappend(handle)
+[1;32m    869[0m [38;5;66;03m# Convert BytesIO or file objects passed with an encoding[39;00m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'datasets/impurity_dataset-training.xlsx'
+FileNotFoundError: [Errno 2] No such file or directory: 'datasets/impurity_dataset-training.xlsx'
+

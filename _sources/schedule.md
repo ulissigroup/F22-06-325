@@ -21,7 +21,7 @@ Dates/etc are tentative and might change!
 | Wednesday       | 09/28/22 |  Featurizing/Representing data in ChE                                                        |{doc}`notes/materials_descriptors`  |
 | Optional lab |          | GPUs and accelerated training of models                                                                  |   |
 | Monday       | 10/03/22 | Neural networks                                                                             |   {doc}`notes/neural_networks`|
-| Wednesday    | 10/05/22 | Unsupervised regression, clustering  (or active learning?)                                                                    |   |
+| Wednesday    | 10/05/22 | Unsupervised models and dimensionality reduction                                                                    |  {doc}`notes/dimensionality_reduction_unsupervised` |
 | Optional lab |          |                                                                                                          |   |
 | Monday       | 10/10/22 | Guest lecture on Engineering ethics of AI/ML                                                             |   |
 | Wednesday    | 10/12/22 | Final project poster session                                                                             |   |
