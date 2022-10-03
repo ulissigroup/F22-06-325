@@ -1,4 +1,11 @@
 # Logistics/Notes
+Monday 10/3
+* **Lecture:** Neural networks
+* HW5 posted, should be straightforward (similar to HW4, but new methods)
+* Project poster and notebook due next week
+* In-class practice today, gradescope open!
+* If you are installing custom conda packages (e.g. graph networks for TSP), let me know and I can up your disk quota to make some extra room
+
 Monday 3/26
 * **Lecture:** Train/validation splits, and non-parametric models
 * HW4 posted; should be able to get started after today's lecture

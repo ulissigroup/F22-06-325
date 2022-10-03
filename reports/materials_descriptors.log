@@ -17,33 +17,21 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-coefficients = np.abs(model.coef_)
-included = X_train.columns.values
-indices = np.argsort(importances)[::-1]
+from sklearn.linear_model import Ridge, Lasso
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
 
-fig_bar = px.bar(
-    x=included[indices][0:5],
-    y=importances[indices][0:5],
-    title="Linear Coefficients in Ridge Regression",
-    labels={"x": "Feature", "y": "Importance"},
-)
-fig_bar.show()
+model = Lasso(alpha=100)
+model.fit(X_train.values[:100,:], np.log(y_train)[:100,])
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn [35], line 3[0m
-[1;32m      1[0m coefficients [38;5;241m=[39m np[38;5;241m.[39mabs(model[38;5;241m.[39mcoef_)
-[1;32m      2[0m included [38;5;241m=[39m X_train[38;5;241m.[39mcolumns[38;5;241m.[39mvalues
-[0;32m----> 3[0m indices [38;5;241m=[39m np[38;5;241m.[39margsort(importances)[::[38;5;241m-[39m[38;5;241m1[39m]
-[1;32m      5[0m fig_bar [38;5;241m=[39m px[38;5;241m.[39mbar(
-[1;32m      6[0m     x[38;5;241m=[39mincluded[indices][[38;5;241m0[39m:[38;5;241m5[39m],
-[1;32m      7[0m     y[38;5;241m=[39mimportances[indices][[38;5;241m0[39m:[38;5;241m5[39m],
-[1;32m      8[0m     title[38;5;241m=[39m[38;5;124m"[39m[38;5;124mLinear Coefficients in Ridge Regression[39m[38;5;124m"[39m,
-[1;32m      9[0m     labels[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mx[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mFeature[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124my[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mImportance[39m[38;5;124m"[39m},
-[1;32m     10[0m )
-[1;32m     11[0m fig_bar[38;5;241m.[39mshow()
+Cell [0;32mIn [36], line 6[0m
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpreprocessing[39;00m [38;5;28;01mimport[39;00m StandardScaler
+[1;32m      5[0m model [38;5;241m=[39m Lasso(alpha[38;5;241m=[39m[38;5;241m100[39m)
+[0;32m----> 6[0m model[38;5;241m.[39mfit(X_train[38;5;241m.[39mvalues[:[38;5;241m100[39m,:], np[38;5;241m.[39mlog(y_train)[:[38;5;241m100[39m,])
 
-[0;31mNameError[0m: name 'importances' is not defined
-NameError: name 'importances' is not defined
+[0;31mNameError[0m: name 'np' is not defined
+NameError: name 'np' is not defined
 
