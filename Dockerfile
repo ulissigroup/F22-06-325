@@ -1,9 +1,6 @@
 FROM jupyter/datascience-notebook
 
-RUN echo '' > /opt/conda/conda-meta/pinned
-RUN mamba uninstall nomkl --quiet --yes
-
-RUN mamba install --quiet --yes -c conda-forge \
+RUN mamba install --quiet --yes \
     jupyterlab_code_formatter \
     black \
     yapf \
@@ -20,29 +17,16 @@ RUN mamba install --quiet --yes -c conda-forge \
     pymatgen \
     openpyxl \
     jax \
-    'python=3.9' \
-    ax-platform \
-    'pandas<1.5' \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-
-RUN jupyter labextension install jupyterlab-jupytext
-
-RUN mamba install --quiet --yes -c conda-forge \
-    'pandas<1.5' \
-    botorch \
-    jinja2 \
-    pre-commit && \
-    mamba clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
-
-RUN jupyter labextension install jupyterlab-jupytext
     
+RUN jupyter labextension install jupyterlab-jupytext
 
 # OCP repo requirements
+RUN echo '' > /opt/conda/conda-meta/pinned
+RUN mamba uninstall nomkl --quiet --yes
 RUN mamba install --quiet --yes \
     -c pyg -c pytorch -c conda-forge -c nvidia \
     numba \
@@ -78,6 +62,16 @@ RUN git clone https://github.com/Open-Catalyst-Project/ocp /opt/ocp && fix-permi
 USER $NB_UID
 RUN cd /opt/ocp && python setup.py develop
 
+
+RUN mamba install --quiet --yes \
+    ax-platform \
+    'pandas<1.5' \
+    pre-commit && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+
 # Install matminer
 RUN pip install --no-deps matminer
 
@@ -90,4 +84,3 @@ RUN apt-get update --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/*USER $NB_UID
 USER $NB_UID
 RUN sed -i '/{titling}/i \\\usepackage{mhchem}\n\\newcommand{\\require}[1]{}' /opt/conda/share/jupyter/nbconvert/templates/latex/base.tex.j2
-
