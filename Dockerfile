@@ -16,6 +16,7 @@ RUN mamba install --quiet --yes \
     plotly \
     pymatgen \
     openpyxl \
+    ax-platform \
     jax \
     pre-commit && \
     mamba clean --all -f -y && \
@@ -23,7 +24,6 @@ RUN mamba install --quiet --yes \
     fix-permissions "/home/${NB_USER}"
 
 RUN mamba install --quiet --yes \
-    ax-platform \
     'pandas<1.5' \
     pre-commit && \
     mamba clean --all -f -y && \
