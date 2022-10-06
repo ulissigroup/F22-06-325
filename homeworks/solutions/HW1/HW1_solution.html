@@ -51,8 +51,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -958,7 +956,7 @@ k_b = \frac{k}{1+k_dt}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Conversion target hit at: 7.508500707147837 h.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Conversion target hit at: 7.508500707147827 h.
 </pre></div>
 </div>
 </div>
@@ -1014,7 +1012,7 @@ k_b = \frac{k}{1+k_dt}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f58a45819d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f831b17d970&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/HW1_solution_11_1.png" src="../../../_images/HW1_solution_11_1.png" />
@@ -1065,7 +1063,7 @@ k_b = \frac{k}{1+k_dt}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f58a44173d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f831b012370&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/HW1_solution_13_1.png" src="../../../_images/HW1_solution_13_1.png" />
@@ -1242,25 +1240,25 @@ k_b = \frac{k}{1+k_dt}
     Model(integrate_ODE, method=&#39;RK45&#39;)
 [[Fit Statistics]]
     # fitting method   = leastsq
-    # function evals   = 637
+    # function evals   = 613
     # data points      = 200
     # variables        = 5
-    chi-square         = 1.74113659
+    chi-square         = 1.74113683
     reduced chi-square = 0.00892891
-    Akaike info crit   = -938.755851
-    Bayesian info crit = -922.264264
+    Akaike info crit   = -938.755824
+    Bayesian info crit = -922.264237
 [[Variables]]
-    C_A0:  1.95365491 +/- 0.04451538 (2.28%) (init = 1.785)
-    C_B0:  3.96033827 +/- 0.04452883 (1.12%) (init = 4.036)
-    k:     3.34116794 +/- 17.5508852 (525.29%) (init = 2)
-    n:     3.16366558 +/- 1.63929572 (51.82%) (init = 2)
-    m:    -2.18836377 +/- 4.73793623 (216.51%) (init = 2)
+    C_A0:  1.95374598 +/- 0.04451124 (2.28%) (init = 1.785)
+    C_B0:  3.96043184 +/- 0.04452466 (1.12%) (init = 4.036)
+    k:     3.26348562 +/- 17.0540000 (522.57%) (init = 2)
+    n:     3.15625683 +/- 1.64028660 (51.97%) (init = 2)
+    m:    -2.16720723 +/- 4.74031974 (218.73%) (init = 2)
 [[Correlations]] (unreported correlations are &lt; 0.100)
     C(k, m)       = -1.000
     C(n, m)       = -0.997
     C(k, n)       = 0.997
     C(C_A0, C_B0) = 0.955
-    C(C_B0, m)    = 0.585
+    C(C_B0, m)    = 0.584
     C(C_B0, k)    = -0.583
     C(C_A0, m)    = 0.579
     C(C_A0, k)    = -0.579
@@ -1305,11 +1303,11 @@ k_b = \frac{k}{1+k_dt}
     Akaike info crit   = -944.896644
     Bayesian info crit = -928.405057
 [[Variables]]
-    C_A0:  5.02590997 +/- 0.05648779 (1.12%) (init = 5.059)
-    C_B0:  3.01505135 +/- 0.05636404 (1.87%) (init = 2.888)
-    k:     0.03315834 +/- 0.01859465 (56.08%) (init = 2)
-    n:     2.98279030 +/- 0.48681562 (16.32%) (init = 2)
-    m:     0.69365691 +/- 0.14775397 (21.30%) (init = 2)
+    C_A0:  5.02591001 +/- 0.05648774 (1.12%) (init = 5.059)
+    C_B0:  3.01505138 +/- 0.05636400 (1.87%) (init = 2.888)
+    k:     0.03315831 +/- 0.01859468 (56.08%) (init = 2)
+    n:     2.98279103 +/- 0.48681468 (16.32%) (init = 2)
+    m:     0.69365669 +/- 0.14775385 (21.30%) (init = 2)
 [[Correlations]] (unreported correlations are &lt; 0.100)
     C(k, n)       = -1.000
     C(n, m)       = -0.979
@@ -1435,13 +1433,13 @@ k_b = \frac{k}{1+k_dt}
     Akaike info crit   = -1885.33116
     Bayesian info crit = -1857.39091
 [[Variables]]
-    C_A0_1:  1.96326655 +/- 0.02921224 (1.49%) (init = 2)
-    C_B0_1:  3.96989639 +/- 0.02957282 (0.74%) (init = 4)
-    C_A0_2:  4.98419418 +/- 0.04920063 (0.99%) (init = 5)
-    C_B0_2:  2.97642327 +/- 0.04963035 (1.67%) (init = 3)
-    k:       0.09838765 +/- 0.00342135 (3.48%) (init = 2)
-    n:       2.03729582 +/- 0.03103047 (1.52%) (init = 2)
-    m:       0.98457622 +/- 0.02522313 (2.56%) (init = 2)
+    C_A0_1:  1.96326640 +/- 0.02921224 (1.49%) (init = 2)
+    C_B0_1:  3.96989620 +/- 0.02957283 (0.74%) (init = 4)
+    C_A0_2:  4.98419433 +/- 0.04920060 (0.99%) (init = 5)
+    C_B0_2:  2.97642345 +/- 0.04963032 (1.67%) (init = 3)
+    k:       0.09838761 +/- 0.00342137 (3.48%) (init = 2)
+    n:       2.03729617 +/- 0.03103060 (1.52%) (init = 2)
+    m:       0.98457641 +/- 0.02522301 (2.56%) (init = 2)
 [[Correlations]] (unreported correlations are &lt; 0.100)
     C(C_A0_2, C_B0_2) = 0.965
     C(C_A0_1, C_B0_1) = 0.898
@@ -1521,13 +1519,13 @@ k_b = \frac{k}{1+k_dt}
     Akaike info crit   = -5624.88794
     Bayesian info crit = -5596.94769
 [[Variables]]
-    C_A0_1:  2.00087770 +/- 2.7655e-04 (0.01%) (init = 2)
-    C_B0_1:  4.00093600 +/- 2.7998e-04 (0.01%) (init = 4)
-    C_A0_2:  5.00230806 +/- 4.5646e-04 (0.01%) (init = 5)
-    C_B0_2:  3.00237995 +/- 4.6023e-04 (0.02%) (init = 3)
+    C_A0_1:  2.00087760 +/- 2.7655e-04 (0.01%) (init = 2)
+    C_B0_1:  4.00093588 +/- 2.7998e-04 (0.01%) (init = 4)
+    C_A0_2:  5.00230800 +/- 4.5646e-04 (0.01%) (init = 5)
+    C_B0_2:  3.00237988 +/- 4.6023e-04 (0.02%) (init = 3)
     k:       0.10032598 +/- 3.2176e-05 (0.03%) (init = 2)
-    n:       1.99989910 +/- 2.8353e-04 (0.01%) (init = 2)
-    m:       1.00227339 +/- 2.3421e-04 (0.02%) (init = 2)
+    n:       1.99989908 +/- 2.8352e-04 (0.01%) (init = 2)
+    m:       1.00227331 +/- 2.3422e-04 (0.02%) (init = 2)
 [[Correlations]] (unreported correlations are &lt; 0.100)
     C(C_A0_2, C_B0_2) = 0.964
     C(C_A0_1, C_B0_1) = 0.901

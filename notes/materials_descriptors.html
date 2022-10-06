@@ -51,8 +51,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -994,7 +992,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching https://ndownloader.figshare.com/files/13213475 in MB:   0%|          | 0.0/0.885392 [00:00&lt;?, ?MB/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching https://ndownloader.figshare.com/files/13213475 in MB: 0.8867839999999999MB [00:00, 325.72MB/s]      
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching https://ndownloader.figshare.com/files/13213475 in MB: 0.8867839999999999MB [00:00, 364.44MB/s]      
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2021,8 +2019,8 @@ Name: 100, dtype: object
 <section id="featurizers-transform-materials-primitives-into-machine-learnable-features">
 <h3>Featurizers transform materials primitives into machine-learnable features<a class="headerlink" href="#featurizers-transform-materials-primitives-into-machine-learnable-features" title="Permalink to this headline">#</a></h3>
 <p>The general idea of featurizers is that they accept a materials primitive (e.g., pymatgen Composition) and output a vector. For example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-edd8008e-4582-4014-b185-0a841701aaf1">
-<span class="eqno">(5)<a class="headerlink" href="#equation-edd8008e-4582-4014-b185-0a841701aaf1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ee6027c8-385e-4726-94ea-c9aa1b5ff4bb">
+<span class="eqno">(5)<a class="headerlink" href="#equation-ee6027c8-385e-4726-94ea-c9aa1b5ff4bb" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(\mathrm{Fe}_2\mathrm{O}_3) \rightarrow [1.5, 7.8, 9.1, 0.09]
 \end{align}\]</div>
 <section id="matminer-contains-featurizers-for-the-following-pymatgen-objects">
@@ -2309,7 +2307,7 @@ Fe 0.4
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "c1860bb2cfc9423db7c971694236f2e8"}
+{"version_major": 2, "version_minor": 0, "model_id": "d415e4e89b454788a6ccb79045abb623"}
 </script><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2516,7 +2514,7 @@ Fe 0.4
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "01e21170668f4f1aa090ad4a00fb202b"}
+{"version_major": 2, "version_minor": 0, "model_id": "e4f964fa06af417b85cdbab0acd1bc46"}
 </script><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2707,9 +2705,9 @@ Fe 0.4
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "8fd1943b1fa84a368278d4fb1c80eb4e"}
+{"version_major": 2, "version_minor": 0, "model_id": "66af8ffcc4564668bb40f9a30352fbc3"}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "9def4f75bef44354b1a37da83d55531d"}
+{"version_major": 2, "version_minor": 0, "model_id": "9a84d3c2810047a8a01ac8d4d8633365"}
 </script><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3101,7 +3099,7 @@ Fe 0.4
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Structure Summary
 Lattice
     abc : 4.423580298196134 4.42358017388947 4.42358
- angles : 60.000001300353354 60.000002229924156 59.99999623959348
+ angles : 60.000001300353354 60.000002229924156 59.99999623959349
  volume : 61.20779090065246
       A : 3.830933 0.0 2.21179
       B : 1.276978 3.611838 2.21179
