@@ -23,6 +23,16 @@ RUN mamba install --quiet --yes \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+RUN mamba install --quiet --yes \
+    ax-platform \
+    'pandas<1.5' \
+    pre-commit && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+
     
 RUN jupyter labextension install jupyterlab-jupytext
 
