@@ -1,6 +1,6 @@
 FROM jupyter/datascience-notebook
 
-RUN mamba install --quiet --yes \
+RUN mamba install --quiet --yes -c conda-forge \
     jupyterlab_code_formatter \
     black \
     yapf \
@@ -17,19 +17,12 @@ RUN mamba install --quiet --yes \
     pymatgen \
     openpyxl \
     ax-platform \
+    'pandas<1.5' \
     jax \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-
-RUN mamba install --quiet --yes \
-    'pandas<1.5' \
-    pre-commit && \
-    mamba clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
-
 
     
 RUN jupyter labextension install jupyterlab-jupytext
