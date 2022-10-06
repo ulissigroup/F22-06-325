@@ -28,6 +28,7 @@ parts:
     - file: notes/materials_descriptors
     - file: notes/neural_networks
     - file: notes/dimensionality_reduction_unsupervised
+    - file: notes/bayesian_optimization
   - file: labs/overview
     sections:
     - file: labs/python_debugging
