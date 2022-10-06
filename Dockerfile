@@ -16,8 +16,6 @@ RUN mamba install --quiet --yes \
     plotly \
     pymatgen \
     openpyxl \
-    ax-platform \
-    'pandas<1.5' \
     jax \
     pre-commit && \
     mamba clean --all -f -y && \
