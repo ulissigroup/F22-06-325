@@ -1,5 +1,8 @@
 FROM jupyter/datascience-notebook
 
+RUN echo '' > /opt/conda/conda-meta/pinned
+RUN mamba uninstall nomkl --quiet --yes
+
 RUN mamba install --quiet --yes -c conda-forge \
     jupyterlab_code_formatter \
     black \
@@ -16,20 +19,30 @@ RUN mamba install --quiet --yes -c conda-forge \
     plotly \
     pymatgen \
     openpyxl \
+    jax \
+    'python=3.9' \
     ax-platform \
     'pandas<1.5' \
-    jax \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
-    
 RUN jupyter labextension install jupyterlab-jupytext
 
+RUN mamba install --quiet --yes -c conda-forge \
+    'pandas<1.5' \
+    botorch \
+    jinja2 \
+    pre-commit && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+RUN jupyter labextension install jupyterlab-jupytext
+    
+
 # OCP repo requirements
-RUN echo '' > /opt/conda/conda-meta/pinned
-RUN mamba uninstall nomkl --quiet --yes
 RUN mamba install --quiet --yes \
     -c pyg -c pytorch -c conda-forge -c nvidia \
     numba \
