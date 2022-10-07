@@ -64,8 +64,7 @@ RUN cd /opt/ocp && python setup.py develop
 
 
 RUN mamba install --quiet --yes \
-    ax-platform \
-    'pandas<1.5' \
+    optuna \
     pre-commit && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
