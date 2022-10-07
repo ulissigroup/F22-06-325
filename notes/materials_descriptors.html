@@ -235,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="bayesian_optimization.html">
-     Design of Experiments with Bayesian Optimization
+     Design of Experiments (Active Learning) with Bayesian Optimization
     </a>
    </li>
   </ul>
@@ -994,7 +994,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching https://ndownloader.figshare.com/files/13213475 in MB:   0%|          | 0.0/0.885392 [00:00&lt;?, ?MB/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching https://ndownloader.figshare.com/files/13213475 in MB: 0.8867839999999999MB [00:00, 330.26MB/s]      
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching https://ndownloader.figshare.com/files/13213475 in MB: 0.8867839999999999MB [00:00, 255.32MB/s]      
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2021,8 +2021,8 @@ Name: 100, dtype: object
 <section id="featurizers-transform-materials-primitives-into-machine-learnable-features">
 <h3>Featurizers transform materials primitives into machine-learnable features<a class="headerlink" href="#featurizers-transform-materials-primitives-into-machine-learnable-features" title="Permalink to this headline">#</a></h3>
 <p>The general idea of featurizers is that they accept a materials primitive (e.g., pymatgen Composition) and output a vector. For example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1224cfd7-fb48-4d58-9e2f-e3987e21e129">
-<span class="eqno">(5)<a class="headerlink" href="#equation-1224cfd7-fb48-4d58-9e2f-e3987e21e129" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-74d9d563-0202-4fc9-96d4-55f9111ad58f">
+<span class="eqno">(5)<a class="headerlink" href="#equation-74d9d563-0202-4fc9-96d4-55f9111ad58f" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(\mathrm{Fe}_2\mathrm{O}_3) \rightarrow [1.5, 7.8, 9.1, 0.09]
 \end{align}\]</div>
 <section id="matminer-contains-featurizers-for-the-following-pymatgen-objects">
@@ -2309,7 +2309,7 @@ Fe 0.4
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "2af0740010734770b9f69febd35decee"}
+{"version_major": 2, "version_minor": 0, "model_id": "619c8d8268e64b83bc42b2f73b88d89e"}
 </script><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2516,7 +2516,7 @@ Fe 0.4
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "3008d7d5d7b947c488f7044d364894fd"}
+{"version_major": 2, "version_minor": 0, "model_id": "9ff65ff56c9942518dfa3b6156c95e30"}
 </script><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2707,9 +2707,9 @@ Fe 0.4
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "cbad0a5715d0456a8f62a5a6b6c2a7ef"}
+{"version_major": 2, "version_minor": 0, "model_id": "2c5f2f7bb87140b1bfbfa7d4bf72b7b0"}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "67aae02762ea410cb11496fb5b7d3338"}
+{"version_major": 2, "version_minor": 0, "model_id": "8c7ac14e827e4855807d165890b7f2d8"}
 </script><div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {

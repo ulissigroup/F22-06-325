@@ -17,20 +17,33 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from ax.plot.trace import optimization_trace_single_method
-from ax.service.managed_loop import optimize
-from ax.utils.notebook.plotting import init_notebook_plotting, render
+from skopt.optimizer import Optimizer
 
-init_notebook_plotting()
+optimizer = Optimizer(5, base_estimator,
+                          n_initial_points=5,
+                          initial_point_generator="sobol",
+                          n_jobs=n_jobs,
+                          acq_func=acq_func, acq_optimizer=acq_optimizer,
+                          random_state=random_state,
+                          model_queue_size=model_queue_size,
+                          acq_optimizer_kwargs=acq_optimizer_kwargs,
+                          acq_func_kwargs=acq_func_kwargs)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn [3], line 1[0m
-[0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01max[39;00m[38;5;21;01m.[39;00m[38;5;21;01mplot[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtrace[39;00m [38;5;28;01mimport[39;00m optimization_trace_single_method
-[1;32m      2[0m [38;5;28;01mfrom[39;00m [38;5;21;01max[39;00m[38;5;21;01m.[39;00m[38;5;21;01mservice[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmanaged_loop[39;00m [38;5;28;01mimport[39;00m optimize
-[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01max[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m[38;5;21;01m.[39;00m[38;5;21;01mnotebook[39;00m[38;5;21;01m.[39;00m[38;5;21;01mplotting[39;00m [38;5;28;01mimport[39;00m init_notebook_plotting, render
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn [10], line 3[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mskopt[39;00m[38;5;21;01m.[39;00m[38;5;21;01moptimizer[39;00m [38;5;28;01mimport[39;00m Optimizer
+[0;32m----> 3[0m optimizer [38;5;241m=[39m Optimizer([38;5;241m5[39m, base_estimator,
+[1;32m      4[0m                           n_initial_points[38;5;241m=[39m[38;5;241m5[39m,
+[1;32m      5[0m                           initial_point_generator[38;5;241m=[39m[38;5;124m"[39m[38;5;124msobol[39m[38;5;124m"[39m,
+[1;32m      6[0m                           n_jobs[38;5;241m=[39mn_jobs,
+[1;32m      7[0m                           acq_func[38;5;241m=[39macq_func, acq_optimizer[38;5;241m=[39macq_optimizer,
+[1;32m      8[0m                           random_state[38;5;241m=[39mrandom_state,
+[1;32m      9[0m                           model_queue_size[38;5;241m=[39mmodel_queue_size,
+[1;32m     10[0m                           acq_optimizer_kwargs[38;5;241m=[39macq_optimizer_kwargs,
+[1;32m     11[0m                           acq_func_kwargs[38;5;241m=[39macq_func_kwargs)
 
-[0;31mModuleNotFoundError[0m: No module named 'ax'
-ModuleNotFoundError: No module named 'ax'
+[0;31mNameError[0m: name 'base_estimator' is not defined
+NameError: name 'base_estimator' is not defined
 
