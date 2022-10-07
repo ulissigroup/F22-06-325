@@ -16,6 +16,7 @@ RUN mamba install --quiet --yes \
     plotly \
     pymatgen \
     openpyxl \
+    scikit-optimize \
     jax \
     pre-commit && \
     mamba clean --all -f -y && \
@@ -61,14 +62,6 @@ USER root
 RUN git clone https://github.com/Open-Catalyst-Project/ocp /opt/ocp && fix-permissions /opt/ocp
 USER $NB_UID
 RUN cd /opt/ocp && python setup.py develop
-
-
-RUN mamba install --quiet --yes \
-    optuna \
-    pre-commit && \
-    mamba clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
 
 
 # Install matminer
